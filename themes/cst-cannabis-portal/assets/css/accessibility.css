@@ -1,0 +1,184 @@
+/* ==========================================================================
+   CST Cannabis Portal — Accessibility Styles
+   WCAG 2.1 AA / Ley 229 compliance
+   ========================================================================== */
+
+/* --- Screen Reader Only --- */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: var(--cst-space-sm) var(--cst-space-md);
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* --- Skip Link --- */
+
+.cst-skip-link {
+    background: var(--cst-color-primary);
+    color: var(--cst-color-white);
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 100000;
+}
+
+.cst-skip-link:focus {
+    display: block;
+    padding: var(--cst-space-md) var(--cst-space-xl);
+    text-align: center;
+}
+
+/* --- Focus Indicators --- */
+
+:focus-visible {
+    outline: 3px solid var(--cst-color-focus);
+    outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Ensure sufficient focus contrast on dark backgrounds */
+.cst-gov-banner :focus-visible,
+.cst-institutional-footer :focus-visible,
+.cst-hero :focus-visible {
+    outline-color: var(--cst-color-white);
+}
+
+/* --- Touch Targets (WCAG 2.5.8 — minimum 44x44px) --- */
+
+.cst-btn,
+.cst-filter-tabs__btn,
+.cst-gov-banner__toggle,
+.cst-lang-switcher__list a,
+.cst-social-links a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Links within text are exempt, but nav links need touch targets */
+nav a,
+.cst-footer-menu a,
+.cst-legal-menu a {
+    display: inline-block;
+    padding-block: var(--cst-space-xs);
+    min-height: 44px;
+    line-height: 44px;
+}
+
+/* --- High Contrast Mode --- */
+
+@media (prefers-contrast: high) {
+    .cst-card {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    .cst-btn {
+        border-width: 3px;
+    }
+
+    .cst-filter-tabs__btn {
+        border: 2px solid currentColor;
+    }
+
+    .cst-tag {
+        border: 1px solid currentColor;
+    }
+
+    .cst-hero__overlay {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .cst-stat-card {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+/* --- Forced Colors (Windows High Contrast) --- */
+
+@media (forced-colors: active) {
+    .cst-btn {
+        border: 2px solid ButtonText;
+    }
+
+    .cst-card {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-hero {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-hero__overlay {
+        display: none;
+    }
+
+    .cst-gov-banner {
+        border-bottom: 2px solid CanvasText;
+    }
+}
+
+/* --- Reduced Motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .cst-card:hover {
+        transform: none;
+    }
+}
+
+/* --- Selection --- */
+
+::selection {
+    background-color: var(--cst-color-primary);
+    color: var(--cst-color-white);
+}
+
+/* --- Ensure sufficient color contrast for links --- */
+
+.cst-content-area a:visited {
+    color: #0d4e55;
+}
+
+/* --- ARIA Live Region --- */
+
+[aria-live="polite"],
+[aria-live="assertive"] {
+    position: relative;
+}

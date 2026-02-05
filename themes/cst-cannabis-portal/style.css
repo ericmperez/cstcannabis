@@ -1,0 +1,90 @@
+/*
+ Theme Name:   CST Cannabis Medicinal Portal
+ Theme URI:    https://cannabis.cst.pr.gov
+ Description:  Portal educativo sobre cannabis medicinal — Comisión para la Seguridad en el Tránsito de Puerto Rico. Child theme of GeneratePress.
+ Author:       CST Puerto Rico
+ Author URI:   https://cst.pr.gov
+ Template:     generatepress
+ Version:      1.0.0
+ License:      GPL-2.0-or-later
+ Text Domain:  cst-cannabis
+ Tags:         government, accessibility, bilingual, education
+*/
+
+/* ==========================================================================
+   GUIDI / PRITS-004 Design Tokens
+   ========================================================================== */
+
+:root {
+    /* --- Colors: PR Flag + PANTONE accents --- */
+    --cst-color-red:         #EE0000;
+    --cst-color-blue:        #0050F0;
+    --cst-color-white:       #FFFFFF;
+    --cst-color-teal:        #115E67; /* PANTONE 5473 C */
+    --cst-color-coral:       #E56A54; /* PANTONE 7416 C */
+
+    /* Semantic tokens */
+    --cst-color-primary:     var(--cst-color-teal);
+    --cst-color-secondary:   var(--cst-color-coral);
+    --cst-color-accent:      var(--cst-color-blue);
+    --cst-color-danger:      var(--cst-color-red);
+    --cst-color-focus:       var(--cst-color-blue);
+
+    /* Neutrals */
+    --cst-color-black:       #1A1A1A;
+    --cst-color-gray-900:    #212529;
+    --cst-color-gray-700:    #495057;
+    --cst-color-gray-500:    #6C757D;
+    --cst-color-gray-300:    #DEE2E6;
+    --cst-color-gray-100:    #F8F9FA;
+    --cst-color-bg:          var(--cst-color-white);
+    --cst-color-text:        var(--cst-color-gray-900);
+    --cst-color-text-muted:  var(--cst-color-gray-500);
+
+    /* --- Typography --- */
+    --cst-font-body:         'Montserrat', system-ui, -apple-system, sans-serif;
+    --cst-font-heading:      'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --cst-font-size-base:    1rem;      /* 16px */
+    --cst-font-size-sm:      0.875rem;  /* 14px */
+    --cst-font-size-lg:      1.125rem;  /* 18px */
+    --cst-font-size-xl:      1.5rem;    /* 24px */
+    --cst-font-size-2xl:     2rem;      /* 32px */
+    --cst-font-size-3xl:     2.5rem;    /* 40px */
+    --cst-font-size-4xl:     3rem;      /* 48px */
+    --cst-line-height:       1.6;
+    --cst-line-height-tight: 1.2;
+
+    /* --- Spacing --- */
+    --cst-space-xs:  0.25rem;  /* 4px */
+    --cst-space-sm:  0.5rem;   /* 8px */
+    --cst-space-md:  1rem;     /* 16px */
+    --cst-space-lg:  1.5rem;   /* 24px */
+    --cst-space-xl:  2rem;     /* 32px */
+    --cst-space-2xl: 3rem;     /* 48px */
+    --cst-space-3xl: 4rem;     /* 64px */
+    --cst-space-4xl: 6rem;     /* 96px */
+
+    /* --- Layout --- */
+    --cst-container-max:     1200px;
+    --cst-container-narrow:  800px;
+    --cst-border-radius:     0.375rem;  /* 6px */
+    --cst-border-radius-lg:  0.75rem;   /* 12px */
+    --cst-shadow-sm:         0 1px 3px rgba(0,0,0,0.12);
+    --cst-shadow-md:         0 4px 12px rgba(0,0,0,0.1);
+    --cst-shadow-lg:         0 8px 24px rgba(0,0,0,0.12);
+    --cst-transition:        0.2s ease-in-out;
+
+    /* --- Government banner --- */
+    --cst-banner-bg:         var(--cst-color-gray-900);
+    --cst-banner-text:       var(--cst-color-white);
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --cst-color-primary:    #0A4A52;
+        --cst-color-secondary:  #C43E2A;
+        --cst-shadow-sm:        0 0 0 1px var(--cst-color-black);
+        --cst-shadow-md:        0 0 0 2px var(--cst-color-black);
+    }
+}
