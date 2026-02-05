@@ -87,10 +87,27 @@ add_action( 'wp_enqueue_scripts', function () {
         CST_CANNABIS_VERSION
     );
 
+    // Course / Driver Education styles.
+    wp_enqueue_style(
+        'cst-course',
+        CST_CANNABIS_URI . '/assets/css/course.css',
+        [ 'cst-custom' ],
+        CST_CANNABIS_VERSION
+    );
+
     // Main JS.
     wp_enqueue_script(
         'cst-main',
         CST_CANNABIS_URI . '/assets/js/main.js',
+        [],
+        CST_CANNABIS_VERSION,
+        true
+    );
+
+    // Course / Driver Education JS.
+    wp_enqueue_script(
+        'cst-course',
+        CST_CANNABIS_URI . '/assets/js/course.js',
         [],
         CST_CANNABIS_VERSION,
         true

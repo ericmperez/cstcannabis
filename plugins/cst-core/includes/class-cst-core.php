@@ -34,6 +34,11 @@ class CST_Core {
         new CST_Security();
         new CST_Accessibility();
 
+        // Sprint 2 — course / driver education.
+        if ( class_exists( 'CST_Course' ) ) {
+            new CST_Course();
+        }
+
         // Sprint 3 — interactive features (loaded if class exists).
         if ( class_exists( 'CST_Settings' ) ) {
             new CST_Settings();
