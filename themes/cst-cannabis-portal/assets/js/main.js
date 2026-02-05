@@ -232,6 +232,120 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  Scroll-triggered Animations                                       */
+    /* ------------------------------------------------------------------ */
+
+    function initScrollAnimations() {
+        // Bail if user prefers reduced motion.
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Add animation classes to eligible elements.
+        var sectionHeadings = document.querySelectorAll('.cst-section-heading');
+        sectionHeadings.forEach(function (el) {
+            el.classList.add('cst-animate');
+        });
+
+        var cardGrids = document.querySelectorAll('.cst-card-grid, .cst-objectives-grid, .cst-stats-grid, .cst-statistics__grid');
+        cardGrids.forEach(function (el) {
+            el.classList.add('cst-animate-stagger');
+            el.classList.add('cst-animate');
+        });
+
+        // Observe and trigger.
+        var animateEls = document.querySelectorAll('.cst-animate');
+        if (!animateEls.length) return;
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        animateEls.forEach(function (el) {
+            observer.observe(el);
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Desktop Nav Keyboard Navigation                                   */
+    /* ------------------------------------------------------------------ */
+
+    function initDesktopNavKeyboard() {
+        var nav = document.querySelector('.main-navigation .main-nav');
+        if (!nav) return;
+
+        nav.addEventListener('keydown', function (e) {
+            var key = e.key;
+            var target = e.target;
+            if (!target.matches('a')) return;
+
+            var li = target.closest('li');
+            var parentUl = li.parentElement;
+            var isTopLevel = parentUl.classList.contains('sf-menu') ||
+                             parentUl.parentElement.classList.contains('main-nav');
+            var isSubmenu = !isTopLevel;
+
+            if (isTopLevel) {
+                var topItems = Array.from(parentUl.children);
+                var idx = topItems.indexOf(li);
+
+                if (key === 'ArrowRight') {
+                    e.preventDefault();
+                    var next = topItems[(idx + 1) % topItems.length];
+                    next.querySelector('a').focus();
+                } else if (key === 'ArrowLeft') {
+                    e.preventDefault();
+                    var prev = topItems[(idx - 1 + topItems.length) % topItems.length];
+                    prev.querySelector('a').focus();
+                } else if (key === 'ArrowDown') {
+                    var sub = li.querySelector('ul');
+                    if (sub) {
+                        e.preventDefault();
+                        li.classList.add('sfHover');
+                        var firstLink = sub.querySelector('a');
+                        if (firstLink) firstLink.focus();
+                    }
+                } else if (key === 'Escape') {
+                    li.classList.remove('sfHover');
+                    target.blur();
+                }
+            }
+
+            if (isSubmenu) {
+                var subItems = Array.from(parentUl.children);
+                var subIdx = subItems.indexOf(li);
+                var parentLi = parentUl.closest('li');
+
+                if (key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (subIdx < subItems.length - 1) {
+                        subItems[subIdx + 1].querySelector('a').focus();
+                    }
+                } else if (key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (subIdx > 0) {
+                        subItems[subIdx - 1].querySelector('a').focus();
+                    } else if (parentLi) {
+                        parentLi.classList.remove('sfHover');
+                        parentLi.querySelector('a').focus();
+                    }
+                } else if (key === 'Escape') {
+                    e.preventDefault();
+                    if (parentLi) {
+                        parentLi.classList.remove('sfHover');
+                        parentLi.querySelector('a').focus();
+                    }
+                }
+            }
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Init                                                              */
     /* ------------------------------------------------------------------ */
 
@@ -242,6 +356,8 @@
         initMobileMenuA11y();
         initLegalTOC();
         initStatCounters();
+        initScrollAnimations();
+        initDesktopNavKeyboard();
     });
 
 })();

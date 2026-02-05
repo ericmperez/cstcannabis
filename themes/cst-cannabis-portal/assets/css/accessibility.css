@@ -64,6 +64,12 @@
     outline-color: var(--cst-color-white);
 }
 
+/* Sticky header focus indicators */
+.cst-institutional-header :focus-visible {
+    outline: 3px solid var(--cst-color-focus);
+    outline-offset: 2px;
+}
+
 /* --- Touch Targets (WCAG 2.5.8 — minimum 44x44px) --- */
 
 .cst-btn,
@@ -96,8 +102,32 @@ nav a,
         border: 2px solid var(--cst-color-black);
     }
 
+    /* Hide decorative pseudo-elements */
+    .cst-card::before,
+    .cst-section-heading__title::after,
+    .cst-institutional-footer::before,
+    .cst-hero::after,
+    .cst-btn--hero::before {
+        display: none;
+    }
+
+    /* Replace gradient icon backgrounds with solid border */
+    .cst-objective-card__icon,
+    .cst-stat-card__icon,
+    .cst-statistics__icon,
+    .cst-contact-card__icon {
+        background: transparent;
+        border: 2px solid currentColor;
+    }
+
     .cst-btn {
         border-width: 3px;
+        background: var(--cst-color-primary);
+    }
+
+    .cst-btn--primary,
+    .cst-btn--outline:hover {
+        background: var(--cst-color-primary);
     }
 
     .cst-filter-tabs__btn {
@@ -144,6 +174,31 @@ nav a,
     .cst-gov-banner {
         border-bottom: 2px solid CanvasText;
     }
+
+    /* Disable backdrop-filter for forced-colors */
+    .cst-institutional-header {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: Canvas;
+    }
+
+    /* Hide decorative pseudo-elements */
+    .cst-card::before,
+    .cst-section-heading__title::after,
+    .cst-institutional-footer::before,
+    .cst-hero::after,
+    .cst-btn--hero::before {
+        display: none;
+    }
+
+    /* Solid backgrounds for icon circles */
+    .cst-objective-card__icon,
+    .cst-stat-card__icon,
+    .cst-statistics__icon,
+    .cst-contact-card__icon {
+        background: Canvas;
+        border: 2px solid CanvasText;
+    }
 }
 
 /* --- Reduced Motion --- */
@@ -181,4 +236,49 @@ nav a,
 [aria-live="polite"],
 [aria-live="assertive"] {
     position: relative;
+}
+
+/* --- Nav Focus Indicators --- */
+
+.main-navigation .main-nav ul li a:focus-visible {
+    outline: 3px solid var(--cst-color-focus);
+    outline-offset: -3px;
+    z-index: 1;
+}
+
+.menu-toggle:focus-visible {
+    outline: 3px solid var(--cst-color-white);
+    outline-offset: 2px;
+}
+
+/* --- Nav High Contrast --- */
+
+@media (prefers-contrast: high) {
+    .site-header {
+        border-bottom: 3px solid var(--cst-color-black);
+        box-shadow: none;
+    }
+    .main-navigation .main-nav ul ul {
+        border: 2px solid var(--cst-color-black);
+    }
+    .main-navigation .main-nav > ul > li > a::after {
+        background-color: var(--cst-color-black);
+    }
+}
+
+/* --- Nav Forced Colors --- */
+
+@media (forced-colors: active) {
+    .site-header {
+        border-bottom: 2px solid CanvasText;
+    }
+    .main-navigation .main-nav > ul > li > a::after {
+        background: Highlight;
+    }
+    .main-navigation .main-nav ul ul {
+        border: 1px solid CanvasText;
+    }
+    .menu-toggle {
+        border: 2px solid ButtonText;
+    }
 }
