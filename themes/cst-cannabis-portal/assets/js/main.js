@@ -2,7 +2,7 @@
  * CST Cannabis Portal — Main JavaScript
  *
  * Government banner toggle, smooth scroll, resource filter,
- * mobile menu a11y, legal page TOC.
+ * mobile menu a11y, legal page TOC, scroll reveal, stat counters.
  */
 
 (function () {
@@ -232,6 +232,87 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  Scroll Reveal Animation                                           */
+    /* ------------------------------------------------------------------ */
+
+    function initScrollReveal() {
+        // Respect reduced motion.
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        // Add reveal class to sections, cards, and other elements.
+        var selectors = [
+            '.cst-section-heading',
+            '.cst-objective-card',
+            '.cst-card',
+            '.cst-stat-card',
+            '.cst-course-card__content',
+            '.cst-course-card__visual',
+            '.cst-contact-card'
+        ];
+
+        var elements = document.querySelectorAll(selectors.join(','));
+
+        elements.forEach(function (el, index) {
+            el.classList.add('cst-reveal');
+
+            // Stagger cards within grids.
+            var parent = el.parentElement;
+            if (parent) {
+                var siblings = parent.querySelectorAll(':scope > .cst-reveal');
+                siblings.forEach(function (sibling, sibIndex) {
+                    if (sibIndex < 3) {
+                        sibling.classList.add('cst-reveal--delay-' + (sibIndex + 1));
+                    }
+                });
+            }
+        });
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.cst-reveal').forEach(function (el) {
+            observer.observe(el);
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Sticky Header Shadow on Scroll                                    */
+    /* ------------------------------------------------------------------ */
+
+    function initStickyHeader() {
+        var header = document.querySelector('.cst-institutional-header');
+        if (!header) return;
+
+        var scrolled = false;
+
+        function checkScroll() {
+            var shouldHaveShadow = window.scrollY > 10;
+            if (shouldHaveShadow !== scrolled) {
+                scrolled = shouldHaveShadow;
+                if (scrolled) {
+                    header.style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)';
+                } else {
+                    header.style.boxShadow = '0 1px 0 rgba(0,0,0,0.06)';
+                }
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        checkScroll();
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Init                                                              */
     /* ------------------------------------------------------------------ */
 
@@ -242,6 +323,8 @@
         initMobileMenuA11y();
         initLegalTOC();
         initStatCounters();
+        initScrollReveal();
+        initStickyHeader();
     });
 
 })();

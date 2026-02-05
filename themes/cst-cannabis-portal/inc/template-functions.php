@@ -25,6 +25,8 @@ function cst_hero( array $args = [] ): void {
         'subtitle'  => get_bloginfo( 'description' ),
         'cta_text'  => '',
         'cta_url'   => '',
+        'cta2_text' => '',
+        'cta2_url'  => '',
         'image_url' => get_theme_mod( 'cst_hero_image', '' ),
         'class'     => '',
     ];

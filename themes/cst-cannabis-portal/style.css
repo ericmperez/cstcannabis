@@ -5,54 +5,70 @@
  Author:       CST Puerto Rico
  Author URI:   https://cst.pr.gov
  Template:     generatepress
- Version:      1.0.0
+ Version:      2.0.0
  License:      GPL-2.0-or-later
  Text Domain:  cst-cannabis
  Tags:         government, accessibility, bilingual, education
 */
 
 /* ==========================================================================
-   GUIDI / PRITS-004 Design Tokens
+   Modern Government Design Tokens
+   Inspired by USWDS + PR Government Identity
    ========================================================================== */
 
 :root {
-    /* --- Colors: PR Flag + PANTONE accents --- */
-    --cst-color-red:         #EE0000;
-    --cst-color-blue:        #0050F0;
+    /* --- Colors: Modern Government Palette --- */
+    --cst-color-red:         #D83933;
+    --cst-color-blue:        #1B3A5C;
     --cst-color-white:       #FFFFFF;
-    --cst-color-teal:        #115E67; /* PANTONE 5473 C */
-    --cst-color-coral:       #E56A54; /* PANTONE 7416 C */
+    --cst-color-navy:        #0B1D33;
+    --cst-color-teal:        #0D7377;
+    --cst-color-emerald:     #0A6847;
+    --cst-color-green-light: #2ECC71;
+    --cst-color-cyan:        #00BCD4;
+    --cst-color-gold:        #E8A317;
 
     /* Semantic tokens */
-    --cst-color-primary:     var(--cst-color-teal);
-    --cst-color-secondary:   var(--cst-color-coral);
-    --cst-color-accent:      var(--cst-color-blue);
+    --cst-color-primary:     var(--cst-color-navy);
+    --cst-color-primary-light: #1B3A5C;
+    --cst-color-secondary:   var(--cst-color-emerald);
+    --cst-color-accent:      var(--cst-color-cyan);
     --cst-color-danger:      var(--cst-color-red);
-    --cst-color-focus:       var(--cst-color-blue);
+    --cst-color-focus:       #2589BD;
+    --cst-color-success:     var(--cst-color-green-light);
+    --cst-color-highlight:   var(--cst-color-gold);
 
     /* Neutrals */
-    --cst-color-black:       #1A1A1A;
-    --cst-color-gray-900:    #212529;
-    --cst-color-gray-700:    #495057;
-    --cst-color-gray-500:    #6C757D;
-    --cst-color-gray-300:    #DEE2E6;
-    --cst-color-gray-100:    #F8F9FA;
+    --cst-color-black:       #0F1419;
+    --cst-color-gray-900:    #1A202C;
+    --cst-color-gray-700:    #4A5568;
+    --cst-color-gray-500:    #718096;
+    --cst-color-gray-300:    #E2E8F0;
+    --cst-color-gray-200:    #EDF2F7;
+    --cst-color-gray-100:    #F7FAFC;
     --cst-color-bg:          var(--cst-color-white);
     --cst-color-text:        var(--cst-color-gray-900);
     --cst-color-text-muted:  var(--cst-color-gray-500);
 
+    /* Gradients */
+    --cst-gradient-primary:  linear-gradient(135deg, #0B1D33 0%, #1B3A5C 50%, #0D7377 100%);
+    --cst-gradient-hero:     linear-gradient(135deg, #0B1D33 0%, #0D7377 60%, #0A6847 100%);
+    --cst-gradient-accent:   linear-gradient(135deg, #0A6847 0%, #2ECC71 100%);
+    --cst-gradient-card:     linear-gradient(180deg, rgba(11,29,51,0.02) 0%, rgba(11,29,51,0.06) 100%);
+    --cst-gradient-course:   linear-gradient(135deg, #0A6847 0%, #0D7377 50%, #1B3A5C 100%);
+
     /* --- Typography --- */
-    --cst-font-body:         'Montserrat', system-ui, -apple-system, sans-serif;
-    --cst-font-heading:      'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --cst-font-body:         'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --cst-font-heading:      'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --cst-font-size-base:    1rem;      /* 16px */
     --cst-font-size-sm:      0.875rem;  /* 14px */
     --cst-font-size-lg:      1.125rem;  /* 18px */
     --cst-font-size-xl:      1.5rem;    /* 24px */
     --cst-font-size-2xl:     2rem;      /* 32px */
     --cst-font-size-3xl:     2.5rem;    /* 40px */
-    --cst-font-size-4xl:     3rem;      /* 48px */
-    --cst-line-height:       1.6;
-    --cst-line-height-tight: 1.2;
+    --cst-font-size-4xl:     3.25rem;   /* 52px */
+    --cst-line-height:       1.7;
+    --cst-line-height-tight: 1.15;
 
     /* --- Spacing --- */
     --cst-space-xs:  0.25rem;  /* 4px */
@@ -61,29 +77,39 @@
     --cst-space-lg:  1.5rem;   /* 24px */
     --cst-space-xl:  2rem;     /* 32px */
     --cst-space-2xl: 3rem;     /* 48px */
-    --cst-space-3xl: 4rem;     /* 64px */
-    --cst-space-4xl: 6rem;     /* 96px */
+    --cst-space-3xl: 4.5rem;   /* 72px */
+    --cst-space-4xl: 7rem;     /* 112px */
 
     /* --- Layout --- */
-    --cst-container-max:     1200px;
-    --cst-container-narrow:  800px;
-    --cst-border-radius:     0.375rem;  /* 6px */
-    --cst-border-radius-lg:  0.75rem;   /* 12px */
-    --cst-shadow-sm:         0 1px 3px rgba(0,0,0,0.12);
-    --cst-shadow-md:         0 4px 12px rgba(0,0,0,0.1);
-    --cst-shadow-lg:         0 8px 24px rgba(0,0,0,0.12);
-    --cst-transition:        0.2s ease-in-out;
+    --cst-container-max:     1280px;
+    --cst-container-narrow:  860px;
+    --cst-border-radius:     0.5rem;    /* 8px */
+    --cst-border-radius-lg:  1rem;      /* 16px */
+    --cst-border-radius-xl:  1.5rem;    /* 24px */
+    --cst-border-radius-pill: 999px;
+    --cst-shadow-sm:         0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+    --cst-shadow-md:         0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+    --cst-shadow-lg:         0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.08);
+    --cst-shadow-xl:         0 20px 50px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.08);
+    --cst-transition:        0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --cst-transition-fast:   0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --cst-transition-slow:   0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* --- Government banner --- */
-    --cst-banner-bg:         var(--cst-color-gray-900);
+    --cst-banner-bg:         var(--cst-color-navy);
     --cst-banner-text:       var(--cst-color-white);
+
+    /* --- Glass effect --- */
+    --cst-glass-bg:          rgba(255,255,255,0.08);
+    --cst-glass-border:      rgba(255,255,255,0.15);
+    --cst-glass-blur:        12px;
 }
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
     :root {
-        --cst-color-primary:    #0A4A52;
-        --cst-color-secondary:  #C43E2A;
+        --cst-color-primary:    #071225;
+        --cst-color-secondary:  #085C38;
         --cst-shadow-sm:        0 0 0 1px var(--cst-color-black);
         --cst-shadow-md:        0 0 0 2px var(--cst-color-black);
     }

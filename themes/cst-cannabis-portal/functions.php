@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'CST_CANNABIS_VERSION', '1.0.0' );
+define( 'CST_CANNABIS_VERSION', '2.0.0' );
 define( 'CST_CANNABIS_DIR', get_stylesheet_directory() );
 define( 'CST_CANNABIS_URI', get_stylesheet_directory_uri() );
 
@@ -63,10 +63,10 @@ add_action( 'wp_enqueue_scripts', function () {
         CST_CANNABIS_VERSION
     );
 
-    // Google Fonts — Montserrat + Cormorant Garamond.
+    // Google Fonts — Inter (modern government-grade sans-serif).
     wp_enqueue_style(
         'cst-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
+        'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap',
         [],
         null
     );

@@ -3,7 +3,7 @@
  * Template Name: Página de inicio
  * Template Post Type: page
  *
- * Front page: hero, objectives, latest posts, upcoming events, stats, resources CTA.
+ * Front page: hero, course, objectives, latest posts, upcoming events, stats, resources CTA.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,13 +20,18 @@ get_header();
     $hero_title    = get_theme_mod( 'cst_hero_title', '' ) ?: get_bloginfo( 'name' );
     $hero_subtitle = get_theme_mod( 'cst_hero_subtitle', '' ) ?: get_bloginfo( 'description' );
     cst_hero( [
-        'title'    => $hero_title,
-        'subtitle' => $hero_subtitle,
-        'cta_text' => __( 'Conoce más', 'cst-cannabis' ),
-        'cta_url'  => '#objetivos',
-        'class'    => 'cst-hero--home',
+        'title'     => $hero_title,
+        'subtitle'  => $hero_subtitle,
+        'cta_text'  => __( 'Tomar el curso gratis', 'cst-cannabis' ),
+        'cta_url'   => 'https://bearsmoke.store/curso-cannabis/courses/curso-cannabis/',
+        'cta2_text' => __( 'Conoce más', 'cst-cannabis' ),
+        'cta2_url'  => '#objetivos',
+        'class'     => 'cst-hero--home',
     ] );
     ?>
+
+    <?php // Cannabis course section. ?>
+    <?php get_template_part( 'template-parts/section', 'course' ); ?>
 
     <?php // Objectives grid. ?>
     <?php get_template_part( 'template-parts/section', 'objectives' ); ?>
