@@ -8,6 +8,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* ==========================================================================
+   Nav: aria-current on active menu items (WCAG / Ley 229)
+   ========================================================================== */
+
+add_filter( 'nav_menu_link_attributes', 'cst_nav_aria_current', 10, 3 );
+
+function cst_nav_aria_current( array $atts, $item, $args ): array {
+    if ( in_array( 'current-menu-item', (array) $item->classes, true ) ) {
+        $atts['aria-current'] = 'page';
+    } elseif ( in_array( 'current-menu-ancestor', (array) $item->classes, true ) ) {
+        $atts['aria-current'] = 'true';
+    }
+    return $atts;
+}
+
+/* ==========================================================================
    Government Banner (top of page)
    ========================================================================== */
 

@@ -66,15 +66,18 @@ GP nav HTML classes: `.site-header`, `.inside-header`, `.main-navigation`, `.ins
 
 ## Verification Checklist
 
-- [ ] Desktop: horizontal nav bar, white bg, subtle shadow, 14px semibold links
-- [ ] Hover: teal bottom-border slides in, gray bg highlight
-- [ ] Current page: coral bottom-border, bold text
-- [ ] Dropdowns: white panel with teal top accent, left-border hover
-- [ ] Keyboard: Tab through links, Arrow keys navigate, Escape closes
-- [ ] Mobile (≤768px): teal hamburger, full-width drawer, stacked links
-- [ ] Active page on mobile: coral left border
-- [ ] Focus: blue outline on links, white outline on hamburger
-- [ ] `prefers-reduced-motion: reduce`: no transitions
-- [ ] `prefers-contrast: high`: solid black borders, no shadows
-- [ ] `forced-colors: active`: system colors throughout
-- [ ] Print: nav hidden by existing print rule
+- [x] Desktop: horizontal nav bar, white bg, subtle shadow, 14px semibold links
+- [x] Hover: teal bottom-border slides in, gray bg highlight
+- [x] Current page: coral bottom-border, bold text
+- [x] Dropdowns: white panel with teal top accent, left-border hover
+- [x] Keyboard: Tab through links, Arrow keys navigate, Escape closes
+- [x] Mobile (≤768px): teal hamburger, full-width drawer, stacked links
+- [x] Active page on mobile: coral left border
+- [x] Focus: blue outline on links, white outline on hamburger
+- [x] `prefers-reduced-motion: reduce`: no transitions
+- [x] `prefers-contrast: high`: solid black borders, no shadows
+- [x] `forced-colors: active`: system colors throughout
+- [x] Print: nav hidden by existing print rule
+- [x] `aria-current="page"` on active nav items (PHP filter)
+- [x] `aria-expanded` on dropdown parent links (JS)
+- [x] Dropdown caret/chevron indicator on parent items (CSS)

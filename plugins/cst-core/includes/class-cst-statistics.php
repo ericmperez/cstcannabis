@@ -1,9 +1,10 @@
 <?php
 /**
- * CST_Statistics — [cst_statistics] shortcode + REST endpoint.
+ * CST_Statistics — [cst_statistics] shortcode + REST endpoints + dashboard data.
  *
  * GET /wp-json/cst/v1/statistics — returns all published statistics.
- * Shortcode renders a card grid with animated counters.
+ * GET /wp-json/cst/v1/statistics/dashboard — returns grouped statistics + chart data.
+ * Shortcode renders a card grid with animated counters and optional trend badges.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,7 +15,7 @@ class CST_Statistics {
 
     public function __construct() {
         add_shortcode( 'cst_statistics', [ $this, 'render_shortcode' ] );
-        add_action( 'rest_api_init', [ $this, 'register_rest_route' ] );
+        add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'maybe_enqueue_assets' ] );
     }
 
@@ -50,6 +51,16 @@ class CST_Statistics {
                             <span class="cst-stat-counter" data-value="<?php echo esc_attr( $stat['value'] ); ?>">0</span><?php if ( $stat['unit'] ) : ?><span class="cst-statistics__unit"><?php echo esc_html( $stat['unit'] ); ?></span><?php endif; ?>
                         </span>
                         <span class="cst-statistics__label"><?php echo esc_html( $stat['title'] ); ?></span>
+                        <?php if ( ! empty( $stat['trend'] ) ) : ?>
+                            <?php
+                            $trend_value = floatval( $stat['trend'] );
+                            $trend_class = $trend_value >= 0 ? 'cst-statistics__trend--up' : 'cst-statistics__trend--down';
+                            $trend_label = $trend_value >= 0 ? '+' . abs( $trend_value ) : '-' . abs( $trend_value );
+                            ?>
+                            <span class="cst-statistics__trend <?php echo esc_attr( $trend_class ); ?>">
+                                <?php echo esc_html( $trend_label ); ?>%
+                            </span>
+                        <?php endif; ?>
                         <?php if ( $stat['source'] ) : ?>
                             <span class="cst-statistics__source"><?php echo esc_html( $stat['source'] ); ?></span>
                         <?php endif; ?>
@@ -65,10 +76,16 @@ class CST_Statistics {
     /*  REST API                                                          */
     /* ------------------------------------------------------------------ */
 
-    public function register_rest_route(): void {
+    public function register_rest_routes(): void {
         register_rest_route( 'cst/v1', '/statistics', [
             'methods'             => 'GET',
             'callback'            => [ $this, 'rest_get_statistics' ],
+            'permission_callback' => '__return_true',
+        ] );
+
+        register_rest_route( 'cst/v1', '/statistics/dashboard', [
+            'methods'             => 'GET',
+            'callback'            => [ $this, 'rest_get_dashboard' ],
             'permission_callback' => '__return_true',
         ] );
     }
@@ -80,11 +97,18 @@ class CST_Statistics {
         return new WP_REST_Response( $stats, 200 );
     }
 
+    public function rest_get_dashboard( WP_REST_Request $request ): WP_REST_Response {
+        return new WP_REST_Response( [
+            'categories' => $this->get_statistics_by_category(),
+            'charts'     => $this->get_dashboard_chart_data(),
+        ], 200 );
+    }
+
     /* ------------------------------------------------------------------ */
     /*  Data                                                              */
     /* ------------------------------------------------------------------ */
 
-    private function get_statistics( int $limit = -1 ): array {
+    public function get_statistics( int $limit = -1 ): array {
         $query = new WP_Query( [
             'post_type'      => 'cst_statistic',
             'posts_per_page' => $limit,
@@ -99,13 +123,18 @@ class CST_Statistics {
             $query->the_post();
             $id = get_the_ID();
             $stats[] = [
-                'id'     => $id,
-                'title'  => get_the_title(),
-                'value'  => get_post_meta( $id, '_cst_stat_value', true ),
-                'unit'   => get_post_meta( $id, '_cst_stat_unit', true ),
-                'icon'   => get_post_meta( $id, '_cst_stat_icon', true ),
-                'source' => get_post_meta( $id, '_cst_stat_source', true ),
-                'order'  => get_post_meta( $id, '_cst_stat_order', true ),
+                'id'          => $id,
+                'title'       => get_the_title(),
+                'value'       => get_post_meta( $id, '_cst_stat_value', true ),
+                'unit'        => get_post_meta( $id, '_cst_stat_unit', true ),
+                'icon'        => get_post_meta( $id, '_cst_stat_icon', true ),
+                'source'      => get_post_meta( $id, '_cst_stat_source', true ),
+                'order'       => get_post_meta( $id, '_cst_stat_order', true ),
+                'trend'       => get_post_meta( $id, '_cst_stat_trend', true ),
+                'category'    => get_post_meta( $id, '_cst_stat_category', true ),
+                'chart_type'  => get_post_meta( $id, '_cst_stat_chart_type', true ),
+                'chart_label' => get_post_meta( $id, '_cst_stat_chart_label', true ),
+                'chart_data'  => get_post_meta( $id, '_cst_stat_chart_data', true ),
             ];
         }
         wp_reset_postdata();
@@ -113,12 +142,91 @@ class CST_Statistics {
         return $stats;
     }
 
+    /**
+     * Group statistics by category for dashboard display.
+     *
+     * @return array Grouped statistics: { kpi: [...], patients: [...], safety: [...], education: [...] }
+     */
+    public function get_statistics_by_category(): array {
+        $all   = $this->get_statistics();
+        $groups = [
+            'kpi'       => [],
+            'patients'  => [],
+            'safety'    => [],
+            'education' => [],
+        ];
+
+        foreach ( $all as $stat ) {
+            $cat = $stat['category'];
+            if ( empty( $cat ) || ! isset( $groups[ $cat ] ) ) {
+                $groups['kpi'][] = $stat;
+            } else {
+                $groups[ $cat ][] = $stat;
+            }
+        }
+
+        return $groups;
+    }
+
+    /**
+     * Get chart configurations for dashboard.
+     * Returns only statistics that have chart_type != 'none' and valid chart_data.
+     *
+     * @return array Array of chart configs ready for Chart.js.
+     */
+    public function get_dashboard_chart_data(): array {
+        $all    = $this->get_statistics();
+        $charts = [];
+
+        foreach ( $all as $stat ) {
+            $chart_type = $stat['chart_type'] ?? 'none';
+            $chart_data = $stat['chart_data'] ?? '';
+
+            if ( 'none' === $chart_type || empty( $chart_data ) ) {
+                continue;
+            }
+
+            $parsed = json_decode( $chart_data, true );
+            if ( ! is_array( $parsed ) ) {
+                continue;
+            }
+
+            $labels = [];
+            $values = [];
+            foreach ( $parsed as $item ) {
+                $labels[] = $item['label'] ?? '';
+                $values[] = $item['value'] ?? 0;
+            }
+
+            $charts[] = [
+                'id'         => $stat['id'],
+                'title'      => $stat['title'],
+                'type'       => $chart_type,
+                'category'   => $stat['category'],
+                'chartLabel' => $stat['chart_label'] ?: $stat['title'],
+                'labels'     => $labels,
+                'data'       => $values,
+            ];
+        }
+
+        return $charts;
+    }
+
     /* ------------------------------------------------------------------ */
     /*  Assets                                                            */
     /* ------------------------------------------------------------------ */
 
     public function maybe_enqueue_assets(): void {
-        // Register but don't enqueue — shortcode callback enqueues when needed.
+        // Register Chart.js CDN.
+        wp_register_script(
+            'chartjs',
+            'https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js',
+            [],
+            '4.4.1',
+            true
+        );
+
+        // Register but don't enqueue — shortcode/template enqueues when needed.
         wp_register_style(
             'cst-statistics',
             CST_CORE_URL . 'assets/css/statistics.css',
@@ -130,6 +238,15 @@ class CST_Statistics {
             'cst-statistics',
             CST_CORE_URL . 'assets/js/statistics.js',
             [],
+            CST_CORE_VERSION,
+            true
+        );
+
+        // Dashboard script depends on Chart.js.
+        wp_register_script(
+            'cst-statistics-dashboard',
+            CST_CORE_URL . 'assets/js/statistics.js',
+            [ 'chartjs' ],
             CST_CORE_VERSION,
             true
         );

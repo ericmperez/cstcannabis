@@ -74,6 +74,32 @@
     --cst-shadow-lg:         0 8px 24px rgba(0,0,0,0.12);
     --cst-transition:        0.2s ease-in-out;
 
+    /* --- Gradients --- */
+    --cst-gradient-primary:      linear-gradient(135deg, #115E67 0%, #1a8a96 100%);
+    --cst-gradient-hero:         linear-gradient(135deg, rgba(17,94,103,0.92) 0%, rgba(17,94,103,0.75) 50%, rgba(26,138,150,0.85) 100%);
+    --cst-gradient-accent:       linear-gradient(135deg, #115E67 0%, #E56A54 100%);
+    --cst-gradient-section:      linear-gradient(180deg, #F8F9FA 0%, #EEF1F3 100%);
+    --cst-gradient-card-border:  linear-gradient(135deg, var(--cst-color-teal), var(--cst-color-coral));
+
+    /* --- Glass / blur --- */
+    --cst-glass-bg:          rgba(255, 255, 255, 0.85);
+    --cst-glass-blur:        blur(12px);
+    --cst-glass-border:      1px solid rgba(255, 255, 255, 0.3);
+
+    /* --- Enhanced shadows --- */
+    --cst-shadow-xl:             0 12px 40px rgba(0, 0, 0, 0.15);
+    --cst-shadow-glow-primary:   0 4px 20px rgba(17, 94, 103, 0.35);
+    --cst-shadow-glow-coral:     0 4px 20px rgba(229, 106, 84, 0.35);
+
+    /* --- Timing --- */
+    --cst-transition-slow:       0.4s ease;
+    --cst-transition-spring:     0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* --- Color variants --- */
+    --cst-color-teal-light:  #1a8a96;
+    --cst-color-teal-dark:   #0d4e55;
+    --cst-color-coral-light: #f0897a;
+
     /* --- Government banner --- */
     --cst-banner-bg:         var(--cst-color-gray-900);
     --cst-banner-text:       var(--cst-color-white);
@@ -86,5 +112,16 @@
         --cst-color-secondary:  #C43E2A;
         --cst-shadow-sm:        0 0 0 1px var(--cst-color-black);
         --cst-shadow-md:        0 0 0 2px var(--cst-color-black);
+        --cst-shadow-xl:        0 0 0 3px var(--cst-color-black);
+        --cst-shadow-glow-primary: none;
+        --cst-shadow-glow-coral:   none;
+        --cst-gradient-primary:    var(--cst-color-primary);
+        --cst-gradient-hero:       rgba(0,0,0,0.85);
+        --cst-gradient-accent:     var(--cst-color-primary);
+        --cst-gradient-section:    var(--cst-color-gray-100);
+        --cst-gradient-card-border: var(--cst-color-primary);
+        --cst-glass-bg:            var(--cst-color-white);
+        --cst-glass-blur:          none;
+        --cst-glass-border:        2px solid var(--cst-color-black);
     }
 }

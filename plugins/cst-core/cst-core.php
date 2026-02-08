@@ -53,3 +53,8 @@ register_activation_hook( __FILE__, function () {
 register_deactivation_hook( __FILE__, function () {
     flush_rewrite_rules();
 } );
+
+// WP-CLI commands.
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    require_once CST_CORE_DIR . 'cli/seed-statistics.php';
+}

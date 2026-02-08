@@ -272,8 +272,37 @@
     }
 
     /* ------------------------------------------------------------------ */
-    /*  Desktop Nav Keyboard Navigation                                   */
+    /*  Desktop Nav — aria-expanded + Keyboard Navigation                 */
     /* ------------------------------------------------------------------ */
+
+    function setDropdownExpanded(li, expanded) {
+        var link = li.querySelector(':scope > a');
+        if (link) link.setAttribute('aria-expanded', String(expanded));
+        if (expanded) {
+            li.classList.add('sfHover');
+        } else {
+            li.classList.remove('sfHover');
+        }
+    }
+
+    function initNavDropdownAria() {
+        // Set initial aria-expanded="false" on all dropdown parent links.
+        var parents = document.querySelectorAll('.main-navigation .menu-item-has-children > a');
+        parents.forEach(function (link) {
+            link.setAttribute('aria-expanded', 'false');
+        });
+
+        // Sync aria-expanded when GP Superfish toggles sfHover via hover.
+        var dropdownItems = document.querySelectorAll('.main-navigation .menu-item-has-children');
+        dropdownItems.forEach(function (li) {
+            li.addEventListener('mouseenter', function () {
+                setDropdownExpanded(li, true);
+            });
+            li.addEventListener('mouseleave', function () {
+                setDropdownExpanded(li, false);
+            });
+        });
+    }
 
     function initDesktopNavKeyboard() {
         var nav = document.querySelector('.main-navigation .main-nav');
@@ -296,22 +325,24 @@
 
                 if (key === 'ArrowRight') {
                     e.preventDefault();
+                    setDropdownExpanded(li, false);
                     var next = topItems[(idx + 1) % topItems.length];
                     next.querySelector('a').focus();
                 } else if (key === 'ArrowLeft') {
                     e.preventDefault();
+                    setDropdownExpanded(li, false);
                     var prev = topItems[(idx - 1 + topItems.length) % topItems.length];
                     prev.querySelector('a').focus();
                 } else if (key === 'ArrowDown') {
                     var sub = li.querySelector('ul');
                     if (sub) {
                         e.preventDefault();
-                        li.classList.add('sfHover');
+                        setDropdownExpanded(li, true);
                         var firstLink = sub.querySelector('a');
                         if (firstLink) firstLink.focus();
                     }
                 } else if (key === 'Escape') {
-                    li.classList.remove('sfHover');
+                    setDropdownExpanded(li, false);
                     target.blur();
                 }
             }
@@ -331,13 +362,13 @@
                     if (subIdx > 0) {
                         subItems[subIdx - 1].querySelector('a').focus();
                     } else if (parentLi) {
-                        parentLi.classList.remove('sfHover');
+                        setDropdownExpanded(parentLi, false);
                         parentLi.querySelector('a').focus();
                     }
                 } else if (key === 'Escape') {
                     e.preventDefault();
                     if (parentLi) {
-                        parentLi.classList.remove('sfHover');
+                        setDropdownExpanded(parentLi, false);
                         parentLi.querySelector('a').focus();
                     }
                 }
@@ -357,6 +388,7 @@
         initLegalTOC();
         initStatCounters();
         initScrollAnimations();
+        initNavDropdownAria();
         initDesktopNavKeyboard();
     });
 

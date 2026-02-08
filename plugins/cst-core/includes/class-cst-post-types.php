@@ -125,11 +125,16 @@ class CST_Post_Types {
 
     public function render_statistic_meta_box( $post ): void {
         wp_nonce_field( 'cst_statistic_meta', 'cst_statistic_nonce' );
-        $value  = get_post_meta( $post->ID, '_cst_stat_value', true );
-        $unit   = get_post_meta( $post->ID, '_cst_stat_unit', true );
-        $icon   = get_post_meta( $post->ID, '_cst_stat_icon', true );
-        $order  = get_post_meta( $post->ID, '_cst_stat_order', true );
-        $source = get_post_meta( $post->ID, '_cst_stat_source', true );
+        $value       = get_post_meta( $post->ID, '_cst_stat_value', true );
+        $unit        = get_post_meta( $post->ID, '_cst_stat_unit', true );
+        $icon        = get_post_meta( $post->ID, '_cst_stat_icon', true );
+        $order       = get_post_meta( $post->ID, '_cst_stat_order', true );
+        $source      = get_post_meta( $post->ID, '_cst_stat_source', true );
+        $trend       = get_post_meta( $post->ID, '_cst_stat_trend', true );
+        $category    = get_post_meta( $post->ID, '_cst_stat_category', true );
+        $chart_type  = get_post_meta( $post->ID, '_cst_stat_chart_type', true );
+        $chart_label = get_post_meta( $post->ID, '_cst_stat_chart_label', true );
+        $chart_data  = get_post_meta( $post->ID, '_cst_stat_chart_data', true );
         ?>
         <table class="form-table">
             <tr>
@@ -152,6 +157,46 @@ class CST_Post_Types {
                 <th><label for="cst_stat_source"><?php esc_html_e( 'Fuente', 'cst-core' ); ?></label></th>
                 <td><input type="text" id="cst_stat_source" name="cst_stat_source" value="<?php echo esc_attr( $source ); ?>" class="large-text" placeholder="Departamento de Salud, 2024"></td>
             </tr>
+            <tr>
+                <th><label for="cst_stat_trend"><?php esc_html_e( 'Tendencia (%)', 'cst-core' ); ?></label></th>
+                <td>
+                    <input type="number" id="cst_stat_trend" name="cst_stat_trend" value="<?php echo esc_attr( $trend ); ?>" class="small-text" step="0.1" placeholder="+12.5 o -3.2">
+                    <p class="description"><?php esc_html_e( 'Porcentaje de cambio (positivo o negativo)', 'cst-core' ); ?></p>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="cst_stat_category"><?php esc_html_e( 'Categoría', 'cst-core' ); ?></label></th>
+                <td>
+                    <select id="cst_stat_category" name="cst_stat_category">
+                        <option value="" <?php selected( $category, '' ); ?>><?php esc_html_e( '— Solo KPI (sin gráfica) —', 'cst-core' ); ?></option>
+                        <option value="patients" <?php selected( $category, 'patients' ); ?>><?php esc_html_e( 'Pacientes y datos médicos', 'cst-core' ); ?></option>
+                        <option value="safety" <?php selected( $category, 'safety' ); ?>><?php esc_html_e( 'Seguridad vial', 'cst-core' ); ?></option>
+                        <option value="education" <?php selected( $category, 'education' ); ?>><?php esc_html_e( 'Educación y alcance', 'cst-core' ); ?></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="cst_stat_chart_type"><?php esc_html_e( 'Tipo de gráfica', 'cst-core' ); ?></label></th>
+                <td>
+                    <select id="cst_stat_chart_type" name="cst_stat_chart_type">
+                        <option value="none" <?php selected( $chart_type, 'none' ); ?>><?php esc_html_e( 'Ninguna', 'cst-core' ); ?></option>
+                        <option value="bar" <?php selected( $chart_type, 'bar' ); ?>><?php esc_html_e( 'Barras', 'cst-core' ); ?></option>
+                        <option value="line" <?php selected( $chart_type, 'line' ); ?>><?php esc_html_e( 'Líneas', 'cst-core' ); ?></option>
+                        <option value="doughnut" <?php selected( $chart_type, 'doughnut' ); ?>><?php esc_html_e( 'Dona', 'cst-core' ); ?></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="cst_stat_chart_label"><?php esc_html_e( 'Etiqueta de gráfica', 'cst-core' ); ?></label></th>
+                <td><input type="text" id="cst_stat_chart_label" name="cst_stat_chart_label" value="<?php echo esc_attr( $chart_label ); ?>" class="regular-text" placeholder="Eje Y o leyenda"></td>
+            </tr>
+            <tr>
+                <th><label for="cst_stat_chart_data"><?php esc_html_e( 'Datos de gráfica (JSON)', 'cst-core' ); ?></label></th>
+                <td>
+                    <textarea id="cst_stat_chart_data" name="cst_stat_chart_data" rows="5" class="large-text code"><?php echo esc_textarea( $chart_data ); ?></textarea>
+                    <p class="description"><?php esc_html_e( 'Formato: [{"label":"2020","value":85000}, {"label":"2021","value":92000}]', 'cst-core' ); ?></p>
+                </td>
+            </tr>
         </table>
         <?php
     }
@@ -168,17 +213,29 @@ class CST_Post_Types {
         }
 
         $fields = [
-            'cst_stat_value'  => '_cst_stat_value',
-            'cst_stat_unit'   => '_cst_stat_unit',
-            'cst_stat_icon'   => '_cst_stat_icon',
-            'cst_stat_order'  => '_cst_stat_order',
-            'cst_stat_source' => '_cst_stat_source',
+            'cst_stat_value'       => '_cst_stat_value',
+            'cst_stat_unit'        => '_cst_stat_unit',
+            'cst_stat_icon'        => '_cst_stat_icon',
+            'cst_stat_order'       => '_cst_stat_order',
+            'cst_stat_source'      => '_cst_stat_source',
+            'cst_stat_trend'       => '_cst_stat_trend',
+            'cst_stat_category'    => '_cst_stat_category',
+            'cst_stat_chart_type'  => '_cst_stat_chart_type',
+            'cst_stat_chart_label' => '_cst_stat_chart_label',
         ];
 
         foreach ( $fields as $input => $meta_key ) {
             if ( isset( $_POST[ $input ] ) ) {
                 update_post_meta( $post_id, $meta_key, sanitize_text_field( wp_unslash( $_POST[ $input ] ) ) );
             }
+        }
+
+        // Handle JSON chart data separately — validate JSON, store empty string if invalid.
+        if ( isset( $_POST['cst_stat_chart_data'] ) ) {
+            $raw_json = wp_unslash( $_POST['cst_stat_chart_data'] );
+            $decoded  = json_decode( $raw_json, true );
+            $valid    = ( json_last_error() === JSON_ERROR_NONE && is_array( $decoded ) );
+            update_post_meta( $post_id, '_cst_stat_chart_data', $valid ? $raw_json : '' );
         }
     }
 
