@@ -102,12 +102,38 @@ nav a,
         border: 2px solid var(--cst-color-black);
     }
 
+    /* Revert gradient text to solid color */
+    .cst-section-heading__title {
+        background: none;
+        -webkit-background-clip: unset;
+        background-clip: unset;
+        -webkit-text-fill-color: var(--cst-color-primary);
+    }
+
     /* Hide decorative pseudo-elements */
     .cst-card::before,
     .cst-section-heading__title::after,
     .cst-institutional-footer::before,
+    .cst-institutional-footer::after,
     .cst-hero::after,
-    .cst-btn--hero::before {
+    .cst-btn--hero::before,
+    .cst-btn--primary::before,
+    .cst-footer-widget__title::after,
+    .cst-stat-card__value::after,
+    .cst-hero__wave,
+    .cst-hero__float {
+        display: none;
+    }
+
+    /* Hide section wave dividers */
+    .cst-section--objectives::after,
+    .cst-section--events::after,
+    .cst-section--stats::after {
+        display: none;
+    }
+
+    /* Hide hero illustration */
+    .cst-hero__illustration {
         display: none;
     }
 
@@ -130,6 +156,12 @@ nav a,
         background: var(--cst-color-primary);
     }
 
+    /* Callout — solid border, no gradient bg */
+    .cst-callout {
+        background: var(--cst-callout-bg-default);
+        border-left: 4px solid var(--cst-color-primary);
+    }
+
     .cst-filter-tabs__btn {
         border: 2px solid currentColor;
     }
@@ -146,8 +178,34 @@ nav a,
         border: 2px solid var(--cst-color-black);
     }
 
+    /* CF7 form inputs — high contrast borders */
+    .cst-contact-form .wpcf7-form-control:not([type="submit"]) {
+        border: 2px solid var(--cst-color-black);
+        box-shadow: none;
+    }
+
+    .cst-contact-form .wpcf7-form-control[type="submit"] {
+        background: var(--cst-color-primary);
+        border: 3px solid var(--cst-color-black);
+    }
+
     a {
         text-decoration: underline;
+    }
+
+    /* Search form — high contrast */
+    .cst-header-search__input {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    .cst-header-search__btn {
+        border: 2px solid var(--cst-color-black);
+        background: var(--cst-color-primary);
+    }
+
+    /* OIG logo — ensure visible */
+    .cst-institutional-footer__oig-seal {
+        opacity: 1;
     }
 }
 
@@ -182,12 +240,38 @@ nav a,
         background: Canvas;
     }
 
+    /* Revert gradient text to system color */
+    .cst-section-heading__title {
+        background: none;
+        -webkit-background-clip: unset;
+        background-clip: unset;
+        -webkit-text-fill-color: CanvasText;
+    }
+
     /* Hide decorative pseudo-elements */
     .cst-card::before,
     .cst-section-heading__title::after,
     .cst-institutional-footer::before,
+    .cst-institutional-footer::after,
     .cst-hero::after,
-    .cst-btn--hero::before {
+    .cst-btn--hero::before,
+    .cst-btn--primary::before,
+    .cst-footer-widget__title::after,
+    .cst-stat-card__value::after,
+    .cst-hero__wave,
+    .cst-hero__float {
+        display: none;
+    }
+
+    /* Hide section wave dividers */
+    .cst-section--objectives::after,
+    .cst-section--events::after,
+    .cst-section--stats::after {
+        display: none;
+    }
+
+    /* Hide hero illustration */
+    .cst-hero__illustration {
         display: none;
     }
 
@@ -198,6 +282,44 @@ nav a,
     .cst-contact-card__icon {
         background: Canvas;
         border: 2px solid CanvasText;
+    }
+
+    /* Back-to-top — system colors */
+    .cst-back-to-top {
+        background: ButtonFace;
+        border: 2px solid ButtonText;
+        color: ButtonText;
+    }
+
+    /* CF7 form inputs — system colors */
+    .cst-contact-form .wpcf7-form-control:not([type="submit"]) {
+        background: Field;
+        color: FieldText;
+        border: 1px solid CanvasText;
+    }
+
+    .cst-contact-form .wpcf7-form-control[type="submit"] {
+        background: ButtonFace;
+        color: ButtonText;
+        border: 2px solid ButtonText;
+    }
+
+    /* Search form — system colors */
+    .cst-header-search__input {
+        background: Field;
+        color: FieldText;
+        border: 1px solid CanvasText;
+    }
+
+    .cst-header-search__btn {
+        background: ButtonFace;
+        color: ButtonText;
+        border: 1px solid ButtonText;
+    }
+
+    /* OIG logo — ensure visible */
+    .cst-institutional-footer__oig-seal {
+        opacity: 1;
     }
 }
 
@@ -215,6 +337,20 @@ nav a,
 
     .cst-card:hover {
         transform: none;
+    }
+
+    .cst-institutional-footer::before {
+        animation: none;
+    }
+
+    /* Show heading underline immediately without animation */
+    .cst-section-heading__title::after {
+        width: 60px;
+    }
+
+    /* Stop hero float animations */
+    .cst-hero__float {
+        animation: none;
     }
 }
 

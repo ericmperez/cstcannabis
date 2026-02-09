@@ -2,7 +2,8 @@
 /**
  * Template Part: Institutional Footer (GUIDI compliant).
  *
- * 4-column layout, government seal, legal links, copyright.
+ * 5-column layout matching cst.pr.gov format:
+ * Branding (CST + OIG), Contenido, Servicios, Síguenos, Contactos.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <!-- Footer Columns -->
         <div class="cst-institutional-footer__grid">
-            <!-- Column 1: About -->
+            <!-- Column 1: Branding (CST + OIG) -->
             <div class="cst-institutional-footer__col">
                 <div class="cst-institutional-footer__branding">
                     <?php
@@ -30,17 +31,26 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <?php esc_html_e( 'Comisión para la Seguridad en el Tránsito de Puerto Rico', 'cst-cannabis' ); ?>
                     </p>
                 </div>
+                <div class="cst-institutional-footer__oig">
+                    <a href="https://www.oig.pr.gov/" target="_blank" rel="noopener noreferrer"
+                       aria-label="<?php esc_attr_e( 'Oficina del Inspector General', 'cst-cannabis' ); ?>">
+                        <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/oig-logo.svg' ); ?>"
+                             alt="<?php esc_attr_e( 'Oficina del Inspector General', 'cst-cannabis' ); ?>"
+                             class="cst-institutional-footer__oig-seal"
+                             width="60" height="60" loading="lazy">
+                    </a>
+                </div>
                 <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
                     <?php dynamic_sidebar( 'footer-1' ); ?>
                 <?php endif; ?>
             </div>
 
-            <!-- Column 2 -->
+            <!-- Column 2: Contenido -->
             <div class="cst-institutional-footer__col">
                 <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
                     <?php dynamic_sidebar( 'footer-2' ); ?>
                 <?php else : ?>
-                    <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Enlaces rápidos', 'cst-cannabis' ); ?></h4>
+                    <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Contenido', 'cst-cannabis' ); ?></h4>
                     <?php
                     wp_nav_menu( [
                         'theme_location' => 'footer',
@@ -53,34 +63,21 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php endif; ?>
             </div>
 
-            <!-- Column 3 -->
+            <!-- Column 3: Servicios -->
             <div class="cst-institutional-footer__col">
-                <?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
-                    <?php dynamic_sidebar( 'footer-3' ); ?>
+                <?php if ( is_active_sidebar( 'footer-4' ) ) : ?>
+                    <?php dynamic_sidebar( 'footer-4' ); ?>
                 <?php else : ?>
-                    <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Contacto', 'cst-cannabis' ); ?></h4>
-                    <ul class="cst-footer-contact">
-                        <?php
-                        $phone   = get_theme_mod( 'cst_phone' );
-                        $email   = get_theme_mod( 'cst_email' );
-                        $address = get_theme_mod( 'cst_address' );
-                        ?>
-                        <?php if ( $phone ) : ?>
-                            <li><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
-                        <?php endif; ?>
-                        <?php if ( $email ) : ?>
-                            <li><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
-                        <?php endif; ?>
-                        <?php if ( $address ) : ?>
-                            <li><?php echo esc_html( $address ); ?></li>
-                        <?php endif; ?>
-                    </ul>
+                    <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Servicios', 'cst-cannabis' ); ?></h4>
+                    <?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
+                        <?php dynamic_sidebar( 'footer-3' ); ?>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
 
-            <!-- Column 4: Social -->
+            <!-- Column 4: Síguenos (Social) -->
             <div class="cst-institutional-footer__col">
-                <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Redes sociales', 'cst-cannabis' ); ?></h4>
+                <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Síguenos', 'cst-cannabis' ); ?></h4>
                 <ul class="cst-social-links">
                     <?php
                     $socials = [
@@ -106,9 +103,57 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php
                         endif;
                     endforeach;
+
+                    // Email social icon.
+                    $email_link = get_theme_mod( 'cst_email' );
+                    if ( $email_link ) :
                     ?>
+                        <li>
+                            <a href="mailto:<?php echo esc_attr( $email_link ); ?>"
+                               aria-label="<?php esc_attr_e( 'Correo electrónico', 'cst-cannabis' ); ?>">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
+
+            <!-- Column 5: Contactos -->
+            <div class="cst-institutional-footer__col">
+                <?php if ( is_active_sidebar( 'footer-3' ) && is_active_sidebar( 'footer-4' ) ) : ?>
+                    <?php dynamic_sidebar( 'footer-3' ); ?>
+                <?php else : ?>
+                    <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Contactos', 'cst-cannabis' ); ?></h4>
+                    <ul class="cst-footer-contact">
+                        <?php
+                        $phone   = get_theme_mod( 'cst_phone' );
+                        $email   = get_theme_mod( 'cst_email' );
+                        $address = get_theme_mod( 'cst_address' );
+                        ?>
+                        <?php if ( $email ) : ?>
+                            <li><a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a></li>
+                        <?php endif; ?>
+                        <?php if ( $phone ) : ?>
+                            <li><a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a></li>
+                        <?php endif; ?>
+                        <?php if ( $address ) : ?>
+                            <li><?php echo esc_html( $address ); ?></li>
+                        <?php endif; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <!-- Compliance Statements -->
+        <div class="cst-institutional-footer__compliance">
+            <p>
+                <?php esc_html_e( 'La Comisión para la Seguridad en el Tránsito es un patrono con igualdad de oportunidades en el empleo. No se discrimina por razón de raza, color, género, nacimiento, origen o condición social, ni por ideas políticas o religiosas, edad, orientación sexual o identidad de género.', 'cst-cannabis' ); ?>
+            </p>
+            <p>
+                <?php esc_html_e( 'Somos un patrono con un programa de acción afirmativa que cumple con los reglamentos gubernamentales.', 'cst-cannabis' ); ?>
+            </p>
         </div>
 
         <!-- Legal Links -->
@@ -135,4 +180,11 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
 
     </div>
+
+    <!-- Back to top -->
+    <button class="cst-back-to-top" aria-label="<?php esc_attr_e( 'Volver al inicio', 'cst-cannabis' ); ?>" type="button">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 4L3 11l1.4 1.4L9 7.8V16h2V7.8l4.6 4.6L17 11l-7-7z" fill="currentColor"/>
+        </svg>
+    </button>
 </footer>
