@@ -745,6 +745,30 @@ h1, h2, h3, h4, h5, h6 {
     font-size: var(--cst-font-size-sm);
 }
 
+/* --- Hero Dual-Button Layout --- */
+
+.cst-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cst-space-md);
+    align-items: center;
+}
+
+.cst-btn--outline-hero {
+    background: transparent;
+    color: var(--cst-color-white);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    font-size: var(--cst-font-size-lg);
+    padding: var(--cst-space-md) var(--cst-space-2xl);
+}
+
+.cst-btn--outline-hero:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--cst-color-white);
+    color: var(--cst-color-white);
+    transform: translateY(-1px);
+}
+
 /* ==========================================================================
    Card Grid
    ========================================================================== */
@@ -1338,6 +1362,109 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
+   Course Page
+   ========================================================================== */
+
+.cst-course-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--cst-space-2xl);
+    align-items: start;
+}
+
+.cst-course-info p {
+    font-size: var(--cst-font-size-lg);
+    color: var(--cst-color-text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--cst-space-xl);
+}
+
+.cst-course-info h2 {
+    font-size: var(--cst-font-size-2xl);
+    color: var(--cst-color-primary);
+    margin-bottom: var(--cst-space-md);
+}
+
+.cst-course-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--cst-space-xl) 0;
+}
+
+.cst-course-list li {
+    position: relative;
+    padding-left: var(--cst-space-xl);
+    margin-bottom: var(--cst-space-sm);
+    line-height: 1.6;
+}
+
+.cst-course-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.35em;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23115E67'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.cst-course-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--cst-space-md);
+}
+
+.cst-course-feature {
+    display: flex;
+    gap: var(--cst-space-md);
+    padding: var(--cst-space-lg);
+    background: var(--cst-color-white);
+    border-radius: var(--cst-border-radius-lg);
+    box-shadow: var(--cst-shadow-sm);
+    transition: box-shadow var(--cst-transition-slow), transform var(--cst-transition);
+}
+
+.cst-course-feature:hover {
+    box-shadow: var(--cst-shadow-lg);
+    transform: translateY(-3px);
+}
+
+.cst-course-feature__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(17, 94, 103, 0.08);
+    border-radius: 50%;
+    color: var(--cst-color-primary);
+    transition: background var(--cst-transition);
+}
+
+.cst-course-feature:hover .cst-course-feature__icon {
+    background: rgba(17, 94, 103, 0.15);
+}
+
+.cst-course-feature__body h3 {
+    font-size: var(--cst-font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--cst-space-xs);
+}
+
+.cst-course-feature__body p {
+    color: var(--cst-color-text-muted);
+    font-size: var(--cst-font-size-sm);
+    margin: 0;
+}
+
+.cst-course-form h2 {
+    margin-bottom: var(--cst-space-lg);
+}
+
+/* ==========================================================================
    Filter Tabs (Resources)
    ========================================================================== */
 
@@ -1842,9 +1969,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .site-header {
     border-top: none;
-    background-color: var(--cst-color-white);
-    border-bottom: 1px solid var(--cst-color-gray-300);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    background-color: var(--cst-color-gray-900);
+    border-bottom: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 999;
     position: relative;
 }
@@ -1853,6 +1980,24 @@ h1, h2, h3, h4, h5, h6 {
     max-width: var(--cst-container-max);
     margin-inline: auto;
     padding-inline: var(--cst-space-md);
+}
+
+/* Hide GP logo/branding — branding lives in institutional header */
+.site-header .site-branding,
+.site-header .site-logo,
+.site-header .site-title,
+.site-header .site-description {
+    display: none;
+}
+
+/* Navigation fills full width without logo */
+.site-header .main-navigation {
+    flex: 1;
+}
+
+.site-header .inside-header {
+    display: flex;
+    justify-content: center;
 }
 
 /* --- Top-Level Link Styling --- */
@@ -1865,10 +2010,10 @@ h1, h2, h3, h4, h5, h6 {
 .main-navigation .main-nav > ul > li > a {
     font-family: var(--cst-font-body);
     font-size: var(--cst-font-size-sm);
-    font-weight: 600;
-    color: var(--cst-color-gray-700);
-    padding: 16px 24px;
-    min-height: 52px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 14px 20px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     position: relative;
@@ -1884,15 +2029,15 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     height: 3px;
-    background-color: var(--cst-color-primary);
+    background-color: var(--cst-color-secondary);
     transform: scaleX(0);
     transform-origin: center;
     transition: transform var(--cst-transition);
 }
 
 .main-navigation .main-nav > ul > li > a:hover {
-    color: var(--cst-color-primary);
-    background-color: var(--cst-color-gray-100);
+    color: var(--cst-color-white);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .main-navigation .main-nav > ul > li > a:hover::after {
@@ -1902,7 +2047,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Active / Current Page --- */
 
 .main-navigation .main-nav > ul > li.current-menu-item > a {
-    color: var(--cst-color-primary);
+    color: var(--cst-color-white);
     font-weight: 700;
 }
 
@@ -1912,12 +2057,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-navigation .main-nav > ul > li.current-menu-ancestor > a {
-    color: var(--cst-color-primary);
+    color: var(--cst-color-white);
 }
 
 .main-navigation .main-nav > ul > li.current-menu-ancestor > a::after {
     transform: scaleX(1);
-    background-color: var(--cst-color-primary);
+    background-color: var(--cst-color-secondary);
 }
 
 /* --- Dropdown Parent (caret indicator) --- */
@@ -2132,6 +2277,16 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1rem;
         padding: 16px 24px;
         min-height: 52px;
+        color: var(--cst-color-gray-700);
+    }
+
+    .main-navigation .main-nav > ul > li > a:hover {
+        color: var(--cst-color-primary);
+        background-color: var(--cst-color-gray-100);
+    }
+
+    .main-navigation .main-nav > ul > li.current-menu-item > a {
+        color: var(--cst-color-primary);
     }
 
     /* Remove desktop bottom-border indicator on mobile */
@@ -2190,6 +2345,20 @@ h1, h2, h3, h4, h5, h6 {
 
     .cst-contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .cst-course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cst-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cst-hero__actions .cst-btn {
+        text-align: center;
+        justify-content: center;
     }
 
     .cst-institutional-footer__grid {

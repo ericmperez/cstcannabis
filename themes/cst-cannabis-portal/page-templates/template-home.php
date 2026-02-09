@@ -20,11 +20,14 @@ get_header();
     $hero_title    = get_theme_mod( 'cst_hero_title', '' ) ?: get_bloginfo( 'name' );
     $hero_subtitle = get_theme_mod( 'cst_hero_subtitle', '' ) ?: get_bloginfo( 'description' );
     cst_hero( [
-        'title'    => $hero_title,
-        'subtitle' => $hero_subtitle,
-        'cta_text' => __( 'Conoce más', 'cst-cannabis' ),
-        'cta_url'  => '#objetivos',
-        'class'    => 'cst-hero--home',
+        'title'      => $hero_title,
+        'subtitle'   => $hero_subtitle,
+        'cta_text'   => __( 'Inscríbete al curso gratuito', 'cst-cannabis' ),
+        'cta_url'    => home_url( '/curso/' ),
+        'cta2_text'  => __( 'Conoce más', 'cst-cannabis' ),
+        'cta2_url'   => '#objetivos',
+        'class'      => 'cst-hero--home',
+        'image_url'  => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
     ] );
     ?>
 

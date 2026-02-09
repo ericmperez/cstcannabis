@@ -141,7 +141,8 @@ nav a,
     .cst-objective-card__icon,
     .cst-stat-card__icon,
     .cst-statistics__icon,
-    .cst-contact-card__icon {
+    .cst-contact-card__icon,
+    .cst-course-feature__icon {
         background: transparent;
         border: 2px solid currentColor;
     }
@@ -154,6 +155,11 @@ nav a,
     .cst-btn--primary,
     .cst-btn--outline:hover {
         background: var(--cst-color-primary);
+    }
+
+    .cst-btn--outline-hero {
+        background: transparent;
+        border: 3px solid var(--cst-color-white);
     }
 
     /* Callout — solid border, no gradient bg */
@@ -279,9 +285,15 @@ nav a,
     .cst-objective-card__icon,
     .cst-stat-card__icon,
     .cst-statistics__icon,
-    .cst-contact-card__icon {
+    .cst-contact-card__icon,
+    .cst-course-feature__icon {
         background: Canvas;
         border: 2px solid CanvasText;
+    }
+
+    .cst-btn--outline-hero {
+        background: transparent;
+        border: 2px solid ButtonText;
     }
 
     /* Back-to-top — system colors */
@@ -376,7 +388,13 @@ nav a,
 
 /* --- Nav Focus Indicators --- */
 
-.main-navigation .main-nav ul li a:focus-visible {
+.main-navigation .main-nav > ul > li > a:focus-visible {
+    outline: 3px solid var(--cst-color-white);
+    outline-offset: -3px;
+    z-index: 1;
+}
+
+.main-navigation .main-nav ul ul li a:focus-visible {
     outline: 3px solid var(--cst-color-focus);
     outline-offset: -3px;
     z-index: 1;

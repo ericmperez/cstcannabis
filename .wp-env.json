@@ -5,7 +5,8 @@
     "./themes/cst-cannabis-portal"
   ],
   "plugins": [
-    "./plugins/cst-core"
+    "./plugins/cst-core",
+    "https://downloads.wordpress.org/plugin/contact-form-7.6.1.5.zip"
   ],
   "config": {
     "WP_DEBUG": true,

@@ -15,6 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   @type string $subtitle   Hero subtitle.
  *   @type string $cta_text   CTA button text.
  *   @type string $cta_url    CTA button URL.
+ *   @type string $cta2_text  Secondary CTA button text.
+ *   @type string $cta2_url   Secondary CTA button URL.
  *   @type string $image_url  Background image URL (falls back to customizer).
  *   @type string $class      Extra CSS classes.
  * }
@@ -25,6 +27,8 @@ function cst_hero( array $args = [] ): void {
         'subtitle'  => get_bloginfo( 'description' ),
         'cta_text'  => '',
         'cta_url'   => '',
+        'cta2_text' => '',
+        'cta2_url'  => '',
         'image_url' => get_theme_mod( 'cst_hero_image', '' ),
         'class'     => '',
     ];
@@ -85,6 +89,27 @@ function cst_get_portal_type(): string {
         return 'four-tracks';
     }
     return 'cannabis';
+}
+
+/**
+ * Render a callout/highlight box.
+ *
+ * @param string $content  Callout body text.
+ * @param string $type     Variant: 'default', 'warning', 'info'.
+ * @param string $title    Optional heading.
+ */
+function cst_callout( string $content, string $type = 'default', string $title = '' ): void {
+    $allowed_types = [ 'default', 'warning', 'info' ];
+    $type = in_array( $type, $allowed_types, true ) ? $type : 'default';
+    $class = 'cst-callout' . ( $type !== 'default' ? ' cst-callout--' . $type : '' );
+    ?>
+    <aside class="<?php echo esc_attr( $class ); ?>" role="note">
+        <?php if ( $title ) : ?>
+            <p class="cst-callout__title"><?php echo esc_html( $title ); ?></p>
+        <?php endif; ?>
+        <div class="cst-callout__content"><?php echo wp_kses_post( $content ); ?></div>
+    </aside>
+    <?php
 }
 
 /**

@@ -377,6 +377,100 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  Header Scroll Behavior                                            */
+    /* ------------------------------------------------------------------ */
+
+    function initHeaderScroll() {
+        var header = document.querySelector('.cst-institutional-header');
+        if (!header) return;
+
+        var threshold = 60;
+        var ticking = false;
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function () {
+                    if (window.scrollY > threshold) {
+                        header.classList.add('is-scrolled');
+                    } else {
+                        header.classList.remove('is-scrolled');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Check initial scroll position.
+        onScroll();
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Hamburger Icon Injection                                          */
+    /* ------------------------------------------------------------------ */
+
+    function initHamburgerIcon() {
+        var toggle = document.querySelector('.menu-toggle');
+        if (!toggle) return;
+
+        // Save original text for sr-only label.
+        var label = toggle.textContent.trim() || 'Menu';
+
+        // Clear existing content.
+        toggle.textContent = '';
+
+        // Add sr-only text.
+        var srSpan = document.createElement('span');
+        srSpan.className = 'sr-only';
+        srSpan.textContent = label;
+        toggle.appendChild(srSpan);
+
+        // Add hamburger icon span.
+        var hamburger = document.createElement('span');
+        hamburger.className = 'cst-hamburger';
+        hamburger.setAttribute('aria-hidden', 'true');
+        toggle.appendChild(hamburger);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Back-to-Top Button                                                */
+    /* ------------------------------------------------------------------ */
+
+    function initBackToTop() {
+        var btn = document.querySelector('.cst-back-to-top');
+        if (!btn) return;
+
+        var threshold = 400;
+        var ticking = false;
+
+        function onScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function () {
+                    if (window.scrollY > threshold) {
+                        btn.classList.add('is-visible');
+                    } else {
+                        btn.classList.remove('is-visible');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        btn.addEventListener('click', function () {
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Init                                                              */
     /* ------------------------------------------------------------------ */
 
@@ -384,12 +478,15 @@
         initBannerToggle();
         initSmoothScroll();
         initResourceFilter();
+        initHamburgerIcon();
         initMobileMenuA11y();
         initLegalTOC();
         initStatCounters();
         initScrollAnimations();
         initNavDropdownAria();
         initDesktopNavKeyboard();
+        initHeaderScroll();
+        initBackToTop();
     });
 
 })();
