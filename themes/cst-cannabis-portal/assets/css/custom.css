@@ -2041,11 +2041,27 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
-.site-header .main-navigation {
+/* Hide mobile toggle wrapper on desktop — only needed at 768px */
+#mobile-menu-control-wrapper {
+    display: none;
+}
+
+.site-header #site-navigation {
+    float: none;
     flex: 1;
     display: flex;
     justify-content: center;
     background: transparent;
+}
+
+.site-header #site-navigation .inside-navigation {
+    display: flex;
+    justify-content: center;
+}
+
+.site-header #site-navigation .main-nav {
+    float: none;
+    width: auto;
 }
 
 /* --- Top-Level Links --- */
@@ -2199,6 +2215,11 @@ h1, h2, h3, h4, h5, h6 {
         --cst-font-size-2xl: 1.625rem; /* 26px down from 32px */
         --cst-font-size-3xl: 1.875rem; /* 30px down from 40px */
         --cst-font-size-4xl: 2.25rem;  /* 36px down from 48px */
+    }
+
+    /* Show mobile toggle wrapper at mobile */
+    #mobile-menu-control-wrapper {
+        display: flex;
     }
 
     /* --- Mobile Hamburger Toggle --- */
