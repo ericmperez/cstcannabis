@@ -112,6 +112,7 @@ nav a,
 
     /* Hide decorative pseudo-elements */
     .cst-card::before,
+    .cst-stat-card::before,
     .cst-section-heading__title::after,
     .cst-institutional-footer::before,
     .cst-institutional-footer::after,
@@ -256,6 +257,7 @@ nav a,
 
     /* Hide decorative pseudo-elements */
     .cst-card::before,
+    .cst-stat-card::before,
     .cst-section-heading__title::after,
     .cst-institutional-footer::before,
     .cst-institutional-footer::after,
@@ -376,7 +378,7 @@ nav a,
 /* --- Ensure sufficient color contrast for links --- */
 
 .cst-content-area a:visited {
-    color: #0d4e55;
+    color: #5E7C3A;
 }
 
 /* --- ARIA Live Region --- */

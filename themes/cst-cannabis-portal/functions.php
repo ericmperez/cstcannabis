@@ -63,13 +63,16 @@ add_action( 'wp_enqueue_scripts', function () {
         CST_CANNABIS_VERSION
     );
 
-    // Google Fonts — Montserrat + Cormorant Garamond.
+    // Google Fonts — Open Sans (body) + Montserrat (headings).
     wp_enqueue_style(
         'cst-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
+        'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
         [],
         null
     );
+
+    // Dashicons — needed for stat card and KPI icons on the frontend.
+    wp_enqueue_style( 'dashicons' );
 
     // Custom layout & component styles.
     wp_enqueue_style(
