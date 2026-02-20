@@ -31,7 +31,7 @@
 }
 
 .cst-whatsapp__btn:focus-visible {
-    outline: 3px solid var(--cst-color-focus, #0050F0);
+    outline: 3px solid var(--cst-color-focus, #3B82C4);
     outline-offset: 3px;
 }
 

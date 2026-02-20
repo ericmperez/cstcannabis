@@ -7,12 +7,12 @@
     </linearGradient>
     <!-- Radial glow for atmosphere circles -->
     <radialGradient id="glowBright">
-      <stop offset="0" stop-color="#2EC4D6" stop-opacity="0.7"/>
-      <stop offset="1" stop-color="#2EC4D6" stop-opacity="0"/>
+      <stop offset="0" stop-color="#A9C58E" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#A9C58E" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glowSoft">
-      <stop offset="0" stop-color="#1A8A96" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#1A8A96" stop-opacity="0"/>
+      <stop offset="0" stop-color="#7FA35B" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#7FA35B" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
@@ -56,7 +56,7 @@
   </g>
 
   <!-- ====== ABSTRACT PR ISLAND COASTLINE — dashed topographic contour lines ====== -->
-  <g fill="none" stroke="#4DD8E8" stroke-dasharray="10 7" opacity="0.6">
+  <g fill="none" stroke="#A9C58E" stroke-dasharray="10 7" opacity="0.6">
     <path d="M 950 480 Q 1020 440, 1100 450 Q 1180 460, 1250 430 Q 1330 400, 1400 420 Q 1470 440, 1520 410 Q 1580 380, 1620 400" stroke-width="2.5"/>
     <path d="M 920 510 Q 1000 470, 1080 485 Q 1170 500, 1240 465 Q 1320 430, 1400 455 Q 1480 480, 1540 445 Q 1600 410, 1650 435" stroke-width="2"/>
     <path d="M 900 545 Q 990 505, 1070 520 Q 1160 535, 1230 500 Q 1310 465, 1390 490 Q 1470 515, 1550 480 Q 1620 445, 1680 465" stroke-width="1.5"/>
@@ -67,13 +67,13 @@
   <g fill="none" stroke-linecap="round">
     <!-- Bright teal curve -->
     <path d="M 600 750 Q 900 500, 1200 520 Q 1500 540, 1800 300"
-          stroke="#4DD8E8" stroke-width="4" opacity="0.55"/>
+          stroke="#A9C58E" stroke-width="4" opacity="0.55"/>
     <!-- White curve -->
     <path d="M 500 780 Q 850 450, 1150 480 Q 1450 510, 1850 200"
           stroke="#FFFFFF" stroke-width="3" opacity="0.45"/>
     <!-- Coral curve -->
     <path d="M 700 800 Q 1000 550, 1300 560 Q 1600 570, 1900 350"
-          stroke="#E56A54" stroke-width="3.5" opacity="0.55"/>
+          stroke="#3B82C4" stroke-width="3.5" opacity="0.55"/>
   </g>
 
   <!-- ====== DATA NETWORK CONSTELLATION — coral + white nodes with connecting lines ====== -->
@@ -113,7 +113,7 @@
       <circle cx="1860" cy="250" r="4.5"/>
     </g>
     <!-- Nodes — coral accents -->
-    <g fill="#E56A54">
+    <g fill="#3B82C4">
       <circle cx="1350" cy="380" r="8"/>
       <circle cx="1450" cy="450" r="6.5"/>
       <circle cx="1650" cy="350" r="7"/>
@@ -130,7 +130,7 @@
     <circle cx="1600" cy="550" r="100"/>
     <circle cx="1600" cy="550" r="130"/>
   </g>
-  <circle cx="1600" cy="550" r="6" fill="#E56A54" opacity="0.8"/>
+  <circle cx="1600" cy="550" r="6" fill="#3B82C4" opacity="0.8"/>
 
   <!-- Radar set 2 — smaller, upper right -->
   <g fill="none" stroke="#FFFFFF" opacity="0.3" stroke-width="1.2">
@@ -138,19 +138,19 @@
     <circle cx="1820" cy="500" r="55"/>
     <circle cx="1820" cy="500" r="80"/>
   </g>
-  <circle cx="1820" cy="500" r="5" fill="#E56A54" opacity="0.7"/>
+  <circle cx="1820" cy="500" r="5" fill="#3B82C4" opacity="0.7"/>
 
   <!-- Radar set 3 — mid section -->
-  <g fill="none" stroke="#4DD8E8" opacity="0.35" stroke-width="1.2">
+  <g fill="none" stroke="#A9C58E" opacity="0.35" stroke-width="1.2">
     <circle cx="1050" cy="620" r="35"/>
     <circle cx="1050" cy="620" r="60"/>
     <circle cx="1050" cy="620" r="85"/>
   </g>
-  <circle cx="1050" cy="620" r="5" fill="#E56A54" opacity="0.65"/>
+  <circle cx="1050" cy="620" r="5" fill="#3B82C4" opacity="0.65"/>
 
   <!-- ====== STYLIZED CANNABIS LEAF SILHOUETTES — geometric/abstract palmate shapes ====== -->
   <!-- Leaf 1 — large, right side -->
-  <g transform="translate(1500, 620) rotate(-15) scale(1.8)" opacity="0.3" fill="#4DD8E8">
+  <g transform="translate(1500, 620) rotate(-15) scale(1.8)" opacity="0.3" fill="#A9C58E">
     <ellipse cx="0" cy="-50" rx="7" ry="45"/>
     <ellipse cx="0" cy="-50" rx="7" ry="45" transform="rotate(30)"/>
     <ellipse cx="0" cy="-50" rx="7" ry="45" transform="rotate(60)"/>
@@ -194,7 +194,7 @@
     <circle cx="700" cy="200" r="2.5"/><circle cx="800" cy="350" r="2"/>
     <circle cx="650" cy="600" r="2.5"/><circle cx="750" cy="700" r="2"/>
   </g>
-  <g fill="#E56A54" opacity="0.5">
+  <g fill="#3B82C4" opacity="0.5">
     <circle cx="1180" cy="450" r="3.5"/><circle cx="1420" cy="350" r="3"/>
     <circle cx="1680" cy="480" r="3.5"/><circle cx="1850" cy="600" r="3"/>
     <circle cx="900" cy="300" r="2.5"/><circle cx="750" cy="450" r="2.5"/>

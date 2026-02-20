@@ -12,9 +12,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class CST_Security {
 
+    /**
+     * CSP nonce — generated once per request.
+     */
+    private static string $csp_nonce = '';
+
     public function __construct() {
+        // Generate nonce early.
+        self::$csp_nonce = wp_generate_password( 24, false );
+
         add_action( 'send_headers', [ $this, 'send_security_headers' ] );
         add_filter( 'wp_headers', [ $this, 'add_wp_headers' ] );
+
+        // Add nonce to inline scripts/styles that WordPress outputs.
+        add_filter( 'wp_inline_script_attributes', [ $this, 'add_nonce_to_script' ] );
+        add_filter( 'wp_script_attributes', [ $this, 'add_nonce_to_script' ] );
+    }
+
+    /**
+     * Get the CSP nonce for the current request.
+     */
+    public static function get_csp_nonce(): string {
+        return self::$csp_nonce;
+    }
+
+    /**
+     * Add nonce attribute to inline script tags.
+     */
+    public function add_nonce_to_script( array $attributes ): array {
+        $attributes['nonce'] = self::$csp_nonce;
+        return $attributes;
     }
 
     /**
@@ -25,13 +52,16 @@ class CST_Security {
             return;
         }
 
+        $nonce = self::$csp_nonce;
+
         // HSTS — enforce HTTPS for 1 year, include subdomains.
         header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' );
 
-        // Content Security Policy — restrictive but functional.
+        // Content Security Policy — nonce-based for scripts, allow inline styles
+        // for WordPress/GeneratePress compatibility.
         $csp_directives = [
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://api.whatsapp.com https://cdn.jsdelivr.net",
+            "script-src 'self' 'nonce-{$nonce}' https://www.googletagmanager.com https://www.google-analytics.com https://api.whatsapp.com https://cdn.jsdelivr.net",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com data:",
             "img-src 'self' data: https: http:",

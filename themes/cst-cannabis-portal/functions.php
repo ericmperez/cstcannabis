@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'CST_CANNABIS_VERSION', '1.0.0' );
+define( 'CST_CANNABIS_VERSION', '1.1.0' );
 define( 'CST_CANNABIS_DIR', get_stylesheet_directory() );
 define( 'CST_CANNABIS_URI', get_stylesheet_directory_uri() );
 
@@ -41,6 +41,18 @@ add_action( 'after_setup_theme', function () {
     ] );
     add_theme_support( 'responsive-embeds' );
 } );
+
+/* ==========================================================================
+   Disable Sidebar — full-width content on all pages
+   ========================================================================== */
+
+add_filter( 'generate_sidebar_layout', function () {
+    return 'no-sidebar';
+} );
+
+add_action( 'widgets_init', function () {
+    unregister_sidebar( 'sidebar-1' );
+}, 20 );
 
 /* ==========================================================================
    Enqueue Styles & Scripts

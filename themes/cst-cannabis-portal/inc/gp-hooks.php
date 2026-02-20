@@ -84,6 +84,34 @@ function cst_institutional_footer(): void {
 }
 
 /* ==========================================================================
+   Demote GP Header to a Nav Bar
+   The GP <header> is re-used as a nav-only bar. Remove the header/banner
+   landmark so screen readers only see the institutional header as the
+   page banner. We wrap the GP header output in a buffer and swap the tag.
+   ========================================================================== */
+
+add_action( 'generate_before_header', 'cst_start_header_buffer', 99 );
+add_action( 'generate_after_header', 'cst_end_header_buffer', 0 );
+
+function cst_start_header_buffer(): void {
+    ob_start();
+}
+
+function cst_end_header_buffer(): void {
+    $html = ob_get_clean();
+    // Replace <header ... class="site-header ..."> with <div> and remove aria-label="Site".
+    $html = preg_replace(
+        '/<header(\s[^>]*?\bclass="site-header\b[^"]*"[^>]*)>/',
+        '<div$1>',
+        $html
+    );
+    $html = str_replace( '</header>', '</div>', $html );
+    // Remove the aria-label="Site" that's now on a div (not meaningful).
+    $html = str_replace( 'aria-label="Site"', '', $html );
+    echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- buffered WordPress output.
+}
+
+/* ==========================================================================
    Yoast Breadcrumbs
    ========================================================================== */
 

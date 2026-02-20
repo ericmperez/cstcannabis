@@ -126,19 +126,21 @@ Sent on all front-end responses via `send_headers` action:
 
 ## Design System
 
-Based on **PRITS-004 / GUIDI** standards:
+Based on **Guía de Marca CST Plataforma Educativa**:
 
 ### Typography
-- **Body**: Montserrat (Google Fonts)
-- **Headings**: Cormorant Garamond (Google Fonts)
+- **Body**: Open Sans (Google Fonts)
+- **Headings**: Montserrat (Google Fonts)
 
 ### Color Palette
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `--cst-color-red` | #EE0000 | PR flag red, danger |
-| `--cst-color-blue` | #0050F0 | PR flag blue, focus indicators |
-| `--cst-color-teal` | #115E67 | Primary (PANTONE 5473 C) |
-| `--cst-color-coral` | #E56A54 | Secondary/CTA (PANTONE 7416 C) |
+| `--cst-color-green` | #7FA35B | Primary — verde institucional |
+| `--cst-color-navy` | #1F2E54 | Secondary — azul autoridad |
+| `--cst-color-blue` | #3B82C4 | Focus indicators, info, links |
+| `--cst-color-red` | #EE0000 | Danger, alerts |
+| `--cst-color-green-light` | #A9C58E | Verde claro, accents |
+| `--cst-color-green-dark` | #5E7C3A | Verde oscuro, buttons, normal-text links |
 | `--cst-color-white` | #FFFFFF | Backgrounds |
 
 ### Theming

@@ -63,16 +63,20 @@ cst-portals/
 - Support high contrast mode, forced colors, reduced motion
 - Comply with WCAG 2.1 AA, Ley 229-2003, Section 508
 
-## PRITS-004 Design Tokens (Cannabis Portal)
+## Design Tokens — Guía de Marca CST (Cannabis Portal)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--cst-color-teal` | `#115E67` | Primary (headers, nav) |
-| `--cst-color-coral` | `#E56A54` | Secondary (CTAs, active) |
-| `--cst-color-blue` | `#0050F0` | Focus indicators, links |
+| `--cst-color-green` | `#7FA35B` | Primary — verde institucional (headers, nav) |
+| `--cst-color-navy` | `#1F2E54` | Secondary — azul autoridad (CTAs, active) |
+| `--cst-color-blue` | `#3B82C4` | Focus indicators, info, links |
 | `--cst-color-red` | `#EE0000` | Danger, alerts |
-| Body font | Montserrat | Google Fonts |
-| Heading font | Cormorant Garamond | Google Fonts |
+| `--cst-color-green-light` | `#A9C58E` | Verde claro (accents) |
+| `--cst-color-green-dark` | `#5E7C3A` | Verde oscuro (buttons, normal-text links) |
+| Body font | Open Sans | Google Fonts |
+| Heading font | Montserrat | Google Fonts |
+
+**Contrast note:** `#7FA35B` on white = 3.6:1 (large text/UI only). For normal-sized text, use `#5E7C3A` (5.5:1) or `#1F2E54` (12.2:1).
 
 ## Key Conventions
 - Page templates go in `page-templates/template-*.php`

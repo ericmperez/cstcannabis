@@ -16,6 +16,55 @@ class CST_Settings {
         add_action( 'admin_init', [ $this, 'register_settings' ] );
     }
 
+    /**
+     * Get the encryption key — derived from AUTH_KEY for portability.
+     */
+    private static function get_encryption_key(): string {
+        $auth_key = defined( 'AUTH_KEY' ) ? AUTH_KEY : 'cst-default-key-change-me';
+        return substr( hash( 'sha256', $auth_key, true ), 0, SODIUM_CRYPTO_SECRETBOX_KEYBYTES );
+    }
+
+    /**
+     * Encrypt a value before storing in wp_options.
+     */
+    public static function encrypt( string $value ): string {
+        if ( empty( $value ) || ! function_exists( 'sodium_crypto_secretbox' ) ) {
+            return $value;
+        }
+
+        $nonce      = random_bytes( SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
+        $ciphertext = sodium_crypto_secretbox( $value, $nonce, self::get_encryption_key() );
+
+        return 'enc:' . base64_encode( $nonce . $ciphertext );
+    }
+
+    /**
+     * Decrypt a value retrieved from wp_options.
+     */
+    public static function decrypt( string $value ): string {
+        if ( empty( $value ) || strpos( $value, 'enc:' ) !== 0 || ! function_exists( 'sodium_crypto_secretbox_open' ) ) {
+            return $value; // Not encrypted or sodium unavailable — return as-is.
+        }
+
+        $decoded = base64_decode( substr( $value, 4 ) );
+        if ( $decoded === false || strlen( $decoded ) < SODIUM_CRYPTO_SECRETBOX_NONCEBYTES ) {
+            return '';
+        }
+
+        $nonce      = substr( $decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
+        $ciphertext = substr( $decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES );
+        $plaintext  = sodium_crypto_secretbox_open( $ciphertext, $nonce, self::get_encryption_key() );
+
+        return $plaintext !== false ? $plaintext : '';
+    }
+
+    /**
+     * Get a decrypted API key from options.
+     */
+    public static function get_api_key( string $option_name = 'cst_chatbot_api_key' ): string {
+        return self::decrypt( get_option( $option_name, '' ) );
+    }
+
     public function add_menu_page(): void {
         add_options_page(
             __( 'Configuración CST', 'cst-core' ),
@@ -61,7 +110,7 @@ class CST_Settings {
 
         register_setting( 'cst_settings', 'cst_chatbot_api_key', [
             'type'              => 'string',
-            'sanitize_callback' => 'sanitize_text_field',
+            'sanitize_callback' => [ $this, 'sanitize_and_encrypt_key' ],
             'default'           => '',
         ] );
 
@@ -121,12 +170,30 @@ class CST_Settings {
     public function render_password_field( array $args ): void {
         $id    = $args['id'];
         $value = get_option( $id, '' );
+        $has_key = ! empty( $value );
         printf(
-            '<input type="password" id="%s" name="%s" value="%s" class="regular-text" autocomplete="off">',
+            '<input type="password" id="%s" name="%s" value="" class="regular-text" autocomplete="off" placeholder="%s">',
             esc_attr( $id ),
             esc_attr( $id ),
-            esc_attr( $value )
+            $has_key ? esc_attr__( '••••••••  (guardada — dejar vacío para mantener)', 'cst-core' ) : ''
         );
+        if ( $has_key ) {
+            echo '<p class="description">' . esc_html__( 'La clave API está guardada de forma encriptada. Introduzca un nuevo valor para cambiarla.', 'cst-core' ) . '</p>';
+        }
+    }
+
+    /**
+     * Sanitize and encrypt the API key before saving.
+     */
+    public function sanitize_and_encrypt_key( string $value ): string {
+        $value = sanitize_text_field( $value );
+
+        // If empty, keep the existing encrypted value.
+        if ( empty( $value ) ) {
+            return get_option( 'cst_chatbot_api_key', '' );
+        }
+
+        return self::encrypt( $value );
     }
 
     public function render_checkbox( array $args ): void {

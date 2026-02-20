@@ -12,23 +12,29 @@
 */
 
 /* ==========================================================================
-   GUIDI / PRITS-004 Design Tokens
+   CST Cannabis Portal — Design Tokens (Guía de Marca)
    ========================================================================== */
 
 :root {
-    /* --- Colors: PR Flag + PANTONE accents --- */
+    /* --- Colors: Institutional palette --- */
     --cst-color-red:         #EE0000;
-    --cst-color-blue:        #0050F0;
+    --cst-color-blue:        #3B82C4;
     --cst-color-white:       #FFFFFF;
-    --cst-color-teal:        #115E67; /* PANTONE 5473 C */
-    --cst-color-coral:       #E56A54; /* PANTONE 7416 C */
+    --cst-color-green:       #7FA35B; /* Verde institucional */
+    --cst-color-navy:        #1F2E54; /* Azul autoridad */
 
     /* Semantic tokens */
-    --cst-color-primary:     var(--cst-color-teal);
-    --cst-color-secondary:   var(--cst-color-coral);
+    --cst-color-primary:     var(--cst-color-green);
+    --cst-color-secondary:   var(--cst-color-navy);
     --cst-color-accent:      var(--cst-color-blue);
     --cst-color-danger:      var(--cst-color-red);
     --cst-color-focus:       var(--cst-color-blue);
+
+    /* Functional UI status tokens */
+    --cst-color-success:     #2E7D32;
+    --cst-color-warning:     #E0B400;
+    --cst-color-error:       #B23A3A;
+    --cst-color-info:        #3B82C4;
 
     /* Neutrals */
     --cst-color-black:       #1A1A1A;
@@ -42,8 +48,8 @@
     --cst-color-text-muted:  var(--cst-color-gray-500);
 
     /* --- Typography --- */
-    --cst-font-body:         'Montserrat', system-ui, -apple-system, sans-serif;
-    --cst-font-heading:      'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --cst-font-body:         'Open Sans', system-ui, -apple-system, sans-serif;
+    --cst-font-heading:      'Montserrat', system-ui, -apple-system, sans-serif;
     --cst-font-size-base:    1rem;      /* 16px */
     --cst-font-size-sm:      0.875rem;  /* 14px */
     --cst-font-size-lg:      1.125rem;  /* 18px */
@@ -75,11 +81,11 @@
     --cst-transition:        0.2s ease-in-out;
 
     /* --- Gradients --- */
-    --cst-gradient-primary:      linear-gradient(135deg, #115E67 0%, #1a8a96 100%);
-    --cst-gradient-hero:         linear-gradient(135deg, rgba(17,94,103,0.92) 0%, rgba(17,94,103,0.75) 50%, rgba(26,138,150,0.85) 100%);
-    --cst-gradient-accent:       linear-gradient(135deg, #115E67 0%, #E56A54 100%);
+    --cst-gradient-primary:      linear-gradient(135deg, #5E7C3A 0%, #A9C58E 100%);
+    --cst-gradient-hero:         linear-gradient(135deg, rgba(127,163,91,0.92) 0%, rgba(127,163,91,0.75) 50%, rgba(169,197,142,0.85) 100%);
+    --cst-gradient-accent:       linear-gradient(135deg, #7FA35B 0%, #1F2E54 100%);
     --cst-gradient-section:      linear-gradient(180deg, #F8F9FA 0%, #EEF1F3 100%);
-    --cst-gradient-card-border:  linear-gradient(135deg, var(--cst-color-teal), var(--cst-color-coral));
+    --cst-gradient-card-border:  linear-gradient(135deg, var(--cst-color-green), var(--cst-color-navy));
 
     /* --- Glass / blur --- */
     --cst-glass-bg:          rgba(255, 255, 255, 0.85);
@@ -88,8 +94,8 @@
 
     /* --- Enhanced shadows --- */
     --cst-shadow-xl:             0 12px 40px rgba(0, 0, 0, 0.15);
-    --cst-shadow-glow-primary:   0 4px 20px rgba(17, 94, 103, 0.35);
-    --cst-shadow-glow-coral:     0 4px 20px rgba(229, 106, 84, 0.35);
+    --cst-shadow-glow-primary:   0 4px 20px rgba(127, 163, 91, 0.35);
+    --cst-shadow-glow-navy:      0 4px 20px rgba(31, 46, 84, 0.35);
 
     /* --- Timing --- */
     --cst-transition-slow:       0.4s ease;
@@ -99,39 +105,39 @@
     --cst-divider-height: 48px;
 
     /* --- Glow shadows --- */
-    --cst-shadow-glow-accent:     0 4px 20px rgba(0, 80, 240, 0.25);
-    --cst-shadow-glow-teal-light: 0 4px 20px rgba(26, 138, 150, 0.25);
+    --cst-shadow-glow-accent:     0 4px 20px rgba(59, 130, 196, 0.25);
+    --cst-shadow-glow-green-light: 0 4px 20px rgba(169, 197, 142, 0.25);
 
     /* --- Color variants --- */
-    --cst-color-teal-light:  #1a8a96;
-    --cst-color-teal-dark:   #0d4e55;
-    --cst-color-coral-light: #f0897a;
+    --cst-color-green-light: #A9C58E;
+    --cst-color-green-dark:  #5E7C3A;
+    --cst-color-navy-light:  #3A4D7A;
 
     /* --- Government banner --- */
     --cst-banner-bg:         var(--cst-color-gray-900);
     --cst-banner-text:       var(--cst-color-white);
 
     /* --- Gradient text --- */
-    --cst-gradient-text:     linear-gradient(135deg, #115E67 0%, #E56A54 100%);
+    --cst-gradient-text:     linear-gradient(135deg, #7FA35B 0%, #1F2E54 100%);
 
     /* --- Callout backgrounds --- */
-    --cst-callout-bg-default: linear-gradient(135deg, rgba(17,94,103,0.06) 0%, rgba(17,94,103,0.02) 100%);
-    --cst-callout-bg-warning: linear-gradient(135deg, rgba(229,106,84,0.06) 0%, rgba(229,106,84,0.02) 100%);
-    --cst-callout-bg-info:    linear-gradient(135deg, rgba(0,80,240,0.06) 0%, rgba(0,80,240,0.02) 100%);
+    --cst-callout-bg-default: linear-gradient(135deg, rgba(127,163,91,0.06) 0%, rgba(127,163,91,0.02) 100%);
+    --cst-callout-bg-warning: linear-gradient(135deg, rgba(31,46,84,0.06) 0%, rgba(31,46,84,0.02) 100%);
+    --cst-callout-bg-info:    linear-gradient(135deg, rgba(59,130,196,0.06) 0%, rgba(59,130,196,0.02) 100%);
 }
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
     :root {
-        --cst-color-primary:    #0A4A52;
-        --cst-color-secondary:  #C43E2A;
+        --cst-color-primary:    #3D5A1E;
+        --cst-color-secondary:  #0F1A36;
         --cst-shadow-sm:        0 0 0 1px var(--cst-color-black);
         --cst-shadow-md:        0 0 0 2px var(--cst-color-black);
         --cst-shadow-xl:        0 0 0 3px var(--cst-color-black);
         --cst-shadow-glow-primary:    none;
-        --cst-shadow-glow-coral:      none;
+        --cst-shadow-glow-navy:       none;
         --cst-shadow-glow-accent:     none;
-        --cst-shadow-glow-teal-light: none;
+        --cst-shadow-glow-green-light: none;
         --cst-gradient-primary:    var(--cst-color-primary);
         --cst-gradient-hero:       rgba(0,0,0,0.85);
         --cst-gradient-accent:     var(--cst-color-primary);
@@ -141,8 +147,8 @@
         --cst-glass-blur:          none;
         --cst-glass-border:        2px solid var(--cst-color-black);
         --cst-gradient-text:       var(--cst-color-primary);
-        --cst-callout-bg-default:  rgba(17,94,103,0.08);
-        --cst-callout-bg-warning:  rgba(229,106,84,0.08);
-        --cst-callout-bg-info:     rgba(0,80,240,0.08);
+        --cst-callout-bg-default:  rgba(127,163,91,0.08);
+        --cst-callout-bg-warning:  rgba(31,46,84,0.08);
+        --cst-callout-bg-info:     rgba(59,130,196,0.08);
     }
 }

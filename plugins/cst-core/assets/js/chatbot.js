@@ -97,13 +97,44 @@
         /*  Messages                                                      */
         /* -------------------------------------------------------------- */
 
+        /**
+         * Sanitize HTML — allow only safe tags for bot messages.
+         */
+        function sanitizeHTML(html) {
+            var temp = document.createElement('div');
+            temp.textContent = html; // Encode everything first.
+            var encoded = temp.innerHTML;
+
+            // Now selectively allow safe tags: <a>, <strong>, <em>, <br>, <p>, <ul>, <ol>, <li>.
+            var safeHTML = html
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+
+            // Re-allow whitelisted tags.
+            var allowedTags = [
+                { open: /&lt;(a)\s+href=&quot;(https?:\/\/[^&]*)&quot;(?:\s+target=&quot;_blank&quot;)?(?:\s+rel=&quot;[^&]*&quot;)?\s*&gt;/gi,
+                  replace: function(m, tag, url) { return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">'; } },
+                { open: /&lt;\/(a)&gt;/gi, replace: '</$1>' },
+                { open: /&lt;(strong|em|b|i|br|p|ul|ol|li)&gt;/gi, replace: '<$1>' },
+                { open: /&lt;\/(strong|em|b|i|p|ul|ol|li)&gt;/gi, replace: '</$1>' },
+                { open: /&lt;(br)\s*\/?&gt;/gi, replace: '<br>' }
+            ];
+
+            allowedTags.forEach(function(rule) {
+                safeHTML = safeHTML.replace(rule.open, rule.replace);
+            });
+
+            return safeHTML;
+        }
+
         function addMessage(text, sender) {
             var div = document.createElement('div');
             div.className = 'cst-chatbot__message cst-chatbot__message--' + sender;
 
             if (sender === 'bot') {
-                // Allow simple HTML (links) in bot messages.
-                div.innerHTML = text;
+                div.innerHTML = sanitizeHTML(text);
             } else {
                 div.textContent = text;
             }

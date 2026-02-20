@@ -138,6 +138,6 @@ JS;
      * Inline focus-visible styles so they load before paint.
      */
     public function inline_focus_styles(): void {
-        echo '<style>:focus-visible{outline:3px solid var(--cst-color-focus,#0050F0);outline-offset:2px;}</style>' . "\n";
+        echo '<style>:focus-visible{outline:3px solid var(--cst-color-focus,#3B82C4);outline-offset:2px;}</style>' . "\n";
     }
 }

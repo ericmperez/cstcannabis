@@ -97,20 +97,24 @@ Each portal has these sections:
 
 ---
 
-## 4. PRITS-004 / GUIDI Design Guidelines
+## 4. Guía de Marca CST — Design Guidelines
 
-All government portals under `.pr.gov` must comply with PRITS-004 standards and the Puerto Rico Government Brand Style Book (GUIDI).
+All government portals under `.pr.gov` must comply with PRITS-004 standards and the CST Plataforma Educativa brand guide.
 
 ### 4.1 Color Palette
 
-| Token | Hex | PANTONE | Usage |
-|-------|-----|---------|-------|
-| `--cst-color-teal` | `#115E67` | 5473 C | Primary — headers, nav, accents |
-| `--cst-color-coral` | `#E56A54` | 7416 C | Secondary — CTAs, active states |
-| `--cst-color-blue` | `#0050F0` | — | PR flag blue — focus indicators, links |
-| `--cst-color-red` | `#EE0000` | — | PR flag red — danger, alerts |
-| `--cst-color-white` | `#FFFFFF` | — | Backgrounds |
-| Neutrals | `#212529` → `#F8F9FA` | — | Text and surface scale |
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `--cst-color-green` | `#7FA35B` | Primary — verde institucional (headers, nav, accents) |
+| `--cst-color-navy` | `#1F2E54` | Secondary — azul autoridad (CTAs, active states) |
+| `--cst-color-blue` | `#3B82C4` | Focus indicators, info, links |
+| `--cst-color-red` | `#EE0000` | Danger, alerts |
+| `--cst-color-green-light` | `#A9C58E` | Verde claro — accents, light backgrounds |
+| `--cst-color-green-dark` | `#5E7C3A` | Verde oscuro — buttons, normal-text links |
+| `--cst-color-white` | `#FFFFFF` | Backgrounds |
+| Neutrals | `#212529` → `#F8F9FA` | Text and surface scale |
+
+**Contrast note:** `#7FA35B` on white = 3.6:1 (large text/UI only). For normal-sized text, use `#5E7C3A` (5.5:1) or `#1F2E54` (12.2:1).
 
 The Four Tracks portal will override these tokens with its own branding while keeping the same CSS custom property names.
 
@@ -118,8 +122,8 @@ The Four Tracks portal will override these tokens with its own branding while ke
 
 | Role | Font | Source |
 |------|------|--------|
-| Body | Montserrat | Google Fonts |
-| Headings | Cormorant Garamond | Google Fonts |
+| Body | Open Sans | Google Fonts |
+| Headings | Montserrat | Google Fonts |
 
 Size scale: 14px (sm) → 16px (base) → 18px (lg) → 24px (xl) → 32px (2xl) → 40px (3xl) → 48px (4xl)
 
@@ -135,9 +139,9 @@ Size scale: 14px (sm) → 16px (base) → 18px (lg) → 24px (xl) → 32px (2xl)
 
 ### 4.5 Navigation (Government Style)
 - USA.gov-inspired horizontal nav bar
-- Desktop: white bg, shadow, semibold links, teal hover underline, coral active state
-- Dropdowns: white panel, teal top accent, left-border hover indicator
-- Mobile (<=768px): teal hamburger (44x44px), full-width drawer, stacked links
+- Desktop: white bg, shadow, semibold links, green hover underline, navy active state
+- Dropdowns: white panel, green top accent, left-border hover indicator
+- Mobile (<=768px): green hamburger (44x44px), full-width drawer, stacked links
 - Keyboard: Arrow keys, Tab, Escape — full keyboard navigation
 - ARIA attributes: `aria-current="page"`, `aria-expanded`, `role="navigation"`
 

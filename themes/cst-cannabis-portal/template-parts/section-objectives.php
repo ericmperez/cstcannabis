@@ -33,7 +33,7 @@ $objectives = [
     <div class="cst-container">
         <?php cst_section_heading(
             __( 'Nuestros objetivos', 'cst-cannabis' ),
-            __( 'Trabajamos para una Puerto Rico más segura e informada.', 'cst-cannabis' )
+            __( 'Trabajamos para un Puerto Rico más seguro e informado.', 'cst-cannabis' )
         ); ?>
 
         <div class="cst-objectives-grid">

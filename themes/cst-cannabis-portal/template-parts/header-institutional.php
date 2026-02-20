@@ -16,23 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="cst-institutional-header__branding">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cst-institutional-header__logo-link"
                    aria-label="<?php esc_attr_e( 'Ir a la página principal', 'cst-cannabis' ); ?>">
-                    <?php
-                    $custom_logo_id = get_theme_mod( 'custom_logo' );
-                    if ( $custom_logo_id ) :
-                        echo wp_get_attachment_image( $custom_logo_id, 'medium', false, [
-                            'class' => 'cst-institutional-header__seal',
-                            'alt'   => esc_attr__( 'Sello de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
-                        ] );
-                    else :
-                    ?>
-                        <span class="cst-institutional-header__seal-placeholder" aria-hidden="true">CST</span>
-                    <?php endif; ?>
+                    <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/cst-logo.svg' ); ?>"
+                         class="cst-institutional-header__seal"
+                         alt="<?php esc_attr_e( 'Sello de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ); ?>"
+                         width="861" height="280" />
                 </a>
 
                 <div class="cst-institutional-header__titles">
-                    <span class="cst-institutional-header__agency">
-                        <?php esc_html_e( 'Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ); ?>
-                    </span>
                     <span class="cst-institutional-header__portal-name">
                         <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
                     </span>

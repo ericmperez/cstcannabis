@@ -11,19 +11,19 @@
 
     // Color-blind safe palette (6 colors).
     var COLORS = {
-        teal:      '#115E67',
-        coral:     '#E56A54',
-        blue:      '#0050F0',
-        tealLight: '#1a8a96',
-        gold:      '#C49A1A',
-        purple:    '#6B4C9A'
+        green:      '#7FA35B',
+        navy:       '#1F2E54',
+        blue:       '#3B82C4',
+        greenLight: '#A9C58E',
+        gold:       '#C49A1A',
+        purple:     '#6B4C9A'
     };
 
     var COLOR_ARRAY = [
-        COLORS.teal,
-        COLORS.coral,
+        COLORS.green,
+        COLORS.navy,
         COLORS.blue,
-        COLORS.tealLight,
+        COLORS.greenLight,
         COLORS.gold,
         COLORS.purple
     ];
@@ -179,7 +179,7 @@
         });
 
         // Set Chart.js defaults.
-        Chart.defaults.font.family = "'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+        Chart.defaults.font.family = "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
         Chart.defaults.font.size = 13;
         Chart.defaults.color = '#495057';
         Chart.defaults.plugins.legend.position = 'bottom';

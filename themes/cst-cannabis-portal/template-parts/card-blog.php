@@ -19,11 +19,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="cst-card__body">
         <div class="cst-card__meta">
             <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-                <?php echo esc_html( get_the_date() ); ?>
+                <?php
+                printf(
+                    '%s de %s de %s',
+                    esc_html( get_the_date( 'j' ) ),
+                    esc_html( get_the_date( 'F' ) ),
+                    esc_html( get_the_date( 'Y' ) )
+                );
+                ?>
             </time>
             <?php
             $categories = get_the_category();
-            if ( ! empty( $categories ) ) :
+            if ( ! empty( $categories ) && 'Uncategorized' !== $categories[0]->name ) :
             ?>
                 <span class="cst-card__category">
                     <?php echo esc_html( $categories[0]->name ); ?>

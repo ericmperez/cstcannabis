@@ -7,7 +7,7 @@
     bottom: 24px;
     left: 24px;
     z-index: 9999;
-    font-family: var(--cst-font-body, 'Montserrat', system-ui, sans-serif);
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
 }
 
 /* --- Toggle Button --- */
@@ -18,7 +18,7 @@
     justify-content: center;
     width: 56px;
     height: 56px;
-    background-color: var(--cst-color-primary, #115E67);
+    background-color: var(--cst-color-primary, #7FA35B);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -33,7 +33,7 @@
 }
 
 .cst-chatbot__toggle:focus-visible {
-    outline: 3px solid var(--cst-color-focus, #0050F0);
+    outline: 3px solid var(--cst-color-focus, #3B82C4);
     outline-offset: 3px;
 }
 
@@ -66,7 +66,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px;
-    background: var(--cst-color-primary, #115E67);
+    background: var(--cst-color-primary, #7FA35B);
     color: #fff;
 }
 
@@ -127,13 +127,13 @@
 
 .cst-chatbot__message--user {
     align-self: flex-end;
-    background: var(--cst-color-primary, #115E67);
+    background: var(--cst-color-primary, #7FA35B);
     color: #fff;
     border-bottom-right-radius: 4px;
 }
 
 .cst-chatbot__message--bot a {
-    color: var(--cst-color-primary, #115E67);
+    color: var(--cst-color-primary, #7FA35B);
     text-decoration: underline;
 }
 
@@ -192,8 +192,8 @@
 }
 
 .cst-chatbot__input:focus {
-    border-color: var(--cst-color-primary, #115E67);
-    box-shadow: 0 0 0 2px rgba(17, 94, 103, 0.2);
+    border-color: var(--cst-color-primary, #7FA35B);
+    box-shadow: 0 0 0 2px rgba(127, 163, 91, 0.2);
 }
 
 .cst-chatbot__send {
@@ -202,7 +202,7 @@
     justify-content: center;
     width: 44px;
     height: 44px;
-    background: var(--cst-color-primary, #115E67);
+    background: var(--cst-color-primary, #7FA35B);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -212,11 +212,11 @@
 }
 
 .cst-chatbot__send:hover {
-    background: #0d4e55;
+    background: #5E7C3A;
 }
 
 .cst-chatbot__send:focus-visible {
-    outline: 3px solid var(--cst-color-focus, #0050F0);
+    outline: 3px solid var(--cst-color-focus, #3B82C4);
     outline-offset: 2px;
 }
 

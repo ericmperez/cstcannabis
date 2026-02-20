@@ -58,7 +58,7 @@ class CST_Chatbot {
 
         // Try LLM API first if configured.
         $api_endpoint = get_option( 'cst_chatbot_api_endpoint', '' );
-        $api_key      = get_option( 'cst_chatbot_api_key', '' );
+        $api_key      = CST_Settings::get_api_key();
 
         if ( $api_endpoint && $api_key ) {
             $reply = $this->query_llm( $message, $api_endpoint, $api_key );
