@@ -20,4 +20,8 @@ debug.log
 uploads/
 
 # Build artifacts
+build/
 *.zip
+
+# Production credentials (never commit actual wp-config.php)
+wp-config.php
