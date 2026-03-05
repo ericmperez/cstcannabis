@@ -60,7 +60,10 @@
 /* Ensure sufficient focus contrast on dark backgrounds */
 .cst-gov-banner :focus-visible,
 .cst-institutional-footer :focus-visible,
-.cst-hero :focus-visible {
+.cst-hero :focus-visible,
+.cst-trust-strip :focus-visible,
+.cst-section--stats-dark :focus-visible,
+.cst-enrollment-cta :focus-visible {
     outline-color: var(--cst-color-white);
 }
 
@@ -122,7 +125,9 @@ nav a,
     .cst-footer-widget__title::after,
     .cst-stat-card__value::after,
     .cst-hero__wave,
-    .cst-hero__float {
+    .cst-hero__float,
+    .cst-enrollment-cta__pattern,
+    .cst-objective-card[data-step]::before {
         display: none;
     }
 
@@ -136,6 +141,39 @@ nav a,
     /* Hide hero illustration */
     .cst-hero__illustration {
         display: none;
+    }
+
+    /* Dark stats — solid borders on glass cards */
+    .cst-section--stats-dark .cst-stat-card {
+        background: var(--cst-color-secondary);
+        border: 2px solid var(--cst-color-white);
+        backdrop-filter: none;
+    }
+
+    /* Enrollment CTA — solid background */
+    .cst-enrollment-cta {
+        background: var(--cst-color-secondary);
+    }
+
+    /* Trust strip — solid border separators */
+    .cst-trust-strip {
+        border-top: 2px solid var(--cst-color-black);
+        border-bottom: 2px solid var(--cst-color-black);
+    }
+
+    /* Hero badges — solid borders */
+    .cst-hero__badge {
+        border: 1px solid var(--cst-color-white);
+        backdrop-filter: none;
+    }
+
+    /* Course features — solid borders */
+    .cst-course-feature {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    .cst-course-features__card {
+        border: 2px solid var(--cst-color-white);
     }
 
     /* Replace gradient icon backgrounds with solid border */
@@ -267,7 +305,9 @@ nav a,
     .cst-footer-widget__title::after,
     .cst-stat-card__value::after,
     .cst-hero__wave,
-    .cst-hero__float {
+    .cst-hero__float,
+    .cst-enrollment-cta__pattern,
+    .cst-objective-card[data-step]::before {
         display: none;
     }
 
@@ -288,7 +328,8 @@ nav a,
     .cst-stat-card__icon,
     .cst-statistics__icon,
     .cst-contact-card__icon,
-    .cst-course-feature__icon {
+    .cst-course-feature__icon,
+    .cst-course-feature__check {
         background: Canvas;
         border: 2px solid CanvasText;
     }
@@ -296,6 +337,60 @@ nav a,
     .cst-btn--outline-hero {
         background: transparent;
         border: 2px solid ButtonText;
+    }
+
+    /* Trust strip — system colors */
+    .cst-trust-strip {
+        background: Canvas;
+        color: CanvasText;
+        border-top: 2px solid CanvasText;
+        border-bottom: 2px solid CanvasText;
+    }
+
+    /* Dark stats — system colors */
+    .cst-section--stats-dark {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-section--stats-dark .cst-stat-card {
+        background: Canvas;
+        border: 1px solid CanvasText;
+        backdrop-filter: none;
+    }
+
+    .cst-section--stats-dark .cst-stat-card__value,
+    .cst-section--stats-dark .cst-stat-card__label,
+    .cst-section--stats-dark .cst-stat-card__unit,
+    .cst-section--stats-dark .cst-stat-card__source {
+        color: CanvasText;
+    }
+
+    /* Enrollment CTA — system colors */
+    .cst-enrollment-cta {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-enrollment-cta__title {
+        color: CanvasText;
+    }
+
+    /* Hero badges — system colors */
+    .cst-hero__badge {
+        border: 1px solid ButtonText;
+        backdrop-filter: none;
+    }
+
+    /* Course features — system colors */
+    .cst-course-feature {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-course-features__card {
+        background: Canvas;
+        border: 2px solid CanvasText;
+        color: CanvasText;
     }
 
     /* Back-to-top — system colors */
@@ -365,6 +460,17 @@ nav a,
     /* Stop hero float animations */
     .cst-hero__float {
         animation: none;
+    }
+
+    /* Stop scroll indicator bounce */
+    .cst-hero__scroll-indicator {
+        animation: none;
+        display: none;
+    }
+
+    /* Disable step number transitions on objectives */
+    .cst-objective-card[data-step]::before {
+        transition: none;
     }
 }
 

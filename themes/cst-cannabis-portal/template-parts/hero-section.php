@@ -66,6 +66,23 @@ $style = $image_url ? ' style="background-image:url(' . esc_url( $image_url ) . 
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+
+            <?php if ( ! empty( $args['trust_badges'] ) ) : ?>
+                <div class="cst-hero__badges" aria-label="<?php esc_attr_e( 'Beneficios del curso', 'cst-cannabis' ); ?>">
+                    <?php foreach ( $args['trust_badges'] as $badge ) : ?>
+                        <span class="cst-hero__badge">
+                            <span class="cst-hero__badge-icon" aria-hidden="true"><?php echo $badge['icon']; ?></span>
+                            <?php echo esc_html( $badge['label'] ); ?>
+                        </span>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
+
+    <?php if ( ! empty( $args['scroll_indicator'] ) ) : ?>
+        <div class="cst-hero__scroll-indicator" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+    <?php endif; ?>
 </section>

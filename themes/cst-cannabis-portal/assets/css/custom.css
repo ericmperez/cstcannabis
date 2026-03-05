@@ -510,6 +510,17 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: calc(-50vw + 50%);
 }
 
+.cst-hero--home {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cst-hero--home .cst-hero__title {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+}
+
 .cst-hero--page {
     padding-block: var(--cst-space-3xl);
 }
@@ -637,6 +648,107 @@ h1, h2, h3, h4, h5, h6 {
     background-repeat: no-repeat;
     pointer-events: none;
     z-index: 2;
+}
+
+/* --- Hero trust badges --- */
+
+.cst-hero__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cst-space-md);
+    justify-content: center;
+    margin-top: var(--cst-space-xl);
+}
+
+.cst-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--cst-space-xs);
+    padding: var(--cst-space-xs) var(--cst-space-md);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    font-size: var(--cst-font-size-sm);
+    font-weight: 600;
+    color: var(--cst-color-white);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.cst-hero__badge-icon {
+    font-size: 1.125rem;
+    line-height: 1;
+}
+
+/* --- Hero scroll indicator --- */
+
+.cst-hero__scroll-indicator {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    color: var(--cst-color-white);
+    opacity: 0.7;
+    animation: cst-scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes cst-scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ==========================================================================
+   Trust Strip
+   ========================================================================== */
+
+.cst-trust-strip {
+    background-color: var(--cst-color-secondary);
+    color: var(--cst-color-white);
+    padding-block: var(--cst-space-lg);
+    /* Break out of GP container */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.cst-trust-strip__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--cst-space-2xl);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.cst-trust-strip__item {
+    display: flex;
+    align-items: center;
+    gap: var(--cst-space-sm);
+    font-weight: 600;
+    font-size: var(--cst-font-size-sm);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.cst-trust-strip__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+    .cst-trust-strip__list {
+        gap: var(--cst-space-lg) var(--cst-space-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .cst-trust-strip__list {
+        flex-direction: column;
+        gap: var(--cst-space-md);
+    }
 }
 
 /* ==========================================================================
@@ -994,11 +1106,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-objective-card {
     text-align: center;
-    padding: var(--cst-space-xl);
+    padding: var(--cst-space-2xl) var(--cst-space-xl);
     background: var(--cst-color-white);
     border-radius: var(--cst-border-radius-lg);
     box-shadow: var(--cst-shadow-sm);
     transition: box-shadow var(--cst-transition-slow), transform var(--cst-transition-spring);
+    position: relative;
+    overflow: hidden;
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(to bottom, var(--cst-color-primary), var(--cst-color-secondary)) 1;
+}
+
+/* Large faded step number */
+.cst-objective-card[data-step]::before {
+    content: "0" attr(data-step);
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-family: var(--cst-font-heading);
+    font-size: 7.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--cst-color-primary);
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .cst-objective-card:hover {
@@ -1035,6 +1167,110 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-objective-card__desc {
     color: var(--cst-color-text-muted);
+}
+
+/* ==========================================================================
+   Course Features
+   ========================================================================== */
+
+.cst-course-features {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: var(--cst-space-3xl);
+    align-items: start;
+}
+
+.cst-course-features__content .cst-section-heading {
+    text-align: left;
+}
+
+.cst-course-features__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--cst-space-md);
+}
+
+.cst-course-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--cst-space-md);
+    padding: var(--cst-space-md) var(--cst-space-lg);
+    background: var(--cst-color-white);
+    border-radius: var(--cst-border-radius);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: box-shadow var(--cst-transition);
+}
+
+.cst-course-feature:hover {
+    box-shadow: var(--cst-shadow-sm);
+}
+
+.cst-course-feature__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(127, 163, 91, 0.12);
+    color: var(--cst-color-primary);
+    margin-top: 2px;
+}
+
+.cst-course-feature__text {
+    font-size: var(--cst-font-size-base);
+    line-height: 1.6;
+    color: var(--cst-color-text);
+}
+
+.cst-course-feature__label {
+    color: var(--cst-color-secondary);
+}
+
+.cst-course-features__aside {
+    position: sticky;
+    top: 100px;
+}
+
+.cst-course-features__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cst-space-lg);
+    padding: var(--cst-space-3xl) var(--cst-space-xl);
+    background: linear-gradient(135deg, var(--cst-color-secondary), #344A78);
+    border-radius: var(--cst-border-radius-lg);
+    color: var(--cst-color-white);
+    text-align: center;
+    box-shadow: var(--cst-shadow-md);
+}
+
+.cst-course-features__card-label {
+    font-family: var(--cst-font-heading);
+    font-size: var(--cst-font-size-lg);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+    .cst-course-features {
+        grid-template-columns: 1fr;
+        gap: var(--cst-space-xl);
+    }
+
+    .cst-course-features__aside {
+        position: static;
+    }
+
+    .cst-course-features__card {
+        padding: var(--cst-space-xl);
+        flex-direction: row;
+    }
 }
 
 /* ==========================================================================
@@ -1142,6 +1378,74 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.8;
 }
 
+/* --- Stats dark background (home page) --- */
+
+.cst-section--stats-dark {
+    background: var(--cst-color-secondary);
+    /* Break out of GP container */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding-inline: var(--cst-space-xl);
+}
+
+.cst-section--stats-dark .cst-section-heading__title {
+    color: var(--cst-color-white);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--cst-color-white);
+}
+
+.cst-section--stats-dark .cst-section-heading__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.cst-section--stats-dark .cst-section-heading__title::after {
+    background: var(--cst-color-white);
+    opacity: 0.4;
+}
+
+.cst-section--stats-dark .cst-stat-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.cst-section--stats-dark .cst-stat-card__value {
+    color: var(--cst-color-white);
+}
+
+.cst-section--stats-dark .cst-stat-card__unit {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.cst-section--stats-dark .cst-stat-card__label {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.cst-section--stats-dark .cst-stat-card__source {
+    color: rgba(255, 255, 255, 0.6);
+    border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.cst-section--stats-dark .cst-stat-card:hover {
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.cst-section--stats-dark .cst-btn--outline {
+    color: var(--cst-color-white);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.cst-section--stats-dark .cst-btn--outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--cst-color-white);
+    color: var(--cst-color-white);
+    box-shadow: none;
+}
+
 /* --- Stat card responsive --- */
 
 @media (max-width: 1024px) {
@@ -1205,6 +1509,73 @@ h1, h2, h3, h4, h5, h6 {
     .cst-stat-card__source {
         width: 100%;
         margin-top: var(--cst-space-xs);
+    }
+}
+
+/* ==========================================================================
+   Enrollment CTA
+   ========================================================================== */
+
+.cst-enrollment-cta {
+    position: relative;
+    background: linear-gradient(135deg, var(--cst-color-secondary) 0%, #344A78 100%);
+    color: var(--cst-color-white);
+    padding-block: var(--cst-space-4xl);
+    overflow: hidden;
+    /* Break out of GP container */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+.cst-enrollment-cta__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+}
+
+.cst-enrollment-cta__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: var(--cst-container-narrow);
+    margin-inline: auto;
+}
+
+.cst-enrollment-cta__title {
+    font-size: var(--cst-font-size-3xl);
+    font-weight: 700;
+    margin-bottom: var(--cst-space-md);
+    color: var(--cst-color-white);
+}
+
+.cst-enrollment-cta__subtitle {
+    font-size: var(--cst-font-size-xl);
+    opacity: 0.9;
+    margin-bottom: var(--cst-space-xl);
+}
+
+.cst-enrollment-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cst-space-md);
+    justify-content: center;
+    align-items: center;
+}
+
+.cst-btn--lg {
+    font-size: var(--cst-font-size-lg);
+    padding: var(--cst-space-md) var(--cst-space-2xl);
+}
+
+@media (max-width: 480px) {
+    .cst-enrollment-cta__actions {
+        flex-direction: column;
+    }
+
+    .cst-enrollment-cta__title {
+        font-size: var(--cst-font-size-2xl);
     }
 }
 

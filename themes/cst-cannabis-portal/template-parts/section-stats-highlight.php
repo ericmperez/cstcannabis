@@ -22,7 +22,8 @@ if ( ! $stats->have_posts() ) {
 }
 ?>
 
-<section class="cst-section cst-section--stats"
+<?php $stats_class = is_front_page() ? 'cst-section cst-section--stats cst-section--stats-dark' : 'cst-section cst-section--stats'; ?>
+<section class="<?php echo esc_attr( $stats_class ); ?>"
          aria-label="<?php esc_attr_e( 'Estadísticas destacadas', 'cst-cannabis' ); ?>">
     <div class="cst-container">
         <?php cst_section_heading(

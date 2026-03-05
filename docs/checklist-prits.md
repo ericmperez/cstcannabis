@@ -275,7 +275,7 @@ Leyenda: [x] = Implementado | [ ] = Pendiente
 |-----------|:---:|:---:|
 | Banner Gubernamental | 7/7 | 0 |
 | Encabezado Institucional | 8/8 | 0 |
-| Navegación | 11/11 | 0 |
+| Navegación | 11/12 | 1 |
 | Seguridad | 10/10 | 0 |
 | Accesibilidad | 33/33 | 0 |
 | Plantillas de Página | 6/6 | 0 |
@@ -290,7 +290,7 @@ Leyenda: [x] = Implementado | [ ] = Pendiente
 | Despliegue | 0/8 | 8 |
 | Portal Four Tracks | 0/3 | 3 |
 | Documentación | 6/8 | 2 |
-| **TOTAL** | **108/136** | **28** |
+| **TOTAL** | **108/137** | **29** |
 
 **Porcentaje de cumplimiento técnico: 79%**
 
