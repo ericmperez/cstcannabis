@@ -1,0 +1,546 @@
+/* ==========================================================================
+   CST Motoras Portal — Accessibility Styles
+   WCAG 2.1 AA / Ley 229 compliance
+   ========================================================================== */
+
+/* --- Screen Reader Only --- */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: var(--cst-space-sm) var(--cst-space-md);
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* --- Skip Link --- */
+
+.cst-skip-link {
+    background: var(--cst-color-primary);
+    color: var(--cst-color-white);
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 100000;
+}
+
+.cst-skip-link:focus {
+    display: block;
+    padding: var(--cst-space-md) var(--cst-space-xl);
+    text-align: center;
+}
+
+/* --- Focus Indicators --- */
+
+:focus-visible {
+    outline: 3px solid var(--cst-color-focus);
+    outline-offset: 2px;
+}
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Ensure sufficient focus contrast on dark backgrounds */
+.cst-gov-banner :focus-visible,
+.cst-institutional-footer :focus-visible,
+.cst-hero :focus-visible,
+.cst-trust-strip :focus-visible,
+.cst-section--stats-dark :focus-visible,
+.cst-enrollment-cta :focus-visible {
+    outline-color: var(--cst-color-white);
+}
+
+/* Sticky header focus indicators */
+.cst-institutional-header :focus-visible {
+    outline: 3px solid var(--cst-color-focus);
+    outline-offset: 2px;
+}
+
+/* --- Touch Targets (WCAG 2.5.8 — minimum 44x44px) --- */
+
+.cst-btn,
+.cst-filter-tabs__btn,
+.cst-gov-banner__toggle,
+.cst-lang-switcher__list a,
+.cst-social-links a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Links within text are exempt, but nav links need touch targets */
+nav a,
+.cst-footer-menu a,
+.cst-legal-menu a {
+    display: inline-block;
+    padding-block: var(--cst-space-xs);
+    min-height: 44px;
+    line-height: 44px;
+}
+
+/* --- High Contrast Mode --- */
+
+@media (prefers-contrast: high) {
+    .cst-card {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    /* Revert gradient text to solid color */
+    .cst-section-heading__title {
+        background: none;
+        -webkit-background-clip: unset;
+        background-clip: unset;
+        -webkit-text-fill-color: var(--cst-color-primary);
+    }
+
+    /* Hide decorative pseudo-elements */
+    .cst-card::before,
+    .cst-stat-card::before,
+    .cst-section-heading__title::after,
+    .cst-institutional-footer::before,
+    .cst-institutional-footer::after,
+    .cst-hero::after,
+    .cst-btn--hero::before,
+    .cst-btn--primary::before,
+    .cst-footer-widget__title::after,
+    .cst-stat-card__value::after,
+    .cst-hero__wave,
+    .cst-hero__float,
+    .cst-enrollment-cta__pattern,
+    .cst-objective-card[data-step]::before {
+        display: none;
+    }
+
+    /* Hide section wave dividers */
+    .cst-section--objectives::after,
+    .cst-section--events::after,
+    .cst-section--stats::after {
+        display: none;
+    }
+
+    /* Hide hero illustration */
+    .cst-hero__illustration {
+        display: none;
+    }
+
+    /* Dark stats — solid borders on glass cards */
+    .cst-section--stats-dark .cst-stat-card {
+        background: var(--cst-color-secondary);
+        border: 2px solid var(--cst-color-white);
+        backdrop-filter: none;
+    }
+
+    /* Enrollment CTA — solid background */
+    .cst-enrollment-cta {
+        background: var(--cst-color-secondary);
+    }
+
+    /* Trust strip — solid border separators */
+    .cst-trust-strip {
+        border-top: 2px solid var(--cst-color-black);
+        border-bottom: 2px solid var(--cst-color-black);
+    }
+
+    /* Hero badges — solid borders */
+    .cst-hero__badge {
+        border: 1px solid var(--cst-color-white);
+        backdrop-filter: none;
+    }
+
+    /* Course features — solid borders */
+    .cst-course-feature {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    .cst-course-features__card {
+        border: 2px solid var(--cst-color-white);
+    }
+
+    /* Replace gradient icon backgrounds with solid border */
+    .cst-objective-card__icon,
+    .cst-stat-card__icon,
+    .cst-statistics__icon,
+    .cst-contact-card__icon,
+    .cst-course-feature__icon {
+        background: transparent;
+        border: 2px solid currentColor;
+    }
+
+    .cst-btn {
+        border-width: 3px;
+        background: var(--cst-color-primary);
+    }
+
+    .cst-btn--primary,
+    .cst-btn--outline:hover {
+        background: var(--cst-color-primary);
+    }
+
+    .cst-btn--outline-hero {
+        background: transparent;
+        border: 3px solid var(--cst-color-white);
+    }
+
+    /* Callout — solid border, no gradient bg */
+    .cst-callout {
+        background: var(--cst-callout-bg-default);
+        border-left: 4px solid var(--cst-color-primary);
+    }
+
+    .cst-filter-tabs__btn {
+        border: 2px solid currentColor;
+    }
+
+    .cst-tag {
+        border: 1px solid currentColor;
+    }
+
+    .cst-hero__overlay {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .cst-stat-card {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    /* CF7 form inputs — high contrast borders */
+    .cst-contact-form .wpcf7-form-control:not([type="submit"]) {
+        border: 2px solid var(--cst-color-black);
+        box-shadow: none;
+    }
+
+    .cst-contact-form .wpcf7-form-control[type="submit"] {
+        background: var(--cst-color-primary);
+        border: 3px solid var(--cst-color-black);
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    /* Search form — high contrast */
+    .cst-header-search__input {
+        border: 2px solid var(--cst-color-black);
+    }
+
+    .cst-header-search__btn {
+        border: 2px solid var(--cst-color-black);
+        background: var(--cst-color-primary);
+    }
+
+    /* OIG logo — ensure visible */
+    .cst-institutional-footer__oig-seal {
+        opacity: 1;
+    }
+}
+
+/* --- Forced Colors (Windows High Contrast) --- */
+
+@media (forced-colors: active) {
+    .cst-btn {
+        border: 2px solid ButtonText;
+    }
+
+    .cst-card {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-hero {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-hero__overlay {
+        display: none;
+    }
+
+    .cst-gov-banner {
+        border-bottom: 2px solid CanvasText;
+    }
+
+    /* Disable backdrop-filter for forced-colors */
+    .cst-institutional-header {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: Canvas;
+    }
+
+    /* Revert gradient text to system color */
+    .cst-section-heading__title {
+        background: none;
+        -webkit-background-clip: unset;
+        background-clip: unset;
+        -webkit-text-fill-color: CanvasText;
+    }
+
+    /* Hide decorative pseudo-elements */
+    .cst-card::before,
+    .cst-stat-card::before,
+    .cst-section-heading__title::after,
+    .cst-institutional-footer::before,
+    .cst-institutional-footer::after,
+    .cst-hero::after,
+    .cst-btn--hero::before,
+    .cst-btn--primary::before,
+    .cst-footer-widget__title::after,
+    .cst-stat-card__value::after,
+    .cst-hero__wave,
+    .cst-hero__float,
+    .cst-enrollment-cta__pattern,
+    .cst-objective-card[data-step]::before {
+        display: none;
+    }
+
+    /* Hide section wave dividers */
+    .cst-section--objectives::after,
+    .cst-section--events::after,
+    .cst-section--stats::after {
+        display: none;
+    }
+
+    /* Hide hero illustration */
+    .cst-hero__illustration {
+        display: none;
+    }
+
+    /* Solid backgrounds for icon circles */
+    .cst-objective-card__icon,
+    .cst-stat-card__icon,
+    .cst-statistics__icon,
+    .cst-contact-card__icon,
+    .cst-course-feature__icon,
+    .cst-course-feature__check {
+        background: Canvas;
+        border: 2px solid CanvasText;
+    }
+
+    .cst-btn--outline-hero {
+        background: transparent;
+        border: 2px solid ButtonText;
+    }
+
+    /* Trust strip — system colors */
+    .cst-trust-strip {
+        background: Canvas;
+        color: CanvasText;
+        border-top: 2px solid CanvasText;
+        border-bottom: 2px solid CanvasText;
+    }
+
+    /* Dark stats — system colors */
+    .cst-section--stats-dark {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-section--stats-dark .cst-stat-card {
+        background: Canvas;
+        border: 1px solid CanvasText;
+        backdrop-filter: none;
+    }
+
+    .cst-section--stats-dark .cst-stat-card__value,
+    .cst-section--stats-dark .cst-stat-card__label,
+    .cst-section--stats-dark .cst-stat-card__unit,
+    .cst-section--stats-dark .cst-stat-card__source {
+        color: CanvasText;
+    }
+
+    /* Enrollment CTA — system colors */
+    .cst-enrollment-cta {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-enrollment-cta__title {
+        color: CanvasText;
+    }
+
+    /* Hero badges — system colors */
+    .cst-hero__badge {
+        border: 1px solid ButtonText;
+        backdrop-filter: none;
+    }
+
+    /* Course features — system colors */
+    .cst-course-feature {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-course-features__card {
+        background: Canvas;
+        border: 2px solid CanvasText;
+        color: CanvasText;
+    }
+
+    /* Back-to-top — system colors */
+    .cst-back-to-top {
+        background: ButtonFace;
+        border: 2px solid ButtonText;
+        color: ButtonText;
+    }
+
+    /* CF7 form inputs — system colors */
+    .cst-contact-form .wpcf7-form-control:not([type="submit"]) {
+        background: Field;
+        color: FieldText;
+        border: 1px solid CanvasText;
+    }
+
+    .cst-contact-form .wpcf7-form-control[type="submit"] {
+        background: ButtonFace;
+        color: ButtonText;
+        border: 2px solid ButtonText;
+    }
+
+    /* Search form — system colors */
+    .cst-header-search__input {
+        background: Field;
+        color: FieldText;
+        border: 1px solid CanvasText;
+    }
+
+    .cst-header-search__btn {
+        background: ButtonFace;
+        color: ButtonText;
+        border: 1px solid ButtonText;
+    }
+
+    /* OIG logo — ensure visible */
+    .cst-institutional-footer__oig-seal {
+        opacity: 1;
+    }
+}
+
+/* --- Reduced Motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .cst-card:hover {
+        transform: none;
+    }
+
+    .cst-institutional-footer::before {
+        animation: none;
+    }
+
+    /* Show heading underline immediately without animation */
+    .cst-section-heading__title::after {
+        width: 60px;
+    }
+
+    /* Stop hero float animations */
+    .cst-hero__float {
+        animation: none;
+    }
+
+    /* Stop scroll indicator bounce */
+    .cst-hero__scroll-indicator {
+        animation: none;
+        display: none;
+    }
+
+    /* Disable step number transitions on objectives */
+    .cst-objective-card[data-step]::before {
+        transition: none;
+    }
+}
+
+/* --- Selection --- */
+
+::selection {
+    background-color: var(--cst-color-primary);
+    color: var(--cst-color-white);
+}
+
+/* --- Ensure sufficient color contrast for links --- */
+
+.cst-content-area a:visited {
+    color: #5E7C3A;
+}
+
+/* --- ARIA Live Region --- */
+
+[aria-live="polite"],
+[aria-live="assertive"] {
+    position: relative;
+}
+
+/* --- Nav Focus Indicators --- */
+
+.main-navigation .main-nav > ul > li > a:focus-visible {
+    outline: 3px solid var(--cst-color-white);
+    outline-offset: -3px;
+    z-index: 1;
+}
+
+.main-navigation .main-nav ul ul li a:focus-visible {
+    outline: 3px solid var(--cst-color-focus);
+    outline-offset: -3px;
+    z-index: 1;
+}
+
+.menu-toggle:focus-visible {
+    outline: 3px solid var(--cst-color-white);
+    outline-offset: 2px;
+}
+
+/* --- Nav High Contrast --- */
+
+@media (prefers-contrast: high) {
+    .site-header {
+        border-bottom: 3px solid var(--cst-color-black);
+        box-shadow: none;
+    }
+    .main-navigation .main-nav ul ul {
+        border: 2px solid var(--cst-color-black);
+    }
+    .main-navigation .main-nav > ul > li > a::after {
+        background-color: var(--cst-color-black);
+    }
+}
+
+/* --- Nav Forced Colors --- */
+
+@media (forced-colors: active) {
+    .site-header {
+        border-bottom: 2px solid CanvasText;
+    }
+    .main-navigation .main-nav > ul > li > a::after {
+        background: Highlight;
+    }
+    .main-navigation .main-nav ul ul {
+        border: 1px solid CanvasText;
+    }
+    .menu-toggle {
+        border: 2px solid ButtonText;
+    }
+}
