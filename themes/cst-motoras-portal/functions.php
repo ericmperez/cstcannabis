@@ -159,7 +159,7 @@ add_filter( 'wp_nav_menu_args', function ( $args ) {
 function cst_primary_menu_fallback(): void {
     $items = [
         [ 'slug' => '/',             'label' => __( 'Inicio', 'cst-motoras' ) ],
-        [ 'slug' => '/curso/',       'label' => __( 'Curso', 'cst-motoras' ) ],
+        [ 'url'  => 'https://cursomotoras.willai.info/courses/modulo-conduccion-segura-para-motociclistas/', 'label' => __( 'Curso', 'cst-motoras' ) ],
         [ 'slug' => '/recursos/',    'label' => __( 'Recursos', 'cst-motoras' ) ],
         [ 'slug' => '/estadisticas/','label' => __( 'Estadísticas', 'cst-motoras' ) ],
         [ 'slug' => '/sobre/',       'label' => __( 'Sobre Nosotros', 'cst-motoras' ) ],
@@ -170,19 +170,24 @@ function cst_primary_menu_fallback(): void {
 
     echo '<div class="main-nav"><ul id="menu-primary" class="menu sf-menu">';
     foreach ( $items as $item ) {
-        $url      = home_url( $item['slug'] );
-        $is_home  = $item['slug'] === '/';
-        $active   = $is_home
-            ? ( is_front_page() || $current_url === '/' )
-            : str_starts_with( $current_url, $item['slug'] );
-        $classes  = 'menu-item' . ( $active ? ' current-menu-item' : '' );
-        $aria     = $active ? ' aria-current="page"' : '';
+        $is_external = isset( $item['url'] );
+        $url         = $is_external ? $item['url'] : home_url( $item['slug'] );
+        $is_home     = ! $is_external && $item['slug'] === '/';
+        $active      = $is_external
+            ? false
+            : ( $is_home
+                ? ( is_front_page() || $current_url === '/' )
+                : str_starts_with( $current_url, $item['slug'] ) );
+        $classes     = 'menu-item' . ( $active ? ' current-menu-item' : '' );
+        $aria        = $active ? ' aria-current="page"' : '';
+        $target      = $is_external ? ' target="_blank" rel="noopener noreferrer"' : '';
 
         printf(
-            '<li class="%s"><a href="%s"%s>%s</a></li>',
+            '<li class="%s"><a href="%s"%s%s>%s</a></li>',
             esc_attr( $classes ),
             esc_url( $url ),
             $aria,
+            $target,
             esc_html( $item['label'] )
         );
     }
