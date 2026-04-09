@@ -114,6 +114,14 @@
 
     /* --- Color variants --- */
     --cst-color-navy-light:  #3A4D7A;
+    --cst-color-navy-darker: #1A1A2E;
+
+    /* --- Missing neutrals --- */
+    --cst-color-gray-200:    #E9ECEF;
+    --cst-color-gray-400:    #ADB5BD;
+
+    /* --- Typography additions --- */
+    --cst-font-size-xs:      0.75rem;  /* 12px */
 
     /* --- Government banner --- */
     --cst-banner-bg:         var(--cst-color-gray-900);
@@ -121,6 +129,38 @@
 
     /* --- Gradient text --- */
     --cst-gradient-text:     linear-gradient(135deg, #3E64DE 0%, #1F2E54 100%);
+
+    /* --- Alpha color tokens --- */
+    --cst-alpha-blue-5:      rgba(62, 100, 222, 0.05);
+    --cst-alpha-blue-8:      rgba(62, 100, 222, 0.08);
+    --cst-alpha-blue-10:     rgba(62, 100, 222, 0.1);
+    --cst-alpha-blue-12:     rgba(62, 100, 222, 0.12);
+    --cst-alpha-blue-15:     rgba(62, 100, 222, 0.15);
+    --cst-alpha-blue-20:     rgba(62, 100, 222, 0.2);
+    --cst-alpha-navy-45:     rgba(31, 46, 84, 0.45);
+    --cst-alpha-accent-15:   rgba(59, 130, 196, 0.15);
+    --cst-alpha-white-3:     rgba(255, 255, 255, 0.03);
+    --cst-alpha-white-6:     rgba(255, 255, 255, 0.06);
+    --cst-alpha-white-8:     rgba(255, 255, 255, 0.08);
+    --cst-alpha-white-10:    rgba(255, 255, 255, 0.1);
+    --cst-alpha-white-14:    rgba(255, 255, 255, 0.14);
+    --cst-alpha-white-15:    rgba(255, 255, 255, 0.15);
+    --cst-alpha-white-20:    rgba(255, 255, 255, 0.2);
+    --cst-alpha-white-30:    rgba(255, 255, 255, 0.3);
+    --cst-alpha-white-50:    rgba(255, 255, 255, 0.5);
+    --cst-alpha-white-60:    rgba(255, 255, 255, 0.6);
+    --cst-alpha-white-75:    rgba(255, 255, 255, 0.75);
+    --cst-alpha-white-80:    rgba(255, 255, 255, 0.8);
+    --cst-alpha-white-85:    rgba(255, 255, 255, 0.85);
+    --cst-alpha-black-4:     rgba(0, 0, 0, 0.04);
+    --cst-alpha-black-6:     rgba(0, 0, 0, 0.06);
+    --cst-alpha-black-8:     rgba(0, 0, 0, 0.08);
+    --cst-alpha-black-12:    rgba(0, 0, 0, 0.12);
+    --cst-alpha-black-15:    rgba(0, 0, 0, 0.15);
+    --cst-alpha-black-20:    rgba(0, 0, 0, 0.2);
+    --cst-alpha-black-30:    rgba(0, 0, 0, 0.3);
+    --cst-alpha-red-5:       rgba(238, 0, 0, 0.05);
+    --cst-alpha-red-15:      rgba(238, 0, 0, 0.15);
 
     /* --- Callout backgrounds --- */
     --cst-callout-bg-default: linear-gradient(135deg, rgba(62,100,222,0.06) 0%, rgba(62,100,222,0.02) 100%);

@@ -81,7 +81,7 @@ get_header();
                     </div>
                     <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Expertos en la materia', 'cst-motoras' ); ?></h3>
                     <p class="cst-pillar-card__desc">
-                        <?php esc_html_e( 'Contenido desarrollado por especialistas en seguridad vial con base en estándares locales y federales de conducción de motocicletas.', 'cst-motoras' ); ?>
+                        <?php esc_html_e( 'Currículo oficial basado en estándares locales y federales de conducción de motocicletas y four tracks.', 'cst-motoras' ); ?>
                     </p>
                 </div>
 
@@ -108,7 +108,7 @@ get_header();
                     </div>
                     <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Alianzas confiables', 'cst-motoras' ); ?></h3>
                     <p class="cst-pillar-card__desc">
-                        <?php esc_html_e( 'Coordinamos con agencias gubernamentales, la Policía de Puerto Rico y organizaciones comunitarias para fortalecer la seguridad vial.', 'cst-motoras' ); ?>
+                        <?php esc_html_e( 'Fomentamos una cultura de respeto hacia peatones, ciclistas y la convivencia segura con vehículos pesados.', 'cst-motoras' ); ?>
                     </p>
                 </div>
 
@@ -121,7 +121,7 @@ get_header();
                     </div>
                     <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Requisito de Ley', 'cst-motoras' ); ?></h3>
                     <p class="cst-pillar-card__desc">
-                        <?php esc_html_e( 'Cumplimiento obligatorio de la Ley 107 para obtener el endoso de motocicletas y four tracks en Puerto Rico.', 'cst-motoras' ); ?>
+                        <?php esc_html_e( 'Esta certificación es un requisito obligatorio e indispensable para la obtención del endoso de motocicletas y four tracks en Puerto Rico, en cumplimiento con la legislación local y federal.', 'cst-motoras' ); ?>
                     </p>
                 </div>
 

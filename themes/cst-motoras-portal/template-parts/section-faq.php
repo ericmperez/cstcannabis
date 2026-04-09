@@ -12,24 +12,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $faqs = [
     [
-        'question' => __( '¿Es obligatorio completar el módulo?', 'cst-motoras' ),
-        'answer'   => __( 'Sí. El módulo es un requisito obligatorio para obtener el endoso de motocicletas y four tracks según la Ley 107 de Puerto Rico.', 'cst-motoras' ),
+        'question' => __( '¿Es este módulo obligatorio para obtener el endoso?', 'cst-motoras' ),
+        'answer'   => __( 'Sí. Según la Ley 107, completar este módulo es un requisito indispensable antes de poder solicitar el examen práctico y obtener el endoso de motocicletas y four tracks en Puerto Rico.', 'cst-motoras' ),
     ],
     [
-        'question' => __( '¿Qué necesito para inscribirme?', 'cst-motoras' ),
-        'answer'   => __( 'Necesitas una licencia de conducir válida de Puerto Rico. El registro es completamente gratuito.', 'cst-motoras' ),
+        'question' => __( '¿Qué necesito para registrarme en el módulo?', 'cst-motoras' ),
+        'answer'   => __( 'Necesitas tener una licencia de conducir vigente de Puerto Rico. El sistema validará tu número de licencia contra los archivos para permitirte el acceso. El registro es completamente gratuito.', 'cst-motoras' ),
     ],
     [
-        'question' => __( '¿Puedo completarlo desde mi celular?', 'cst-motoras' ),
-        'answer'   => __( 'Sí. El módulo es 100% compatible con dispositivos móviles, tabletas y computadoras. Puedes acceder desde cualquier dispositivo con conexión a internet.', 'cst-motoras' ),
+        'question' => __( '¿Puedo tomar el módulo desde mi celular?', 'cst-motoras' ),
+        'answer'   => __( 'Sí. La plataforma es 100% compatible con computadoras, tabletas y dispositivos móviles (iOS y Android), permitiéndote estudiar a tu propio ritmo desde cualquier lugar.', 'cst-motoras' ),
     ],
     [
-        'question' => __( '¿Qué pasa si no apruebo el examen?', 'cst-motoras' ),
-        'answer'   => __( 'Tienes hasta 3 intentos para aprobar el examen final. Debes esperar 24 horas entre cada intento. La puntuación mínima para aprobar es 70%.', 'cst-motoras' ),
+        'question' => __( '¿Qué sucede si repruebo el examen final?', 'cst-motoras' ),
+        'answer'   => __( 'Tienes hasta 3 intentos para aprobar el examen final. Si no apruebas en un intento, deberás esperar 24 horas antes de volver a intentarlo. Se requiere un 70% para aprobar.', 'cst-motoras' ),
     ],
     [
-        'question' => __( '¿Cuánto tiempo es válido el certificado?', 'cst-motoras' ),
-        'answer'   => __( 'El certificado digital es válido por 90 días a partir de la fecha de emisión. Debes completar tu trámite de endoso en CESCO dentro de ese período.', 'cst-motoras' ),
+        'question' => __( '¿El certificado tiene fecha de vencimiento?', 'cst-motoras' ),
+        'answer'   => __( 'Sí. Una vez emitido, el certificado digital tiene una validez de 90 días. Debes completar tu trámite de endoso en CESCO dentro de ese período.', 'cst-motoras' ),
     ],
 ];
 ?>
@@ -39,7 +39,7 @@ $faqs = [
     <div class="cst-container">
         <?php cst_section_heading(
             __( 'Preguntas Frecuentes sobre el Endoso', 'cst-motoras' ),
-            __( 'Respuestas a las dudas más comunes sobre el módulo de conducción segura.', 'cst-motoras' )
+            __( 'Encuentra respuestas rápidas sobre el proceso de registro, requisitos técnicos y validación de tu endoso. Si tienes otra duda, contáctanos.', 'cst-motoras' )
         ); ?>
 
         <div class="cst-faq-list" role="list">
