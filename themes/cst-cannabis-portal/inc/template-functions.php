@@ -54,6 +54,33 @@ function cst_section_heading( string $title, string $subtitle = '', string $tag 
 }
 
 /**
+ * Sanitize an inline SVG icon (allows svg, path, circle, rect, line, polyline, polygon, g, use).
+ *
+ * Use this instead of wp_kses_post() for hardcoded SVG icons, since
+ * wp_kses_post() strips all SVG elements.
+ *
+ * @param string $svg The SVG markup.
+ * @return string Sanitized SVG.
+ */
+function cst_kses_svg( string $svg ): string {
+    return wp_kses( $svg, [
+        'svg'      => [
+            'width'       => [], 'height'     => [], 'viewBox'        => [], 'viewbox'    => [],
+            'fill'        => [], 'class'      => [], 'aria-hidden'    => [], 'role'       => [],
+            'xmlns'       => [], 'stroke'     => [], 'stroke-width'   => [],
+            'stroke-linecap' => [], 'stroke-linejoin' => [],
+        ],
+        'path'     => [ 'd' => [], 'fill' => [], 'stroke' => [], 'stroke-width' => [] ],
+        'circle'   => [ 'cx' => [], 'cy' => [], 'r' => [], 'fill' => [], 'stroke' => [] ],
+        'rect'     => [ 'x' => [], 'y' => [], 'width' => [], 'height' => [], 'rx' => [], 'ry' => [], 'fill' => [] ],
+        'line'     => [ 'x1' => [], 'y1' => [], 'x2' => [], 'y2' => [], 'stroke' => [] ],
+        'polyline' => [ 'points' => [], 'fill' => [], 'stroke' => [] ],
+        'polygon'  => [ 'points' => [], 'fill' => [] ],
+        'g'        => [ 'fill' => [], 'transform' => [] ],
+    ] );
+}
+
+/**
  * Render a card wrapper.
  *
  * @param string $type Card type: 'blog', 'resource', 'event', 'stat'.

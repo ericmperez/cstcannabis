@@ -71,7 +71,7 @@ $style = $image_url ? ' style="background-image:url(' . esc_url( $image_url ) . 
                 <div class="cst-hero__badges" aria-label="<?php esc_attr_e( 'Beneficios del curso', 'cst-cannabis' ); ?>">
                     <?php foreach ( $args['trust_badges'] as $badge ) : ?>
                         <span class="cst-hero__badge">
-                            <span class="cst-hero__badge-icon" aria-hidden="true"><?php echo wp_kses_post( $badge['icon'] ); ?></span>
+                            <span class="cst-hero__badge-icon" aria-hidden="true"><?php echo cst_kses_svg( $badge['icon'] ); ?></span>
                             <?php echo esc_html( $badge['label'] ); ?>
                         </span>
                     <?php endforeach; ?>

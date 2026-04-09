@@ -54,7 +54,7 @@ $callouts = [
             <?php foreach ( $callouts as $callout ) : ?>
                 <div class="cst-course-impact__callout">
                     <div class="cst-course-impact__callout-icon" aria-hidden="true">
-                        <?php echo wp_kses_post( $callout['icon'] ); ?>
+                        <?php echo cst_kses_svg( $callout['icon'] ); ?>
                     </div>
                     <h3 class="cst-course-impact__callout-title"><?php echo esc_html( $callout['title'] ); ?></h3>
                     <p class="cst-course-impact__callout-desc"><?php echo esc_html( $callout['desc'] ); ?></p>

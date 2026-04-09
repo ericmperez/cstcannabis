@@ -53,7 +53,7 @@ $cards = [
             <?php foreach ( $cards as $card ) : ?>
                 <div class="cst-course-card">
                     <div class="cst-course-card__icon" aria-hidden="true">
-                        <?php echo wp_kses_post( $card['icon'] ); ?>
+                        <?php echo cst_kses_svg( $card['icon'] ); ?>
                     </div>
                     <h3 class="cst-course-card__title"><?php echo esc_html( $card['title'] ); ?></h3>
                     <ul class="cst-course-card__list">

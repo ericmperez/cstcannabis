@@ -33,7 +33,7 @@ $items = [
         <ul class="cst-trust-strip__list">
             <?php foreach ( $items as $item ) : ?>
                 <li class="cst-trust-strip__item">
-                    <span class="cst-trust-strip__icon"><?php echo wp_kses_post( $item['icon'] ); ?></span>
+                    <span class="cst-trust-strip__icon"><?php echo cst_kses_svg( $item['icon'] ); ?></span>
                     <span class="cst-trust-strip__label"><?php echo esc_html( $item['label'] ); ?></span>
                 </li>
             <?php endforeach; ?>
