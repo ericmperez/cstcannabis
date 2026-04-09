@@ -118,7 +118,7 @@ function cst_get_portal_type(): string {
     if ( str_contains( $theme, 'motoras' ) ) {
         return 'motoras';
     }
-    return 'cannabis';
+    return 'motoras';
 }
 
 /**

@@ -2,7 +2,7 @@
 
 ## Project Overview
 Two educational web portals for the Comisión para la Seguridad en el Tránsito de Puerto Rico (CST):
-1. **Cannabis Medicinal Portal** — `themes/cst-cannabis-portal/`
+1. **Motoras Portal** — `themes/cst-motoras-portal/`
 2. **Four Tracks Portal** — `themes/cst-four-tracks-portal/` (not yet created)
 
 Both share the `plugins/cst-core/` plugin. Full requirements in `docs/project-requirements.md`.
@@ -19,7 +19,7 @@ cst-portals/
 │   ├── includes/              # PHP classes (CST_Core, CST_Post_Types, etc.)
 │   ├── cli/                   # WP-CLI commands
 │   └── assets/                # Plugin CSS/JS (chatbot, statistics, whatsapp)
-├── themes/cst-cannabis-portal/ # GeneratePress child theme
+├── themes/cst-motoras-portal/  # GeneratePress child theme (Motoras)
 │   ├── style.css              # Design tokens (CSS custom properties)
 │   ├── functions.php          # Theme setup, enqueues
 │   ├── inc/                   # GP hooks, widgets, customizer, helpers
@@ -63,20 +63,18 @@ cst-portals/
 - Support high contrast mode, forced colors, reduced motion
 - Comply with WCAG 2.1 AA, Ley 229-2003, Section 508
 
-## Design Tokens — Guía de Marca CST (Cannabis Portal)
+## Design Tokens — Guía de Marca CST (Motoras Portal)
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--cst-color-green` | `#7FA35B` | Primary — verde institucional (headers, nav) |
-| `--cst-color-navy` | `#1F2E54` | Secondary — azul autoridad (CTAs, active) |
+| `--cst-color-blue-primary` | `#3E64DE` | Primary — azul institucional (headers, nav, CTAs) |
+| `--cst-color-navy` | `#1F2E54` | Secondary — azul autoridad (dark sections) |
 | `--cst-color-blue` | `#3B82C4` | Focus indicators, info, links |
 | `--cst-color-red` | `#EE0000` | Danger, alerts |
-| `--cst-color-green-light` | `#A9C58E` | Verde claro (accents) |
-| `--cst-color-green-dark` | `#5E7C3A` | Verde oscuro (buttons, normal-text links) |
+| `--cst-color-blue-light` | `#6B8BF5` | Azul claro (accents) |
+| `--cst-color-blue-dark` | `#2A4BB0` | Azul oscuro (buttons, normal-text links) |
 | Body font | Open Sans | Google Fonts |
 | Heading font | Montserrat | Google Fonts |
-
-**Contrast note:** `#7FA35B` on white = 3.6:1 (large text/UI only). For normal-sized text, use `#5E7C3A` (5.5:1) or `#1F2E54` (12.2:1).
 
 ## Key Conventions
 - Page templates go in `page-templates/template-*.php`
@@ -89,7 +87,7 @@ cst-portals/
 ## Local Development
 - Uses `wp-env` — config in `.wp-env.json`
 - Start: `wp-env start` (requires Docker)
-- The WordPress instance mounts `plugins/cst-core` and `themes/cst-cannabis-portal`
+- The WordPress instance mounts `plugins/cst-core`, `themes/cst-motoras-portal`, and `themes/cst-cannabis-portal`
 
 ## Important Notes
 - Content (text, photos, videos) is provided by the client — do NOT generate placeholder content
