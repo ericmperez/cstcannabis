@@ -235,15 +235,6 @@ class CST_Statistics {
         );
 
         wp_register_script(
-            'cst-statistics',
-            CST_CORE_URL . 'assets/js/statistics.js',
-            [],
-            CST_CORE_VERSION,
-            true
-        );
-
-        // Dashboard script depends on Chart.js.
-        wp_register_script(
             'cst-statistics-dashboard',
             CST_CORE_URL . 'assets/js/statistics.js',
             [ 'chartjs' ],

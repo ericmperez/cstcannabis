@@ -153,6 +153,18 @@ get_header();
                         the_content();
                     endwhile;
                     ?>
+                    <p class="cst-form-privacy">
+                        <?php
+                        printf(
+                            wp_kses(
+                                /* translators: %s: privacy policy URL */
+                                __( 'Al enviar este formulario, usted acepta nuestra <a href="%s">Política de Privacidad</a> conforme a la Ley 39-2012. La información provista será utilizada únicamente para atender su solicitud.', 'cst-cannabis' ),
+                                [ 'a' => [ 'href' => [] ] ]
+                            ),
+                            esc_url( get_privacy_policy_url() )
+                        );
+                        ?>
+                    </p>
                 </div>
 
             </div>

@@ -803,3 +803,95 @@ msgstr "In compliance with <a href=\"%1$s\" target=\"_blank\" rel=\"noopener nor
 #: template-parts/government-banner.php
 msgid "Un sitio web oficial del Gobierno de Puerto Rico"
 msgstr "An official Government of Puerto Rico website"
+
+#: functions.php
+msgid "Abrir búsqueda"
+msgstr "Open search"
+
+#: functions.php
+msgid "Cerrar búsqueda"
+msgstr "Close search"
+
+#: functions.php
+msgid "Buscando..."
+msgstr "Searching..."
+
+#: functions.php
+msgid "No se encontraron resultados."
+msgstr "No results found."
+
+#: functions.php
+msgid "Ver todos los resultados"
+msgstr "View all results"
+
+#: searchform.php
+msgid "Escribe para buscar. Usa las flechas para navegar los resultados."
+msgstr "Type to search. Use arrow keys to navigate results."
+
+#: searchform.php
+msgid "Resultados de búsqueda"
+msgstr "Search results"
+
+#: template-parts/footer-institutional.php
+msgid "Accesibilidad (Ley 229)"
+msgstr "Accessibility (Law 229)"
+
+#: template-parts/footer-institutional.php
+msgid "Accesibilidad — Conforme a la <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Ley 229 de 2003</a> (WCAG 2.1 AA)."
+msgstr "Accessibility — In compliance with <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Law 229 of 2003</a> (WCAG 2.1 AA)."
+
+#: template-parts/footer-institutional.php
+msgid "Transparencia (Ley 141)"
+msgstr "Transparency (Law 141)"
+
+#: template-parts/footer-institutional.php
+msgid "Transparencia — <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Ley 141-2019</a>."
+msgstr "Transparency — <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Law 141-2019</a>."
+
+#: template-parts/footer-institutional.php
+msgid "Política de cookies"
+msgstr "Cookie policy"
+
+#: template-parts/footer-institutional.php
+msgid "Términos de uso"
+msgstr "Terms of use"
+
+#: template-parts/footer-institutional.php
+msgid "Legal"
+msgstr "Legal"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Cannabis Medicinal y Seguridad Vial"
+msgstr "Medical Cannabis and Road Safety"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Ejemplo de certificado digital"
+msgstr "Digital certificate example"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Certificado de Aprobación"
+msgstr "Certificate of Completion"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Juan del Pueblo"
+msgstr "John Doe"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Fecha: DD/MM/AAAA"
+msgstr "Date: MM/DD/YYYY"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Válido: 90 días"
+msgstr "Valid: 90 days"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Código QR verificable"
+msgstr "Verifiable QR code"
+
+#: page-templates/template-home.php
+msgid "Medical Cannabis and Road Safety"
+msgstr "Medical Cannabis and Road Safety"
+
+#: page-templates/template-home.php
+msgid "Education, prevention, and data to protect lives on Puerto Rico's roads"
+msgstr "Education, prevention, and data to protect lives on Puerto Rico's roads"

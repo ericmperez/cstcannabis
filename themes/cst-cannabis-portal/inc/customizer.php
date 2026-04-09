@@ -102,3 +102,24 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
         ] );
     }
 } );
+
+/* ------------------------------------------------------------------ */
+/*  Register Customizer strings with Polylang for translation         */
+/* ------------------------------------------------------------------ */
+
+add_action( 'init', function () {
+    if ( ! function_exists( 'pll_register_string' ) ) {
+        return;
+    }
+
+    $strings = [
+        'cst_hero_title'    => get_theme_mod( 'cst_hero_title', '' ),
+        'cst_hero_subtitle' => get_theme_mod( 'cst_hero_subtitle', '' ),
+    ];
+
+    foreach ( $strings as $name => $value ) {
+        if ( $value ) {
+            pll_register_string( $name, $value, 'CST Portal', false );
+        }
+    }
+} );

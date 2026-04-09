@@ -18,7 +18,7 @@ define( 'CST_CANNABIS_URI', get_stylesheet_directory_uri() );
    ========================================================================== */
 
 add_action( 'after_setup_theme', function () {
-    // Translations.
+    // Translations — initial load (may be overridden by Polylang locale switch).
     load_child_theme_textdomain( 'cst-cannabis', CST_CANNABIS_DIR . '/languages' );
 
     // Navigation menus.
@@ -41,6 +41,20 @@ add_action( 'after_setup_theme', function () {
     ] );
     add_theme_support( 'responsive-embeds' );
 } );
+
+/* ==========================================================================
+   Reload text domain when Polylang switches locale
+   ========================================================================== */
+
+add_action( 'wp', function () {
+    if ( function_exists( 'pll_current_language' ) ) {
+        $lang = pll_current_language( 'locale' );
+        if ( $lang && 'es' !== substr( $lang, 0, 2 ) ) {
+            unload_textdomain( 'cst-cannabis' );
+            load_textdomain( 'cst-cannabis', CST_CANNABIS_DIR . '/languages/cst-cannabis-' . $lang . '.mo' );
+        }
+    }
+}, 1 );
 
 /* ==========================================================================
    Disable Sidebar — full-width content on all pages
@@ -119,16 +133,21 @@ add_action( 'wp_enqueue_scripts', function () {
         'siteName' => get_bloginfo( 'name' ),
         'wpRestUrl' => rest_url( 'wp/v2/' ),
         'i18n'      => [
-            'menuOpen'      => __( 'Abrir menú', 'cst-cannabis' ),
-            'menuClose'     => __( 'Cerrar menú', 'cst-cannabis' ),
-            'bannerClose'   => __( 'Cerrar banner', 'cst-cannabis' ),
-            'filterAll'     => __( 'Todos', 'cst-cannabis' ),
-            'searchOpen'    => __( 'Abrir búsqueda', 'cst-cannabis' ),
-            'searchClose'   => __( 'Cerrar búsqueda', 'cst-cannabis' ),
-            'searchLoading' => __( 'Buscando...', 'cst-cannabis' ),
+            'menuOpen'        => __( 'Abrir menú', 'cst-cannabis' ),
+            'menuClose'       => __( 'Cerrar menú', 'cst-cannabis' ),
+            'bannerClose'     => __( 'Cerrar banner', 'cst-cannabis' ),
+            'filterAll'       => __( 'Todos', 'cst-cannabis' ),
+            'searchOpen'      => __( 'Abrir búsqueda', 'cst-cannabis' ),
+            'searchClose'     => __( 'Cerrar búsqueda', 'cst-cannabis' ),
+            'searchLoading'   => __( 'Buscando...', 'cst-cannabis' ),
             'searchNoResults' => __( 'No se encontraron resultados.', 'cst-cannabis' ),
-            'searchViewAll' => __( 'Ver todos los resultados', 'cst-cannabis' ),
+            'searchViewAll'   => __( 'Ver todos los resultados', 'cst-cannabis' ),
+            'typePage'        => __( 'Página', 'cst-cannabis' ),
+            'typePost'        => __( 'Artículo', 'cst-cannabis' ),
+            'resourceFound'   => __( '%d recurso encontrado', 'cst-cannabis' ),
+            'resourcesFound'  => __( '%d recursos encontrados', 'cst-cannabis' ),
         ],
+        'locale'    => function_exists( 'pll_current_language' ) ? pll_current_language( 'locale' ) : 'es-PR',
     ] );
 }, 20 );
 
@@ -140,12 +159,14 @@ add_filter( 'wp_nav_menu_args', function ( $args ) {
     if ( isset( $args['theme_location'] ) && 'primary' === $args['theme_location'] ) {
         $args['fallback_cb'] = false;
         // Polylang may fail to resolve the menu when the current post has no
-        // language assigned. Fall back to the Spanish primary menu directly.
+        // language assigned. Fall back to the correct language menu directly.
         if ( ! wp_get_nav_menu_object( wp_get_nav_menu_name( 'primary' ) ) ) {
             $pll_menus = get_option( 'polylang_nav_menus', [] );
             $theme     = get_stylesheet();
-            if ( ! empty( $pll_menus[ $theme ]['primary']['es'] ) ) {
-                $args['menu'] = (int) $pll_menus[ $theme ]['primary']['es'];
+            $lang      = function_exists( 'pll_current_language' ) ? pll_current_language() : 'es';
+            $lang      = $lang ?: 'es';
+            if ( ! empty( $pll_menus[ $theme ]['primary'][ $lang ] ) ) {
+                $args['menu'] = (int) $pll_menus[ $theme ]['primary'][ $lang ];
             }
         }
     }

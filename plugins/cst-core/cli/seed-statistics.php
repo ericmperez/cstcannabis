@@ -78,7 +78,7 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             'category'    => 'patients',
             'chart_type'  => 'bar',
             'chart_label' => 'Pacientes registrados',
-            'chart_data'  => json_encode( [
+            'chart_data'  => wp_json_encode( [
                 [ 'label' => '2018', 'value' => 45000 ],
                 [ 'label' => '2019', 'value' => 62000 ],
                 [ 'label' => '2020', 'value' => 78000 ],
@@ -99,7 +99,7 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             'category'    => 'patients',
             'chart_type'  => 'doughnut',
             'chart_label' => 'Porcentaje de pacientes',
-            'chart_data'  => json_encode( [
+            'chart_data'  => wp_json_encode( [
                 [ 'label' => 'Dolor crónico', 'value' => 52 ],
                 [ 'label' => 'Ansiedad', 'value' => 18 ],
                 [ 'label' => 'Insomnio', 'value' => 12 ],
@@ -125,7 +125,7 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             'category'    => 'safety',
             'chart_type'  => 'line',
             'chart_label' => 'Fatalidades',
-            'chart_data'  => json_encode( [
+            'chart_data'  => wp_json_encode( [
                 [ 'label' => '2018', 'value' => 312 ],
                 [ 'label' => '2019', 'value' => 298 ],
                 [ 'label' => '2020', 'value' => 245 ],
@@ -146,7 +146,7 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             'category'    => 'safety',
             'chart_type'  => 'bar',
             'chart_label' => 'Accidentes',
-            'chart_data'  => json_encode( [
+            'chart_data'  => wp_json_encode( [
                 [ 'label' => 'Alcohol', 'value' => 1842 ],
                 [ 'label' => 'Cannabis', 'value' => 187 ],
                 [ 'label' => 'Opioides', 'value' => 94 ],
@@ -172,7 +172,7 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             'category'    => 'education',
             'chart_type'  => 'line',
             'chart_label' => 'Participantes',
-            'chart_data'  => json_encode( [
+            'chart_data'  => wp_json_encode( [
                 [ 'label' => '2020', 'value' => 1250 ],
                 [ 'label' => '2021', 'value' => 2840 ],
                 [ 'label' => '2022', 'value' => 4120 ],
@@ -191,7 +191,7 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             'category'    => 'education',
             'chart_type'  => 'doughnut',
             'chart_label' => 'Porcentaje',
-            'chart_data'  => json_encode( [
+            'chart_data'  => wp_json_encode( [
                 [ 'label' => 'Talleres presenciales', 'value' => 35 ],
                 [ 'label' => 'Webinars', 'value' => 28 ],
                 [ 'label' => 'Ferias de salud', 'value' => 18 ],

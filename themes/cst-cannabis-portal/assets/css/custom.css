@@ -1852,6 +1852,19 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 0 0 3px var(--cst-alpha-red-15);
 }
 
+/* Privacy disclosure below forms (Ley 39-2012) */
+.cst-form-privacy {
+    font-size: var(--cst-font-size-xs);
+    color: var(--cst-color-gray-500);
+    line-height: 1.5;
+    margin-top: var(--cst-space-md);
+}
+
+.cst-form-privacy a {
+    color: var(--cst-color-green-dark);
+    text-decoration: underline;
+}
+
 /* Response output — success/error banner */
 .cst-contact-form .wpcf7-response-output {
     padding: var(--cst-space-md);
@@ -2569,7 +2582,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-back-to-top {
     position: fixed;
-    bottom: var(--cst-space-xl);
+    bottom: calc(var(--cst-space-xl) + 68px); /* Above WhatsApp button (56px + 12px gap) */
     right: var(--cst-space-xl);
     width: 48px;
     height: 48px;
@@ -3901,7 +3914,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Star rating */
 .tutor-ratings .tutor-ratings-stars {
-    color: var(--cst-color-green);
+    color: var(--cst-color-green-dark);
 }
 
 /* Login/registration forms within Tutor */

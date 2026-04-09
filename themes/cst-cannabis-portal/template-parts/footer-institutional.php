@@ -80,22 +80,36 @@ $address = get_theme_mod( 'cst_address' );
                 <?php endif; ?>
             </div>
 
-            <!-- Column 2: Contenido -->
+            <!-- Column 2: Legal / Policies -->
             <div class="cst-institutional-footer__col">
-                <?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
-                    <?php dynamic_sidebar( 'footer-2' ); ?>
-                <?php else : ?>
-                    <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Contenido', 'cst-cannabis' ); ?></h4>
-                    <?php
-                    wp_nav_menu( [
-                        'theme_location' => 'footer',
-                        'container'      => false,
-                        'menu_class'     => 'cst-footer-menu',
-                        'depth'          => 1,
-                        'fallback_cb'    => false,
-                    ] );
-                    ?>
-                <?php endif; ?>
+                <h4 class="cst-footer-widget__title"><?php esc_html_e( 'Legal', 'cst-cannabis' ); ?></h4>
+                <ul class="cst-footer-menu">
+                    <li>
+                        <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">
+                            <?php esc_html_e( 'Política de privacidad', 'cst-cannabis' ); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( home_url( '/politica-de-cookies/' ) ); ?>">
+                            <?php esc_html_e( 'Política de cookies', 'cst-cannabis' ); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( home_url( '/accesibilidad/' ) ); ?>">
+                            <?php esc_html_e( 'Accesibilidad (Ley 229)', 'cst-cannabis' ); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://consultasenlinea.ogp.pr.gov" target="_blank" rel="noopener noreferrer">
+                            <?php esc_html_e( 'Transparencia (Ley 141)', 'cst-cannabis' ); ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo esc_url( home_url( '/terminos-de-uso/' ) ); ?>">
+                            <?php esc_html_e( 'Términos de uso', 'cst-cannabis' ); ?>
+                        </a>
+                    </li>
+                </ul>
             </div>
 
             <!-- Column 3: Contactos -->
@@ -217,8 +231,9 @@ $address = get_theme_mod( 'cst_address' );
 
     <!-- Back to top -->
     <button class="cst-back-to-top" aria-label="<?php esc_attr_e( 'Volver al inicio', 'cst-cannabis' ); ?>" type="button">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M10 4L3 11l1.4 1.4L9 7.8V16h2V7.8l4.6 4.6L17 11l-7-7z" fill="currentColor"/>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"/>
         </svg>
     </button>
 </footer>

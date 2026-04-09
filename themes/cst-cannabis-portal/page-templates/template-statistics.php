@@ -46,9 +46,17 @@ foreach ( $statistics->get_statistics() as $stat ) {
 // Enqueue dashboard assets.
 wp_enqueue_style( 'cst-statistics' );
 wp_enqueue_script( 'cst-statistics-dashboard' );
-wp_localize_script( 'cst-statistics-dashboard', 'cstDashboardData', [
-    'charts' => $charts,
-] );
+
+// Output chart data as inline script with CSP nonce (before stats JS runs).
+$chart_json = wp_json_encode( [ 'charts' => $charts ] );
+add_action( 'wp_footer', function () use ( $chart_json ) {
+    $nonce = CST_Security::get_csp_nonce();
+    printf(
+        '<script nonce="%s">var cstDashboardData = %s;</script>',
+        esc_attr( $nonce ),
+        $chart_json
+    );
+}, 5 ); // Priority 5 = before wp_print_footer_scripts (priority 20).
 
 get_header();
 ?>

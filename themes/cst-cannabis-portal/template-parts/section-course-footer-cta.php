@@ -39,6 +39,18 @@ $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
                     the_content();
                 endwhile;
                 ?>
+                <p class="cst-form-privacy">
+                    <?php
+                    printf(
+                        wp_kses(
+                            /* translators: %s: privacy policy URL */
+                            __( 'Al registrarse, usted acepta nuestra <a href="%s">Política de Privacidad</a> conforme a la Ley 39-2012. Sus datos serán utilizados exclusivamente para el proceso de registro y emisión de certificado.', 'cst-cannabis' ),
+                            [ 'a' => [ 'href' => [] ] ]
+                        ),
+                        esc_url( get_privacy_policy_url() )
+                    );
+                    ?>
+                </p>
             </div>
 
             <!-- Certificate Mockup & Contact -->

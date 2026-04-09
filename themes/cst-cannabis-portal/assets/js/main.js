@@ -92,7 +92,8 @@
     }
 
     function announceFilter(count) {
-        var msg = count + ' recurso' + (count !== 1 ? 's' : '') + ' encontrado' + (count !== 1 ? 's' : '');
+        var tpl = count === 1 ? cstPortal.i18n.resourceFound : cstPortal.i18n.resourcesFound;
+        var msg = tpl.replace('%d', count);
         var live = document.createElement('div');
         live.setAttribute('role', 'status');
         live.setAttribute('aria-live', 'polite');
@@ -219,12 +220,12 @@
             var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
             var current = eased * target;
 
-            el.textContent = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString('es-PR');
+            el.textContent = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString(cstPortal.locale || 'es-PR');
 
             if (progress < 1) {
                 requestAnimationFrame(step);
             } else {
-                el.textContent = isFloat ? target.toFixed(1) : Math.floor(target).toLocaleString('es-PR');
+                el.textContent = isFloat ? target.toFixed(1) : Math.floor(target).toLocaleString(cstPortal.locale || 'es-PR');
             }
         }
 
@@ -640,7 +641,7 @@
 
                 var typeSpan = document.createElement('span');
                 typeSpan.className = 'cst-search__result-type';
-                typeSpan.textContent = item.type === 'page' ? 'Página' : 'Artículo';
+                typeSpan.textContent = item.type === 'page' ? cstPortal.i18n.typePage : cstPortal.i18n.typePost;
 
                 a.appendChild(titleSpan);
                 a.appendChild(typeSpan);
