@@ -40,7 +40,7 @@ $objectives = [
             <?php foreach ( $objectives as $index => $obj ) : ?>
                 <div class="cst-objective-card" data-step="<?php echo esc_attr( $index + 1 ); ?>">
                     <div class="cst-objective-card__icon" aria-hidden="true">
-                        <?php echo $obj['icon']; ?>
+                        <?php echo wp_kses_post( $obj['icon'] ); ?>
                     </div>
                     <h3 class="cst-objective-card__title"><?php echo esc_html( $obj['title'] ); ?></h3>
                     <p class="cst-objective-card__desc"><?php echo esc_html( $obj['desc'] ); ?></p>

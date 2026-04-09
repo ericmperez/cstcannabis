@@ -58,9 +58,12 @@ get_header();
 
             <?php
             // Resource cards.
+            // Load all resources for client-side tab filtering.
+            // Capped at 100 for performance (GUIDI requires bounded queries).
+            // If resources exceed this count, migrate to AJAX-based filtering.
             $resources = new WP_Query( [
                 'post_type'      => 'cst_resource',
-                'posts_per_page' => -1,
+                'posts_per_page' => 100,
                 'orderby'        => 'title',
                 'order'          => 'ASC',
             ] );

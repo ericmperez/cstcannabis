@@ -34,9 +34,9 @@ function cst_government_banner(): void {
         <div class="cst-container">
             <div class="cst-gov-banner__inner">
                 <p class="cst-gov-banner__text">
-                    <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/pr-flag-icon.svg' ); ?>"
+                    <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/pr-gov-shield.svg' ); ?>"
                          alt="" width="20" height="14" class="cst-gov-banner__flag" aria-hidden="true">
-                    <?php esc_html_e( 'Un sitio web oficial del Gobierno de Puerto Rico', 'cst-cannabis' ); ?>
+                    <?php esc_html_e( 'Portal oficial del Gobierno de Puerto Rico.', 'cst-cannabis' ); ?>
                     <button type="button" class="cst-gov-banner__toggle" aria-expanded="false"
                             aria-controls="cst-gov-banner-details">
                         <?php esc_html_e( 'Así es como usted puede verificarlo', 'cst-cannabis' ); ?>

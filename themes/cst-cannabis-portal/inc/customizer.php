@@ -84,10 +84,10 @@ add_action( 'customize_register', function ( WP_Customize_Manager $wp_customize 
     ] );
 
     $social_fields = [
-        'cst_facebook'  => 'Facebook URL',
-        'cst_twitter'   => 'Twitter / X URL',
-        'cst_instagram' => 'Instagram URL',
-        'cst_youtube'   => 'YouTube URL',
+        'cst_facebook'  => __( 'URL de Facebook', 'cst-cannabis' ),
+        'cst_twitter'   => __( 'URL de Twitter / X', 'cst-cannabis' ),
+        'cst_instagram' => __( 'URL de Instagram', 'cst-cannabis' ),
+        'cst_youtube'   => __( 'URL de YouTube', 'cst-cannabis' ),
     ];
 
     foreach ( $social_fields as $id => $label ) {

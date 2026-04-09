@@ -39,6 +39,28 @@ if ( ! defined( 'ABSPATH' ) ) {
                              class="cst-institutional-footer__oig-seal"
                              width="60" height="60" loading="lazy">
                     </a>
+                    <p class="cst-institutional-footer__oig-heading">
+                        <?php esc_html_e( 'Oficina del Inspector General', 'cst-cannabis' ); ?>
+                    </p>
+                    <ul class="cst-institutional-footer__oig-contact">
+                        <li>
+                            <a href="https://www.oig.pr.gov/informa" target="_blank" rel="noopener noreferrer">
+                                <?php esc_html_e( 'Reportar fraude, despilfarro o abuso', 'cst-cannabis' ); ?>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:informa@oig.pr.gov">informa@oig.pr.gov</a>
+                        </li>
+                        <li>
+                            <a href="tel:+17876797979">787-679-7979</a>
+                            <span class="cst-institutional-footer__oig-note">
+                                (<?php esc_html_e( 'línea confidencial', 'cst-cannabis' ); ?>)
+                            </span>
+                        </li>
+                    </ul>
+                    <p class="cst-institutional-footer__oig-whistleblower">
+                        <?php esc_html_e( 'Los denunciantes están protegidos por la Ley 30-2005 contra represalias.', 'cst-cannabis' ); ?>
+                    </p>
                 </div>
                 <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
                     <?php dynamic_sidebar( 'footer-1' ); ?>
@@ -156,6 +178,51 @@ if ( ! defined( 'ABSPATH' ) ) {
             </p>
         </div>
 
+        <!-- Accessibility Statement (Ley 229-2003) -->
+        <div class="cst-institutional-footer__accessibility">
+            <p>
+                <?php
+                echo wp_kses(
+                    sprintf(
+                        /* translators: %s: URL to accesibilidad.pr.gov */
+                        __( 'Accesibilidad — Conforme a la <a href="%s" target="_blank" rel="noopener noreferrer">Ley 229 de 2003</a>. Este portal cumple con los estándares de accesibilidad (WCAG 2.1 AA) establecidos para los sitios web del Gobierno de Puerto Rico.', 'cst-cannabis' ),
+                        'https://accesibilidad.pr.gov'
+                    ),
+                    [
+                        'a' => [
+                            'href'   => [],
+                            'target' => [],
+                            'rel'    => [],
+                        ],
+                    ]
+                );
+                ?>
+            </p>
+        </div>
+
+        <!-- Transparency Portal (Ley 141-2019) -->
+        <div class="cst-institutional-footer__transparency">
+            <p>
+                <?php
+                echo wp_kses(
+                    sprintf(
+                        /* translators: %1$s: Ley 141-2019 reference URL, %2$s: transparency portal URL */
+                        __( 'Conforme a la <a href="%1$s" target="_blank" rel="noopener noreferrer">Ley 141-2019</a>, la información de transparencia está disponible en el <a href="%2$s" target="_blank" rel="noopener noreferrer">Portal Público de Transparencia</a>.', 'cst-cannabis' ),
+                        'https://bvirtualogp.pr.gov/ogp/Bvirtual/leyesreferencia/PDF/2-ingles/0141-2019.pdf',
+                        'https://consultasenlinea.ogp.pr.gov'
+                    ),
+                    [
+                        'a' => [
+                            'href'   => [],
+                            'target' => [],
+                            'rel'    => [],
+                        ],
+                    ]
+                );
+                ?>
+            </p>
+        </div>
+
         <!-- Legal Links -->
         <div class="cst-institutional-footer__legal">
             <?php
@@ -169,6 +236,22 @@ if ( ! defined( 'ABSPATH' ) ) {
                 'fallback_cb'    => false,
             ] );
             ?>
+
+            <?php
+            // Fallback: ensure privacy policy link appears if WP privacy page is set.
+            $privacy_page_id = (int) get_option( 'wp_page_for_privacy_policy' );
+            if ( $privacy_page_id && 'publish' === get_post_status( $privacy_page_id ) ) :
+            ?>
+                <div class="cst-legal-nav cst-legal-nav--fallback">
+                    <ul class="cst-legal-menu">
+                        <li>
+                            <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">
+                                <?php esc_html_e( 'Política de privacidad', 'cst-cannabis' ); ?>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            <?php endif; ?>
         </div>
 
         <!-- Copyright -->

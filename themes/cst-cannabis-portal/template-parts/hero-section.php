@@ -37,7 +37,7 @@ $style = $image_url ? ' style="background-image:url(' . esc_url( $image_url ) . 
 
     <!-- Floating decorative shapes -->
     <svg class="cst-hero__float cst-hero__float--1" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="rgba(127,163,91,0.12)"/></svg>
-    <svg class="cst-hero__float cst-hero__float--2" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="rgba(31,46,84,0.10)"/></svg>
+    <svg class="cst-hero__float cst-hero__float--2" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="rgba(28,40,84,0.10)"/></svg>
     <svg class="cst-hero__float cst-hero__float--3" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.08)"/></svg>
 
     <!-- Hero illustration (decorative) -->
@@ -71,7 +71,7 @@ $style = $image_url ? ' style="background-image:url(' . esc_url( $image_url ) . 
                 <div class="cst-hero__badges" aria-label="<?php esc_attr_e( 'Beneficios del curso', 'cst-cannabis' ); ?>">
                     <?php foreach ( $args['trust_badges'] as $badge ) : ?>
                         <span class="cst-hero__badge">
-                            <span class="cst-hero__badge-icon" aria-hidden="true"><?php echo $badge['icon']; ?></span>
+                            <span class="cst-hero__badge-icon" aria-hidden="true"><?php echo wp_kses_post( $badge['icon'] ); ?></span>
                             <?php echo esc_html( $badge['label'] ); ?>
                         </span>
                     <?php endforeach; ?>
