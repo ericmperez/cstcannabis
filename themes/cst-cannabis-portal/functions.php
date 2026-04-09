@@ -72,7 +72,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-cannabis-style',
         get_stylesheet_uri(),
         [ 'generatepress' ],
-        CST_CANNABIS_VERSION
+        filemtime( CST_CANNABIS_DIR . '/style.css' )
     );
 
     // Google Fonts — Open Sans (body) + Montserrat (headings).
@@ -91,7 +91,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-custom',
         CST_CANNABIS_URI . '/assets/css/custom.css',
         [ 'cst-cannabis-style' ],
-        CST_CANNABIS_VERSION
+        filemtime( CST_CANNABIS_DIR . '/assets/css/custom.css' )
     );
 
     // Accessibility styles.
@@ -99,7 +99,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-accessibility',
         CST_CANNABIS_URI . '/assets/css/accessibility.css',
         [ 'cst-custom' ],
-        CST_CANNABIS_VERSION
+        filemtime( CST_CANNABIS_DIR . '/assets/css/accessibility.css' )
     );
 
     // Main JS.
@@ -107,7 +107,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-main',
         CST_CANNABIS_URI . '/assets/js/main.js',
         [],
-        CST_CANNABIS_VERSION,
+        filemtime( CST_CANNABIS_DIR . '/assets/js/main.js' ),
         true
     );
 

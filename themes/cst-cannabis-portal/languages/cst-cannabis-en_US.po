@@ -1,0 +1,805 @@
+# Translation file for CST Cannabis Portal — Spanish to English
+# Copyright (C) 2026 Comisión para la Seguridad en el Tránsito de Puerto Rico
+# This file is distributed under the same license as the CST Cannabis Portal package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CST Cannabis Portal 1.1.0\n"
+"Report-Msgid-Bugs-To: comunicaciones@cst.pr.gov\n"
+"PO-Revision-Date: 2026-04-09\n"
+"Last-Translator: CST <comunicaciones@cst.pr.gov>\n"
+"Language-Team: CST <comunicaciones@cst.pr.gov>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: cst-cannabis\n"
+
+#: inc/class-cst-menus.php
+msgid "Menú principal"
+msgstr "Main menu"
+
+#: inc/class-cst-menus.php
+msgid "Menú del pie de página"
+msgstr "Footer menu"
+
+#: inc/class-cst-menus.php
+msgid "Enlaces legales"
+msgstr "Legal links"
+
+#: inc/class-cst-menus.php
+msgid "Redes sociales"
+msgstr "Social media"
+
+#: template-parts/header.php
+msgid "Abrir menú"
+msgstr "Open menu"
+
+#: template-parts/header.php
+msgid "Cerrar menú"
+msgstr "Close menu"
+
+#: template-parts/government-banner.php
+msgid "Cerrar banner"
+msgstr "Close banner"
+
+#: template-parts/filters.php
+msgid "Todos"
+msgstr "All"
+
+#: template-parts/government-banner.php
+msgid "Banner del Gobierno de Puerto Rico"
+msgstr "Government of Puerto Rico banner"
+
+#: template-parts/government-banner.php
+msgid "Portal oficial del Gobierno de Puerto Rico."
+msgstr "Official portal of the Government of Puerto Rico."
+
+#: template-parts/government-banner.php
+msgid "Así es como usted puede verificarlo"
+msgstr "This is how you can verify it"
+
+#: template-parts/government-banner.php
+msgid "Los sitios web oficiales del Gobierno de Puerto Rico usan .pr.gov"
+msgstr "Official Government of Puerto Rico websites use .pr.gov"
+
+#: template-parts/government-banner.php
+msgid "Un sitio web .pr.gov pertenece a una organización oficial del Gobierno de Puerto Rico."
+msgstr "A .pr.gov website belongs to an official organization of the Government of Puerto Rico."
+
+#: template-parts/government-banner.php
+msgid "Los sitios web seguros de .pr.gov usan HTTPS"
+msgstr "Secure .pr.gov websites use HTTPS"
+
+#: template-parts/government-banner.php
+msgid "Un candado o https:// significa que usted se conectó de forma segura a un sitio web .pr.gov."
+msgstr "A lock icon or https:// means you have securely connected to a .pr.gov website."
+
+#: template-parts/breadcrumb.php
+msgid "Ruta de navegación"
+msgstr "Breadcrumb navigation"
+
+#: template-parts/header.php
+msgid "Ir al contenido principal"
+msgstr "Skip to main content"
+
+#: inc/class-cst-customizer.php
+msgid "Portal CST"
+msgstr "CST Portal"
+
+#: inc/class-cst-customizer.php
+msgid "Imagen del héroe"
+msgstr "Hero image"
+
+#: inc/class-cst-customizer.php
+msgid "Título del héroe (vacío = nombre del sitio)"
+msgstr "Hero title (empty = site name)"
+
+#: inc/class-cst-customizer.php
+msgid "Subtítulo del héroe (vacío = descripción del sitio)"
+msgstr "Hero subtitle (empty = site description)"
+
+#: inc/class-cst-customizer.php
+msgid "Información de contacto"
+msgstr "Contact information"
+
+#: inc/class-cst-customizer.php
+msgid "Teléfono"
+msgstr "Phone"
+
+#: inc/class-cst-customizer.php
+msgid "Correo electrónico"
+msgstr "Email"
+
+#: inc/class-cst-customizer.php
+msgid "Dirección"
+msgstr "Address"
+
+#: inc/class-cst-customizer.php
+msgid "URL de Facebook"
+msgstr "Facebook URL"
+
+#: inc/class-cst-customizer.php
+msgid "URL de Twitter / X"
+msgstr "Twitter / X URL"
+
+#: inc/class-cst-customizer.php
+msgid "URL de Instagram"
+msgstr "Instagram URL"
+
+#: inc/class-cst-customizer.php
+msgid "URL de YouTube"
+msgstr "YouTube URL"
+
+#: inc/class-cst-widgets.php
+msgid "Barra lateral de recursos"
+msgstr "Resources sidebar"
+
+#: inc/class-cst-widgets.php
+msgid "Aparece en las páginas de recursos educativos."
+msgstr "Appears on educational resource pages."
+
+#: inc/class-cst-widgets.php
+msgid "Pie de página — Columna 1"
+msgstr "Footer — Column 1"
+
+#: inc/class-cst-widgets.php
+msgid "Primera columna del pie de página institucional."
+msgstr "First column of the institutional footer."
+
+#: inc/class-cst-widgets.php
+msgid "Pie de página — Columna 2"
+msgstr "Footer — Column 2"
+
+#: inc/class-cst-widgets.php
+msgid "Segunda columna del pie de página institucional."
+msgstr "Second column of the institutional footer."
+
+#: inc/class-cst-widgets.php
+msgid "Pie de página — Columna 3"
+msgstr "Footer — Column 3"
+
+#: inc/class-cst-widgets.php
+msgid "Tercera columna del pie de página institucional."
+msgstr "Third column of the institutional footer."
+
+#: inc/class-cst-widgets.php
+msgid "Pie de página — Columna 4 (Servicios)"
+msgstr "Footer — Column 4 (Services)"
+
+#: inc/class-cst-widgets.php
+msgid "Cuarta columna del pie de página institucional — Servicios."
+msgstr "Fourth column of the institutional footer — Services."
+
+#: template-parts/content.php
+msgid "Sección principal"
+msgstr "Main section"
+
+#: page-templates/template-home.php
+msgid "Beneficios del curso"
+msgstr "Course benefits"
+
+#: page-templates/template-home.php
+msgid "Inscríbete gratis"
+msgstr "Enroll for free"
+
+#: page-templates/template-home.php
+msgid "Ver temario"
+msgstr "View syllabus"
+
+#: page-templates/template-home.php
+msgid "Gratuito"
+msgstr "Free"
+
+#: page-templates/template-home.php
+msgid "Certificado"
+msgstr "Certificate"
+
+#: page-templates/template-home.php
+msgid "En línea"
+msgstr "Online"
+
+#: page-templates/template-home.php
+msgid "Certificado Digital"
+msgstr "Digital Certificate"
+
+#: page-templates/template-home.php
+msgid "100% En Línea"
+msgstr "100% Online"
+
+#: page-templates/template-home.php
+msgid "A Tu Ritmo"
+msgstr "At Your Own Pace"
+
+#: page-templates/template-home.php
+msgid "Aprobado CST"
+msgstr "CST Approved"
+
+#: page-templates/template-home.php
+msgid "Lo que aprenderás"
+msgstr "What you will learn"
+
+#: page-templates/template-home.php
+msgid "Tres módulos diseñados para que domines los fundamentos de la seguridad vial y el cannabis medicinal."
+msgstr "Three modules designed for you to master the fundamentals of road safety and medical cannabis."
+
+#: page-templates/template-home.php
+msgid "Fundamentos del cannabis medicinal"
+msgstr "Fundamentals of medical cannabis"
+
+#: page-templates/template-home.php
+msgid "Proveer información basada en evidencia sobre el uso responsable del cannabis medicinal y su impacto en la seguridad vial."
+msgstr "Provide evidence-based information on the responsible use of medical cannabis and its impact on road safety."
+
+#: page-templates/template-home.php
+msgid "Impacto en la conducción"
+msgstr "Impact on driving"
+
+#: page-templates/template-home.php
+msgid "Crear conciencia sobre los efectos del cannabis en la conducción y promover alternativas seguras de transporte."
+msgstr "Raise awareness about the effects of cannabis on driving and promote safe transportation alternatives."
+
+#: page-templates/template-home.php
+msgid "Datos y estadísticas"
+msgstr "Data and statistics"
+
+#: page-templates/template-home.php
+msgid "Recopilar y publicar datos estadísticos actualizados que apoyen políticas públicas informadas."
+msgstr "Collect and publish updated statistical data that supports informed public policies."
+
+#: page-templates/template-home.php
+msgid "Características del curso"
+msgstr "Course features"
+
+#: page-templates/template-home.php
+msgid "Todo lo que necesitas saber antes de comenzar."
+msgstr "Everything you need to know before getting started."
+
+#: page-templates/template-home.php
+msgid "Duración"
+msgstr "Duration"
+
+#: page-templates/template-home.php
+msgid "Aproximadamente 2 horas"
+msgstr "Approximately 2 hours"
+
+#: page-templates/template-home.php
+msgid "Formato"
+msgstr "Format"
+
+#: page-templates/template-home.php
+msgid "100% en línea, a tu ritmo"
+msgstr "100% online, at your own pace"
+
+#: page-templates/template-home.php
+msgid "Certificado digital al completar"
+msgstr "Digital certificate upon completion"
+
+#: page-templates/template-home.php
+msgid "Idioma"
+msgstr "Language"
+
+#: page-templates/template-home.php
+msgid "Español"
+msgstr "Spanish"
+
+#: page-templates/template-home.php
+msgid "Costo"
+msgstr "Cost"
+
+#: page-templates/template-home.php
+msgid "Completamente gratuito"
+msgstr "Completely free"
+
+#: page-templates/template-home.php
+msgid "Requisitos"
+msgstr "Requirements"
+
+#: page-templates/template-home.php
+msgid "Ninguno — abierto a todo público"
+msgstr "None — open to everyone"
+
+#: page-templates/template-home.php
+msgid "Estadísticas destacadas"
+msgstr "Highlighted statistics"
+
+#: page-templates/template-home.php
+msgid "Cifras clave"
+msgstr "Key figures"
+
+#: page-templates/template-home.php
+msgid "Datos actualizados sobre la seguridad vial en Puerto Rico."
+msgstr "Updated data on road safety in Puerto Rico."
+
+#: page-templates/template-home.php
+msgid "Ver todas las estadísticas"
+msgstr "View all statistics"
+
+#: page-templates/template-home.php
+msgid "Inscripción al curso"
+msgstr "Course enrollment"
+
+#: page-templates/template-home.php
+msgid "Comienza tu educación hoy"
+msgstr "Start your education today"
+
+#: page-templates/template-home.php
+msgid "Inscríbete en el curso gratuito de la CST y obtén tu certificado digital."
+msgstr "Enroll in the free CST course and get your digital certificate."
+
+#: page-templates/template-home.php
+msgid "Inscríbete ahora"
+msgstr "Enroll now"
+
+#: page-templates/template-home.php
+msgid "Últimas publicaciones"
+msgstr "Latest posts"
+
+#: page-templates/template-home.php
+msgid "Artículos recientes sobre cannabis medicinal y seguridad vial."
+msgstr "Recent articles on medical cannabis and road safety."
+
+#: page-templates/template-home.php
+msgid "Ver todas las publicaciones"
+msgstr "View all posts"
+
+#: page-templates/template-home.php
+msgid "Próximos eventos"
+msgstr "Upcoming events"
+
+#: page-templates/template-home.php
+msgid "Talleres, seminarios y actividades educativas."
+msgstr "Workshops, seminars, and educational activities."
+
+#: page-templates/template-home.php
+msgid "Ver todos los eventos"
+msgstr "View all events"
+
+#: template-parts/content.php
+msgid "Leer más"
+msgstr "Read more"
+
+#: template-parts/content.php
+msgid "Ver recurso"
+msgstr "View resource"
+
+#: template-parts/404.php
+msgid "Ir a la página principal"
+msgstr "Go to the homepage"
+
+#: template-parts/header.php
+msgid "Sello de la Comisión para la Seguridad en el Tránsito"
+msgstr "Seal of the Commission for Traffic Safety"
+
+#: template-parts/header.php
+msgid "Selector de idioma"
+msgstr "Language selector"
+
+#: template-parts/header.php
+msgid "Idioma actual: Español"
+msgstr "Current language: Spanish"
+
+#: template-parts/header.php
+msgid "Sello CST"
+msgstr "CST Seal"
+
+#: template-parts/footer.php
+msgid "Comisión para la Seguridad en el Tránsito de Puerto Rico"
+msgstr "Commission for Traffic Safety of Puerto Rico"
+
+#: template-parts/footer.php
+msgid "Oficina del Inspector General"
+msgstr "Office of the Inspector General"
+
+#: template-parts/footer.php
+msgid "Reportar fraude, despilfarro o abuso"
+msgstr "Report fraud, waste, or abuse"
+
+#: template-parts/footer.php
+msgid "línea confidencial"
+msgstr "confidential line"
+
+#: template-parts/footer.php
+msgid "Los denunciantes están protegidos por la Ley 30-2005 contra represalias."
+msgstr "Whistleblowers are protected by Law 30-2005 against retaliation."
+
+#: template-parts/footer.php
+msgid "Servicios"
+msgstr "Services"
+
+#: template-parts/footer.php
+msgid "Síguenos"
+msgstr "Follow us"
+
+#: template-parts/footer.php
+msgid "Contactos"
+msgstr "Contacts"
+
+#: template-parts/footer.php
+msgid "La Comisión para la Seguridad en el Tránsito es un patrono con igualdad de oportunidades en el empleo. No se discrimina por razón de raza, color, género, nacimiento, origen o condición social, ni por ideas políticas o religiosas, edad, orientación sexual o identidad de género."
+msgstr "The Commission for Traffic Safety is an equal opportunity employer. There is no discrimination based on race, color, gender, birth, origin or social condition, political or religious beliefs, age, sexual orientation, or gender identity."
+
+#: template-parts/footer.php
+msgid "Somos un patrono con un programa de acción afirmativa que cumple con los reglamentos gubernamentales."
+msgstr "We are an employer with an affirmative action program that complies with government regulations."
+
+#: template-parts/footer.php
+msgid "Política de privacidad"
+msgstr "Privacy policy"
+
+#: template-parts/footer.php
+msgid "Comisión para la Seguridad en el Tránsito de Puerto Rico. Todos los derechos reservados."
+msgstr "Commission for Traffic Safety of Puerto Rico. All rights reserved."
+
+#: template-parts/footer.php
+msgid "Volver al inicio"
+msgstr "Back to top"
+
+#: page-templates/template-statistics.php
+msgid "Datos y métricas sobre la seguridad vial y el uso del cannabis medicinal en Puerto Rico."
+msgstr "Data and metrics on road safety and medical cannabis use in Puerto Rico."
+
+#: page-templates/template-statistics.php
+msgid "Controles del panel"
+msgstr "Dashboard controls"
+
+#: page-templates/template-statistics.php
+msgid "Categorías de datos"
+msgstr "Data categories"
+
+#: page-templates/template-statistics.php
+msgid "Pacientes"
+msgstr "Patients"
+
+#: page-templates/template-statistics.php
+msgid "Seguridad"
+msgstr "Safety"
+
+#: page-templates/template-statistics.php
+msgid "Educación"
+msgstr "Education"
+
+#: page-templates/template-statistics.php
+msgid "Indicadores clave"
+msgstr "Key indicators"
+
+#: page-templates/template-statistics.php
+msgid "Pacientes y datos médicos"
+msgstr "Patients and medical data"
+
+#: page-templates/template-statistics.php
+msgid "Seguridad vial"
+msgstr "Road safety"
+
+#: page-templates/template-statistics.php
+msgid "Educación y alcance"
+msgstr "Education and outreach"
+
+#: page-templates/template-statistics.php
+msgid "Fuentes y metodología"
+msgstr "Sources and methodology"
+
+#: page-templates/template-statistics.php
+msgid "Los datos presentados provienen de las siguientes fuentes oficiales."
+msgstr "The data presented comes from the following official sources."
+
+#: page-templates/template-statistics.php
+msgid "Datos oficiales del gobierno de Puerto Rico."
+msgstr "Official data from the government of Puerto Rico."
+
+#: template-parts/sidebar-course.php
+msgid "Recurso Educativo Gratuito de la CST"
+msgstr "Free Educational Resource from the CST"
+
+#: template-parts/sidebar-course.php
+msgid "Ver Curso"
+msgstr "View Course"
+
+#: template-parts/table-of-contents.php
+msgid "Tabla de contenido"
+msgstr "Table of contents"
+
+#: template-parts/table-of-contents.php
+msgid "Contenido"
+msgstr "Content"
+
+#: page-templates/template-contact.php
+msgid "Estamos para servirle. Contáctenos para preguntas, comentarios o asistencia."
+msgstr "We are here to serve you. Contact us for questions, comments, or assistance."
+
+#: page-templates/template-contact.php
+msgid "Envíenos un mensaje"
+msgstr "Send us a message"
+
+#: page-templates/template-about.php
+msgid "Promoviendo la seguridad vial y la educación responsable en Puerto Rico"
+msgstr "Promoting road safety and responsible education in Puerto Rico"
+
+#: page-templates/template-about.php
+msgid "Nuestra misión"
+msgstr "Our mission"
+
+#: page-templates/template-about.php
+msgid "¿Por qué este portal?"
+msgstr "Why this portal?"
+
+#: page-templates/template-about.php
+msgid "Nuestros pilares"
+msgstr "Our pillars"
+
+#: page-templates/template-about.php
+msgid "Los principios que guían nuestro trabajo"
+msgstr "The principles that guide our work"
+
+#: page-templates/template-about.php
+msgid "Educación basada en evidencia"
+msgstr "Evidence-based education"
+
+#: page-templates/template-about.php
+msgid "Toda nuestra información proviene de fuentes científicas verificadas y datos del Departamento de Salud."
+msgstr "All our information comes from verified scientific sources and Department of Health data."
+
+#: page-templates/template-about.php
+msgid "Prevención proactiva"
+msgstr "Proactive prevention"
+
+#: page-templates/template-about.php
+msgid "Trabajamos para prevenir accidentes antes de que ocurran mediante campañas de concientización."
+msgstr "We work to prevent accidents before they happen through awareness campaigns."
+
+#: page-templates/template-about.php
+msgid "Colaboración interagencial"
+msgstr "Interagency collaboration"
+
+#: page-templates/template-about.php
+msgid "Coordinamos con el Departamento de Salud, la Policía de Puerto Rico y organizaciones comunitarias."
+msgstr "We coordinate with the Department of Health, the Puerto Rico Police, and community organizations."
+
+#: page-templates/template-about.php
+msgid "Accesibilidad universal"
+msgstr "Universal accessibility"
+
+#: page-templates/template-about.php
+msgid "Nuestro contenido está disponible en español e inglés, y cumple con los estándares WCAG 2.1 AA."
+msgstr "Our content is available in Spanish and English, and complies with WCAG 2.1 AA standards."
+
+#: page-templates/template-about.php
+msgid "Contacto"
+msgstr "Contact"
+
+#: page-templates/template-about.php
+msgid "Para más información sobre nuestros programas y servicios, contáctenos."
+msgstr "For more information about our programs and services, contact us."
+
+#: page-templates/template-about.php
+msgid "Página de contacto"
+msgstr "Contact page"
+
+#: page-templates/template-course.php
+msgid "Impacto del curso"
+msgstr "Course impact"
+
+#: page-templates/template-course.php
+msgid "Educando para un Uso Responsable del Cannabis Medicinal en Puerto Rico"
+msgstr "Educating for Responsible Use of Medical Cannabis in Puerto Rico"
+
+#: page-templates/template-course.php
+msgid "El cannabis medicinal es legal en Puerto Rico, pero su uso conlleva responsabilidades. Este curso te prepara para entender el marco legal, los efectos en la conducción y las mejores prácticas de seguridad vial."
+msgstr "Medical cannabis is legal in Puerto Rico, but its use carries responsibilities. This course prepares you to understand the legal framework, the effects on driving, and road safety best practices."
+
+#: page-templates/template-course.php
+msgid "de los pacientes de cannabis medicinal desconocen los efectos en la capacidad de conducción"
+msgstr "of medical cannabis patients are unaware of the effects on driving ability"
+
+#: page-templates/template-course.php
+msgid "Basado en evidencia"
+msgstr "Evidence-based"
+
+#: page-templates/template-course.php
+msgid "Contenido desarrollado con base en estudios científicos y estándares locales y federales."
+msgstr "Content developed based on scientific studies and local and federal standards."
+
+#: page-templates/template-course.php
+msgid "Alianzas confiables"
+msgstr "Trusted partnerships"
+
+#: page-templates/template-course.php
+msgid "Colaboración entre agencias gubernamentales para promover una cultura de uso responsable."
+msgstr "Collaboration between government agencies to promote a culture of responsible use."
+
+#: page-templates/template-course.php
+msgid "Educación preventiva"
+msgstr "Preventive education"
+
+#: page-templates/template-course.php
+msgid "Formación obligatoria para garantizar la seguridad vial de pacientes y conductores."
+msgstr "Mandatory training to ensure road safety for patients and drivers."
+
+#: page-templates/template-course.php
+msgid "100% Digital y Accesible"
+msgstr "100% Digital and Accessible"
+
+#: page-templates/template-course.php
+msgid "Accede desde computadora, tableta o celular"
+msgstr "Access from computer, tablet, or phone"
+
+#: page-templates/template-course.php
+msgid "Compatible con iOS y Android"
+msgstr "Compatible with iOS and Android"
+
+#: page-templates/template-course.php
+msgid "Estudia las 24 horas, a tu propio ritmo"
+msgstr "Study 24 hours a day, at your own pace"
+
+#: page-templates/template-course.php
+msgid "Contenido Interactivo"
+msgstr "Interactive Content"
+
+#: page-templates/template-course.php
+msgid "5 módulos educativos completos"
+msgstr "5 complete educational modules"
+
+#: page-templates/template-course.php
+msgid "Videos, animaciones y evaluaciones"
+msgstr "Videos, animations, and assessments"
+
+#: page-templates/template-course.php
+msgid "Basado en estándares locales y federales"
+msgstr "Based on local and federal standards"
+
+#: page-templates/template-course.php
+msgid "Certificado Verificable"
+msgstr "Verifiable Certificate"
+
+#: page-templates/template-course.php
+msgid "Certificado digital con código QR único"
+msgstr "Digital certificate with unique QR code"
+
+#: page-templates/template-course.php
+msgid "Validación instantánea en línea"
+msgstr "Instant online validation"
+
+#: page-templates/template-course.php
+msgid "Emitido por la CST de Puerto Rico"
+msgstr "Issued by the CST of Puerto Rico"
+
+#: page-templates/template-course.php
+msgid "Tu Camino hacia la Educación Responsable"
+msgstr "Your Path to Responsible Education"
+
+#: page-templates/template-course.php
+msgid "Todo lo que necesitas para completar el curso y obtener tu certificado."
+msgstr "Everything you need to complete the course and get your certificate."
+
+#: page-templates/template-course.php
+msgid "Preguntas Frecuentes"
+msgstr "Frequently Asked Questions"
+
+#: page-templates/template-course.php
+msgid "Respuestas a las dudas más comunes sobre el curso y la certificación."
+msgstr "Answers to the most common questions about the course and certification."
+
+#: page-templates/template-course.php
+msgid "¿Es este curso obligatorio para pacientes de cannabis medicinal?"
+msgstr "Is this course mandatory for medical cannabis patients?"
+
+#: page-templates/template-course.php
+msgid "Este curso es un recurso educativo gratuito ofrecido por la CST. Está diseñado para educar a pacientes, profesionales y al público general sobre el uso responsable del cannabis medicinal y la seguridad vial."
+msgstr "This course is a free educational resource offered by the CST. It is designed to educate patients, professionals, and the general public on the responsible use of medical cannabis and road safety."
+
+#: page-templates/template-course.php
+msgid "¿Qué necesito para registrarme en el curso?"
+msgstr "What do I need to register for the course?"
+
+#: page-templates/template-course.php
+msgid "Solo necesitas una dirección de correo electrónico válida y completar el formulario de registro. El curso es completamente gratuito y abierto a todo público."
+msgstr "You only need a valid email address and to complete the registration form. The course is completely free and open to everyone."
+
+#: page-templates/template-course.php
+msgid "¿Puedo tomar el curso desde mi celular?"
+msgstr "Can I take the course from my phone?"
+
+#: page-templates/template-course.php
+msgid "Sí. La plataforma es completamente compatible con dispositivos móviles, tabletas y computadoras. Puedes acceder al contenido desde cualquier navegador moderno."
+msgstr "Yes. The platform is fully compatible with mobile devices, tablets, and computers. You can access the content from any modern browser."
+
+#: page-templates/template-course.php
+msgid "¿Qué sucede si no apruebo el examen final?"
+msgstr "What happens if I don't pass the final exam?"
+
+#: page-templates/template-course.php
+msgid "Tienes hasta 3 intentos para aprobar el examen final. Debes esperar 24 horas entre cada intento. Se requiere un 70% para aprobar y obtener el certificado."
+msgstr "You have up to 3 attempts to pass the final exam. You must wait 24 hours between each attempt. A 70% score is required to pass and obtain the certificate."
+
+#: page-templates/template-course.php
+msgid "¿El certificado tiene fecha de vencimiento?"
+msgstr "Does the certificate have an expiration date?"
+
+#: page-templates/template-course.php
+msgid "Sí. El certificado digital es válido por 90 días a partir de la fecha de emisión. Puedes verificar su autenticidad mediante el código QR incluido."
+msgstr "Yes. The digital certificate is valid for 90 days from the date of issuance. You can verify its authenticity using the included QR code."
+
+#: page-templates/template-course.php
+msgid "Registro al curso"
+msgstr "Course registration"
+
+#: page-templates/template-course.php
+msgid "Curso de Cannabis Medicinal y Seguridad Vial"
+msgstr "Medical Cannabis and Road Safety Course"
+
+#: page-templates/template-course.php
+msgid "Recurso educativo gratuito de la CST"
+msgstr "Free educational resource from the CST"
+
+#: page-templates/template-course.php
+msgid "Regístrate ahora"
+msgstr "Register now"
+
+#: page-templates/template-course.php
+msgid "Este curso es un recurso educativo independiente ofrecido por la Comisión para la Seguridad en el Tránsito (CST). El contenido es de carácter informativo y no constituye asesoría legal ni médica. Consulte a un profesional para orientación específica."
+msgstr "This course is an independent educational resource offered by the Commission for Traffic Safety (CST). The content is informational in nature and does not constitute legal or medical advice. Consult a professional for specific guidance."
+
+#: archive-cst_resource.php
+msgid "Recursos"
+msgstr "Resources"
+
+#: archive-cst_resource.php
+msgid "Guías, infografías, videos y documentos sobre el uso responsable del cannabis medicinal."
+msgstr "Guides, infographics, videos, and documents on the responsible use of medical cannabis."
+
+#: archive-cst_resource.php
+msgid "Filtrar por tipo de recurso"
+msgstr "Filter by resource type"
+
+#: archive-cst_resource.php
+msgid "&larr; Recursos anteriores"
+msgstr "&larr; Previous resources"
+
+#: archive-cst_resource.php
+msgid "Más recursos &rarr;"
+msgstr "More resources &rarr;"
+
+#: archive-cst_resource.php
+msgid "Próximamente se publicarán recursos educativos."
+msgstr "Educational resources will be published soon."
+
+#: template-parts/search.php
+msgid "Buscar en el portal"
+msgstr "Search the portal"
+
+#: template-parts/search.php
+msgid "Buscar..."
+msgstr "Search..."
+
+#: template-parts/search.php
+msgid "Buscar"
+msgstr "Search"
+
+#: includes/class-cst-statistics.php
+msgid "Gráfica no disponible. Habilite JavaScript para ver este contenido."
+msgstr "Chart not available. Enable JavaScript to view this content."
+
+#: includes/class-cst-statistics.php
+msgid "Datos actualizados: %s"
+msgstr "Updated data: %s"
+
+#: includes/class-cst-statistics.php
+msgid "Última actualización: %s"
+msgstr "Last updated: %s"
+
+#: template-parts/faq.php
+msgid "Preguntas frecuentes"
+msgstr "Frequently asked questions"
+
+#: template-parts/footer.php
+msgid "Accesibilidad — Conforme a la <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Ley 229 de 2003</a>. Este portal cumple con los estándares de accesibilidad (WCAG 2.1 AA) establecidos para los sitios web del Gobierno de Puerto Rico."
+msgstr "Accessibility — In compliance with <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Law 229 of 2003</a>. This portal complies with the accessibility standards (WCAG 2.1 AA) established for Government of Puerto Rico websites."
+
+#: template-parts/footer.php
+msgid "Conforme a la <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Ley 141-2019</a>, la información de transparencia está disponible en el <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Portal Público de Transparencia</a>."
+msgstr "In compliance with <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">Law 141-2019</a>, transparency information is available on the <a href=\"%2$s\" target=\"_blank\" rel=\"noopener noreferrer\">Public Transparency Portal</a>."
+
+#: template-parts/government-banner.php
+msgid "Un sitio web oficial del Gobierno de Puerto Rico"
+msgstr "An official Government of Puerto Rico website"

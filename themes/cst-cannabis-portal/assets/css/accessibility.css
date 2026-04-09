@@ -238,19 +238,45 @@ nav a,
         text-decoration: underline;
     }
 
-    /* Search form — high contrast */
-    .cst-header-search__input {
-        border: 2px solid var(--cst-color-black);
-    }
-
-    .cst-header-search__btn {
-        border: 2px solid var(--cst-color-black);
-        background: var(--cst-color-primary);
-    }
-
     /* OIG logo — ensure visible */
     .cst-institutional-footer__oig-seal {
         opacity: 1;
+    }
+
+    /* Course impact — high contrast */
+    .cst-section--course-impact {
+        background: var(--cst-color-black);
+    }
+
+    .cst-course-impact__stat-box {
+        border: 2px solid var(--cst-color-white);
+        backdrop-filter: none;
+        background: transparent;
+    }
+
+    .cst-course-impact__callout {
+        border: 2px solid var(--cst-color-white);
+        background: transparent;
+    }
+
+    /* FAQ — high contrast */
+    .cst-faq__item {
+        border-color: var(--cst-color-black);
+    }
+
+    .cst-faq__question:focus-visible {
+        outline: 3px solid var(--cst-color-black);
+        outline-offset: 2px;
+    }
+
+    /* Course cards — high contrast */
+    .cst-course-card {
+        border: 2px solid var(--cst-color-black);
+        box-shadow: none;
+    }
+
+    .cst-course-card:hover {
+        box-shadow: none;
     }
 }
 
@@ -413,19 +439,6 @@ nav a,
         border: 2px solid ButtonText;
     }
 
-    /* Search form — system colors */
-    .cst-header-search__input {
-        background: Field;
-        color: FieldText;
-        border: 1px solid CanvasText;
-    }
-
-    .cst-header-search__btn {
-        background: ButtonFace;
-        color: ButtonText;
-        border: 1px solid ButtonText;
-    }
-
     /* OIG logo — ensure visible */
     .cst-institutional-footer__oig-seal {
         opacity: 1;
@@ -472,6 +485,16 @@ nav a,
     .cst-objective-card[data-step]::before {
         transition: none;
     }
+
+    /* FAQ chevron rotation — immediate */
+    .cst-faq__question::after {
+        transition: none;
+    }
+
+    /* Course cards — no hover lift */
+    .cst-course-card:hover {
+        transform: none;
+    }
 }
 
 /* --- Selection --- */
@@ -484,7 +507,7 @@ nav a,
 /* --- Ensure sufficient color contrast for links --- */
 
 .cst-content-area a:visited {
-    color: #5E7C3A;
+    color: var(--cst-color-green-dark);
 }
 
 /* --- ARIA Live Region --- */
@@ -542,5 +565,58 @@ nav a,
     }
     .menu-toggle {
         border: 2px solid ButtonText;
+    }
+
+    /* Course impact — system colors */
+    .cst-section--course-impact {
+        background: Canvas;
+        color: CanvasText;
+    }
+
+    .cst-course-impact__stat-box {
+        background: Canvas;
+        border: 2px solid CanvasText;
+        backdrop-filter: none;
+    }
+
+    .cst-course-impact__callout {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-course-impact__callout-icon {
+        background: Canvas;
+        border: 1px solid CanvasText;
+    }
+
+    /* FAQ — system colors */
+    .cst-faq__item {
+        border-color: CanvasText;
+    }
+
+    .cst-faq__question::after {
+        background: CanvasText;
+    }
+
+    /* Course cards — system colors */
+    .cst-course-card {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-course-card__icon {
+        background: Canvas;
+        border: 1px solid CanvasText;
+    }
+
+    .cst-course-card__list li::before {
+        background: CanvasText;
+    }
+
+    /* Footer CTA — system colors */
+    .cst-course-footer-cta__info {
+        border: 1px solid CanvasText;
+    }
+
+    .cst-course-footer-cta__disclaimer {
+        border-left-color: CanvasText;
     }
 }

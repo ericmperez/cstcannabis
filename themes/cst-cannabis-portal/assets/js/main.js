@@ -471,6 +471,24 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  CF7 → Tutor LMS Redirect (course registration)                   */
+    /* ------------------------------------------------------------------ */
+
+    function initCF7CourseRedirect() {
+        var formWrap = document.querySelector('.cst-course-footer-cta__form');
+        if (!formWrap) return;
+
+        var redirectUrl = formWrap.getAttribute('data-redirect-url');
+        if (!redirectUrl) return;
+
+        document.addEventListener('wpcf7mailsent', function (event) {
+            if (formWrap.contains(event.target)) {
+                window.location.href = redirectUrl;
+            }
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Init                                                              */
     /* ------------------------------------------------------------------ */
 
@@ -487,6 +505,7 @@
         initDesktopNavKeyboard();
         initHeaderScroll();
         initBackToTop();
+        initCF7CourseRedirect();
     });
 
 })();

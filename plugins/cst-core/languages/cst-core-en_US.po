@@ -1,0 +1,399 @@
+# Translation of CST Core plugin into English (US).
+# Copyright (C) 2026 Comisión para la Seguridad en el Tránsito
+# This file is distributed under the same license as the CST Core plugin.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CST Core 1.0.0\n"
+"PO-Revision-Date: 2026-04-09\n"
+"Language-Team: CST <comunicaciones@cst.pr.gov>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: cst-core\n"
+
+#: includes/class-cst-post-types.php
+msgid "Recursos"
+msgstr "Resources"
+
+#: includes/class-cst-post-types.php
+msgid "Recurso"
+msgstr "Resource"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir recurso"
+msgstr "Add Resource"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir nuevo recurso"
+msgstr "Add New Resource"
+
+#: includes/class-cst-post-types.php
+msgid "Editar recurso"
+msgstr "Edit Resource"
+
+#: includes/class-cst-post-types.php
+msgid "Nuevo recurso"
+msgstr "New Resource"
+
+#: includes/class-cst-post-types.php
+msgid "Ver recurso"
+msgstr "View Resource"
+
+#: includes/class-cst-post-types.php
+msgid "Buscar recursos"
+msgstr "Search Resources"
+
+#: includes/class-cst-post-types.php
+msgid "No se encontraron recursos"
+msgstr "No resources found"
+
+#: includes/class-cst-post-types.php
+msgid "No se encontraron recursos en la papelera"
+msgstr "No resources found in trash"
+
+#: includes/class-cst-post-types.php
+msgid "Todos los recursos"
+msgstr "All Resources"
+
+#: includes/class-cst-post-types.php
+msgid "Tipos de recurso"
+msgstr "Resource Types"
+
+#: includes/class-cst-post-types.php
+msgid "Tipo de recurso"
+msgstr "Resource Type"
+
+#: includes/class-cst-post-types.php
+msgid "Buscar tipos"
+msgstr "Search Types"
+
+#: includes/class-cst-post-types.php
+msgid "Todos los tipos"
+msgstr "All Types"
+
+#: includes/class-cst-post-types.php
+msgid "Editar tipo"
+msgstr "Edit Type"
+
+#: includes/class-cst-post-types.php
+msgid "Actualizar tipo"
+msgstr "Update Type"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir nuevo tipo"
+msgstr "Add New Type"
+
+#: includes/class-cst-post-types.php
+msgid "Nuevo nombre de tipo"
+msgstr "New Type Name"
+
+#: includes/class-cst-post-types.php
+msgid "Estadísticas"
+msgstr "Statistics"
+
+#: includes/class-cst-post-types.php
+msgid "Estadística"
+msgstr "Statistic"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir estadística"
+msgstr "Add Statistic"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir nueva estadística"
+msgstr "Add New Statistic"
+
+#: includes/class-cst-post-types.php
+msgid "Editar estadística"
+msgstr "Edit Statistic"
+
+#: includes/class-cst-post-types.php
+msgid "Nueva estadística"
+msgstr "New Statistic"
+
+#: includes/class-cst-post-types.php
+msgid "Ver estadística"
+msgstr "View Statistic"
+
+#: includes/class-cst-post-types.php
+msgid "Buscar estadísticas"
+msgstr "Search Statistics"
+
+#: includes/class-cst-post-types.php
+msgid "No se encontraron estadísticas"
+msgstr "No statistics found"
+
+#: includes/class-cst-post-types.php
+msgid "No se encontraron estadísticas en la papelera"
+msgstr "No statistics found in trash"
+
+#: includes/class-cst-post-types.php
+msgid "Todas las estadísticas"
+msgstr "All Statistics"
+
+#: includes/class-cst-post-types.php
+msgid "Datos de la estadística"
+msgstr "Statistic Data"
+
+#: includes/class-cst-post-types.php
+msgid "Valor numérico"
+msgstr "Numeric Value"
+
+#: includes/class-cst-post-types.php
+msgid "Unidad / sufijo"
+msgstr "Unit / Suffix"
+
+#: includes/class-cst-post-types.php
+msgid "Dashicon"
+msgstr "Dashicon"
+
+#: includes/class-cst-post-types.php
+msgid "Orden"
+msgstr "Order"
+
+#: includes/class-cst-post-types.php
+msgid "Fuente"
+msgstr "Source"
+
+#: includes/class-cst-post-types.php
+msgid "Tendencia (%)"
+msgstr "Trend (%)"
+
+#: includes/class-cst-post-types.php
+msgid "Porcentaje de cambio (positivo o negativo)"
+msgstr "Percentage of change (positive or negative)"
+
+#: includes/class-cst-post-types.php
+msgid "Categoría"
+msgstr "Category"
+
+#: includes/class-cst-post-types.php
+msgid "— Solo KPI (sin gráfica) —"
+msgstr "— KPI Only (no chart) —"
+
+#: includes/class-cst-post-types.php
+msgid "Pacientes y datos médicos"
+msgstr "Patients and Medical Data"
+
+#: includes/class-cst-post-types.php
+msgid "Seguridad vial"
+msgstr "Road Safety"
+
+#: includes/class-cst-post-types.php
+msgid "Educación y alcance"
+msgstr "Education and Outreach"
+
+#: includes/class-cst-post-types.php
+msgid "Tipo de gráfica"
+msgstr "Chart Type"
+
+#: includes/class-cst-post-types.php
+msgid "Ninguna"
+msgstr "None"
+
+#: includes/class-cst-post-types.php
+msgid "Barras"
+msgstr "Bar"
+
+#: includes/class-cst-post-types.php
+msgid "Líneas"
+msgstr "Line"
+
+#: includes/class-cst-post-types.php
+msgid "Dona"
+msgstr "Doughnut"
+
+#: includes/class-cst-post-types.php
+msgid "Etiqueta de gráfica"
+msgstr "Chart Label"
+
+#: includes/class-cst-post-types.php
+msgid "Datos de gráfica (JSON)"
+msgstr "Chart Data (JSON)"
+
+#: includes/class-cst-post-types.php
+msgid "Formato: [{\"label\":\"2020\",\"value\":85000}, {\"label\":\"2021\",\"value\":92000}]"
+msgstr "Format: [{\"label\":\"2020\",\"value\":85000}, {\"label\":\"2021\",\"value\":92000}]"
+
+#: includes/class-cst-post-types.php
+msgid "Preguntas frecuentes"
+msgstr "Frequently Asked Questions"
+
+#: includes/class-cst-post-types.php
+msgid "Pregunta frecuente"
+msgstr "Frequently Asked Question"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir pregunta"
+msgstr "Add Question"
+
+#: includes/class-cst-post-types.php
+msgid "Añadir nueva pregunta"
+msgstr "Add New Question"
+
+#: includes/class-cst-post-types.php
+msgid "Editar pregunta"
+msgstr "Edit Question"
+
+#: includes/class-cst-post-types.php
+msgid "Nueva pregunta"
+msgstr "New Question"
+
+#: includes/class-cst-post-types.php
+msgid "Ver pregunta"
+msgstr "View Question"
+
+#: includes/class-cst-post-types.php
+msgid "Buscar preguntas"
+msgstr "Search Questions"
+
+#: includes/class-cst-post-types.php
+msgid "No se encontraron preguntas"
+msgstr "No questions found"
+
+#: includes/class-cst-post-types.php
+msgid "No se encontraron preguntas en la papelera"
+msgstr "No questions found in trash"
+
+#: includes/class-cst-post-types.php
+msgid "Todas las preguntas"
+msgstr "All Questions"
+
+#: includes/class-cst-post-types.php
+msgid "FAQ / Chatbot"
+msgstr "FAQ / Chatbot"
+
+#: includes/class-cst-whatsapp.php
+msgid "Contactar por WhatsApp"
+msgstr "Contact via WhatsApp"
+
+#: includes/class-cst-whatsapp.php
+msgid "¿Necesita ayuda?"
+msgstr "Need help?"
+
+#: includes/class-cst-statistics.php
+msgid "No hay estadísticas disponibles en este momento."
+msgstr "No statistics available at this time."
+
+#: includes/class-cst-statistics.php
+msgid "Estadísticas públicas"
+msgstr "Public Statistics"
+
+#: includes/class-cst-settings.php
+msgid "Configuración CST"
+msgstr "CST Settings"
+
+#: includes/class-cst-settings.php
+msgid "CST Portal"
+msgstr "CST Portal"
+
+#: includes/class-cst-settings.php
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: includes/class-cst-settings.php
+msgid "Chatbot"
+msgstr "Chatbot"
+
+#: includes/class-cst-settings.php
+msgid "Activar botón"
+msgstr "Enable Button"
+
+#: includes/class-cst-settings.php
+msgid "Número (con código país)"
+msgstr "Number (with country code)"
+
+#: includes/class-cst-settings.php
+msgid "Mensaje predeterminado"
+msgstr "Default Message"
+
+#: includes/class-cst-settings.php
+msgid "Activar chatbot"
+msgstr "Enable Chatbot"
+
+#: includes/class-cst-settings.php
+msgid "Mensaje de bienvenida"
+msgstr "Welcome Message"
+
+#: includes/class-cst-settings.php
+msgid "URL del API LLM"
+msgstr "LLM API URL"
+
+#: includes/class-cst-settings.php
+msgid "API Key"
+msgstr "API Key"
+
+#: includes/class-cst-settings.php
+msgid "Configuración del Portal CST"
+msgstr "CST Portal Settings"
+
+#: includes/class-cst-settings.php
+msgid "••••••••  (guardada — dejar vacío para mantener)"
+msgstr "••••••••  (saved — leave empty to keep)"
+
+#: includes/class-cst-settings.php
+msgid "La clave API está guardada de forma encriptada. Introduzca un nuevo valor para cambiarla."
+msgstr "The API key is saved in encrypted form. Enter a new value to change it."
+
+#: includes/class-cst-chatbot.php
+msgid "Ha enviado demasiados mensajes. Por favor espere un momento."
+msgstr "You have sent too many messages. Please wait a moment."
+
+#: includes/class-cst-chatbot.php
+msgid "Gracias por su pregunta. No encontré una respuesta específica, pero puede contactarnos directamente para más información."
+msgstr "Thank you for your question. I could not find a specific answer, but you can contact us directly for more information."
+
+#: includes/class-cst-chatbot.php
+msgid "También puede escribirnos por <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>."
+msgstr "You can also reach us via <a href=\"https://wa.me/%s\" target=\"_blank\" rel=\"noopener noreferrer\">WhatsApp</a>."
+
+#: includes/class-cst-chatbot.php
+msgid "¡Hola! Soy el asistente virtual del portal CST. ¿En qué puedo ayudarle?"
+msgstr "Hello! I am the CST portal virtual assistant. How can I help you?"
+
+#: assets/js/chatbot.js
+msgid "Asistente Virtual"
+msgstr "Virtual Assistant"
+
+#: assets/js/chatbot.js
+msgid "Escriba su pregunta…"
+msgstr "Type your question..."
+
+#: assets/js/chatbot.js
+msgid "Enviar"
+msgstr "Send"
+
+#: assets/js/chatbot.js
+msgid "Cerrar chat"
+msgstr "Close Chat"
+
+#: assets/js/chatbot.js
+msgid "Abrir chat de ayuda"
+msgstr "Open Help Chat"
+
+#: assets/js/chatbot.js
+msgid "Escribiendo…"
+msgstr "Typing..."
+
+#: includes/class-cst-chatbot.php
+msgid "Hubo un error al procesar su mensaje. Por favor intente de nuevo."
+msgstr "There was an error processing your message. Please try again."
+
+#: assets/js/chatbot.js
+msgid "Chat de ayuda"
+msgstr "Help Chat"
+
+#: assets/js/chatbot.js
+msgid "Ventana de chat"
+msgstr "Chat Window"
+
+#: assets/js/chatbot.js
+msgid "Escriba su pregunta"
+msgstr "Type Your Question"
+
+#: assets/js/chatbot.js
+msgid "Enviar mensaje"
+msgstr "Send Message"

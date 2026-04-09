@@ -2017,9 +2017,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-institutional-footer__grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--cst-space-xl);
-    padding-bottom: var(--cst-space-2xl);
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--cst-space-3xl);
+    padding-bottom: var(--cst-space-3xl);
     position: relative;
     z-index: 1;
 }
@@ -2092,18 +2092,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-footer-contact li {
-    margin-bottom: var(--cst-space-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--cst-space-sm);
+    margin-bottom: var(--cst-space-md);
+    line-height: 1.5;
 }
 
-.cst-footer-contact a {
+.cst-footer-contact__icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--cst-color-green-light);
+}
+
+.cst-footer-contact a,
+.cst-footer-contact span {
     color: var(--cst-color-gray-300);
     text-decoration: none;
-    transition: color var(--cst-transition), padding-left var(--cst-transition);
+    transition: color var(--cst-transition);
 }
 
 .cst-footer-contact a:hover {
     color: var(--cst-color-white);
-    padding-left: var(--cst-space-xs);
+}
+
+.cst-footer-widget__title--social {
+    margin-top: var(--cst-space-xl);
 }
 
 /* Social Links */
@@ -2146,15 +2160,19 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 0;
     color: var(--cst-color-green-dark);
     justify-content: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--cst-space-sm);
+}
+
+.cst-social-links--contact .cst-social-icon {
+    flex-shrink: 0;
 }
 
 /* Legal & Copyright */
 
 .cst-institutional-footer__legal {
-    border-top: 1px solid var(--cst-alpha-white-10);
-    padding-block: var(--cst-space-md);
-    position: relative;
-    z-index: 1;
+    padding-block: var(--cst-space-sm);
 }
 
 .cst-legal-menu {
@@ -2180,11 +2198,20 @@ h1, h2, h3, h4, h5, h6 {
 /* OIG Logo */
 
 .cst-institutional-footer__oig {
-    margin-top: var(--cst-space-md);
+    margin-top: var(--cst-space-lg);
+    padding-top: var(--cst-space-lg);
+    border-top: 1px solid var(--cst-alpha-white-10);
+}
+
+.cst-institutional-footer__oig-header {
+    display: flex;
+    align-items: center;
+    gap: var(--cst-space-sm);
+    margin-bottom: var(--cst-space-sm);
 }
 
 .cst-institutional-footer__oig-seal {
-    height: 48px;
+    height: 40px;
     width: auto;
     opacity: 0.85;
     transition: opacity var(--cst-transition);
@@ -2194,28 +2221,47 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
 }
 
-/* Compliance Statements */
+/* Bottom bar */
 
-.cst-institutional-footer__compliance {
-    text-align: center;
-    padding: var(--cst-space-lg) 0;
+.cst-institutional-footer__bottom {
     border-top: 1px solid var(--cst-alpha-white-10);
+    padding-top: var(--cst-space-xl);
+    text-align: center;
     position: relative;
     z-index: 1;
+}
+
+.cst-institutional-footer__compliance {
+    margin-bottom: var(--cst-space-md);
 }
 
 .cst-institutional-footer__compliance p {
     font-size: var(--cst-font-size-sm);
     color: var(--cst-color-gray-300);
-    opacity: 0.75;
+    opacity: 0.65;
     max-width: 800px;
     margin-inline: auto;
-    margin-bottom: var(--cst-space-sm);
     line-height: 1.6;
 }
 
-.cst-institutional-footer__compliance p:last-child {
-    margin-bottom: 0;
+.cst-institutional-footer__statements {
+    margin-bottom: var(--cst-space-md);
+}
+
+.cst-institutional-footer__statements p {
+    font-size: var(--cst-font-size-xs);
+    color: var(--cst-color-gray-300);
+    opacity: 0.65;
+    margin: 0;
+}
+
+.cst-institutional-footer__statements a {
+    color: var(--cst-color-gray-300);
+    text-decoration: underline;
+}
+
+.cst-institutional-footer__statements a:hover {
+    color: var(--cst-color-white);
 }
 
 /* OIG Reporting Block */
@@ -2264,60 +2310,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: var(--cst-space-xs);
 }
 
-/* Accessibility Statement (Ley 229-2003) */
-
-.cst-institutional-footer__accessibility {
-    text-align: center;
-    padding: var(--cst-space-sm) 0;
-    position: relative;
-    z-index: 1;
-}
-
-.cst-institutional-footer__accessibility p {
-    font-size: var(--cst-font-size-sm);
-    color: var(--cst-color-gray-300);
-    opacity: 0.85;
-    max-width: 800px;
-    margin-inline: auto;
-}
-
-.cst-institutional-footer__accessibility a {
-    color: var(--cst-color-gray-300);
-    text-decoration: underline;
-}
-
-.cst-institutional-footer__accessibility a:hover,
-.cst-institutional-footer__accessibility a:focus {
-    color: var(--cst-color-white);
-}
-
-/* Transparency Portal (Ley 141-2019) */
-
-.cst-institutional-footer__transparency {
-    text-align: center;
-    padding: var(--cst-space-sm) 0;
-    position: relative;
-    z-index: 1;
-}
-
-.cst-institutional-footer__transparency p {
-    font-size: var(--cst-font-size-sm);
-    color: var(--cst-color-gray-300);
-    opacity: 0.85;
-    max-width: 800px;
-    margin-inline: auto;
-}
-
-.cst-institutional-footer__transparency a {
-    color: var(--cst-color-gray-300);
-    text-decoration: underline;
-}
-
-.cst-institutional-footer__transparency a:hover,
-.cst-institutional-footer__transparency a:focus {
-    color: var(--cst-color-white);
-}
-
 /* Privacy Fallback */
 
 .cst-legal-nav--fallback {
@@ -2327,11 +2319,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-institutional-footer__copyright {
     text-align: center;
-    padding-block: var(--cst-space-md);
-    border-top: 1px solid var(--cst-alpha-white-10);
-    font-size: var(--cst-font-size-sm);
-    position: relative;
-    z-index: 1;
+    padding-top: var(--cst-space-md);
+    padding-bottom: var(--cst-space-lg);
+    border-top: 1px solid var(--cst-alpha-white-6);
+    font-size: var(--cst-font-size-xs);
+    opacity: 0.6;
 }
 
 /* --- Back to Top Button --- */
@@ -2640,16 +2632,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 1024px) {
     .cst-institutional-footer__grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr;
+        gap: var(--cst-space-xl);
     }
+
+    .cst-institutional-footer__col--brand {
+        grid-column: 1 / -1;
+    }
+
     .cst-legal-layout {
         grid-template-columns: 200px 1fr;
-    }
-}
-
-@media (max-width: 900px) {
-    .cst-institutional-footer__grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -3183,7 +3175,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Course Impact Section (dark navy) --- */
 
-.cst-section--course-impact {
+.cst-section.cst-section--course-impact {
     background: var(--cst-color-navy);
     color: var(--cst-color-white);
     padding-block: var(--cst-space-4xl);
@@ -3267,8 +3259,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 56px;
     margin-bottom: var(--cst-space-md);
     border-radius: 50%;
-    background: var(--cst-alpha-green-20);
-    color: var(--cst-color-green-light);
+    background: var(--cst-color-green);
+    color: var(--cst-color-white);
 }
 
 .cst-course-impact__callout-title {
