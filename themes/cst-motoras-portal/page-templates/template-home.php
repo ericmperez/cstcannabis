@@ -28,7 +28,7 @@ get_header();
         'cta2_text'        => __( 'Ver temario', 'cst-motoras' ),
         'cta2_url'         => 'https://cursomotoras.willai.info/courses/modulo-conduccion-segura-para-motociclistas/#temario',
         'class'            => 'cst-hero--home',
-        'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
+        'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-vehicles.svg',
         'scroll_indicator' => true,
         'trust_badges'     => [
             [ 'icon' => '💰', 'label' => __( 'Gratuito', 'cst-motoras' ) ],

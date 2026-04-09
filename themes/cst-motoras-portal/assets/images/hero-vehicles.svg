@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800" width="1920" height="800">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F2E54"/>
+      <stop offset="50%" stop-color="#2A4BB0"/>
+      <stop offset="100%" stop-color="#3E64DE"/>
+    </linearGradient>
+    <!-- Road gradient -->
+    <linearGradient id="road" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a2a3a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Soft glow for headlights -->
+    <radialGradient id="headlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+      <stop offset="60%" stop-color="rgba(255,220,150,0.2)"/>
+      <stop offset="100%" stop-color="rgba(255,220,150,0)"/>
+    </radialGradient>
+    <!-- Speed lines gradient -->
+    <linearGradient id="speedline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <!-- Mountain gradient -->
+    <linearGradient id="mountain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(31,46,84,0.6)"/>
+      <stop offset="100%" stop-color="rgba(31,46,84,0.2)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="800" fill="url(#bg)"/>
+
+  <!-- Stars / particles -->
+  <circle cx="200" cy="80" r="1.5" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="450" cy="120" r="1" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="700" cy="60" r="1.5" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="1100" cy="90" r="1" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="1400" cy="70" r="1.5" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="1650" cy="110" r="1" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="300" cy="180" r="1" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="850" cy="150" r="1.5" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="1250" cy="140" r="1" fill="rgba(255,255,255,0.25)"/>
+  <circle cx="1750" cy="170" r="1.5" fill="rgba(255,255,255,0.35)"/>
+
+  <!-- Distant mountains -->
+  <path d="M0 450 L200 320 L400 380 L550 280 L700 350 L900 260 L1050 340 L1200 290 L1400 360 L1550 300 L1700 340 L1920 310 L1920 500 L0 500Z" fill="url(#mountain)"/>
+  <path d="M0 480 L150 400 L350 440 L500 370 L700 420 L850 360 L1050 410 L1250 370 L1400 420 L1600 380 L1800 410 L1920 390 L1920 520 L0 520Z" fill="rgba(31,46,84,0.35)"/>
+
+  <!-- Road -->
+  <path d="M0 800 L0 580 Q480 520 960 540 Q1440 560 1920 520 L1920 800Z" fill="url(#road)"/>
+
+  <!-- Road markings - dashed center line -->
+  <line x1="100" y1="610" x2="220" y2="606" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+  <line x1="280" y1="604" x2="500" y2="596" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+  <line x1="560" y1="594" x2="780" y2="586" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+  <line x1="840" y1="584" x2="1080" y2="580" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+  <line x1="1140" y1="580" x2="1380" y2="582" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+  <line x1="1440" y1="584" x2="1680" y2="590" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+  <line x1="1740" y1="592" x2="1920" y2="598" stroke="rgba(255,255,255,0.3)" stroke-width="3" stroke-dasharray="40,30"/>
+
+  <!-- Road edge lines -->
+  <path d="M0 560 Q480 500 960 520 Q1440 540 1920 500" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <path d="M0 680 Q480 640 960 650 Q1440 660 1920 640" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- Speed lines -->
+  <rect x="100" y="490" width="250" height="2" rx="1" fill="url(#speedline)"/>
+  <rect x="400" y="510" width="180" height="1.5" rx="1" fill="url(#speedline)"/>
+  <rect x="1400" y="500" width="220" height="2" rx="1" fill="url(#speedline)"/>
+  <rect x="1650" y="480" width="150" height="1.5" rx="1" fill="url(#speedline)"/>
+
+  <!-- === MOTORCYCLE (left side) === -->
+  <g transform="translate(580, 430) scale(1.1)" filter="url(#glow)">
+    <!-- Headlight glow -->
+    <ellipse cx="135" cy="65" rx="60" ry="40" fill="url(#headlight)"/>
+
+    <!-- Rear wheel -->
+    <circle cx="0" cy="105" r="38" fill="none" stroke="rgba(200,210,230,0.9)" stroke-width="5"/>
+    <circle cx="0" cy="105" r="28" fill="none" stroke="rgba(200,210,230,0.3)" stroke-width="1.5"/>
+    <circle cx="0" cy="105" r="6" fill="rgba(200,210,230,0.5)"/>
+    <!-- Spokes -->
+    <line x1="0" y1="67" x2="0" y2="143" stroke="rgba(200,210,230,0.15)" stroke-width="1"/>
+    <line x1="-38" y1="105" x2="38" y2="105" stroke="rgba(200,210,230,0.15)" stroke-width="1"/>
+    <line x1="-27" y1="78" x2="27" y2="132" stroke="rgba(200,210,230,0.12)" stroke-width="1"/>
+    <line x1="27" y1="78" x2="-27" y2="132" stroke="rgba(200,210,230,0.12)" stroke-width="1"/>
+
+    <!-- Front wheel -->
+    <circle cx="130" cy="105" r="38" fill="none" stroke="rgba(200,210,230,0.9)" stroke-width="5"/>
+    <circle cx="130" cy="105" r="28" fill="none" stroke="rgba(200,210,230,0.3)" stroke-width="1.5"/>
+    <circle cx="130" cy="105" r="6" fill="rgba(200,210,230,0.5)"/>
+    <!-- Spokes -->
+    <line x1="130" y1="67" x2="130" y2="143" stroke="rgba(200,210,230,0.15)" stroke-width="1"/>
+    <line x1="92" y1="105" x2="168" y2="105" stroke="rgba(200,210,230,0.15)" stroke-width="1"/>
+    <line x1="103" y1="78" x2="157" y2="132" stroke="rgba(200,210,230,0.12)" stroke-width="1"/>
+    <line x1="157" y1="78" x2="103" y2="132" stroke="rgba(200,210,230,0.12)" stroke-width="1"/>
+
+    <!-- Frame / body -->
+    <path d="M10 95 L35 50 L80 35 L110 45 L130 67" fill="none" stroke="rgba(200,210,230,0.85)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Engine block -->
+    <path d="M30 65 L50 60 L60 80 L55 95 L25 95Z" fill="rgba(200,210,230,0.25)" stroke="rgba(200,210,230,0.5)" stroke-width="1.5"/>
+    <!-- Tank -->
+    <path d="M40 45 Q60 30 85 35 L90 50 Q70 55 45 55Z" fill="rgba(62,100,222,0.5)" stroke="rgba(200,210,230,0.6)" stroke-width="1.5"/>
+    <!-- Seat -->
+    <path d="M20 48 Q30 38 45 42" fill="none" stroke="rgba(200,210,230,0.7)" stroke-width="5" stroke-linecap="round"/>
+    <!-- Exhaust -->
+    <path d="M-15 95 L-30 90 L-35 92" fill="none" stroke="rgba(200,210,230,0.4)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Handlebars -->
+    <path d="M110 42 L118 30 M110 42 L102 30" fill="none" stroke="rgba(200,210,230,0.7)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Front fork -->
+    <path d="M115 50 L130 100" fill="none" stroke="rgba(200,210,230,0.6)" stroke-width="3"/>
+    <!-- Rear swingarm -->
+    <path d="M35 90 L0 105" fill="none" stroke="rgba(200,210,230,0.5)" stroke-width="3"/>
+    <!-- Fender -->
+    <path d="M120 75 Q130 65 140 75" fill="none" stroke="rgba(200,210,230,0.4)" stroke-width="2"/>
+    <!-- Headlight -->
+    <circle cx="135" cy="60" r="8" fill="rgba(255,240,200,0.7)" stroke="rgba(200,210,230,0.6)" stroke-width="1.5"/>
+    <circle cx="135" cy="60" r="4" fill="rgba(255,255,255,0.9)"/>
+    <!-- Tail light -->
+    <circle cx="-5" cy="50" r="4" fill="rgba(238,0,0,0.6)"/>
+  </g>
+
+  <!-- === CAN-AM / FOUR TRACK (right side) === -->
+  <g transform="translate(1050, 420) scale(1.1)" filter="url(#glow)">
+    <!-- Headlight glow -->
+    <ellipse cx="220" cy="55" rx="70" ry="45" fill="url(#headlight)"/>
+
+    <!-- Rear left wheel -->
+    <circle cx="20" cy="120" r="35" fill="none" stroke="rgba(200,210,230,0.9)" stroke-width="6"/>
+    <circle cx="20" cy="120" r="24" fill="none" stroke="rgba(200,210,230,0.3)" stroke-width="1.5"/>
+    <circle cx="20" cy="120" r="7" fill="rgba(200,210,230,0.5)"/>
+    <!-- Tire tread marks -->
+    <circle cx="20" cy="120" r="32" fill="none" stroke="rgba(200,210,230,0.12)" stroke-width="3" stroke-dasharray="6,4"/>
+
+    <!-- Rear right wheel (partially visible) -->
+    <circle cx="55" cy="125" r="30" fill="none" stroke="rgba(200,210,230,0.4)" stroke-width="5"/>
+    <circle cx="55" cy="125" r="20" fill="none" stroke="rgba(200,210,230,0.15)" stroke-width="1.5"/>
+    <circle cx="55" cy="125" r="5" fill="rgba(200,210,230,0.3)"/>
+
+    <!-- Front left wheel -->
+    <circle cx="200" cy="118" r="35" fill="none" stroke="rgba(200,210,230,0.9)" stroke-width="6"/>
+    <circle cx="200" cy="118" r="24" fill="none" stroke="rgba(200,210,230,0.3)" stroke-width="1.5"/>
+    <circle cx="200" cy="118" r="7" fill="rgba(200,210,230,0.5)"/>
+    <circle cx="200" cy="118" r="32" fill="none" stroke="rgba(200,210,230,0.12)" stroke-width="3" stroke-dasharray="6,4"/>
+
+    <!-- Front right wheel (partially visible) -->
+    <circle cx="235" cy="122" r="30" fill="none" stroke="rgba(200,210,230,0.4)" stroke-width="5"/>
+    <circle cx="235" cy="122" r="20" fill="none" stroke="rgba(200,210,230,0.15)" stroke-width="1.5"/>
+    <circle cx="235" cy="122" r="5" fill="rgba(200,210,230,0.3)"/>
+
+    <!-- Body / chassis -->
+    <path d="M35 110 L45 50 L90 25 L160 20 L200 30 L220 55 L225 85 L210 110" fill="rgba(62,100,222,0.35)" stroke="rgba(200,210,230,0.7)" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- Hood / front -->
+    <path d="M160 20 L200 30 L220 55 L210 60 L175 35Z" fill="rgba(42,75,176,0.5)" stroke="rgba(200,210,230,0.5)" stroke-width="1.5"/>
+
+    <!-- Windshield -->
+    <path d="M140 25 L155 10 L175 12 L165 28" fill="rgba(200,230,255,0.15)" stroke="rgba(200,210,230,0.4)" stroke-width="1.5"/>
+
+    <!-- Seat area -->
+    <path d="M65 40 Q80 28 100 30 L105 45 Q85 48 70 48Z" fill="rgba(30,30,50,0.5)" stroke="rgba(200,210,230,0.4)" stroke-width="1.5"/>
+
+    <!-- Roll cage / frame bars -->
+    <path d="M50 48 L55 25 L90 15 L130 15 L140 25" fill="none" stroke="rgba(200,210,230,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="55" y1="25" x2="70" y2="48" stroke="rgba(200,210,230,0.3)" stroke-width="1.5"/>
+    <line x1="130" y1="15" x2="140" y2="38" stroke="rgba(200,210,230,0.3)" stroke-width="1.5"/>
+
+    <!-- Handlebars -->
+    <path d="M145 22 L152 8 M145 22 L138 10" fill="none" stroke="rgba(200,210,230,0.6)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Headlights (dual) -->
+    <ellipse cx="215" cy="48" rx="10" ry="7" fill="rgba(255,240,200,0.6)" stroke="rgba(200,210,230,0.5)" stroke-width="1.5"/>
+    <ellipse cx="215" cy="48" rx="5" ry="3.5" fill="rgba(255,255,255,0.8)"/>
+    <ellipse cx="222" cy="62" rx="8" ry="6" fill="rgba(255,240,200,0.5)" stroke="rgba(200,210,230,0.4)" stroke-width="1"/>
+    <ellipse cx="222" cy="62" rx="4" ry="3" fill="rgba(255,255,255,0.7)"/>
+
+    <!-- Tail lights -->
+    <rect x="35" y="50" width="8" height="5" rx="2" fill="rgba(238,0,0,0.6)"/>
+
+    <!-- Rear fender / bumper -->
+    <path d="M15 105 Q20 95 60 95 Q55 105 50 110" fill="none" stroke="rgba(200,210,230,0.35)" stroke-width="2"/>
+
+    <!-- Front fender -->
+    <path d="M190 95 Q210 85 230 95" fill="none" stroke="rgba(200,210,230,0.35)" stroke-width="2"/>
+
+    <!-- Axle lines -->
+    <line x1="25" y1="120" x2="50" y2="123" stroke="rgba(200,210,230,0.25)" stroke-width="3"/>
+    <line x1="205" y1="118" x2="230" y2="121" stroke="rgba(200,210,230,0.25)" stroke-width="3"/>
+  </g>
+
+  <!-- Ground shadow under motorcycle -->
+  <ellipse cx="650" cy="590" rx="100" ry="8" fill="rgba(0,0,0,0.2)"/>
+  <!-- Ground shadow under Can-Am -->
+  <ellipse cx="1200" cy="590" rx="130" ry="10" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Decorative circles (background) -->
+  <circle cx="350" cy="300" r="120" fill="rgba(62,100,222,0.06)" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <circle cx="1600" cy="250" r="150" fill="rgba(31,46,84,0.08)" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <circle cx="960" cy="200" r="80" fill="rgba(123,159,238,0.05)"/>
+</svg>

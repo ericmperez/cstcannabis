@@ -24,7 +24,7 @@ get_header();
         'cta_text' => __( 'Ver Módulo', 'cst-motoras' ),
         'cta_url'  => '#registro',
         'class'    => 'cst-hero--course',
-        'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
+        'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-vehicles.svg',
     ] );
     ?>
 
