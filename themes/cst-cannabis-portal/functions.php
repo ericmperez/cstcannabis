@@ -117,14 +117,40 @@ add_action( 'wp_enqueue_scripts', function () {
         'restUrl'  => rest_url( 'cst/v1/' ),
         'nonce'    => wp_create_nonce( 'wp_rest' ),
         'siteName' => get_bloginfo( 'name' ),
-        'i18n'     => [
-            'menuOpen'    => __( 'Abrir menú', 'cst-cannabis' ),
-            'menuClose'   => __( 'Cerrar menú', 'cst-cannabis' ),
-            'bannerClose' => __( 'Cerrar banner', 'cst-cannabis' ),
-            'filterAll'   => __( 'Todos', 'cst-cannabis' ),
+        'wpRestUrl' => rest_url( 'wp/v2/' ),
+        'i18n'      => [
+            'menuOpen'      => __( 'Abrir menú', 'cst-cannabis' ),
+            'menuClose'     => __( 'Cerrar menú', 'cst-cannabis' ),
+            'bannerClose'   => __( 'Cerrar banner', 'cst-cannabis' ),
+            'filterAll'     => __( 'Todos', 'cst-cannabis' ),
+            'searchOpen'    => __( 'Abrir búsqueda', 'cst-cannabis' ),
+            'searchClose'   => __( 'Cerrar búsqueda', 'cst-cannabis' ),
+            'searchLoading' => __( 'Buscando...', 'cst-cannabis' ),
+            'searchNoResults' => __( 'No se encontraron resultados.', 'cst-cannabis' ),
+            'searchViewAll' => __( 'Ver todos los resultados', 'cst-cannabis' ),
         ],
     ] );
 }, 20 );
+
+/* ==========================================================================
+   Force GP nav to use assigned menu (prevent page-list fallback)
+   ========================================================================== */
+
+add_filter( 'wp_nav_menu_args', function ( $args ) {
+    if ( isset( $args['theme_location'] ) && 'primary' === $args['theme_location'] ) {
+        $args['fallback_cb'] = false;
+        // Polylang may fail to resolve the menu when the current post has no
+        // language assigned. Fall back to the Spanish primary menu directly.
+        if ( ! wp_get_nav_menu_object( wp_get_nav_menu_name( 'primary' ) ) ) {
+            $pll_menus = get_option( 'polylang_nav_menus', [] );
+            $theme     = get_stylesheet();
+            if ( ! empty( $pll_menus[ $theme ]['primary']['es'] ) ) {
+                $args['menu'] = (int) $pll_menus[ $theme ]['primary']['es'];
+            }
+        }
+    }
+    return $args;
+} );
 
 /* ==========================================================================
    Include modules

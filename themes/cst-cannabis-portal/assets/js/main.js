@@ -489,6 +489,221 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  Search — Toggle + Live Results via WP REST API                    */
+    /* ------------------------------------------------------------------ */
+
+    function initSearch() {
+        var components = document.querySelectorAll('[data-search-component]');
+        components.forEach(function (component) { setupSearchComponent(component); });
+    }
+
+    function setupSearchComponent(root) {
+        var toggle  = root.querySelector('.cst-search__toggle');
+        var form    = root.querySelector('.cst-search__form');
+        var input   = root.querySelector('.cst-search__input');
+        var results = root.querySelector('.cst-search__results');
+        var combobox = root.querySelector('[role="combobox"]');
+
+        if (!toggle || !form || !input || !results) return;
+
+        var i18n = (window.cstPortal && window.cstPortal.i18n) || {};
+        var restUrl = (window.cstPortal && window.cstPortal.wpRestUrl) || '/wp-json/wp/v2/';
+        var debounceTimer = null;
+        var activeIndex = -1;
+        var currentItems = [];
+        var isOpen = false;
+        var abortController = null;
+
+        // --- Toggle expand/collapse ---
+        toggle.addEventListener('click', function () {
+            isOpen = !isOpen;
+            toggle.setAttribute('aria-expanded', String(isOpen));
+            root.classList.toggle('is-open', isOpen);
+
+            if (isOpen) {
+                input.focus();
+                toggle.setAttribute('aria-label', i18n.searchClose || 'Cerrar búsqueda');
+            } else {
+                closeResults();
+                input.value = '';
+                toggle.setAttribute('aria-label', i18n.searchOpen || 'Abrir búsqueda');
+            }
+        });
+
+        // --- Debounced live search on input ---
+        input.addEventListener('input', function () {
+            var query = input.value.trim();
+            clearTimeout(debounceTimer);
+
+            if (query.length < 2) {
+                closeResults();
+                return;
+            }
+
+            debounceTimer = setTimeout(function () {
+                fetchResults(query);
+            }, 300);
+        });
+
+        // --- Keyboard navigation ---
+        input.addEventListener('keydown', function (e) {
+            if (!currentItems.length) {
+                if (e.key === 'Escape') {
+                    closeAndCollapse();
+                }
+                return;
+            }
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                activeIndex = Math.min(activeIndex + 1, currentItems.length - 1);
+                highlightItem();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                activeIndex = Math.max(activeIndex - 1, -1);
+                highlightItem();
+            } else if (e.key === 'Enter' && activeIndex >= 0) {
+                e.preventDefault();
+                var link = currentItems[activeIndex].querySelector('a');
+                if (link) window.location.href = link.href;
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                closeAndCollapse();
+            }
+        });
+
+        // --- Close on click outside ---
+        document.addEventListener('click', function (e) {
+            if (!root.contains(e.target) && isOpen) {
+                closeAndCollapse();
+            }
+        });
+
+        // --- Fetch from WP REST API ---
+        function fetchResults(query) {
+            // Cancel any pending request.
+            if (abortController) abortController.abort();
+            abortController = new AbortController();
+
+            // Show loading state.
+            results.innerHTML = '<li class="cst-search__loading" role="option">' +
+                (i18n.searchLoading || 'Buscando...') + '</li>';
+            results.hidden = false;
+            combobox.setAttribute('aria-expanded', 'true');
+
+            // Search posts + pages in parallel.
+            var postsUrl = restUrl + 'posts?search=' + encodeURIComponent(query) + '&per_page=3&_fields=id,title,link,type';
+            var pagesUrl = restUrl + 'pages?search=' + encodeURIComponent(query) + '&per_page=3&_fields=id,title,link,type';
+
+            Promise.all([
+                fetch(postsUrl, { signal: abortController.signal }).then(function (r) { return r.ok ? r.json() : []; }),
+                fetch(pagesUrl, { signal: abortController.signal }).then(function (r) { return r.ok ? r.json() : []; })
+            ]).then(function (data) {
+                var merged = data[0].concat(data[1]).slice(0, 5);
+                renderResults(merged, query);
+            }).catch(function (err) {
+                if (err.name !== 'AbortError') {
+                    closeResults();
+                }
+            });
+        }
+
+        // --- Render results dropdown ---
+        function renderResults(items, query) {
+            results.innerHTML = '';
+            activeIndex = -1;
+
+            if (!items.length) {
+                results.innerHTML = '<li class="cst-search__no-results" role="option">' +
+                    (i18n.searchNoResults || 'No se encontraron resultados.') + '</li>';
+                currentItems = [];
+                results.hidden = false;
+                combobox.setAttribute('aria-expanded', 'true');
+                return;
+            }
+
+            currentItems = [];
+
+            items.forEach(function (item, index) {
+                var li = document.createElement('li');
+                li.setAttribute('role', 'option');
+                li.setAttribute('id', results.id + '-item-' + index);
+                li.className = 'cst-search__result-item';
+
+                var a = document.createElement('a');
+                a.href = item.link;
+                a.tabIndex = -1;
+
+                var titleSpan = document.createElement('span');
+                titleSpan.className = 'cst-search__result-title';
+                titleSpan.textContent = item.title.rendered;
+
+                var typeSpan = document.createElement('span');
+                typeSpan.className = 'cst-search__result-type';
+                typeSpan.textContent = item.type === 'page' ? 'Página' : 'Artículo';
+
+                a.appendChild(titleSpan);
+                a.appendChild(typeSpan);
+                li.appendChild(a);
+                results.appendChild(li);
+                currentItems.push(li);
+            });
+
+            // "View all results" link.
+            var viewAll = document.createElement('li');
+            viewAll.className = 'cst-search__view-all';
+            viewAll.setAttribute('role', 'option');
+            viewAll.setAttribute('id', results.id + '-item-' + items.length);
+
+            var viewAllLink = document.createElement('a');
+            viewAllLink.href = form.action + '?s=' + encodeURIComponent(query);
+            viewAllLink.tabIndex = -1;
+            viewAllLink.textContent = i18n.searchViewAll || 'Ver todos los resultados';
+            viewAll.appendChild(viewAllLink);
+            results.appendChild(viewAll);
+            currentItems.push(viewAll);
+
+            results.hidden = false;
+            combobox.setAttribute('aria-expanded', 'true');
+        }
+
+        // --- Highlight active item ---
+        function highlightItem() {
+            currentItems.forEach(function (li) { li.classList.remove('is-active'); });
+
+            if (activeIndex >= 0 && currentItems[activeIndex]) {
+                currentItems[activeIndex].classList.add('is-active');
+                input.setAttribute('aria-activedescendant', currentItems[activeIndex].id);
+            } else {
+                input.removeAttribute('aria-activedescendant');
+            }
+        }
+
+        // --- Close results ---
+        function closeResults() {
+            results.hidden = true;
+            results.innerHTML = '';
+            combobox.setAttribute('aria-expanded', 'false');
+            input.removeAttribute('aria-activedescendant');
+            activeIndex = -1;
+            currentItems = [];
+        }
+
+        // --- Close results + collapse form ---
+        function closeAndCollapse() {
+            closeResults();
+            if (isOpen) {
+                isOpen = false;
+                root.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.setAttribute('aria-label', i18n.searchOpen || 'Abrir búsqueda');
+                input.value = '';
+                toggle.focus();
+            }
+        }
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Init                                                              */
     /* ------------------------------------------------------------------ */
 
@@ -506,6 +721,7 @@
         initHeaderScroll();
         initBackToTop();
         initCF7CourseRedirect();
+        initSearch();
     });
 
 })();

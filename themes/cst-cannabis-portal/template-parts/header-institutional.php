@@ -29,23 +29,23 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
             </div>
 
-            <!-- Right: Search + Language Switcher -->
+            <!-- Right: Language Switcher -->
             <div class="cst-institutional-header__actions">
-                <?php get_search_form(); ?>
-                <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
-                    <nav class="cst-lang-switcher" aria-label="<?php esc_attr_e( 'Selector de idioma', 'cst-cannabis' ); ?>">
+                <nav class="cst-lang-switcher" aria-label="<?php esc_attr_e( 'Selector de idioma', 'cst-cannabis' ); ?>">
+                    <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
                         <ul class="cst-lang-switcher__list">
                             <?php pll_the_languages( [
                                 'display_names_as' => 'slug',
                                 'hide_current'     => false,
                             ] ); ?>
                         </ul>
-                    </nav>
-                <?php else : ?>
-                    <span class="cst-lang-switcher__static">
-                        <span class="cst-lang-switcher__current" aria-label="<?php esc_attr_e( 'Idioma actual: Español', 'cst-cannabis' ); ?>">ES</span>
-                    </span>
-                <?php endif; ?>
+                    <?php else : ?>
+                        <ul class="cst-lang-switcher__list">
+                            <li class="current-lang"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-current="true" lang="es">ES</a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/en/' ) ); ?>" lang="en">EN</a></li>
+                        </ul>
+                    <?php endif; ?>
+                </nav>
             </div>
         </div>
     </div>

@@ -41,8 +41,47 @@ $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
                 ?>
             </div>
 
-            <!-- Contact & Disclaimer -->
+            <!-- Certificate Mockup & Contact -->
             <div class="cst-course-footer-cta__info">
+
+                <div class="cst-certificate-mockup" aria-label="<?php esc_attr_e( 'Ejemplo de certificado digital', 'cst-cannabis' ); ?>">
+                    <div class="cst-certificate-mockup__card">
+                        <div class="cst-certificate-mockup__border">
+                            <div class="cst-certificate-mockup__seal">
+                                <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/cst-logo.svg' ); ?>"
+                                     alt="" width="60" height="20" aria-hidden="true" />
+                            </div>
+                            <p class="cst-certificate-mockup__label"><?php esc_html_e( 'Certificado de Aprobación', 'cst-cannabis' ); ?></p>
+                            <p class="cst-certificate-mockup__course"><?php esc_html_e( 'Cannabis Medicinal y Seguridad Vial', 'cst-cannabis' ); ?></p>
+                            <p class="cst-certificate-mockup__name"><?php esc_html_e( 'Juan del Pueblo', 'cst-cannabis' ); ?></p>
+                            <div class="cst-certificate-mockup__details">
+                                <span><?php esc_html_e( 'Fecha: DD/MM/AAAA', 'cst-cannabis' ); ?></span>
+                                <span><?php esc_html_e( 'Válido: 90 días', 'cst-cannabis' ); ?></span>
+                            </div>
+                            <div class="cst-certificate-mockup__qr" aria-hidden="true">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <rect width="48" height="48" rx="4" fill="#f0f0f0"/>
+                                    <rect x="8" y="8" width="12" height="12" rx="1" fill="#333"/>
+                                    <rect x="28" y="8" width="12" height="12" rx="1" fill="#333"/>
+                                    <rect x="8" y="28" width="12" height="12" rx="1" fill="#333"/>
+                                    <rect x="10" y="10" width="8" height="8" rx="1" fill="#f0f0f0"/>
+                                    <rect x="30" y="10" width="8" height="8" rx="1" fill="#f0f0f0"/>
+                                    <rect x="10" y="30" width="8" height="8" rx="1" fill="#f0f0f0"/>
+                                    <rect x="12" y="12" width="4" height="4" fill="#333"/>
+                                    <rect x="32" y="12" width="4" height="4" fill="#333"/>
+                                    <rect x="12" y="32" width="4" height="4" fill="#333"/>
+                                    <rect x="24" y="24" width="4" height="4" fill="#333"/>
+                                    <rect x="28" y="28" width="4" height="4" fill="#333"/>
+                                    <rect x="32" y="32" width="4" height="4" fill="#333"/>
+                                    <rect x="36" y="28" width="4" height="4" fill="#333"/>
+                                    <rect x="28" y="36" width="4" height="4" fill="#333"/>
+                                </svg>
+                                <span class="cst-certificate-mockup__qr-label"><?php esc_html_e( 'Código QR verificable', 'cst-cannabis' ); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="cst-course-footer-cta__contact">
                     <?php if ( $email ) : ?>
                         <div class="cst-course-footer-cta__contact-item">
