@@ -2,7 +2,7 @@
 /**
  * CST Curso de Motoras Portal — Theme functions.
  *
- * GeneratePress child theme for the CST Cannabis educational portal.
+ * GeneratePress child theme for the CST Motoras y Four Tracks educational portal.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -72,7 +72,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-motoras-style',
         get_stylesheet_uri(),
         [ 'generatepress' ],
-        CST_MOTORAS_VERSION
+        filemtime( CST_MOTORAS_DIR . '/style.css' )
     );
 
     // Google Fonts — Open Sans (body) + Montserrat (headings).
@@ -91,7 +91,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-custom',
         CST_MOTORAS_URI . '/assets/css/custom.css',
         [ 'cst-motoras-style' ],
-        CST_MOTORAS_VERSION
+        filemtime( CST_MOTORAS_DIR . '/assets/css/custom.css' )
     );
 
     // Accessibility styles.
@@ -99,7 +99,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-accessibility',
         CST_MOTORAS_URI . '/assets/css/accessibility.css',
         [ 'cst-custom' ],
-        CST_MOTORAS_VERSION
+        filemtime( CST_MOTORAS_DIR . '/assets/css/accessibility.css' )
     );
 
     // Main JS.
@@ -107,7 +107,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'cst-main',
         CST_MOTORAS_URI . '/assets/js/main.js',
         [],
-        CST_MOTORAS_VERSION,
+        filemtime( CST_MOTORAS_DIR . '/assets/js/main.js' ),
         true
     );
 
@@ -117,14 +117,77 @@ add_action( 'wp_enqueue_scripts', function () {
         'restUrl'  => rest_url( 'cst/v1/' ),
         'nonce'    => wp_create_nonce( 'wp_rest' ),
         'siteName' => get_bloginfo( 'name' ),
-        'i18n'     => [
-            'menuOpen'    => __( 'Abrir menú', 'cst-motoras' ),
-            'menuClose'   => __( 'Cerrar menú', 'cst-motoras' ),
-            'bannerClose' => __( 'Cerrar banner', 'cst-motoras' ),
-            'filterAll'   => __( 'Todos', 'cst-motoras' ),
+        'wpRestUrl' => rest_url( 'wp/v2/' ),
+        'i18n'      => [
+            'menuOpen'        => __( 'Abrir menú', 'cst-motoras' ),
+            'menuClose'       => __( 'Cerrar menú', 'cst-motoras' ),
+            'bannerClose'     => __( 'Cerrar banner', 'cst-motoras' ),
+            'filterAll'       => __( 'Todos', 'cst-motoras' ),
+            'searchOpen'      => __( 'Abrir búsqueda', 'cst-motoras' ),
+            'searchClose'     => __( 'Cerrar búsqueda', 'cst-motoras' ),
+            'searchLoading'   => __( 'Buscando...', 'cst-motoras' ),
+            'searchNoResults' => __( 'No se encontraron resultados.', 'cst-motoras' ),
+            'searchViewAll'   => __( 'Ver todos los resultados', 'cst-motoras' ),
         ],
     ] );
 }, 20 );
+
+/* ==========================================================================
+   Force GP nav to use assigned menu (prevent page-list fallback)
+   ========================================================================== */
+
+add_filter( 'wp_nav_menu_args', function ( $args ) {
+    if ( isset( $args['theme_location'] ) && 'primary' === $args['theme_location'] ) {
+        $args['fallback_cb'] = 'cst_primary_menu_fallback';
+        // Polylang may fail to resolve the menu when the current post has no
+        // language assigned. Fall back to the Spanish primary menu directly.
+        if ( ! wp_get_nav_menu_object( wp_get_nav_menu_name( 'primary' ) ) ) {
+            $pll_menus = get_option( 'polylang_nav_menus', [] );
+            $theme     = get_stylesheet();
+            if ( ! empty( $pll_menus[ $theme ]['primary']['es'] ) ) {
+                $args['menu'] = (int) $pll_menus[ $theme ]['primary']['es'];
+            }
+        }
+    }
+    return $args;
+} );
+
+/**
+ * Fallback primary navigation when no menu is assigned in WP Admin.
+ * Renders a hardcoded menu so the nav bar is never empty.
+ */
+function cst_primary_menu_fallback(): void {
+    $items = [
+        [ 'slug' => '/',             'label' => __( 'Inicio', 'cst-motoras' ) ],
+        [ 'slug' => '/curso/',       'label' => __( 'Curso', 'cst-motoras' ) ],
+        [ 'slug' => '/recursos/',    'label' => __( 'Recursos', 'cst-motoras' ) ],
+        [ 'slug' => '/estadisticas/','label' => __( 'Estadísticas', 'cst-motoras' ) ],
+        [ 'slug' => '/sobre/',       'label' => __( 'Sobre Nosotros', 'cst-motoras' ) ],
+        [ 'slug' => '/contacto/',    'label' => __( 'Contacto', 'cst-motoras' ) ],
+    ];
+
+    $current_url = trailingslashit( $_SERVER['REQUEST_URI'] ?? '' );
+
+    echo '<div class="main-nav"><ul id="menu-primary" class="menu sf-menu">';
+    foreach ( $items as $item ) {
+        $url      = home_url( $item['slug'] );
+        $is_home  = $item['slug'] === '/';
+        $active   = $is_home
+            ? ( is_front_page() || $current_url === '/' )
+            : str_starts_with( $current_url, $item['slug'] );
+        $classes  = 'menu-item' . ( $active ? ' current-menu-item' : '' );
+        $aria     = $active ? ' aria-current="page"' : '';
+
+        printf(
+            '<li class="%s"><a href="%s"%s>%s</a></li>',
+            esc_attr( $classes ),
+            esc_url( $url ),
+            $aria,
+            esc_html( $item['label'] )
+        );
+    }
+    echo '</ul></div>';
+}
 
 /* ==========================================================================
    Include modules

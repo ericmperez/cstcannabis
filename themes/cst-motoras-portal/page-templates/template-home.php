@@ -23,7 +23,7 @@ get_header();
     cst_hero( [
         'title'            => $hero_title,
         'subtitle'         => $hero_subtitle,
-        'cta_text'         => __( 'Inscríbete gratis', 'cst-motoras' ),
+        'cta_text'         => __( 'Ver Módulo', 'cst-motoras' ),
         'cta_url'          => home_url( '/curso/' ),
         'cta2_text'        => __( 'Ver temario', 'cst-motoras' ),
         'cta2_url'         => home_url( '/curso/#temario' ),
@@ -32,8 +32,9 @@ get_header();
         'scroll_indicator' => true,
         'trust_badges'     => [
             [ 'icon' => '💰', 'label' => __( 'Gratuito', 'cst-motoras' ) ],
-            [ 'icon' => '📜', 'label' => __( 'Certificado', 'cst-motoras' ) ],
-            [ 'icon' => '💻', 'label' => __( 'En línea', 'cst-motoras' ) ],
+            [ 'icon' => '📜', 'label' => __( 'Certificado Verificable', 'cst-motoras' ) ],
+            [ 'icon' => '💻', 'label' => __( '100% Digital', 'cst-motoras' ) ],
+            [ 'icon' => '⚖️', 'label' => __( 'Requisito de Ley', 'cst-motoras' ) ],
         ],
     ] );
     ?>
@@ -50,17 +51,20 @@ get_header();
     <?php // 5. Statistics (dark background). ?>
     <?php get_template_part( 'template-parts/section', 'stats-highlight' ); ?>
 
-    <?php // 6. Enrollment CTA. ?>
+    <?php // 6. FAQ section. ?>
+    <?php get_template_part( 'template-parts/section', 'faq' ); ?>
+
+    <?php // 7. Enrollment CTA. ?>
     <?php get_template_part( 'template-parts/section', 'enrollment-cta' ); ?>
 
-    <?php // 7. Latest blog posts. ?>
+    <?php // 8. Latest blog posts. ?>
     <?php get_template_part( 'template-parts/section', 'latest-posts' ); ?>
 
-    <?php // 8. Upcoming events (The Events Calendar). ?>
+    <?php // 9. Upcoming events (The Events Calendar). ?>
     <?php get_template_part( 'template-parts/section', 'upcoming-events' ); ?>
 
     <?php
-    // 9. Page content (if any).
+    // 10. Page content (if any).
     while ( have_posts() ) :
         the_post();
         $content = get_the_content();

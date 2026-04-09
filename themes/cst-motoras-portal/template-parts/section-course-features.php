@@ -11,28 +11,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $features = [
     [
-        'label' => __( 'Duración', 'cst-motoras' ),
-        'value' => __( 'Aproximadamente 2 horas', 'cst-motoras' ),
+        'label' => __( '100% Digital y Accesible', 'cst-motoras' ),
+        'value' => __( 'Compatible con computadora, tableta y celular (iOS y Android). Accede 24/7 a tu propio ritmo.', 'cst-motoras' ),
     ],
     [
-        'label' => __( 'Formato', 'cst-motoras' ),
-        'value' => __( '100% en línea, a tu ritmo', 'cst-motoras' ),
+        'label' => __( 'Contenido Interactivo', 'cst-motoras' ),
+        'value' => __( '5 módulos educativos con videos y animaciones basados en estándares locales y federales.', 'cst-motoras' ),
     ],
     [
-        'label' => __( 'Certificado', 'cst-motoras' ),
-        'value' => __( 'Certificado digital al completar', 'cst-motoras' ),
+        'label' => __( 'Certificado Verificable', 'cst-motoras' ),
+        'value' => __( 'Certificado digital con código QR único. Validación instantánea para trámites de licencia.', 'cst-motoras' ),
     ],
     [
-        'label' => __( 'Idioma', 'cst-motoras' ),
-        'value' => __( 'Español', 'cst-motoras' ),
+        'label' => __( 'Requisito de Ley', 'cst-motoras' ),
+        'value' => __( 'Requisito obligatorio de Ley 107 para obtener el endoso de motocicletas y four tracks.', 'cst-motoras' ),
     ],
     [
         'label' => __( 'Costo', 'cst-motoras' ),
         'value' => __( 'Completamente gratuito', 'cst-motoras' ),
     ],
     [
-        'label' => __( 'Requisitos', 'cst-motoras' ),
-        'value' => __( 'Ninguno — abierto a todo público', 'cst-motoras' ),
+        'label' => __( 'Idioma', 'cst-motoras' ),
+        'value' => __( 'Español', 'cst-motoras' ),
     ],
 ];
 ?>
@@ -43,7 +43,7 @@ $features = [
         <div class="cst-course-features">
             <div class="cst-course-features__content">
                 <?php cst_section_heading(
-                    __( 'Características del curso', 'cst-motoras' ),
+                    __( 'Tu Camino Seguro hacia el Endoso', 'cst-motoras' ),
                     __( 'Todo lo que necesitas saber antes de comenzar.', 'cst-motoras' )
                 ); ?>
 

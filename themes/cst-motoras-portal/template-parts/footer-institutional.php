@@ -146,6 +146,14 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         </div>
 
+        <!-- CESCO Disclaimer -->
+        <div class="cst-institutional-footer__disclaimer">
+            <p>
+                <strong><?php esc_html_e( 'Nota aclaratoria:', 'cst-motoras' ); ?></strong>
+                <?php esc_html_e( 'Este módulo educativo es un recurso independiente y no está validado, avalado, afiliado, auspiciado ni certificado por CESCO. Su propósito es educativo y no sustituye los procesos oficiales requeridos.', 'cst-motoras' ); ?>
+            </p>
+        </div>
+
         <!-- Compliance Statements -->
         <div class="cst-institutional-footer__compliance">
             <p>

@@ -29,39 +29,23 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
             </div>
 
-            <!-- Right: Search + Language Switcher -->
+            <!-- Right: Language Switcher -->
             <div class="cst-institutional-header__actions">
-                <!-- Search Form -->
-                <form class="cst-header-search" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>"
-                      aria-label="<?php esc_attr_e( 'Buscar en el portal', 'cst-motoras' ); ?>">
-                    <label for="cst-header-search-input" class="sr-only"><?php esc_html_e( 'Buscar', 'cst-motoras' ); ?></label>
-                    <input type="search" id="cst-header-search-input" class="cst-header-search__input"
-                           name="s" placeholder="<?php esc_attr_e( 'Buscar...', 'cst-motoras' ); ?>"
-                           value="<?php echo esc_attr( get_search_query() ); ?>">
-                    <button type="submit" class="cst-header-search__btn"
-                            aria-label="<?php esc_attr_e( 'Buscar', 'cst-motoras' ); ?>">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                        </svg>
-                    </button>
-                </form>
-
-                <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
-                    <nav class="cst-lang-switcher" aria-label="<?php esc_attr_e( 'Selector de idioma', 'cst-motoras' ); ?>">
+                <nav class="cst-lang-switcher" aria-label="<?php esc_attr_e( 'Selector de idioma', 'cst-motoras' ); ?>">
+                    <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
                         <ul class="cst-lang-switcher__list">
                             <?php pll_the_languages( [
                                 'display_names_as' => 'slug',
                                 'hide_current'     => false,
                             ] ); ?>
                         </ul>
-                    </nav>
-                <?php else : ?>
-                    <span class="cst-lang-switcher__static">
-                        <span class="cst-lang-switcher__current" aria-label="<?php esc_attr_e( 'Idioma actual: Español', 'cst-motoras' ); ?>">ES</span>
-                    </span>
-                <?php endif; ?>
+                    <?php else : ?>
+                        <ul class="cst-lang-switcher__list">
+                            <li class="current-lang"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-current="true" lang="es">ES</a></li>
+                            <li><a href="<?php echo esc_url( home_url( '/en/' ) ); ?>" lang="en">EN</a></li>
+                        </ul>
+                    <?php endif; ?>
+                </nav>
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@ get_header();
     <?php
     cst_hero( [
         'title'    => get_the_title(),
-        'subtitle' => __( 'Guías, infografías, videos y documentos sobre el uso responsable del cannabis medicinal.', 'cst-motoras' ),
+        'subtitle' => __( 'Guías, infografías, videos y documentos sobre la conducción segura de motocicletas y four tracks.', 'cst-motoras' ),
         'class'    => 'cst-hero--page',
     ] );
     ?>

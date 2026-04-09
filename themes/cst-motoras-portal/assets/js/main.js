@@ -471,6 +471,46 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  FAQ Accordion                                                     */
+    /* ------------------------------------------------------------------ */
+
+    function initFaqAccordion() {
+        var toggles = document.querySelectorAll('.cst-faq-item__toggle');
+        if (!toggles.length) return;
+
+        toggles.forEach(function (toggle) {
+            toggle.addEventListener('click', function () {
+                var expanded = this.getAttribute('aria-expanded') === 'true';
+                var answerId = this.getAttribute('aria-controls');
+                var answer = document.getElementById(answerId);
+
+                if (!answer) return;
+
+                // Close other open items.
+                toggles.forEach(function (otherToggle) {
+                    if (otherToggle !== toggle && otherToggle.getAttribute('aria-expanded') === 'true') {
+                        var otherId = otherToggle.getAttribute('aria-controls');
+                        var otherAnswer = document.getElementById(otherId);
+                        otherToggle.setAttribute('aria-expanded', 'false');
+                        if (otherAnswer) otherAnswer.hidden = true;
+                    }
+                });
+
+                // Toggle current item.
+                this.setAttribute('aria-expanded', String(!expanded));
+                answer.hidden = expanded;
+            });
+
+            toggle.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Init                                                              */
     /* ------------------------------------------------------------------ */
 
@@ -487,6 +527,7 @@
         initDesktopNavKeyboard();
         initHeaderScroll();
         initBackToTop();
+        initFaqAccordion();
     });
 
 })();

@@ -28,7 +28,7 @@ if ( ! $stats->have_posts() ) {
     <div class="cst-container">
         <?php cst_section_heading(
             __( 'Cifras clave', 'cst-motoras' ),
-            __( 'Datos actualizados sobre la seguridad vial en Puerto Rico.', 'cst-motoras' )
+            __( 'Datos actualizados sobre la seguridad vial para motociclistas y conductores de four tracks en Puerto Rico.', 'cst-motoras' )
         ); ?>
 
         <div class="cst-stats-grid">

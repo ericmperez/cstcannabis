@@ -25,7 +25,7 @@ if ( ! $latest->have_posts() ) {
     <div class="cst-container">
         <?php cst_section_heading(
             __( 'Últimas publicaciones', 'cst-motoras' ),
-            __( 'Artículos recientes sobre cannabis medicinal y seguridad vial.', 'cst-motoras' )
+            __( 'Artículos recientes sobre conducción segura de motocicletas y four tracks.', 'cst-motoras' )
         ); ?>
 
         <div class="cst-card-grid cst-card-grid--3">

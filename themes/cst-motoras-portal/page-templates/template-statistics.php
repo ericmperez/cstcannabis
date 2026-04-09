@@ -58,7 +58,7 @@ get_header();
     <?php
     cst_hero( [
         'title'    => get_the_title(),
-        'subtitle' => __( 'Datos y métricas sobre la seguridad vial y el uso del cannabis medicinal en Puerto Rico.', 'cst-motoras' ),
+        'subtitle' => __( 'Datos y métricas sobre la seguridad vial para motociclistas y conductores de four tracks en Puerto Rico.', 'cst-motoras' ),
         'class'    => 'cst-hero--page cst-hero--slim',
     ] );
     ?>
