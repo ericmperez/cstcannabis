@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $faqs = [
     [
         'q' => __( '¿Es este curso obligatorio para pacientes de cannabis medicinal?', 'cst-cannabis' ),
-        'a' => __( 'Este curso es un recurso educativo gratuito ofrecido por la CST. Está diseñado para educar a pacientes, profesionales y al público general sobre el uso responsable del cannabis medicinal y la seguridad vial.', 'cst-cannabis' ),
+        'a' => __( 'Este curso es un recurso educativo gratuito ofrecido por la Comisión para la Seguridad en el Tránsito. Está diseñado para educar a pacientes, profesionales y al público general sobre el uso responsable del cannabis medicinal y la seguridad vial.', 'cst-cannabis' ),
     ],
     [
         'q' => __( '¿Qué necesito para registrarme en el curso?', 'cst-cannabis' ),

@@ -61,12 +61,12 @@ add_action( 'wp', function () {
    ========================================================================== */
 
 add_filter( 'generate_sidebar_layout', function () {
+    // Allow right sidebar on single posts for newspaper layout.
+    if ( is_single() ) {
+        return 'right-sidebar';
+    }
     return 'no-sidebar';
 } );
-
-add_action( 'widgets_init', function () {
-    unregister_sidebar( 'sidebar-1' );
-}, 20 );
 
 /* ==========================================================================
    Enqueue Styles & Scripts

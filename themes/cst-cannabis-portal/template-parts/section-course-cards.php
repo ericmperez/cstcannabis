@@ -35,7 +35,7 @@ $cards = [
         'items' => [
             __( 'Certificado digital con código QR único', 'cst-cannabis' ),
             __( 'Validación instantánea en línea', 'cst-cannabis' ),
-            __( 'Emitido por la CST de Puerto Rico', 'cst-cannabis' ),
+            __( 'Emitido por la Comisión para la Seguridad en el Tránsito de Puerto Rico', 'cst-cannabis' ),
         ],
     ],
 ];

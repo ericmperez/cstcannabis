@@ -34,10 +34,8 @@ get_header();
     cst_hero( [
         'title'            => $hero_title,
         'subtitle'         => $hero_subtitle,
-        'cta_text'         => __( 'Inscríbete gratis', 'cst-cannabis' ),
-        'cta_url'          => home_url( '/curso/' ),
-        'cta2_text'        => __( 'Ver temario', 'cst-cannabis' ),
-        'cta2_url'         => home_url( '/curso/#temario' ),
+        'cta_text'         => __( 'Ver Curso', 'cst-cannabis' ),
+        'cta_url'          => cst_course_url(),
         'class'            => 'cst-hero--home',
         'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
         'scroll_indicator' => true,

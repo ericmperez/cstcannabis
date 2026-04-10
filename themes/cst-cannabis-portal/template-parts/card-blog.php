@@ -28,14 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                 );
                 ?>
             </time>
-            <?php
-            $categories = get_the_category();
-            if ( ! empty( $categories ) && 'Uncategorized' !== $categories[0]->name ) :
-            ?>
-                <span class="cst-card__category">
-                    <?php echo esc_html( $categories[0]->name ); ?>
-                </span>
-            <?php endif; ?>
         </div>
 
         <h3 class="cst-card__title">

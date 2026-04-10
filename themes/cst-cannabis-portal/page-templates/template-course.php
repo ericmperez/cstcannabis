@@ -20,9 +20,9 @@ get_header();
     // 1. Hero section with CTA linking to registration.
     cst_hero( [
         'title'    => get_the_title(),
-        'subtitle' => __( 'Recurso Educativo Gratuito de la CST', 'cst-cannabis' ),
+        'subtitle' => __( 'Recurso Educativo Gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
         'cta_text' => __( 'Ver Curso', 'cst-cannabis' ),
-        'cta_url'  => '#registro',
+        'cta_url'  => home_url( '/courses/cannabis-medicinal-seguridad-vial/' ),
         'class'    => 'cst-hero--course',
         'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
     ] );

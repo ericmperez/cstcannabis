@@ -8,6 +8,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Get the course page URL for the current language.
+ *
+ * @param string $hash Optional hash fragment (e.g. '#temario').
+ * @return string
+ */
+function cst_course_url( string $hash = '' ): string {
+    // Spanish course page ID.
+    $curso_id = 9;
+
+    if ( function_exists( 'pll_get_post' ) && function_exists( 'pll_current_language' ) ) {
+        $lang        = pll_current_language();
+        $translated  = pll_get_post( $curso_id, $lang );
+        if ( $translated ) {
+            return get_permalink( $translated ) . $hash;
+        }
+    }
+
+    return home_url( '/curso/' . $hash );
+}
+
+/**
  * Render a hero section.
  *
  * @param array $args {

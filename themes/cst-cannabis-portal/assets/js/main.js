@@ -723,6 +723,95 @@
         initBackToTop();
         initCF7CourseRedirect();
         initSearch();
+        initSabiasQue();
     });
+
+    /* ------------------------------------------------------------------ */
+    /*  Sabías Que — interactive carousel                                 */
+    /* ------------------------------------------------------------------ */
+
+    function initSabiasQue() {
+        var widget = document.querySelector('.cst-sabias-que__carousel');
+        if (!widget) return;
+
+        var track  = widget.querySelector('.cst-sabias-que__track');
+        var slides = widget.querySelectorAll('.cst-sabias-que__slide');
+        var dots   = widget.querySelectorAll('.cst-sabias-que__dot');
+        var next   = widget.querySelector('.cst-sabias-que__next');
+        var current = 0;
+        var total   = slides.length;
+        var autoTimer = null;
+
+        // Fix height to tallest slide so layout doesn't shift.
+        function setTrackHeight() {
+            track.style.height = 'auto';
+            var max = 0;
+            slides.forEach(function (s) {
+                // Temporarily make measurable.
+                s.style.position = 'relative';
+                s.style.visibility = 'visible';
+                s.style.opacity = '1';
+                var h = s.offsetHeight;
+                if (h > max) max = h;
+                // Reset all inline styles — CSS handles visibility.
+                s.style.position = '';
+                s.style.visibility = '';
+                s.style.opacity = '';
+            });
+            track.style.height = max + 'px';
+        }
+        setTrackHeight();
+        window.addEventListener('resize', setTrackHeight);
+
+        function goTo(index) {
+            slides[current].classList.remove('cst-sabias-que__slide--active');
+            slides[current].setAttribute('aria-hidden', 'true');
+            dots[current].classList.remove('cst-sabias-que__dot--active');
+            dots[current].setAttribute('aria-selected', 'false');
+
+            current = (index + total) % total;
+
+            slides[current].classList.add('cst-sabias-que__slide--active');
+            slides[current].removeAttribute('aria-hidden');
+            dots[current].classList.add('cst-sabias-que__dot--active');
+            dots[current].setAttribute('aria-selected', 'true');
+        }
+
+        function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(function () { goTo(current + 1); }, 8000);
+        }
+
+        function stopAuto() {
+            if (autoTimer) clearInterval(autoTimer);
+        }
+
+        if (next) {
+            next.addEventListener('click', function () {
+                goTo(current + 1);
+                stopAuto();
+                startAuto();
+            });
+        }
+
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+                goTo(parseInt(this.getAttribute('data-index'), 10));
+                stopAuto();
+                startAuto();
+            });
+        });
+
+        // Pause on hover/focus.
+        widget.addEventListener('mouseenter', stopAuto);
+        widget.addEventListener('focusin', stopAuto);
+        widget.addEventListener('mouseleave', startAuto);
+        widget.addEventListener('focusout', startAuto);
+
+        // Respect reduced motion — no auto-advance.
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            startAuto();
+        }
+    }
 
 })();
