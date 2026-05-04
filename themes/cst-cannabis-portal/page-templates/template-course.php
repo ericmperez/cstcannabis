@@ -17,14 +17,22 @@ get_header();
 <main id="main-content" class="cst-main">
 
     <?php
-    // 1. Hero section with CTA linking to registration.
+    // 1. Hero — CTA points logged-in users to the course, everyone else into
+    //    the Tutor LMS student-registration flow.
+    $course_url   = home_url( '/courses/curso-cannabis/' );
+    $tutor_opts   = get_option( 'tutor_option', [] );
+    $register_id  = (int) ( $tutor_opts['student_register_page'] ?? 0 );
+    $register_url = $register_id ? get_permalink( $register_id ) : home_url( '/student-registration/' );
+
     cst_hero( [
         // The page name "Curso" already appears in the breadcrumb / nav highlight,
         // so we promote the descriptive tagline to the H1 and leave the subtitle empty.
         'title'     => __( 'Recurso Educativo Gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
         'subtitle'  => '',
-        'cta_text'  => __( 'Ver Curso', 'cst-cannabis' ),
-        'cta_url'   => home_url( '/courses/curso-cannabis/' ),
+        'cta_text'  => is_user_logged_in()
+            ? __( 'Ir al curso', 'cst-cannabis' )
+            : __( 'Regístrate', 'cst-cannabis' ),
+        'cta_url'   => is_user_logged_in() ? $course_url : $register_url,
         'class'     => 'cst-hero--course',
         'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
     ] );
