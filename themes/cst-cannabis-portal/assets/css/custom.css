@@ -374,6 +374,15 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
 }
 
+@media (min-width: 992px) {
+    /* On desktop, push the portal title further right of the seal so it
+       sits closer to the language switcher rather than crowding the logo. */
+    .cst-institutional-header__titles {
+        text-align: left;
+        margin-left: var(--cst-space-2xl, 3rem);
+    }
+}
+
 .cst-institutional-header__agency {
     font-size: var(--cst-font-size-sm);
     color: var(--cst-alpha-white-80);
@@ -385,7 +394,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--cst-font-heading);
     font-size: var(--cst-font-size-xl);
     font-weight: 700;
-    color: var(--cst-color-white);
+    /* CST cannabis brand green — readable against the navy banner. */
+    color: var(--cst-color-green, #7FA35B);
+    letter-spacing: 0.01em;
 }
 
 .cst-institutional-header__actions {
@@ -2426,12 +2437,40 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
     background: var(--cst-color-green);
     color: var(--cst-color-white);
-    margin-bottom: var(--cst-space-sm);
+    flex-shrink: 0;
+}
+
+.cst-sabias-que__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Modern row layout: icon on left, counter + text on right. */
+.cst-sabias-que__row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--cst-space-md, 1rem);
+}
+
+.cst-sabias-que__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.cst-sabias-que__counter {
+    display: inline-block;
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--cst-color-green);
+    margin-bottom: 0.375rem;
 }
 
 .cst-sabias-que__text {
     font-size: var(--cst-font-size-sm);
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--cst-color-gray-700);
     margin: 0;
 }
@@ -2448,57 +2487,71 @@ h1, h2, h3, h4, h5, h6 {
 .cst-sabias-que__dots {
     display: flex;
     gap: 6px;
+    align-items: center;
 }
 
+/* Sleek pill indicators — small inactive bars, active expands and fills. */
 .cst-sabias-que__dot {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
     border: none;
-    background: var(--cst-alpha-green-15);
-    color: var(--cst-color-green);
+    background: var(--cst-alpha-green-15, rgba(127, 163, 91, 0.25));
     cursor: pointer;
     padding: 0;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.cst-sabias-que__dot svg {
-    width: 12px;
-    height: 12px;
-}
-
-.cst-sabias-que__dot--active {
-    background: var(--cst-color-green);
-    color: var(--cst-color-white);
-    transform: scale(1.15);
+    transition: width 0.25s ease, background 0.2s ease;
 }
 
 .cst-sabias-que__dot:hover {
-    background: var(--cst-color-green-light);
-    color: var(--cst-color-white);
+    background: rgba(127, 163, 91, 0.55);
+}
+
+.cst-sabias-que__dot--active {
+    width: 22px;
+    background: var(--cst-color-green, #7FA35B);
+}
+
+.cst-sabias-que__dot:focus-visible {
+    outline: 2px solid var(--cst-color-focus, #3B82C4);
+    outline-offset: 2px;
 }
 
 .cst-sabias-que__next {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    background: none;
-    border: 1px solid var(--cst-color-green);
-    color: var(--cst-color-green-dark);
-    font-size: var(--cst-font-size-xs);
+    gap: 6px;
+    background: var(--cst-color-green, #7FA35B);
+    border: 1px solid var(--cst-color-green, #7FA35B);
+    color: #ffffff;
+    font-family: var(--cst-font-body, 'Open Sans', sans-serif);
+    font-size: 0.8125rem;
     font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 20px;
+    padding: 7px 14px;
+    border-radius: 999px;
     cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+    transition: background 0.2s ease, transform 0.05s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 6px rgba(127, 163, 91, 0.25);
 }
 
 .cst-sabias-que__next:hover {
-    background: var(--cst-color-green);
-    color: var(--cst-color-white);
+    background: var(--cst-color-green-dark, #5e8043);
+    border-color: var(--cst-color-green-dark, #5e8043);
+}
+
+.cst-sabias-que__next:active {
+    transform: translateY(1px);
+}
+
+.cst-sabias-que__next svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+}
+
+.cst-sabias-que__next:hover svg {
+    transform: translateX(2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4594,6 +4647,37 @@ h1, h2, h3, h4, h5, h6 {
     background-image: none !important;
 }
 
+/* When a hero video is rendered, suppress the Ken Burns ::before since the
+   video provides its own motion. */
+.cst-hero--has-video::before {
+    content: none !important;
+}
+
+.cst-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+    /* Hint to the browser this layer is composited. */
+    will-change: transform;
+}
+
+/* For users who prefer reduced motion, hide the video and let the poster
+   image (set via the <section> background or <video poster>) carry the visual. */
+@media (prefers-reduced-motion: reduce) {
+    .cst-hero__video {
+        display: none;
+    }
+    .cst-hero--has-video {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
 .cst-hero--course::before {
     content: '';
     position: absolute;
@@ -4607,15 +4691,20 @@ h1, h2, h3, h4, h5, h6 {
     will-change: transform;
 }
 
-/* Keep overlay, content, illustration above the animated layer. */
+/* Keep overlay, decorative shapes, illustration, and wave above the animated
+   ::before background layer. These elements already have their own positioning
+   (absolute), so only the z-index is set here so we don't disrupt their layout. */
 .cst-hero--course .cst-hero__overlay,
-.cst-hero--course .cst-hero__content,
 .cst-hero--course .cst-hero__float,
 .cst-hero--course .cst-hero__illustration,
-.cst-hero--course .cst-hero__wave,
-.cst-hero--course .cst-container {
-    position: relative;
+.cst-hero--course .cst-hero__wave {
     z-index: 1;
+}
+
+.cst-hero--course .cst-container,
+.cst-hero--course .cst-hero__content {
+    position: relative;
+    z-index: 2;
 }
 
 @keyframes cst-hero-kenburns {
@@ -4635,5 +4724,83 @@ h1, h2, h3, h4, h5, h6 {
         animation: none;
         transform: none;
         inset: 0;
+    }
+}
+
+/* ==========================================================================
+   Login page (Tutor Login / page-id-614): hide duplicate page title.
+   The shortcode renders its own H1 ("Acceso al Curso") inside the card.
+   ========================================================================== */
+.page-id-614 .entry-header,
+.page-id-614 .entry-title {
+    display: none;
+}
+
+/* ==========================================================================
+   Course Footer CTA — enrollment block (willai pattern)
+   ========================================================================== */
+.cst-course-footer-cta__enroll {
+    background: #ffffff;
+    border: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    border-top: 4px solid var(--cst-color-primary, #7FA35B);
+    border-radius: 8px;
+    padding: var(--cst-space-xl, 2rem);
+    box-shadow: 0 4px 16px rgba(28, 40, 84, 0.06);
+}
+
+.cst-course-footer-cta__enroll-heading {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: var(--cst-font-size-xl, 1.5rem);
+    font-weight: 700;
+    color: var(--cst-color-secondary, #1C2854);
+    margin: 0 0 var(--cst-space-sm, 0.5rem);
+    line-height: 1.25;
+}
+
+.cst-course-footer-cta__enroll-lead {
+    color: var(--cst-color-text, #212529);
+    line-height: 1.6;
+    margin: 0 0 var(--cst-space-lg, 1.5rem);
+}
+
+.cst-course-footer-cta__bullets {
+    list-style: none;
+    margin: 0 0 var(--cst-space-lg, 1.5rem);
+    padding: 0;
+    display: grid;
+    gap: var(--cst-space-sm, 0.5rem);
+}
+
+.cst-course-footer-cta__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--cst-space-sm, 0.5rem);
+    color: var(--cst-color-gray-700, #495057);
+    font-size: var(--cst-font-size-base, 1rem);
+}
+
+.cst-course-footer-cta__bullets svg {
+    flex-shrink: 0;
+    color: var(--cst-color-primary, #7FA35B);
+    margin-top: 3px;
+}
+
+.cst-course-footer-cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cst-space-sm, 0.5rem);
+    margin-bottom: var(--cst-space-md, 1rem);
+}
+
+.cst-course-footer-cta__actions .cst-btn--lg {
+    padding: 0.875rem 1.75rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .cst-course-footer-cta__actions .cst-btn {
+        width: 100%;
+        justify-content: center;
     }
 }

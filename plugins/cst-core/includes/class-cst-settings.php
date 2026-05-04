@@ -14,6 +14,32 @@ class CST_Settings {
     public function __construct() {
         add_action( 'admin_menu', [ $this, 'add_menu_page' ] );
         add_action( 'admin_init', [ $this, 'register_settings' ] );
+        add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_media_uploader' ] );
+    }
+
+    /**
+     * Load the WP media library JS on our settings page so the certificate
+     * signature/logo upload buttons can open the native uploader. The media
+     * library handles phone camera capture out of the box.
+     */
+    public function enqueue_media_uploader( string $hook ): void {
+        if ( 'settings_page_cst-settings' !== $hook ) {
+            return;
+        }
+        wp_enqueue_media();
+        wp_enqueue_script(
+            'cst-settings-media',
+            CST_CORE_URL . 'assets/js/settings-media.js',
+            [ 'jquery' ],
+            CST_CORE_VERSION,
+            true
+        );
+        wp_localize_script( 'cst-settings-media', 'cstSettingsMedia', [
+            'pickTitle'  => __( 'Seleccionar imagen', 'cst-core' ),
+            'pickButton' => __( 'Usar esta imagen', 'cst-core' ),
+            'remove'     => __( 'Quitar', 'cst-core' ),
+            'noneLabel'  => __( 'Ninguna imagen seleccionada', 'cst-core' ),
+        ] );
     }
 
     /**
@@ -120,9 +146,74 @@ class CST_Settings {
             'default'           => '',
         ] );
 
+        // Certificate.
+        register_setting( 'cst_settings', 'cst_certificate_director_name', [
+            'type'              => 'string',
+            'sanitize_callback' => 'sanitize_text_field',
+            'default'           => '',
+        ] );
+
+        register_setting( 'cst_settings', 'cst_certificate_director_title', [
+            'type'              => 'string',
+            'sanitize_callback' => 'sanitize_text_field',
+            'default'           => __( 'Director, Comisión para la Seguridad en el Tránsito', 'cst-core' ),
+        ] );
+
+        register_setting( 'cst_settings', 'cst_certificate_signature_id', [
+            'type'              => 'integer',
+            'sanitize_callback' => 'absint',
+            'default'           => 0,
+        ] );
+
+        register_setting( 'cst_settings', 'cst_certificate_logo_id', [
+            'type'              => 'integer',
+            'sanitize_callback' => 'absint',
+            'default'           => 0,
+        ] );
+
         // Sections.
+        add_settings_section( 'cst_certificate_section',
+            __( 'Certificado de Aprobación', 'cst-core' ),
+            [ $this, 'render_certificate_section_intro' ],
+            'cst-settings'
+        );
         add_settings_section( 'cst_whatsapp_section', __( 'WhatsApp', 'cst-core' ), null, 'cst-settings' );
         add_settings_section( 'cst_chatbot_section', __( 'Chatbot', 'cst-core' ), null, 'cst-settings' );
+
+        // Certificate fields.
+        add_settings_field( 'cst_certificate_logo_id',
+            __( 'Sello / Logo del curso', 'cst-core' ),
+            [ $this, 'render_media_field' ],
+            'cst-settings', 'cst_certificate_section',
+            [
+                'id'          => 'cst_certificate_logo_id',
+                'description' => __( 'Imagen que aparece como sello principal del certificado. PNG transparente recomendado.', 'cst-core' ),
+            ]
+        );
+
+        add_settings_field( 'cst_certificate_signature_id',
+            __( 'Firma del Director', 'cst-core' ),
+            [ $this, 'render_media_field' ],
+            'cst-settings', 'cst_certificate_section',
+            [
+                'id'          => 'cst_certificate_signature_id',
+                'description' => __( 'Suba o tome una foto de la firma del Director. PNG con fondo transparente para mejor resultado. Desde el celular puede usar la cámara directamente desde el botón.', 'cst-core' ),
+            ]
+        );
+
+        add_settings_field( 'cst_certificate_director_name',
+            __( 'Nombre del Director', 'cst-core' ),
+            [ $this, 'render_text_field' ],
+            'cst-settings', 'cst_certificate_section',
+            [ 'id' => 'cst_certificate_director_name', 'placeholder' => 'Hon. Nombre Apellido' ]
+        );
+
+        add_settings_field( 'cst_certificate_director_title',
+            __( 'Cargo (aparece bajo la firma)', 'cst-core' ),
+            [ $this, 'render_text_field' ],
+            'cst-settings', 'cst_certificate_section',
+            [ 'id' => 'cst_certificate_director_title' ]
+        );
 
         // WhatsApp fields.
         add_settings_field( 'cst_whatsapp_enabled', __( 'Activar botón', 'cst-core' ), [ $this, 'render_checkbox' ], 'cst-settings', 'cst_whatsapp_section', [ 'id' => 'cst_whatsapp_enabled' ] );
@@ -194,6 +285,50 @@ class CST_Settings {
         }
 
         return self::encrypt( $value );
+    }
+
+    public function render_certificate_section_intro(): void {
+        echo '<p class="description">' .
+            esc_html__( 'Configure el sello, la firma y los datos del Director que aparecerán en el certificado de aprobación. La firma se sube desde la biblioteca de medios — desde un celular puede tomar la foto directamente.', 'cst-core' ) .
+            '</p>';
+    }
+
+    /**
+     * Render a media (image) attachment-id field with a WP media uploader button.
+     */
+    public function render_media_field( array $args ): void {
+        $id            = $args['id'];
+        $attachment_id = (int) get_option( $id, 0 );
+        $preview_url   = $attachment_id ? wp_get_attachment_image_url( $attachment_id, 'medium' ) : '';
+        $description   = $args['description'] ?? '';
+        ?>
+        <div class="cst-media-field" data-target="<?php echo esc_attr( $id ); ?>">
+            <input type="hidden"
+                   id="<?php echo esc_attr( $id ); ?>"
+                   name="<?php echo esc_attr( $id ); ?>"
+                   value="<?php echo esc_attr( $attachment_id ); ?>" />
+            <div class="cst-media-field__preview" style="margin-bottom:8px;">
+                <?php if ( $preview_url ) : ?>
+                    <img src="<?php echo esc_url( $preview_url ); ?>"
+                         style="max-width:240px;max-height:120px;background:#f6f7f7;border:1px solid #c3c4c7;padding:6px;border-radius:4px;display:block;" />
+                <?php else : ?>
+                    <span class="description"><?php esc_html_e( 'Ninguna imagen seleccionada', 'cst-core' ); ?></span>
+                <?php endif; ?>
+            </div>
+            <button type="button" class="button cst-media-field__pick">
+                <?php echo $attachment_id
+                    ? esc_html__( 'Cambiar imagen', 'cst-core' )
+                    : esc_html__( 'Subir / Tomar foto', 'cst-core' ); ?>
+            </button>
+            <button type="button" class="button-link-delete cst-media-field__remove"
+                    style="margin-left:8px;<?php echo $attachment_id ? '' : 'display:none;'; ?>">
+                <?php esc_html_e( 'Quitar', 'cst-core' ); ?>
+            </button>
+            <?php if ( $description ) : ?>
+                <p class="description" style="margin-top:8px;"><?php echo esc_html( $description ); ?></p>
+            <?php endif; ?>
+        </div>
+        <?php
     }
 
     public function render_checkbox( array $args ): void {

@@ -38,6 +38,7 @@ get_header();
         'cta_url'          => cst_course_url(),
         'class'            => 'cst-hero--home',
         'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
+        'video_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-bg.mp4',
         'scroll_indicator' => true,
         'trust_badges'     => [
             [ 'icon' => '💰', 'label' => __( 'Gratuito', 'cst-cannabis' ) ],

@@ -2,7 +2,9 @@
 /**
  * Template Part: Course Footer CTA.
  *
- * Registration form, certificate preview, contact info, and legal disclaimer.
+ * Enrollment CTA, certificate preview, and contact info. Mirrors the willai
+ * course-site pattern: registration is owned exclusively by the Tutor LMS
+ * student-registration page; the landing page only points users to it.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,6 +13,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $phone = get_theme_mod( 'cst_phone', '787-721-4142' );
 $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
+
+// Resolve registration / dashboard / course URLs. Prefer Tutor LMS settings
+// for the registration page; fall back to a sensible slug.
+$tutor_opts        = get_option( 'tutor_option', [] );
+$register_page_id  = (int) ( $tutor_opts['student_register_page'] ?? 0 );
+$dashboard_page_id = (int) ( $tutor_opts['tutor_dashboard_page_id'] ?? 0 );
+
+$register_url  = $register_page_id  ? get_permalink( $register_page_id )  : home_url( '/student-registration/' );
+$dashboard_url = $dashboard_page_id ? get_permalink( $dashboard_page_id ) : home_url( '/dashboard/' );
+$course_url    = home_url( '/courses/curso-cannabis/' );
+
+$is_logged_in  = is_user_logged_in();
+$primary_url   = $is_logged_in ? $course_url   : $register_url;
+$primary_text  = $is_logged_in
+    ? __( 'Ir al curso', 'cst-cannabis' )
+    : __( 'Crear cuenta y comenzar', 'cst-cannabis' );
+$secondary_url = $is_logged_in ? $dashboard_url : wp_login_url( $course_url );
+$secondary_txt = $is_logged_in
+    ? __( 'Ver mi escritorio', 'cst-cannabis' )
+    : __( 'Ya tengo cuenta — iniciar sesión', 'cst-cannabis' );
 ?>
 
 <section class="cst-section cst-section--course-footer-cta" id="registro" role="region"
@@ -28,16 +50,41 @@ $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
 
         <div class="cst-course-footer-cta__grid">
 
-            <!-- Registration Form -->
-            <div class="cst-course-footer-cta__form cst-contact-form" tabindex="-1"
-                 data-redirect-url="<?php echo esc_url( home_url( '/courses/curso-cannabis/' ) ); ?>">
-                <h3><?php esc_html_e( 'Regístrate ahora', 'cst-cannabis' ); ?></h3>
-                <?php
-                while ( have_posts() ) :
-                    the_post();
-                    the_content();
-                endwhile;
-                ?>
+            <!-- Enrollment CTA — registration owned by /student-registration/ (willai pattern). -->
+            <div class="cst-course-footer-cta__enroll" tabindex="-1">
+                <h3 class="cst-course-footer-cta__enroll-heading">
+                    <?php esc_html_e( 'Regístrate y obtén tu certificado', 'cst-cannabis' ); ?>
+                </h3>
+                <p class="cst-course-footer-cta__enroll-lead">
+                    <?php esc_html_e( 'Crea una cuenta gratuita en menos de un minuto. Toma el curso a tu ritmo desde cualquier dispositivo y descarga tu certificado digital al aprobar el examen final.', 'cst-cannabis' ); ?>
+                </p>
+
+                <ul class="cst-course-footer-cta__bullets" role="list">
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        <?php esc_html_e( 'Inscripción gratuita y sin costo', 'cst-cannabis' ); ?>
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        <?php esc_html_e( '11 módulos a tu propio ritmo, 24/7', 'cst-cannabis' ); ?>
+                    </li>
+                    <li>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        <?php esc_html_e( 'Certificado digital verificable', 'cst-cannabis' ); ?>
+                    </li>
+                </ul>
+
+                <div class="cst-course-footer-cta__actions">
+                    <a class="cst-btn cst-btn--primary cst-btn--lg"
+                       href="<?php echo esc_url( $primary_url ); ?>">
+                        <?php echo esc_html( $primary_text ); ?>
+                    </a>
+                    <a class="cst-btn cst-btn--outline"
+                       href="<?php echo esc_url( $secondary_url ); ?>">
+                        <?php echo esc_html( $secondary_txt ); ?>
+                    </a>
+                </div>
+
                 <p class="cst-form-privacy">
                     <?php
                     printf(

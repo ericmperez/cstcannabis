@@ -27,12 +27,26 @@ $cta_url   = $args['cta_url'] ?? '';
 $cta2_text = $args['cta2_text'] ?? '';
 $cta2_url  = $args['cta2_url'] ?? '';
 $image_url = $args['image_url'] ?? '';
+$video_url = $args['video_url'] ?? '';
 $class     = $args['class'] ?? '';
 
-$style = $image_url ? ' style="background-image:url(' . esc_url( $image_url ) . ')"' : '';
+// Always inline the still image as a CSS background so it doubles as:
+//  - the standalone hero background when no video is provided, AND
+//  - the reduced-motion / autoplay-blocked fallback when a video IS provided.
+$style = $image_url
+    ? ' style="background-image:url(' . esc_url( $image_url ) . ')"'
+    : '';
 ?>
-<section class="cst-hero <?php echo esc_attr( $class ); ?>"<?php echo $style; ?>
+<section class="cst-hero <?php echo $video_url ? 'cst-hero--has-video ' : ''; ?><?php echo esc_attr( $class ); ?>"<?php echo $style; ?>
          role="region" aria-label="<?php esc_attr_e( 'Sección principal', 'cst-cannabis' ); ?>">
+    <?php if ( $video_url ) : ?>
+        <video class="cst-hero__video"
+               autoplay muted loop playsinline preload="metadata"
+               aria-hidden="true" tabindex="-1"
+               <?php if ( $image_url ) : ?>poster="<?php echo esc_url( $image_url ); ?>"<?php endif; ?>>
+            <source src="<?php echo esc_url( $video_url ); ?>" type="video/mp4" />
+        </video>
+    <?php endif; ?>
     <div class="cst-hero__overlay" aria-hidden="true"></div>
 
     <!-- Floating decorative shapes -->

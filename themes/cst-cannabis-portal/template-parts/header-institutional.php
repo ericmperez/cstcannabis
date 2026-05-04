@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
                 <div class="cst-institutional-header__titles">
                     <span class="cst-institutional-header__portal-name">
-                        <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
+                        <?php esc_html_e( 'Portal Cannabis y Seguridad en el Tránsito', 'cst-cannabis' ); ?>
                     </span>
                 </div>
             </div>

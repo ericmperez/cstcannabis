@@ -19,11 +19,13 @@ get_header();
     <?php
     // 1. Hero section with CTA linking to registration.
     cst_hero( [
-        'title'    => get_the_title(),
-        'subtitle' => __( 'Recurso Educativo Gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
-        'cta_text' => __( 'Ver Curso', 'cst-cannabis' ),
-        'cta_url'  => home_url( '/courses/curso-cannabis/' ),
-        'class'    => 'cst-hero--course',
+        // The page name "Curso" already appears in the breadcrumb / nav highlight,
+        // so we promote the descriptive tagline to the H1 and leave the subtitle empty.
+        'title'     => __( 'Recurso Educativo Gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
+        'subtitle'  => '',
+        'cta_text'  => __( 'Ver Curso', 'cst-cannabis' ),
+        'cta_url'   => home_url( '/courses/curso-cannabis/' ),
+        'class'     => 'cst-hero--course',
         'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
     ] );
     ?>
