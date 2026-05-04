@@ -92,9 +92,24 @@ get_header();
                             </div>
                             <div class="cst-contact-card__body">
                                 <h3>WhatsApp</h3>
-                                <a href="https://wa.me/<?php echo esc_attr( preg_replace( '/[^0-9]/', '', $whatsapp ) ); ?>"
+                                <?php
+                                $whatsapp_digits = preg_replace( '/[^0-9]/', '', $whatsapp );
+                                // Format US/PR numbers as 1-NNN-NNN-NNNN.
+                                if ( 11 === strlen( $whatsapp_digits ) && '1' === $whatsapp_digits[0] ) {
+                                    $whatsapp_display = sprintf(
+                                        '%s-%s-%s-%s',
+                                        substr( $whatsapp_digits, 0, 1 ),
+                                        substr( $whatsapp_digits, 1, 3 ),
+                                        substr( $whatsapp_digits, 4, 3 ),
+                                        substr( $whatsapp_digits, 7, 4 )
+                                    );
+                                } else {
+                                    $whatsapp_display = $whatsapp;
+                                }
+                                ?>
+                                <a href="https://wa.me/<?php echo esc_attr( $whatsapp_digits ); ?>"
                                    target="_blank" rel="noopener noreferrer">
-                                    <?php echo esc_html( $whatsapp ); ?>
+                                    <?php echo esc_html( $whatsapp_display ); ?>
                                 </a>
                             </div>
                         </div>

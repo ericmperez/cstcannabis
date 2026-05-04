@@ -47,5 +47,8 @@ class CST_Core {
         if ( class_exists( 'CST_Chatbot' ) ) {
             new CST_Chatbot();
         }
+        if ( class_exists( 'CST_Login_Form' ) ) {
+            new CST_Login_Form();
+        }
     }
 }
