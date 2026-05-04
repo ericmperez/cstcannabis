@@ -20,6 +20,7 @@ get_header();
     // 1. Hero — single short slogan, rendered in small-caps via theme CSS
     //    (.cst-hero--home .cst-hero__title). No subtitle.
     cst_hero( [
+        'eyebrow'          => __( 'Cannabis Medicinal y Seguridad Vial', 'cst-cannabis' ),
         'title'            => __( 'Educación, prevención y datos para proteger vidas', 'cst-cannabis' ),
         'subtitle'         => '',
         'cta_text'         => __( 'Ver Curso', 'cst-cannabis' ),

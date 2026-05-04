@@ -20,6 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+$eyebrow   = $args['eyebrow'] ?? '';
 $title     = $args['title'] ?? get_bloginfo( 'name' );
 $subtitle  = $args['subtitle'] ?? get_bloginfo( 'description' );
 $cta_text  = $args['cta_text'] ?? '';
@@ -64,6 +65,9 @@ $style = $image_url
 
     <div class="cst-container">
         <div class="cst-hero__content">
+            <?php if ( $eyebrow ) : ?>
+                <p class="cst-hero__eyebrow"><?php echo esc_html( $eyebrow ); ?></p>
+            <?php endif; ?>
             <h1 class="cst-hero__title"><?php echo esc_html( $title ); ?></h1>
             <?php if ( $subtitle ) : ?>
                 <p class="cst-hero__subtitle"><?php echo esc_html( $subtitle ); ?></p>
