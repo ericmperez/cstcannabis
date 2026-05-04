@@ -5084,3 +5084,21 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
+
+/* ==========================================================================
+   Lesson content — 1:1 image variant
+   Adding class "cst-img-square" to a lesson <img> renders it inside a 1:1
+   box. The image is contained (no distortion), centered, and the source
+   file's intrinsic width/height attributes don't override the box.
+   ========================================================================== */
+img.cst-img-square {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    margin: 1.5rem auto;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 8px;
+}
