@@ -103,11 +103,12 @@ $secondary_txt = $is_logged_in
             <div class="cst-course-footer-cta__info">
 
                 <!-- Certificate Mockup -->
-                <div class="cst-certificate-mockup" aria-label="<?php esc_attr_e( 'Ejemplo de certificado digital', 'cst-cannabis' ); ?>">
+                <div class="cst-certificate-mockup cst-certificate-mockup--preview" aria-label="<?php esc_attr_e( 'Vista previa del certificado digital — ejemplo ilustrativo', 'cst-cannabis' ); ?>">
                     <div class="cst-certificate-mockup__badge">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                         <?php esc_html_e( 'Certificado verificable', 'cst-cannabis' ); ?>
                     </div>
+                    <span class="cst-certificate-mockup__preview-flag" aria-hidden="true"><?php esc_html_e( 'VISTA PREVIA', 'cst-cannabis' ); ?></span>
                     <div class="cst-certificate-mockup__card">
                         <div class="cst-certificate-mockup__border">
                             <div class="cst-certificate-mockup__ribbon"></div>
@@ -119,10 +120,10 @@ $secondary_txt = $is_logged_in
                             <div class="cst-certificate-mockup__divider"></div>
                             <p class="cst-certificate-mockup__course"><?php esc_html_e( 'Cannabis Medicinal y Seguridad Vial', 'cst-cannabis' ); ?></p>
                             <p class="cst-certificate-mockup__awarded"><?php esc_html_e( 'Otorgado a', 'cst-cannabis' ); ?></p>
-                            <p class="cst-certificate-mockup__name"><?php esc_html_e( 'Juan del Pueblo', 'cst-cannabis' ); ?></p>
+                            <p class="cst-certificate-mockup__name"><?php esc_html_e( '[ Su nombre aquí ]', 'cst-cannabis' ); ?></p>
                             <div class="cst-certificate-mockup__footer">
                                 <div class="cst-certificate-mockup__meta">
-                                    <span><?php esc_html_e( 'Fecha: DD/MM/AAAA', 'cst-cannabis' ); ?></span>
+                                    <span><?php esc_html_e( 'Fecha de aprobación', 'cst-cannabis' ); ?></span>
                                     <span><?php esc_html_e( 'Válido: 90 días', 'cst-cannabis' ); ?></span>
                                 </div>
                                 <div class="cst-certificate-mockup__qr" aria-hidden="true">

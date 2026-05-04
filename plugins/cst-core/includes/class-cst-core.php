@@ -50,5 +50,8 @@ class CST_Core {
         if ( class_exists( 'CST_Login_Form' ) ) {
             new CST_Login_Form();
         }
+        if ( class_exists( 'CST_Redirects' ) ) {
+            new CST_Redirects();
+        }
     }
 }
