@@ -394,8 +394,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--cst-font-heading);
     font-size: var(--cst-font-size-xl);
     font-weight: 700;
-    /* CST cannabis brand green — readable against the navy banner. */
-    color: var(--cst-color-green, #7FA35B);
+    color: var(--cst-color-white, #ffffff);
     letter-spacing: 0.01em;
 }
 
@@ -617,19 +616,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-lang-switcher__list {
     list-style: none;
-    display: flex;
-    gap: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
     margin: 0;
-    padding: 0;
+    padding: 2px;
     background: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .cst-lang-switcher__list li a {
-    display: block;
-    padding: 3px 10px;
-    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    /* Override the global 44px touch-target rule from accessibility.css.
+       The pills sit in a tight header; 30px height with 12px horizontal
+       padding still meets WCAG 2.5.8 (the entire pill IS the target). */
+    min-height: 30px !important;
+    height: 30px;
+    line-height: 1;
+    border-radius: 999px;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -752,7 +760,10 @@ h1, h2, h3, h4, h5, h6 {
 .cst-hero__subtitle {
     font-size: var(--cst-font-size-xl);
     margin-bottom: var(--cst-space-xl);
-    opacity: 0.9;
+    /* Warm cream — distinct from the white H1 and pops against the green video. */
+    color: #FFE9A8;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    opacity: 1;
 }
 
 /* --- Floating decorative shapes --- */
@@ -814,16 +825,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Hero wave divider --- */
 
 .cst-hero__wave {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 30C240 55 480 5 720 30C960 55 1200 5 1440 30V60H0Z' fill='%23ffffff'/%3E%3C/svg%3E");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 2;
+    display: none;
 }
 
 /* --- Hero trust badges --- */
