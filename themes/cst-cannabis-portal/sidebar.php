@@ -67,10 +67,20 @@ if ( ! is_single() ) {
                          role="group" aria-roledescription="slide"
                          aria-label="<?php printf( esc_attr__( 'Dato %d de %d', 'cst-cannabis' ), $i + 1, count( $facts ) ); ?>"
                          <?php echo 0 !== $i ? 'aria-hidden="true"' : ''; ?>>
-                        <div class="cst-sabias-que__icon">
-                            <?php echo wp_kses_post( $fact['icon'] ); ?>
+                        <div class="cst-sabias-que__row">
+                            <div class="cst-sabias-que__icon" aria-hidden="true">
+                                <?php echo cst_kses_svg( $fact['icon'] ); ?>
+                            </div>
+                            <div class="cst-sabias-que__body">
+                                <span class="cst-sabias-que__counter">
+                                    <?php
+                                    /* translators: 1: current slide index, 2: total count */
+                                    printf( esc_html__( 'Dato %1$d de %2$d', 'cst-cannabis' ), $i + 1, count( $facts ) );
+                                    ?>
+                                </span>
+                                <p class="cst-sabias-que__text"><?php echo esc_html( $fact['text'] ); ?></p>
+                            </div>
                         </div>
-                        <p class="cst-sabias-que__text"><?php echo esc_html( $fact['text'] ); ?></p>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -82,9 +92,7 @@ if ( ! is_single() ) {
                                 role="tab" aria-selected="<?php echo 0 === $i ? 'true' : 'false'; ?>"
                                 aria-label="<?php printf( esc_attr__( 'Dato %d', 'cst-cannabis' ), $i + 1 ); ?>"
                                 data-index="<?php echo esc_attr( $i ); ?>"
-                                type="button">
-                            <?php echo wp_kses_post( $fact['dot_icon'] ); ?>
-                        </button>
+                                type="button"></button>
                     <?php endforeach; ?>
                 </div>
                 <button class="cst-sabias-que__next" type="button"

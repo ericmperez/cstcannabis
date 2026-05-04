@@ -62,7 +62,15 @@ class CST_Statistics {
                             </span>
                         <?php endif; ?>
                         <?php if ( $stat['source'] ) : ?>
-                            <span class="cst-statistics__source"><?php echo esc_html( $stat['source'] ); ?></span>
+                            <span class="cst-statistics__source">
+                                <?php if ( ! empty( $stat['source_url'] ) ) : ?>
+                                    <a href="<?php echo esc_url( $stat['source_url'] ); ?>" target="_blank" rel="noopener noreferrer">
+                                        <?php echo esc_html( $stat['source'] ); ?>
+                                    </a>
+                                <?php else : ?>
+                                    <?php echo esc_html( $stat['source'] ); ?>
+                                <?php endif; ?>
+                            </span>
                         <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
@@ -129,6 +137,7 @@ class CST_Statistics {
                 'unit'        => get_post_meta( $id, '_cst_stat_unit', true ),
                 'icon'        => get_post_meta( $id, '_cst_stat_icon', true ),
                 'source'      => get_post_meta( $id, '_cst_stat_source', true ),
+                'source_url'  => get_post_meta( $id, '_cst_stat_source_url', true ),
                 'order'       => get_post_meta( $id, '_cst_stat_order', true ),
                 'trend'       => get_post_meta( $id, '_cst_stat_trend', true ),
                 'category'    => get_post_meta( $id, '_cst_stat_category', true ),

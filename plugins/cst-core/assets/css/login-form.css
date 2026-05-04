@@ -56,8 +56,16 @@
 }
 
 .cst-login-card__seal img {
-    height: 56px;
+    height: 96px;
     width: auto;
+    max-width: 100%;
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .cst-login-card__seal img {
+        height: 80px;
+    }
 }
 
 .cst-login-card__wordmark {

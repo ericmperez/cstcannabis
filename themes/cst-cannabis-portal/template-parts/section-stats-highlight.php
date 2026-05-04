@@ -36,7 +36,8 @@ if ( ! $stats->have_posts() ) {
                 $value  = get_post_meta( get_the_ID(), '_cst_stat_value', true );
                 $unit   = get_post_meta( get_the_ID(), '_cst_stat_unit', true );
                 $icon   = get_post_meta( get_the_ID(), '_cst_stat_icon', true );
-                $source = get_post_meta( get_the_ID(), '_cst_stat_source', true );
+                $source     = get_post_meta( get_the_ID(), '_cst_stat_source', true );
+                $source_url = get_post_meta( get_the_ID(), '_cst_stat_source_url', true );
             ?>
                 <div class="cst-stat-card" data-target="<?php echo esc_attr( $value ); ?>">
                     <?php if ( $icon ) : ?>
@@ -47,7 +48,16 @@ if ( ! $stats->have_posts() ) {
                     </span>
                     <span class="cst-stat-card__label"><?php the_title(); ?></span>
                     <?php if ( $source ) : ?>
-                        <span class="cst-stat-card__source"><?php echo esc_html( $source ); ?></span>
+                        <span class="cst-stat-card__source">
+                            <?php if ( $source_url ) : ?>
+                                <a href="<?php echo esc_url( $source_url ); ?>" target="_blank" rel="noopener noreferrer">
+                                    <?php echo esc_html( $source ); ?>
+                                    <span class="screen-reader-text"> (<?php esc_html_e( 'abre en nueva pestaña', 'cst-cannabis' ); ?>)</span>
+                                </a>
+                            <?php else : ?>
+                                <?php echo esc_html( $source ); ?>
+                            <?php endif; ?>
+                        </span>
                     <?php endif; ?>
                 </div>
             <?php endwhile; wp_reset_postdata(); ?>

@@ -130,6 +130,7 @@ class CST_Post_Types {
         $icon        = get_post_meta( $post->ID, '_cst_stat_icon', true );
         $order       = get_post_meta( $post->ID, '_cst_stat_order', true );
         $source      = get_post_meta( $post->ID, '_cst_stat_source', true );
+        $source_url  = get_post_meta( $post->ID, '_cst_stat_source_url', true );
         $trend       = get_post_meta( $post->ID, '_cst_stat_trend', true );
         $category    = get_post_meta( $post->ID, '_cst_stat_category', true );
         $chart_type  = get_post_meta( $post->ID, '_cst_stat_chart_type', true );
@@ -154,8 +155,15 @@ class CST_Post_Types {
                 <td><input type="number" id="cst_stat_order" name="cst_stat_order" value="<?php echo esc_attr( $order ); ?>" class="small-text"></td>
             </tr>
             <tr>
-                <th><label for="cst_stat_source"><?php esc_html_e( 'Fuente', 'cst-core' ); ?></label></th>
+                <th><label for="cst_stat_source"><?php esc_html_e( 'Fuente (texto)', 'cst-core' ); ?></label></th>
                 <td><input type="text" id="cst_stat_source" name="cst_stat_source" value="<?php echo esc_attr( $source ); ?>" class="large-text" placeholder="Departamento de Salud, 2024"></td>
+            </tr>
+            <tr>
+                <th><label for="cst_stat_source_url"><?php esc_html_e( 'URL de la fuente', 'cst-core' ); ?></label></th>
+                <td>
+                    <input type="url" id="cst_stat_source_url" name="cst_stat_source_url" value="<?php echo esc_attr( $source_url ); ?>" class="large-text" placeholder="https://www.cst.pr.gov/estadisticas">
+                    <p class="description"><?php esc_html_e( 'Enlace verificable a la fuente. Si está presente, la fuente se renderiza como hipervínculo.', 'cst-core' ); ?></p>
+                </td>
             </tr>
             <tr>
                 <th><label for="cst_stat_trend"><?php esc_html_e( 'Tendencia (%)', 'cst-core' ); ?></label></th>
@@ -218,6 +226,7 @@ class CST_Post_Types {
             'cst_stat_icon'        => '_cst_stat_icon',
             'cst_stat_order'       => '_cst_stat_order',
             'cst_stat_source'      => '_cst_stat_source',
+            'cst_stat_source_url'  => '_cst_stat_source_url',
             'cst_stat_trend'       => '_cst_stat_trend',
             'cst_stat_category'    => '_cst_stat_category',
             'cst_stat_chart_type'  => '_cst_stat_chart_type',
@@ -226,7 +235,11 @@ class CST_Post_Types {
 
         foreach ( $fields as $input => $meta_key ) {
             if ( isset( $_POST[ $input ] ) ) {
-                update_post_meta( $post_id, $meta_key, sanitize_text_field( wp_unslash( $_POST[ $input ] ) ) );
+                $raw = wp_unslash( $_POST[ $input ] );
+                $value = ( '_cst_stat_source_url' === $meta_key )
+                    ? esc_url_raw( $raw )
+                    : sanitize_text_field( $raw );
+                update_post_meta( $post_id, $meta_key, $value );
             }
         }
 

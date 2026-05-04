@@ -139,7 +139,15 @@ get_header();
                                 </span>
                             <?php endif; ?>
                             <?php if ( ! empty( $stat['source'] ) ) : ?>
-                                <span class="cst-kpi-card__source"><?php echo esc_html( $stat['source'] ); ?></span>
+                                <span class="cst-kpi-card__source">
+                                    <?php if ( ! empty( $stat['source_url'] ) ) : ?>
+                                        <a href="<?php echo esc_url( $stat['source_url'] ); ?>" target="_blank" rel="noopener noreferrer">
+                                            <?php echo esc_html( $stat['source'] ); ?>
+                                        </a>
+                                    <?php else : ?>
+                                        <?php echo esc_html( $stat['source'] ); ?>
+                                    <?php endif; ?>
+                                </span>
                             <?php endif; ?>
                         </article>
                     <?php endforeach; ?>

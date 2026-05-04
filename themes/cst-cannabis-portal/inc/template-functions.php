@@ -51,6 +51,7 @@ function cst_hero( array $args = [] ): void {
         'cta2_text' => '',
         'cta2_url'  => '',
         'image_url' => get_theme_mod( 'cst_hero_image', '' ),
+        'video_url' => '', // Optional muted/looping background video.
         'class'     => '',
     ];
     $args = wp_parse_args( $args, $defaults );

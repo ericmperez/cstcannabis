@@ -18,18 +18,20 @@
     justify-content: center;
     width: 56px;
     height: 56px;
-    background-color: var(--cst-color-primary, #7FA35B);
+    /* Navy institutional color — readable against the green hero AND white pages. */
+    background-color: var(--cst-color-secondary, #1C2854);
     color: #fff;
-    border: none;
+    border: 2px solid #ffffff;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(28, 40, 84, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .cst-chatbot__toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: scale(1.08);
+    background-color: #15204a;
+    box-shadow: 0 6px 22px rgba(28, 40, 84, 0.45);
 }
 
 .cst-chatbot__toggle:focus-visible {
