@@ -40,11 +40,6 @@ get_header();
         'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
         'video_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-bg.mp4',
         'scroll_indicator' => true,
-        'trust_badges'     => [
-            [ 'icon' => '💰', 'label' => __( 'Gratuito', 'cst-cannabis' ) ],
-            [ 'icon' => '📜', 'label' => __( 'Certificado', 'cst-cannabis' ) ],
-            [ 'icon' => '💻', 'label' => __( 'En línea', 'cst-cannabis' ) ],
-        ],
     ] );
     ?>
 
