@@ -53,5 +53,8 @@ class CST_Core {
         if ( class_exists( 'CST_Redirects' ) ) {
             new CST_Redirects();
         }
+        if ( class_exists( 'CST_Auto_Enrollment' ) ) {
+            new CST_Auto_Enrollment();
+        }
     }
 }
