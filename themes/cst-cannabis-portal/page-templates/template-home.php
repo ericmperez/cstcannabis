@@ -43,7 +43,10 @@ get_header();
     ] );
     ?>
 
-    <?php // 2. Trust strip. ?>
+    <?php // 2. Course pillars (Consumo / Seguridad vial / Protección familiar). ?>
+    <?php get_template_part( 'template-parts/section', 'course-pillars' ); ?>
+
+    <?php // 3. Trust strip. ?>
     <?php get_template_part( 'template-parts/section', 'trust-strip' ); ?>
 
     <?php // 3. Course modules ("Lo que aprenderás"). ?>
