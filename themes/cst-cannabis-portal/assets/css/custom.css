@@ -5009,20 +5009,22 @@ h1, h2, h3, h4, h5, h6 {
     .cst-pillar-card:hover { transform: none; }
 }
 
-/* Hero eyebrow / kicker — small uppercase label above the H1. */
+/* Hero eyebrow / kicker — light-navy pill that matches the institutional
+   header banner color. */
 .cst-hero__eyebrow {
     display: inline-block;
     font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
-    font-size: clamp(0.875rem, 1.4vw, 1.0625rem);
-    font-weight: 600;
+    font-size: clamp(0.8125rem, 1.3vw, 0.9375rem);
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #ffffff;
     margin: 0 0 var(--cst-space-md, 1rem);
-    padding: 0.375rem 0.875rem;
-    background: rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 1.25rem;
+    background: rgba(28, 40, 84, 0.78);
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 14px rgba(28, 40, 84, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
