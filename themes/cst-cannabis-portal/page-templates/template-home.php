@@ -17,23 +17,11 @@ get_header();
 <main id="main-content" class="cst-main">
 
     <?php
-    // 1. Hero section (with trust badges + scroll indicator).
-    $hero_title    = get_theme_mod( 'cst_hero_title', '' ) ?: get_bloginfo( 'name' );
-    $hero_subtitle = get_theme_mod( 'cst_hero_subtitle', '' ) ?: get_bloginfo( 'description' );
-    // Translate Customizer strings when viewing in a non-default language.
-    if ( function_exists( 'pll_current_language' ) && 'es' !== pll_current_language() ) {
-        $hero_translations = [
-            'Cannabis Medicinal y Seguridad Vial'
-                => __( 'Medical Cannabis and Road Safety', 'cst-cannabis' ),
-            'Educación, prevención y datos para proteger vidas en las carreteras de Puerto Rico'
-                => __( 'Education, prevention, and data to protect lives on Puerto Rico\'s roads', 'cst-cannabis' ),
-        ];
-        $hero_title    = $hero_translations[ $hero_title ] ?? $hero_title;
-        $hero_subtitle = $hero_translations[ $hero_subtitle ] ?? $hero_subtitle;
-    }
+    // 1. Hero — single short slogan, rendered in small-caps via theme CSS
+    //    (.cst-hero--home .cst-hero__title). No subtitle.
     cst_hero( [
-        'title'            => $hero_title,
-        'subtitle'         => $hero_subtitle,
+        'title'            => __( 'Educación, prevención y datos para proteger vidas', 'cst-cannabis' ),
+        'subtitle'         => '',
         'cta_text'         => __( 'Ver Curso', 'cst-cannabis' ),
         'cta_url'          => cst_course_url(),
         'class'            => 'cst-hero--home',

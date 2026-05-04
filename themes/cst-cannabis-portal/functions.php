@@ -173,6 +173,30 @@ add_filter( 'wp_nav_menu_args', function ( $args ) {
     return $args;
 } );
 
+/**
+ * Favicon fallback — emit <link rel="icon"> from the bundled cannabis logo
+ * when the WP `site_icon` option is not set. This way the favicon ships with
+ * the theme code; production doesn't need a Customizer step to look right.
+ *
+ * If a site icon IS configured in WP Admin → Customizer → Site Identity,
+ * core's wp_site_icon() output wins and this fallback stays silent.
+ */
+add_action( 'wp_head', function (): void {
+    if ( has_site_icon() ) {
+        return;
+    }
+    $svg_path = CST_CANNABIS_DIR . '/assets/images/cst-cannabis-logo.png';
+    if ( ! file_exists( $svg_path ) ) {
+        return;
+    }
+    $url = CST_CANNABIS_URI . '/assets/images/cst-cannabis-logo.png';
+    printf(
+        '<link rel="icon" type="image/png" href="%1$s" />' . "\n" .
+        '<link rel="apple-touch-icon" href="%1$s" />' . "\n",
+        esc_url( $url )
+    );
+}, 5 );
+
 /* ==========================================================================
    Include modules
    ========================================================================== */
