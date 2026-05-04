@@ -4806,3 +4806,165 @@ h1, h2, h3, h4, h5, h6 {
         justify-content: center;
     }
 }
+
+/* ==========================================================================
+   Course Pillars (homepage — willai "¿En qué consiste este curso?" pattern)
+   ========================================================================== */
+.cst-section--pillars {
+    background: var(--cst-color-white, #ffffff);
+    padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.cst-pillars {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+}
+
+@media (min-width: 992px) {
+    .cst-pillars {
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    }
+}
+
+.cst-pillars__intro {
+    max-width: 460px;
+}
+
+.cst-pillars__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--cst-font-body, 'Open Sans', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--cst-color-text-muted, #6C757D);
+    margin-bottom: var(--cst-space-md, 1rem);
+}
+
+.cst-pillars__eyebrow-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cst-color-primary, #7FA35B);
+}
+
+.cst-pillars__title {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--cst-color-secondary, #1C2854);
+    text-transform: uppercase;
+    margin: 0 0 var(--cst-space-lg, 1.5rem);
+}
+
+.cst-pillars__lead {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--cst-color-text, #212529);
+    margin: 0 0 var(--cst-space-md, 1rem);
+}
+
+.cst-pillars__lead strong {
+    color: var(--cst-color-secondary, #1C2854);
+    font-weight: 700;
+}
+
+.cst-pillars__lead--final {
+    margin-bottom: var(--cst-space-lg, 1.5rem);
+}
+
+.cst-pillars__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: transparent;
+    border: 1.5px solid var(--cst-color-secondary, #1C2854);
+    color: var(--cst-color-secondary, #1C2854);
+    font-family: var(--cst-font-body, 'Open Sans', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cst-pillars__cta:hover,
+.cst-pillars__cta:focus-visible {
+    background: var(--cst-color-secondary, #1C2854);
+    color: #ffffff;
+}
+
+.cst-pillars__grid {
+    background: var(--cst-color-secondary, #1C2854);
+    border-radius: 12px;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 1.25rem);
+}
+
+@media (min-width: 600px) {
+    .cst-pillars__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.cst-pillar-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem;
+    color: #ffffff;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cst-pillar-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+.cst-pillar-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+}
+
+.cst-pillar-card__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.cst-pillar-card__title {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #ffffff;
+    margin: 0 0 0.625rem;
+}
+
+.cst-pillar-card__desc {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cst-pillar-card { transition: none; }
+    .cst-pillar-card:hover { transform: none; }
+}
