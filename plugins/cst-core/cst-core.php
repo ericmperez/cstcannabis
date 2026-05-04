@@ -57,4 +57,5 @@ register_deactivation_hook( __FILE__, function () {
 // WP-CLI commands.
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
     require_once CST_CORE_DIR . 'cli/seed-statistics.php';
+    require_once CST_CORE_DIR . 'cli/grammar-pass.php';
 }
