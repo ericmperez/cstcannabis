@@ -358,20 +358,16 @@ body.tutor-lms #tutor-registration-form .tutor-form-wrap {
     width: 100%;
 }
 
+/* Stack every field full-width — single-column registration form. */
 body.tutor-lms .tutor-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: block;
 }
 
-@media (max-width: 540px) {
-    body.tutor-lms .tutor-form-row {
-        grid-template-columns: 1fr;
-    }
+body.tutor-lms .tutor-form-col-12,
+body.tutor-lms .tutor-form-col-6 {
+    width: 100%;
+    display: block;
 }
-
-body.tutor-lms .tutor-form-col-12 { grid-column: 1 / -1; }
-body.tutor-lms .tutor-form-col-6  { grid-column: span 1; }
 
 body.tutor-lms .tutor-form-group {
     margin-bottom: 1rem;
@@ -412,8 +408,9 @@ body.tutor-lms #tutor-registration-form input:focus {
 }
 
 body.tutor-lms #tutor-registration-form .tutor-btn.tutor-btn-primary {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
+    width: auto;
+    min-width: 160px;
+    padding: 0.75rem 1.75rem;
     background: var(--cst-color-secondary, #1C2854);
     color: #ffffff;
     font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
