@@ -36,66 +36,54 @@ $pillars = [
 <section class="cst-section cst-section--pillars" id="proposito"
          aria-labelledby="cst-pillars-title">
     <div class="cst-container">
-        <div class="cst-pillars">
+        <header class="cst-pillars__intro">
+            <span class="cst-pillars__eyebrow">
+                <span class="cst-pillars__eyebrow-dot" aria-hidden="true"></span>
+                <?php esc_html_e( 'Propósito', 'cst-cannabis' ); ?>
+            </span>
+            <h2 id="cst-pillars-title" class="cst-pillars__title">
+                <?php esc_html_e( '¿En qué consiste este curso?', 'cst-cannabis' ); ?>
+            </h2>
+            <p class="cst-pillars__lead">
+                <?php
+                printf(
+                    wp_kses(
+                        __( 'Frente al auge del <strong>cannabis medicinal en Puerto Rico</strong>, esta plataforma de orientación ciudadana busca armonizar los beneficios terapéuticos con la seguridad legal y social. Ofrece información clave sobre <strong>consumo responsable, normativas de tránsito y protección familiar</strong> en tres áreas clave:', 'cst-cannabis' ),
+                        [ 'strong' => [] ]
+                    )
+                );
+                ?>
+            </p>
+        </header>
 
-            <header class="cst-pillars__intro">
-                <span class="cst-pillars__eyebrow">
-                    <span class="cst-pillars__eyebrow-dot" aria-hidden="true"></span>
-                    <?php esc_html_e( 'Propósito', 'cst-cannabis' ); ?>
-                </span>
-                <h2 id="cst-pillars-title" class="cst-pillars__title">
-                    <?php esc_html_e( '¿En qué consiste este curso?', 'cst-cannabis' ); ?>
-                </h2>
-                <p class="cst-pillars__lead">
-                    <?php
-                    printf(
-                        wp_kses(
-                            __( 'Frente al auge del <strong>cannabis medicinal en Puerto Rico</strong>, una plataforma de orientación ciudadana busca armonizar los beneficios terapéuticos con la seguridad legal y social.', 'cst-cannabis' ),
-                            [ 'strong' => [] ]
-                        )
-                    );
-                    ?>
-                </p>
-                <p class="cst-pillars__lead">
-                    <?php
-                    printf(
-                        wp_kses(
-                            __( 'Esta iniciativa ofrece información clave sobre <strong>consumo responsable, normativas de tránsito y protección familiar</strong>, permitiendo a los pacientes tomar decisiones informadas que reducen riesgos y garantizan el cumplimiento de la ley.', 'cst-cannabis' ),
-                            [ 'strong' => [] ]
-                        )
-                    );
-                    ?>
-                </p>
-                <p class="cst-pillars__lead cst-pillars__lead--final">
-                    <?php esc_html_e( 'El curso se estructura en contenidos prácticos enfocados en tres áreas clave:', 'cst-cannabis' ); ?>
-                </p>
+        <div class="cst-pillars__grid">
+            <?php foreach ( $pillars as $i => $pillar ) : ?>
+                <article class="cst-pillar-card">
+                    <span class="cst-pillar-card__step" aria-hidden="true">
+                        <?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?>
+                    </span>
+                    <div class="cst-pillar-card__icon" aria-hidden="true">
+                        <?php echo cst_kses_svg( $pillar['icon'] ); ?>
+                    </div>
+                    <h3 class="cst-pillar-card__title">
+                        <?php echo esc_html( $pillar['title'] ); ?>
+                    </h3>
+                    <p class="cst-pillar-card__desc">
+                        <?php echo esc_html( $pillar['desc'] ); ?>
+                    </p>
+                </article>
+            <?php endforeach; ?>
+        </div>
 
-                <a class="cst-pillars__cta" href="<?php echo esc_url( cst_course_url() ); ?>">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="7" y1="17" x2="17" y2="7"></line>
-                        <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                    <?php esc_html_e( 'Ver curso', 'cst-cannabis' ); ?>
-                </a>
-            </header>
-
-            <div class="cst-pillars__grid">
-                <?php foreach ( $pillars as $pillar ) : ?>
-                    <article class="cst-pillar-card">
-                        <div class="cst-pillar-card__icon" aria-hidden="true">
-                            <?php echo cst_kses_svg( $pillar['icon'] ); ?>
-                        </div>
-                        <h3 class="cst-pillar-card__title">
-                            <?php echo esc_html( $pillar['title'] ); ?>
-                        </h3>
-                        <p class="cst-pillar-card__desc">
-                            <?php echo esc_html( $pillar['desc'] ); ?>
-                        </p>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-
+        <div class="cst-pillars__footer">
+            <a class="cst-pillars__cta" href="<?php echo esc_url( cst_course_url() ); ?>">
+                <?php esc_html_e( 'Ver curso completo', 'cst-cannabis' ); ?>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
         </div>
     </div>
 </section>
