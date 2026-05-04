@@ -702,7 +702,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-hero--home .cst-hero__title {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.15;
+    /* Small-caps treatment — uppercase + tracked-out spacing in Montserrat
+       reads as "small caps" across the broadest browser/font support. */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    word-spacing: 0.06em;
+    max-width: 22ch;
+    margin-inline: auto;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+@supports ( font-variant-caps: all-small-caps ) {
+    .cst-hero--home .cst-hero__title {
+        text-transform: none;
+        font-variant-caps: all-small-caps;
+        letter-spacing: 0.05em;
+    }
 }
 
 .cst-hero--page {
