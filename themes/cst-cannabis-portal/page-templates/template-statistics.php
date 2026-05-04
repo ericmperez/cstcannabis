@@ -65,7 +65,7 @@ get_header();
 
     <?php
     cst_hero( [
-        'title'    => get_the_title(),
+        'title'    => __( 'Estadísticas', 'cst-cannabis' ),
         'subtitle' => __( 'Datos y métricas sobre la seguridad vial y el uso del cannabis medicinal en Puerto Rico.', 'cst-cannabis' ),
         'class'    => 'cst-hero--page cst-hero--slim',
     ] );

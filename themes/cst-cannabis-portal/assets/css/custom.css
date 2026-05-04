@@ -3055,30 +3055,67 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-social-links a:hover {
-    background: var(--cst-gradient-primary);
+    background: rgba(255, 255, 255, 0.18);
     color: var(--cst-color-white);
     transform: translateY(-2px);
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .cst-social-links a { transition: none; }
+    .cst-social-links a:hover { transform: none; }
+}
+
 .cst-social-links--contact {
     flex-direction: column;
-    gap: var(--cst-space-xs);
+    gap: 0.25rem;
 }
 
 .cst-social-links--contact a {
     width: auto;
     height: auto;
-    background: none;
-    border-radius: 0;
-    color: var(--cst-color-green-dark);
+    background: transparent;
+    border-radius: 6px;
+    color: var(--cst-color-secondary, #1C2854);
     justify-content: flex-start;
     display: inline-flex;
     align-items: center;
-    gap: var(--cst-space-sm);
+    gap: 0.625rem;
+    padding: 0.5rem 0.625rem;
+    margin-left: -0.625rem; /* keep flush-left visual alignment with the section text */
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+/* Override the global cst-social-links hover (gradient pill) for the contact
+   variant: a clean tinted background + green icon + slight slide. */
+.cst-social-links--contact a:hover,
+.cst-social-links--contact a:focus-visible {
+    background: rgba(127, 163, 91, 0.10);
+    color: var(--cst-color-secondary, #1C2854);
+    transform: translateX(2px);
+    text-decoration: none;
+}
+
+.cst-social-links--contact a:focus-visible {
+    outline: 2px solid var(--cst-color-focus, #3B82C4);
+    outline-offset: 2px;
 }
 
 .cst-social-links--contact .cst-social-icon {
     flex-shrink: 0;
+    color: var(--cst-color-primary, #7FA35B);
+    transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.cst-social-links--contact a:hover .cst-social-icon {
+    color: var(--cst-color-green-dark, #5e8043);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cst-social-links--contact a,
+    .cst-social-links--contact .cst-social-icon { transition: none; }
+    .cst-social-links--contact a:hover { transform: none; }
 }
 
 /* Legal & Copyright */

@@ -16,9 +16,11 @@ get_header();
 <main id="main-content" class="cst-main">
 
     <?php
+    $legal_excerpt = trim( wp_strip_all_tags( get_the_excerpt() ) );
     cst_hero( [
-        'title' => get_the_title(),
-        'class' => 'cst-hero--page cst-hero--legal',
+        'title'    => get_the_title(),
+        'subtitle' => $legal_excerpt,
+        'class'    => 'cst-hero--page cst-hero--legal',
     ] );
     ?>
 

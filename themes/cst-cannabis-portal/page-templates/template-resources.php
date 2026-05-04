@@ -17,7 +17,7 @@ get_header();
 
     <?php
     cst_hero( [
-        'title'    => get_the_title(),
+        'title'    => __( 'Recursos educativos', 'cst-cannabis' ),
         'subtitle' => __( 'Guías, infografías, videos y documentos sobre el uso responsable del cannabis medicinal.', 'cst-cannabis' ),
         'class'    => 'cst-hero--page',
     ] );
