@@ -16,6 +16,7 @@ class CST_Login_Form {
     public function __construct() {
         add_shortcode( 'cst_login_form', [ $this, 'render' ] );
         add_action( 'wp_enqueue_scripts', [ $this, 'register_assets' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'maybe_enqueue_on_tutor_pages' ] );
     }
 
     public function register_assets(): void {
@@ -25,6 +26,22 @@ class CST_Login_Form {
             [],
             CST_CORE_VERSION
         );
+    }
+
+    /**
+     * Auto-enqueue the auth-form CSS on Tutor LMS registration / dashboard
+     * pages so the [tutor_student_registration_form] shortcode picks up the
+     * cst-login-card visual treatment without extra setup.
+     */
+    public function maybe_enqueue_on_tutor_pages(): void {
+        if ( ! is_singular( 'page' ) ) {
+            return;
+        }
+        $tutor_opts = get_option( 'tutor_option', [] );
+        $register_id = (int) ( $tutor_opts['student_register_page'] ?? 0 );
+        if ( $register_id && get_queried_object_id() === $register_id ) {
+            wp_enqueue_style( 'cst-login-form' );
+        }
     }
 
     public function render( $atts = [] ): string {

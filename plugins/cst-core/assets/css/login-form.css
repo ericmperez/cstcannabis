@@ -306,3 +306,151 @@
         border: 2px solid CanvasText;
     }
 }
+
+/* ==========================================================================
+   Tutor LMS registration form — match the cst-login-card visual treatment
+   so login + registration feel like a single auth experience across the
+   site. Targets the markup emitted by [tutor_student_registration_form].
+   ========================================================================== */
+
+body.tutor-lms .tutor-form-wrap {
+    width: 100%;
+    max-width: 520px;
+    margin: clamp(1.5rem, 5vw, 3rem) auto;
+    background: #ffffff;
+    border: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    border-top: 4px solid var(--cst-color-primary, #7FA35B);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(28, 40, 84, 0.08), 0 1px 3px rgba(28, 40, 84, 0.06);
+    padding: 2rem clamp(1.25rem, 4vw, 2.5rem) 2.25rem;
+}
+
+body.tutor-lms .tutor-form-wrap::before {
+    content: 'Portal oficial · Comisión para la Seguridad en el Tránsito';
+    display: block;
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cst-color-gray-700, #495057);
+    text-align: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--cst-color-gray-300, #DEE2E6);
+}
+
+body.tutor-lms .tutor-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 540px) {
+    body.tutor-lms .tutor-form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+body.tutor-lms .tutor-form-col-12 { grid-column: 1 / -1; }
+body.tutor-lms .tutor-form-col-6  { grid-column: span 1; }
+
+body.tutor-lms .tutor-form-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+body.tutor-lms .tutor-form-group > label,
+body.tutor-lms .tutor-form-group .tutor-form-label {
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--cst-color-gray-900, #212529);
+    margin-bottom: 0.375rem;
+}
+
+body.tutor-lms .tutor-form-wrap input[type="text"],
+body.tutor-lms .tutor-form-wrap input[type="email"],
+body.tutor-lms .tutor-form-wrap input[type="password"],
+body.tutor-lms .tutor-form-wrap input[type="url"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0.875rem;
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 1rem;
+    color: var(--cst-color-text, #212529);
+    background: #ffffff;
+    border: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    border-radius: 6px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    min-height: 44px;
+}
+
+body.tutor-lms .tutor-form-wrap input:focus {
+    outline: none;
+    border-color: var(--cst-color-focus, #3B82C4);
+    box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.18);
+}
+
+body.tutor-lms .tutor-form-wrap .tutor-btn.tutor-btn-primary {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: var(--cst-color-secondary, #1C2854);
+    color: #ffffff;
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 2px solid var(--cst-color-secondary, #1C2854);
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 48px;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+    margin-top: 0.5rem;
+}
+
+body.tutor-lms .tutor-form-wrap .tutor-btn.tutor-btn-primary:hover {
+    background: #15204a;
+    border-color: #15204a;
+}
+
+body.tutor-lms .tutor-form-wrap .tutor-btn.tutor-btn-primary:focus-visible {
+    outline: 3px solid var(--cst-color-focus, #3B82C4);
+    outline-offset: 2px;
+}
+
+body.tutor-lms .tutor-form-wrap .tutor-btn.tutor-btn-primary:active {
+    transform: translateY(1px);
+}
+
+/* "Already have an account?" link block + terms text */
+body.tutor-lms .tutor-form-wrap .tutor-fs-7,
+body.tutor-lms .tutor-form-wrap .text {
+    text-align: center;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    font-size: 0.9375rem;
+}
+
+body.tutor-lms .tutor-form-wrap a {
+    color: var(--cst-color-secondary, #1C2854);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+body.tutor-lms .tutor-form-wrap a:hover {
+    color: var(--cst-color-primary, #7FA35B);
+}
+
+/* Forced-colors / high-contrast support */
+@media (prefers-contrast: more), (forced-colors: active) {
+    body.tutor-lms .tutor-form-wrap {
+        border: 2px solid CanvasText;
+        border-top-width: 4px;
+    }
+    body.tutor-lms .tutor-form-wrap .tutor-btn.tutor-btn-primary {
+        border: 2px solid CanvasText;
+    }
+}
