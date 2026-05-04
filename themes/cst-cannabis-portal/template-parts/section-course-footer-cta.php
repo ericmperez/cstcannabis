@@ -30,7 +30,7 @@ $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
 
             <!-- Registration Form -->
             <div class="cst-course-footer-cta__form cst-contact-form" tabindex="-1"
-                 data-redirect-url="<?php echo esc_url( home_url( '/courses/cannabis-medicinal-seguridad-vial/' ) ); ?>">
+                 data-redirect-url="<?php echo esc_url( home_url( '/courses/curso-cannabis/' ) ); ?>">
                 <h3><?php esc_html_e( 'Regístrate ahora', 'cst-cannabis' ); ?></h3>
                 <?php
                 while ( have_posts() ) :
@@ -127,7 +127,7 @@ $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                         </div>
                         <div>
-                            <strong><?php esc_html_e( '5 Módulos', 'cst-cannabis' ); ?></strong>
+                            <strong><?php esc_html_e( '11 Módulos', 'cst-cannabis' ); ?></strong>
                             <span><?php esc_html_e( 'Contenido completo', 'cst-cannabis' ); ?></span>
                         </div>
                     </div>
@@ -148,13 +148,6 @@ $email = get_theme_mod( 'cst_email', 'comunicaciones@cst.pr.gov' );
                             <a href="tel:<?php echo esc_attr( str_replace( [ ' ', '-' ], '', $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a>
                         </div>
                     <?php endif; ?>
-                </div>
-
-                <!-- Disclaimer -->
-                <div class="cst-course-footer-cta__disclaimer">
-                    <p>
-                        <?php esc_html_e( 'Este curso es un recurso educativo independiente ofrecido por la Comisión para la Seguridad en el Tránsito (CST). El contenido es de carácter informativo y no constituye asesoría legal ni médica. Consulte a un profesional para orientación específica.', 'cst-cannabis' ); ?>
-                    </p>
                 </div>
 
             </div>

@@ -1,0 +1,300 @@
+/**
+ * CST Login Form — government-styled authentication card.
+ *
+ * Renders [cst_login_form] in a professional layout suitable for review by
+ * Comisión para la Seguridad en el Tránsito officials. Uses the cannabis
+ * portal's design tokens; falls back to neutral grays if tokens are absent.
+ */
+
+.cst-login-page {
+    background: linear-gradient(180deg, var(--cst-color-gray-100, #F8F9FA) 0%, #ffffff 60%);
+    min-height: 70vh;
+    padding: clamp(2rem, 6vw, 4rem) 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cst-login-card {
+    width: 100%;
+    max-width: 460px;
+    background: #ffffff;
+    border: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    border-top: 4px solid var(--cst-color-primary, #7FA35B);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(28, 40, 84, 0.08), 0 1px 3px rgba(28, 40, 84, 0.06);
+    padding: 2rem clamp(1.25rem, 4vw, 2.5rem) 2.25rem;
+}
+
+.cst-login-card__official {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cst-color-gray-700, #495057);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--cst-color-gray-300, #DEE2E6);
+}
+
+.cst-login-card__official svg,
+.cst-login-card__official img {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.cst-login-card__seal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.cst-login-card__seal img {
+    height: 56px;
+    width: auto;
+}
+
+.cst-login-card__wordmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    margin-bottom: 1rem;
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    line-height: 1;
+}
+
+.cst-login-card__wordmark-line {
+    font-size: 1.625rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: var(--cst-color-secondary, #1C2854);
+}
+
+.cst-login-card__wordmark-line--accent {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    color: var(--cst-color-primary, #7FA35B);
+    padding-top: 0.25rem;
+    border-top: 2px solid var(--cst-color-primary, #7FA35B);
+    margin-top: 0.25rem;
+}
+
+.cst-login-card__title {
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cst-color-secondary, #1C2854);
+    text-align: center;
+    margin: 0 0 0.375rem;
+    line-height: 1.2;
+}
+
+.cst-login-card__subtitle {
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.9375rem;
+    color: var(--cst-color-text-muted, #6C757D);
+    text-align: center;
+    margin: 0 0 1.75rem;
+    line-height: 1.5;
+}
+
+/* Native wp_login_form() output */
+.cst-login-form #loginform {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cst-login-form #loginform p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.cst-login-form #loginform label {
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--cst-color-gray-900, #212529);
+    margin-bottom: 0.375rem;
+}
+
+.cst-login-form #loginform input[type="text"],
+.cst-login-form #loginform input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0.875rem;
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 1rem;
+    color: var(--cst-color-text, #212529);
+    background: #ffffff;
+    border: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    border-radius: 6px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    min-height: 44px; /* a11y touch target */
+}
+
+.cst-login-form #loginform input[type="text"]:focus,
+.cst-login-form #loginform input[type="password"]:focus {
+    outline: none;
+    border-color: var(--cst-color-focus, #3B82C4);
+    box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.18);
+}
+
+.cst-login-form .login-remember {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cst-login-form .login-remember label {
+    font-weight: 400;
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.cst-login-form .login-remember input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--cst-color-primary, #7FA35B);
+}
+
+.cst-login-form .login-submit {
+    margin-top: 0.5rem;
+}
+
+.cst-login-form #loginform input[type="submit"] {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: var(--cst-color-secondary, #1C2854);
+    color: #ffffff;
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 2px solid var(--cst-color-secondary, #1C2854);
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 48px;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.cst-login-form #loginform input[type="submit"]:hover {
+    background: #15204a;
+    border-color: #15204a;
+}
+
+.cst-login-form #loginform input[type="submit"]:focus-visible {
+    outline: 3px solid var(--cst-color-focus, #3B82C4);
+    outline-offset: 2px;
+}
+
+.cst-login-form #loginform input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+.cst-login-form__links {
+    margin-top: 1.5rem !important;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    text-align: center;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.cst-login-form__links a {
+    color: var(--cst-color-secondary, #1C2854);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.cst-login-form__links a:hover,
+.cst-login-form__links a:focus-visible {
+    color: var(--cst-color-primary, #7FA35B);
+    border-bottom-color: currentColor;
+}
+
+.cst-login-form__links a:focus-visible {
+    outline: 3px solid var(--cst-color-focus, #3B82C4);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.cst-login-form__separator {
+    color: var(--cst-color-gray-500, #6C757D);
+    margin: 0 0.5rem;
+}
+
+.cst-login-card__footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--cst-color-gray-300, #DEE2E6);
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.75rem;
+    color: var(--cst-color-text-muted, #6C757D);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.cst-login-card__footer a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.cst-login-card--logged-in {
+    text-align: center;
+}
+
+.cst-login-card--logged-in p {
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    color: var(--cst-color-text, #212529);
+    margin-bottom: 1rem;
+}
+
+.cst-login-card__button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--cst-color-secondary, #1C2854);
+    color: #ffffff !important;
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    min-height: 44px;
+}
+
+.cst-login-card__button:hover,
+.cst-login-card__button:focus-visible {
+    background: #15204a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cst-login-form #loginform input,
+    .cst-login-form #loginform input[type="submit"],
+    .cst-login-form__links a {
+        transition: none;
+    }
+}
+
+@media (prefers-contrast: more), (forced-colors: active) {
+    .cst-login-card {
+        border: 2px solid CanvasText;
+        border-top-width: 4px;
+    }
+    .cst-login-form #loginform input[type="submit"] {
+        border: 2px solid CanvasText;
+    }
+}

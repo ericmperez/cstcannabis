@@ -21,3 +21,4 @@ uploads/
 
 # Build artifacts
 *.zip
+migration/

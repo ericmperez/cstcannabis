@@ -22,7 +22,7 @@ get_header();
         'title'    => get_the_title(),
         'subtitle' => __( 'Recurso Educativo Gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
         'cta_text' => __( 'Ver Curso', 'cst-cannabis' ),
-        'cta_url'  => home_url( '/courses/cannabis-medicinal-seguridad-vial/' ),
+        'cta_url'  => home_url( '/courses/curso-cannabis/' ),
         'class'    => 'cst-hero--course',
         'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
     ] );
@@ -37,8 +37,11 @@ get_header();
     <?php // 4. FAQ accordion. ?>
     <?php get_template_part( 'template-parts/section', 'course-faq' ); ?>
 
-    <?php // 5. Footer CTA with registration form + contact + disclaimer. ?>
+    <?php // 5. Footer CTA with registration form + contact. ?>
     <?php get_template_part( 'template-parts/section', 'course-footer-cta' ); ?>
+
+    <?php // 6. Centered legal disclaimer above the site footer. ?>
+    <?php get_template_part( 'template-parts/section', 'course-disclaimer' ); ?>
 
 </main>
 
