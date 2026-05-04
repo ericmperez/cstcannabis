@@ -25,16 +25,14 @@ get_header();
     $register_url = $register_id ? get_permalink( $register_id ) : home_url( '/student-registration/' );
 
     cst_hero( [
-        // The page name "Curso" already appears in the breadcrumb / nav highlight,
-        // so we promote the descriptive tagline to the H1 and leave the subtitle empty.
-        'title'     => __( 'Recurso Educativo Gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ),
-        'subtitle'  => '',
+        'title'     => __( 'Curso de Cannabis y Seguridad Vial', 'cst-cannabis' ),
+        'subtitle'  => __( 'Recurso educativo gratuito de la Comisión para la Seguridad en el Tránsito.', 'cst-cannabis' ),
         'cta_text'  => is_user_logged_in()
             ? __( 'Ir al curso', 'cst-cannabis' )
             : __( 'Regístrate', 'cst-cannabis' ),
         'cta_url'   => is_user_logged_in() ? $course_url : $register_url,
         'class'     => 'cst-hero--course',
-        'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-bg.jpg',
+        // No background image — hero falls back to the CST primary green.
     ] );
     ?>
 

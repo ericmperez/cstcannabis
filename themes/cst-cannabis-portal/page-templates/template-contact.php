@@ -17,8 +17,8 @@ get_header();
 
     <?php
     cst_hero( [
-        'title'    => get_the_title(),
-        'subtitle' => __( 'Estamos para servirle. Contáctenos para preguntas, comentarios o asistencia.', 'cst-cannabis' ),
+        'title'    => __( 'Contacto', 'cst-cannabis' ),
+        'subtitle' => __( 'Escríbenos para preguntas, comentarios o asistencia. Estamos para servirle.', 'cst-cannabis' ),
         'class'    => 'cst-hero--page',
     ] );
     ?>

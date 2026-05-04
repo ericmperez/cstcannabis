@@ -18,8 +18,9 @@ get_header();
 
     <?php
     cst_hero( [
-        'title' => get_the_title(),
-        'class' => 'cst-hero--page cst-hero--legal',
+        'title'    => __( 'Declaración de accesibilidad', 'cst-cannabis' ),
+        'subtitle' => __( 'Nuestro compromiso con un portal accesible para toda la ciudadanía, conforme a la Ley 229-2003 y WCAG 2.1 AA.', 'cst-cannabis' ),
+        'class'    => 'cst-hero--page cst-hero--legal',
     ] );
     ?>
 

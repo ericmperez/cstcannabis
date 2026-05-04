@@ -17,8 +17,8 @@ get_header();
 
     <?php
     cst_hero( [
-        'title'    => get_the_title(),
-        'subtitle' => __( 'Promoviendo la seguridad vial y la educación responsable en Puerto Rico', 'cst-cannabis' ),
+        'title'    => __( 'Sobre nosotros', 'cst-cannabis' ),
+        'subtitle' => __( 'Conoce nuestra misión, propósito y compromiso con la seguridad vial en Puerto Rico.', 'cst-cannabis' ),
         'class'    => 'cst-hero--page',
     ] );
     ?>
