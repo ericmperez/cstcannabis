@@ -44,6 +44,7 @@ function cst_course_url( string $hash = '' ): string {
  */
 function cst_hero( array $args = [] ): void {
     $defaults = [
+        'eyebrow'   => '', // Optional kicker rendered above the H1.
         'title'     => get_bloginfo( 'name' ),
         'subtitle'  => get_bloginfo( 'description' ),
         'cta_text'  => '',
