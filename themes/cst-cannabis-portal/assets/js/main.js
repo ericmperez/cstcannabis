@@ -79,7 +79,7 @@
                 // Filter cards.
                 var visibleCount = 0;
                 cards.forEach(function (card) {
-                    var types = card.getAttribute('data-type') || '';
+                    var types = (card.getAttribute('data-type') || '').split(/\s+/);
                     var show = filter === 'all' || types.indexOf(filter) !== -1;
                     card.style.display = show ? '' : 'none';
                     if (show) visibleCount++;
