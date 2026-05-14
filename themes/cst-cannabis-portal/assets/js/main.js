@@ -213,6 +213,7 @@
         var duration = 1500;
         var startTime = null;
         var isFloat = target % 1 !== 0;
+        var locale = (window.cstPortal && window.cstPortal.locale) || 'es-PR';
 
         function step(timestamp) {
             if (!startTime) startTime = timestamp;
@@ -220,12 +221,12 @@
             var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
             var current = eased * target;
 
-            el.textContent = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString(cstPortal.locale || 'es-PR');
+            el.textContent = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString(locale);
 
             if (progress < 1) {
                 requestAnimationFrame(step);
             } else {
-                el.textContent = isFloat ? target.toFixed(1) : Math.floor(target).toLocaleString(cstPortal.locale || 'es-PR');
+                el.textContent = isFloat ? target.toFixed(1) : Math.floor(target).toLocaleString(locale);
             }
         }
 
