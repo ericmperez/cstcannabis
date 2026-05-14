@@ -71,5 +71,8 @@ class CST_Core {
         if ( class_exists( 'CST_Content_Seeder' ) ) {
             new CST_Content_Seeder();
         }
+        if ( class_exists( 'CST_Forms_Hardening' ) ) {
+            new CST_Forms_Hardening();
+        }
     }
 }
