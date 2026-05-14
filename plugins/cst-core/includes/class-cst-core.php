@@ -56,5 +56,8 @@ class CST_Core {
         if ( class_exists( 'CST_Auto_Enrollment' ) ) {
             new CST_Auto_Enrollment();
         }
+        if ( is_admin() && class_exists( 'CST_Admin_Cleanup' ) ) {
+            new CST_Admin_Cleanup();
+        }
     }
 }

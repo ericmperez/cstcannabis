@@ -3406,8 +3406,11 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
-/* Hide mobile toggle wrapper on desktop — only needed at 768px */
-#mobile-menu-control-wrapper {
+/* Hide mobile toggle wrapper AND the .menu-toggle button on desktop —
+   GP outputs the button directly inside .main-navigation as well, so
+   hiding the wrapper alone leaves the button visible at desktop width. */
+#mobile-menu-control-wrapper,
+.main-navigation .menu-toggle {
     display: none;
 }
 
@@ -3588,6 +3591,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     /* --- Mobile Hamburger Toggle --- */
+
+    .main-navigation .menu-toggle {
+        display: flex;
+    }
 
     .menu-toggle {
         background-color: transparent;
