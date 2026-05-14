@@ -102,6 +102,10 @@ class CST_Chatbot {
     /* ------------------------------------------------------------------ */
 
     private function query_llm( string $message, string $endpoint, string $api_key ): string {
+        if ( ! $this->is_endpoint_allowed( $endpoint ) ) {
+            return '';
+        }
+
         $lang = function_exists( 'pll_current_language' ) ? (string) pll_current_language() : 'es';
         $body = wp_json_encode( [
             'message'   => $message,
@@ -132,6 +136,48 @@ class CST_Chatbot {
 
         // Expected response format: { "reply": "..." }
         return $data['reply'] ?? '';
+    }
+
+    /**
+     * Allow-list check on the LLM endpoint URL.
+     *
+     * Defenses:
+     *  - Must parse and use https:// (no http, no file://, no gopher://).
+     *  - Host must resolve to a public IP (blocks 127.0.0.1, 10/8, 172.16/12,
+     *    192.168/16, 169.254/16, ::1, fc00::/7, etc.) to prevent SSRF.
+     *  - Optional explicit allow-list via the cst_chatbot_endpoint_hosts
+     *    filter (return ['api.anthropic.com', 'api.openai.com', ...]).
+     *    When the filter returns a non-empty array, the host must match.
+     */
+    private function is_endpoint_allowed( string $endpoint ): bool {
+        $parts = wp_parse_url( $endpoint );
+        if ( empty( $parts['scheme'] ) || 'https' !== strtolower( $parts['scheme'] ) ) {
+            return false;
+        }
+        if ( empty( $parts['host'] ) ) {
+            return false;
+        }
+        $host = strtolower( $parts['host'] );
+
+        // Explicit allow-list always wins.
+        $allowed_hosts = (array) apply_filters( 'cst_chatbot_endpoint_hosts', [] );
+        if ( ! empty( $allowed_hosts ) ) {
+            $allowed_hosts = array_map( 'strtolower', $allowed_hosts );
+            return in_array( $host, $allowed_hosts, true );
+        }
+
+        // No allow-list configured — fall back to a private-range check.
+        $ip = filter_var( $host, FILTER_VALIDATE_IP ) ? $host : gethostbyname( $host );
+        if ( ! $ip || $ip === $host && ! filter_var( $host, FILTER_VALIDATE_IP ) ) {
+            // DNS resolution failed; refuse rather than risk SSRF.
+            return false;
+        }
+
+        return (bool) filter_var(
+            $ip,
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+        );
     }
 
     /* ------------------------------------------------------------------ */

@@ -62,5 +62,8 @@ class CST_Core {
         if ( class_exists( 'CST_Seo' ) ) {
             new CST_Seo();
         }
+        if ( class_exists( 'CST_Login_Throttle' ) ) {
+            new CST_Login_Throttle();
+        }
     }
 }
