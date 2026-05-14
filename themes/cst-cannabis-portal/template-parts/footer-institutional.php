@@ -206,7 +206,7 @@ $address = get_theme_mod( 'cst_address' );
             ] );
 
             $privacy_page_id = (int) get_option( 'wp_page_for_privacy_policy' );
-            if ( $privacy_page_id && 'publish' === get_post_status( $privacy_page_id ) ) :
+            if ( ! has_nav_menu( 'legal' ) && $privacy_page_id && 'publish' === get_post_status( $privacy_page_id ) ) :
             ?>
                 <div class="cst-legal-nav cst-legal-nav--fallback">
                     <ul class="cst-legal-menu">
