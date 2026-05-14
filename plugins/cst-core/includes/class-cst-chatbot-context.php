@@ -67,7 +67,7 @@ class CST_Chatbot_Context {
             $faqs[] = [
                 'id'       => get_the_ID(),
                 'question' => get_the_title(),
-                'answer'   => wp_strip_all_tags( get_the_content() ),
+                'answer'   => wp_strip_all_tags( strip_shortcodes( get_the_content() ) ),
             ];
         }
         wp_reset_postdata();
