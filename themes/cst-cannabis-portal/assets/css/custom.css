@@ -4692,37 +4692,6 @@ h1, h2, h3, h4, h5, h6 {
     background-image: none !important;
 }
 
-/* When a hero video is rendered, suppress the Ken Burns ::before since the
-   video provides its own motion. */
-.cst-hero--has-video::before {
-    content: none !important;
-}
-
-.cst-hero__video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    pointer-events: none;
-    /* Hint to the browser this layer is composited. */
-    will-change: transform;
-}
-
-/* For users who prefer reduced motion, hide the video and let the poster
-   image (set via the <section> background or <video poster>) carry the visual. */
-@media (prefers-reduced-motion: reduce) {
-    .cst-hero__video {
-        display: none;
-    }
-    .cst-hero--has-video {
-        background-size: cover;
-        background-position: center;
-    }
-}
-
 .cst-hero--course::before {
     content: '';
     position: absolute;
