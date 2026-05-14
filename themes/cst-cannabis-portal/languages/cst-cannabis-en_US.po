@@ -895,3 +895,15 @@ msgstr "Medical Cannabis and Road Safety"
 #: page-templates/template-home.php
 msgid "Education, prevention, and data to protect lives on Puerto Rico's roads"
 msgstr "Education, prevention, and data to protect lives on Puerto Rico's roads"
+
+#: page-templates/template-resources.php
+msgid "Recursos educativos"
+msgstr "Educational resources"
+
+#: sidebar.php
+msgid "Inscríbete al curso"
+msgstr "Enroll in the course"
+
+#: sidebar.php
+msgid "Curso gratuito sobre cannabis medicinal y seguridad vial. Obtén tu certificado digital."
+msgstr "Free course on medical cannabis and road safety. Get your digital certificate."
