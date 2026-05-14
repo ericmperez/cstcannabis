@@ -97,6 +97,11 @@ class CST_Security {
 
         // XSS protection (legacy browsers).
         header( 'X-XSS-Protection: 1; mode=block' );
+
+        // Cross-origin isolation — same-origin opener prevents tab-napping;
+        // same-site resource policy blocks no-cors loads from other origins.
+        header( 'Cross-Origin-Opener-Policy: same-origin' );
+        header( 'Cross-Origin-Resource-Policy: same-site' );
     }
 
     /**
@@ -107,9 +112,11 @@ class CST_Security {
             return $headers;
         }
 
-        $headers['X-Content-Type-Options'] = 'nosniff';
-        $headers['X-Frame-Options']        = 'SAMEORIGIN';
-        $headers['Referrer-Policy']        = 'strict-origin-when-cross-origin';
+        $headers['X-Content-Type-Options']        = 'nosniff';
+        $headers['X-Frame-Options']               = 'SAMEORIGIN';
+        $headers['Referrer-Policy']               = 'strict-origin-when-cross-origin';
+        $headers['Cross-Origin-Opener-Policy']    = 'same-origin';
+        $headers['Cross-Origin-Resource-Policy']  = 'same-site';
 
         return $headers;
     }

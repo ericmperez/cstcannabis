@@ -59,5 +59,8 @@ class CST_Core {
         if ( is_admin() && class_exists( 'CST_Admin_Cleanup' ) ) {
             new CST_Admin_Cleanup();
         }
+        if ( class_exists( 'CST_Seo' ) ) {
+            new CST_Seo();
+        }
     }
 }
