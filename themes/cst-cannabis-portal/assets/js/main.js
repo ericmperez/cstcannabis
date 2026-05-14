@@ -141,6 +141,187 @@
     }
 
     /* ------------------------------------------------------------------ */
+    /*  Mobile Drawer Enhancements (2026-05-13)                           */
+    /*  Adds backdrop, focus trap, scroll-lock, restore-focus.            */
+    /*  Works alongside GeneratePress's .menu-toggle / .toggled system.   */
+    /* ------------------------------------------------------------------ */
+
+    function initMobileDrawer() {
+        var nav = document.querySelector('.main-navigation');
+        var toggle = document.querySelector('.menu-toggle');
+        var panel = nav && nav.querySelector('.main-nav');
+        if (!nav || !toggle || !panel) return;
+
+        // Only active on mobile breakpoint (matches CSS).
+        var mql = window.matchMedia('(max-width: 768px)');
+
+        // Create backdrop element once.
+        var backdrop = document.createElement('div');
+        backdrop.className = 'cst-drawer-backdrop';
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(backdrop);
+
+        // ARIA setup on panel.
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-modal', 'true');
+        panel.setAttribute('aria-label',
+            (window.cstPortal && window.cstPortal.i18n && window.cstPortal.i18n.menuLabel) || 'Menú principal'
+        );
+
+        var scrollYBefore = 0;
+        var lastFocused = null;
+
+        function focusableElements() {
+            return panel.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+        }
+
+        function openDrawer() {
+            if (!mql.matches) return;
+            lastFocused = document.activeElement;
+            // Measure scrollbar width BEFORE adding overflow:hidden so we can
+            // reserve that space as padding — prevents the content shift that
+            // makes the hamburger/X jump rightward.
+            var sbw = window.innerWidth - document.documentElement.clientWidth;
+            if (sbw > 0) {
+                document.body.style.paddingRight = sbw + 'px';
+            }
+            document.documentElement.classList.add('cst-drawer-open');
+            document.body.classList.add('cst-drawer-open');
+            var items = focusableElements();
+            if (items.length) {
+                setTimeout(function () { items[0].focus(); }, 50);
+            }
+        }
+
+        function closeDrawer() {
+            document.documentElement.classList.remove('cst-drawer-open');
+            document.body.classList.remove('cst-drawer-open');
+            document.body.style.paddingRight = '';
+            if (lastFocused && typeof lastFocused.focus === 'function') {
+                lastFocused.focus();
+            }
+        }
+
+        // Explicit toggle handler — fires regardless of where the button lives in the DOM.
+        // (After moveHamburger relocates the toggle, GP's own handler stops firing.)
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var isOpen = nav.classList.toggle('toggled');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Watch toggled class — keeps drawer/backdrop/scroll-lock in sync regardless of trigger.
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (m) {
+                if (m.attributeName === 'class') {
+                    if (nav.classList.contains('toggled')) {
+                        openDrawer();
+                    } else {
+                        closeDrawer();
+                    }
+                }
+            });
+        });
+        observer.observe(nav, { attributes: true });
+
+        // Backdrop click closes (via simulated toggle click for GP state sync).
+        backdrop.addEventListener('click', function () {
+            if (nav.classList.contains('toggled')) {
+                toggle.click();
+            }
+        });
+
+        // Focus trap — keep Tab inside the panel while drawer is open.
+        document.addEventListener('keydown', function (e) {
+            if (!nav.classList.contains('toggled') || !mql.matches) return;
+            if (e.key !== 'Tab') return;
+            var items = focusableElements();
+            if (!items.length) return;
+            var first = items[0];
+            var last = items[items.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+
+        // Close drawer if user resizes past mobile breakpoint (defensive).
+        mql.addEventListener('change', function (e) {
+            if (!e.matches && nav.classList.contains('toggled')) {
+                toggle.click();
+            }
+        });
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Move hamburger into institutional header on mobile (2026-05-13 v2) */
+    /* ------------------------------------------------------------------ */
+
+    function initMoveHamburger() {
+        var toggleWrapper = document.getElementById('mobile-menu-control-wrapper')
+            || document.querySelector('.menu-toggle');
+        var actions = document.querySelector('.cst-institutional-header__actions');
+        if (!toggleWrapper || !actions) return;
+
+        // Remember original parent for desktop restore.
+        var originalParent = toggleWrapper.parentNode;
+        var originalNext = toggleWrapper.nextSibling;
+
+        var mql = window.matchMedia('(max-width: 768px)');
+
+        function apply() {
+            if (mql.matches && toggleWrapper.parentNode !== actions) {
+                actions.appendChild(toggleWrapper);
+            } else if (!mql.matches && toggleWrapper.parentNode === actions) {
+                if (originalNext && originalNext.parentNode === originalParent) {
+                    originalParent.insertBefore(toggleWrapper, originalNext);
+                } else {
+                    originalParent.appendChild(toggleWrapper);
+                }
+            }
+        }
+        apply();
+        mql.addEventListener('change', apply);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Move language switcher into drawer on mobile (2026-05-13 v3)      */
+    /* ------------------------------------------------------------------ */
+
+    function initMoveLangSwitcher() {
+        var lang = document.querySelector('.cst-institutional-header .cst-lang-switcher');
+        var drawerPanel = document.querySelector('.main-navigation .main-nav');
+        if (!lang || !drawerPanel) return;
+
+        var originalParent = lang.parentNode;
+        var originalNext = lang.nextSibling;
+
+        var mql = window.matchMedia('(max-width: 768px)');
+
+        function apply() {
+            if (mql.matches && lang.parentNode !== drawerPanel) {
+                lang.classList.add('cst-lang-switcher--in-drawer');
+                drawerPanel.insertBefore(lang, drawerPanel.firstChild);
+            } else if (!mql.matches && lang.parentNode === drawerPanel) {
+                lang.classList.remove('cst-lang-switcher--in-drawer');
+                if (originalNext && originalNext.parentNode === originalParent) {
+                    originalParent.insertBefore(lang, originalNext);
+                } else {
+                    originalParent.appendChild(lang);
+                }
+            }
+        }
+        apply();
+        mql.addEventListener('change', apply);
+    }
+
+    /* ------------------------------------------------------------------ */
     /*  Legal Page — Auto-generate TOC                                    */
     /* ------------------------------------------------------------------ */
 
@@ -714,6 +895,9 @@
         initResourceFilter();
         initHamburgerIcon();
         initMobileMenuA11y();
+        initMoveHamburger();
+        initMoveLangSwitcher();
+        initMobileDrawer();
         initLegalTOC();
         initStatCounters();
         initScrollAnimations();

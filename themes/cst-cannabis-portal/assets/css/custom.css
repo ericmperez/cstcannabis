@@ -716,13 +716,8 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
 
-@supports ( font-variant-caps: all-small-caps ) {
-    .cst-hero--home .cst-hero__title {
-        text-transform: none;
-        font-variant-caps: all-small-caps;
-        letter-spacing: 0.05em;
-    }
-}
+/* Small-caps fallback removed 2026-05-14 — was rendering the conjunction "y"
+   visibly shorter than its neighbors. Stick to plain text-transform: uppercase. */
 
 .cst-hero--page {
     padding-block: var(--cst-space-3xl);
@@ -5101,4 +5096,1054 @@ img.cst-img-square {
     object-fit: contain;
     background: #ffffff;
     border-radius: 8px;
+}
+
+/* ==========================================================================
+   Mobile institutional header polish (2026-05-13)
+   Tightens spacing, scales down seal/title, and drops sticky on small screens.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Drop sticky to reclaim vertical space on small screens */
+    .cst-institutional-header {
+        position: static;
+        padding-block: var(--cst-space-sm);
+        border-bottom-width: 2px;
+    }
+
+    .cst-institutional-header__inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: var(--cst-space-sm);
+    }
+
+    .cst-institutional-header__branding {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--cst-space-sm);
+        flex: 1;
+        min-width: 0; /* allow title to truncate/wrap inside flex */
+    }
+
+    .cst-institutional-header__seal {
+        height: 44px;
+    }
+
+    .cst-institutional-header__titles {
+        text-align: left;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .cst-institutional-header__portal-name {
+        font-size: 0.9375rem;      /* 15px */
+        line-height: 1.2;
+        letter-spacing: 0;
+        display: block;
+        /* Soft-wrap long titles instead of overflowing */
+        overflow-wrap: anywhere;
+    }
+
+    .cst-institutional-header__actions {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--cst-space-xs);
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .cst-lang-switcher__list {
+        gap: var(--cst-space-xs);
+    }
+}
+
+@media (max-width: 480px) {
+    .cst-institutional-header {
+        padding-block: 0.5rem;
+    }
+
+    .cst-institutional-header__inner {
+        gap: 0.5rem;
+    }
+
+    .cst-institutional-header__branding {
+        gap: 0.5rem;
+    }
+
+    .cst-institutional-header__seal {
+        height: 38px;
+    }
+
+    .cst-institutional-header__portal-name {
+        font-size: 0.8125rem;     /* 13px */
+    }
+
+    /* Tighten the gov banner on very small screens too */
+    .cst-gov-banner {
+        padding-block: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .cst-gov-banner__text {
+        gap: 0.25rem;
+        line-height: 1.3;
+    }
+}
+
+/* ==========================================================================
+   Mobile Slide-in Drawer (2026-05-13)
+   Converts the GP dropdown nav into a right-side drawer with backdrop.
+   Mobile-only; desktop nav is untouched.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Make the GP main-navigation a sticky thin bar on mobile so the
+       hamburger is always reachable. The institutional header above scrolls away. */
+    .main-navigation {
+        position: sticky;
+        top: 0;
+        z-index: 1500;
+        background: var(--cst-color-white);
+        border-bottom: 1px solid var(--cst-color-gray-200);
+        box-shadow: 0 1px 6px var(--cst-alpha-black-10, rgba(0,0,0,0.08));
+    }
+
+    .main-navigation .inside-navigation {
+        padding-block: 0;
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Backdrop dimmer behind drawer */
+    .cst-drawer-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 220ms ease;
+        z-index: 9998;
+    }
+
+    body.cst-drawer-open .cst-drawer-backdrop {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    body.cst-drawer-open {
+        overflow: hidden;
+    }
+    html.cst-drawer-open {
+        overflow: hidden;
+        /* preserve scrollbar gutter so right edge stays in place during slide-in */
+        scrollbar-gutter: stable;
+    }
+
+    /* Drawer panel — slide in from right */
+    .main-navigation .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(82vw, 360px);
+        max-width: 100vw;
+        background: var(--cst-color-white);
+        box-shadow: -8px 0 24px var(--cst-alpha-black-20, rgba(0,0,0,0.2));
+        border-radius: 0;
+        transform: translateX(100%);
+        transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1);
+        z-index: 9999;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding: 64px var(--cst-space-lg, 1.25rem) var(--cst-space-xl, 2rem);
+    }
+
+    .main-navigation.toggled .main-nav {
+        transform: translateX(0);
+    }
+
+    /* Reset GP defaults that conflict with drawer layout */
+    .main-navigation .main-nav ul {
+        flex-direction: column;
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .main-navigation .main-nav ul li {
+        width: 100%;
+        border-bottom: 1px solid var(--cst-color-gray-100);
+    }
+
+    .main-navigation .main-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .main-navigation .main-nav ul li a {
+        display: block;
+        padding: var(--cst-space-md) 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--cst-color-gray-800);
+        text-decoration: none;
+        min-height: 48px; /* WCAG 2.5.5 touch target */
+    }
+
+    .main-navigation .main-nav ul li a:hover,
+    .main-navigation .main-nav ul li a:focus,
+    .main-navigation .main-nav ul li.current-menu-item a {
+        color: var(--cst-color-primary);
+        background: transparent;
+    }
+
+    /* Position the menu-toggle (hamburger) at right of the sticky bar */
+    #mobile-menu-control-wrapper {
+        margin-left: auto;
+        padding-inline: var(--cst-space-md);
+    }
+
+    /* When drawer is open, raise the hamburger above the backdrop so
+       users can find it to close (and X icon is visible). */
+    .main-navigation.toggled .menu-toggle {
+        position: fixed;
+        top: 8px;
+        right: 8px;
+        z-index: 10000;
+        background: var(--cst-color-white);
+        box-shadow: 0 2px 8px var(--cst-alpha-black-15, rgba(0,0,0,0.15));
+    }
+
+    /* Reduced motion — instant open/close, no slide */
+    @media (prefers-reduced-motion: reduce) {
+        .main-navigation .main-nav,
+        .cst-drawer-backdrop {
+            transition: none;
+        }
+    }
+}
+
+/* Defensive — keep desktop behavior unchanged.
+   These rules belong to the drawer's mobile context only. */
+@media (min-width: 769px) {
+    .cst-drawer-backdrop { display: none; }
+}
+
+/* ==========================================================================
+   Mobile header consolidation (2026-05-13 v2)
+   Merges the GP nav bar into the institutional header so there's only ONE
+   top bar on mobile: seal + title + lang + hamburger.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Hide the standalone GP nav bar; drawer panel still works (fixed position) */
+    .main-navigation > .inside-navigation {
+        display: none !important;
+    }
+    .main-navigation {
+        position: static;
+        border-bottom: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    /* Bring back the institutional header as the single sticky top bar */
+    .cst-institutional-header {
+        position: sticky;
+        top: 0;
+        z-index: 1500;
+        padding-block: 0.5rem;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.15);
+    }
+
+    /* Lighter language switcher pill — was visually heavy */
+    .cst-lang-switcher__list {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: transparent;
+        border: none;
+        padding: 0;
+        list-style: none;
+        margin: 0;
+    }
+
+    .cst-lang-switcher__list li {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .cst-lang-switcher__list li + li::before {
+        content: '|';
+        margin: 0 0.4rem;
+        color: var(--cst-alpha-white-40, rgba(255,255,255,0.4));
+    }
+
+    .cst-lang-switcher__list a {
+        padding: 0.25rem 0.25rem;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--cst-alpha-white-70, rgba(255,255,255,0.7));
+        text-decoration: none;
+        min-width: 24px;
+        text-align: center;
+    }
+
+    .cst-lang-switcher__list .current-lang a,
+    .cst-lang-switcher__list a[aria-current="true"] {
+        color: var(--cst-color-white);
+    }
+
+    /* Style the hamburger so it sits in the navy bar */
+    .cst-institutional-header .menu-toggle,
+    body .main-navigation .menu-toggle {
+        background: transparent;
+        border: 1.5px solid var(--cst-alpha-white-40, rgba(255,255,255,0.4));
+        color: var(--cst-color-white);
+    }
+
+    .cst-institutional-header .menu-toggle .cst-hamburger,
+    .cst-institutional-header .menu-toggle .cst-hamburger::before,
+    .cst-institutional-header .menu-toggle .cst-hamburger::after {
+        background: var(--cst-color-white);
+    }
+
+    /* When drawer is open, the floating hamburger goes white-bg / dark-icon */
+    .main-navigation.toggled .menu-toggle {
+        background: var(--cst-color-white);
+        border-color: var(--cst-color-gray-300);
+    }
+
+    .main-navigation.toggled .menu-toggle .cst-hamburger,
+    .main-navigation.toggled .menu-toggle .cst-hamburger::before,
+    .main-navigation.toggled .menu-toggle .cst-hamburger::after {
+        background: var(--cst-color-gray-700);
+    }
+
+    /* Better seal/title balance — make seal slightly bigger; title slightly larger but tight */
+    .cst-institutional-header__seal {
+        height: 48px;
+    }
+
+    .cst-institutional-header__portal-name {
+        font-size: 0.9375rem;
+        line-height: 1.15;
+        max-width: 100%;
+    }
+
+    /* Tighten the actions cluster (lang + hamburger) on the right */
+    .cst-institutional-header__actions {
+        gap: 0.5rem;
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .cst-institutional-header__seal {
+        height: 40px;
+    }
+    .cst-institutional-header__portal-name {
+        font-size: 0.8125rem;
+    }
+    /* Even tighter on phone */
+    .cst-institutional-header {
+        padding-block: 0.4rem;
+    }
+}
+
+/* ==========================================================================
+   Mobile header v3 — hide redundant title on mobile
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Seal + hero already identify the portal; hide verbose title to free space */
+    .cst-institutional-header__titles {
+        display: none;
+    }
+
+    .cst-institutional-header__branding {
+        flex: 0 0 auto;
+    }
+
+    .cst-institutional-header__inner {
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+   Mobile drawer — language switcher styling (2026-05-13 v3)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Inside the drawer at the top: pill-style toggle, full-width */
+    .cst-lang-switcher--in-drawer {
+        display: block;
+        margin: 0 0 var(--cst-space-lg, 1.5rem);
+        padding: 0;
+    }
+
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list {
+        display: inline-flex;
+        gap: 0;
+        background: var(--cst-color-gray-100);
+        border-radius: 999px;
+        padding: 0.25rem;
+        list-style: none;
+        margin: 0;
+    }
+
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list li::before {
+        content: none;
+    }
+
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--cst-color-gray-600);
+        text-decoration: none;
+        border-radius: 999px;
+        min-width: 48px;
+        min-height: 36px;
+    }
+
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list .current-lang a,
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list a[aria-current="true"] {
+        background: var(--cst-color-primary);
+        color: var(--cst-color-white);
+    }
+}
+
+/* ==========================================================================
+   Cookie Consent Banner (2026-05-13 v2 — professional / always-on-top)
+   Floating card at bottom-left. Sits above EVERYTHING (chatbot, drawer, modals).
+   ========================================================================== */
+
+.cst-consent {
+    /* Always on top of every other UI layer (chatbot=9999, drawer=9999, menu-toggle=10000) */
+    z-index: 2147483640;
+    position: fixed;
+    left: clamp(12px, 2.5vw, 24px);
+    right: clamp(12px, 2.5vw, 24px);
+    bottom: clamp(12px, 2.5vw, 24px);
+    max-width: 540px;
+    background: #ffffff;
+    color: #1a2236;
+    border-radius: 16px;
+    box-shadow:
+        0 24px 48px -12px rgba(15, 23, 42, 0.35),
+        0 8px 20px -6px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(15, 23, 42, 0.04);
+    padding: 1.25rem 1.25rem 1.125rem;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), opacity 220ms ease;
+    font-family: var(--cst-font-body, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+    will-change: transform, opacity;
+}
+
+.cst-consent[data-state="hidden"] {
+    transform: translateY(24px) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cst-consent::before {
+    content: "\01f36a";
+    position: absolute;
+    top: -14px;
+    left: 18px;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--cst-color-primary, #3E64DE), var(--cst-color-blue-dark, #2A4BB0));
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(62, 100, 222, 0.35);
+}
+
+.cst-consent__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cst-consent__copy { margin-top: 0.25rem; }
+
+.cst-consent__title {
+    font-family: var(--cst-font-heading, var(--cst-font-body));
+    font-size: 1.0625rem;
+    font-weight: 700;
+    margin: 0 0 0.375rem;
+    color: #0f1729;
+    letter-spacing: -0.01em;
+}
+
+.cst-consent__text {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: #475569;
+    margin: 0;
+}
+
+.cst-consent__link {
+    color: var(--cst-color-primary, #3E64DE);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-left: 0.25rem;
+    font-weight: 500;
+}
+
+.cst-consent__link:hover { text-decoration-thickness: 2px; }
+
+.cst-consent__actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.cst-consent__btn {
+    appearance: none;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.6875rem 1.125rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    min-height: 44px;
+    flex: 1;
+    transition: background-color 160ms ease, color 160ms ease, transform 80ms ease;
+    letter-spacing: 0.01em;
+}
+
+.cst-consent__btn:active { transform: translateY(1px); }
+
+.cst-consent__btn--accept {
+    background: linear-gradient(180deg, var(--cst-color-primary, #3E64DE) 0%, var(--cst-color-blue-dark, #2A4BB0) 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 10px -2px rgba(62, 100, 222, 0.5);
+}
+
+.cst-consent__btn--accept:hover,
+.cst-consent__btn--accept:focus-visible {
+    background: var(--cst-color-blue-dark, #2A4BB0);
+}
+
+.cst-consent__btn--reject {
+    background: #f1f5f9;
+    color: #334155;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+.cst-consent__btn--reject:hover,
+.cst-consent__btn--reject:focus-visible {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.cst-consent__btn:focus-visible {
+    outline: 2px solid var(--cst-color-blue, #3B82C4);
+    outline-offset: 3px;
+}
+
+@media (min-width: 480px) {
+    .cst-consent__inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.25rem;
+    }
+    .cst-consent__copy { flex: 1; }
+    .cst-consent__actions { flex-shrink: 0; }
+    .cst-consent__btn { flex: 0 0 auto; min-width: 108px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cst-consent { transition: opacity 0.15s linear; }
+    .cst-consent[data-state="hidden"] { transform: none; }
+}
+
+/* ==========================================================================
+   Mobile drawer fix (2026-05-13 v4) — preserve drawer panel rendering.
+   The .main-nav drawer lives INSIDE .inside-navigation. Using display:none
+   on the parent kills the fixed-position drawer too. Instead, collapse the
+   wrapper to zero visual size while keeping it in the render tree.
+   ========================================================================== */
+@media (max-width: 768px) {
+    .main-navigation > .inside-navigation {
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: 0 !important;
+        height: 0;
+        overflow: visible;
+    }
+    /* Hide stray empty items left in inside-navigation (after toggle was moved out) */
+    .main-navigation > .inside-navigation > *:not(.main-nav) {
+        display: none !important;
+    }
+    .main-navigation {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        min-height: 0;
+        padding: 0;
+    }
+}
+
+/* ==========================================================================
+   Hamburger toggle centering fix (2026-05-14)
+   GeneratePress sets .menu-toggle display:block which kills our flex-center.
+   Force flex layout regardless of context.
+   ========================================================================== */
+.cst-institutional-header .menu-toggle,
+.main-navigation .menu-toggle,
+button.menu-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+}
+
+/* Anchor the hamburger icon dead-center using absolute centering so it can't
+   drift even if the sr-only sibling or font-size weirdness creeps in. */
+.menu-toggle {
+    position: relative;
+}
+.menu-toggle .cst-hamburger {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+.menu-toggle .cst-hamburger::before {
+    transform: translateY(-7px);
+    top: 0;
+}
+.menu-toggle .cst-hamburger::after {
+    transform: translateY(7px);
+    top: 0;
+}
+
+/* X state — keep the rotation symmetric around the icon center */
+.main-navigation.toggled .menu-toggle .cst-hamburger::before {
+    transform: translateY(0) rotate(45deg);
+}
+.main-navigation.toggled .menu-toggle .cst-hamburger::after {
+    transform: translateY(0) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Drawer lang switcher fix (2026-05-14) — force horizontal pill toggle.
+   Polylang's own CSS adds .lang-item rules that override our display:flex.
+   ========================================================================== */
+
+.cst-lang-switcher--in-drawer {
+    display: inline-block !important;
+    margin: 0 0 1.25rem !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.cst-lang-switcher--in-drawer ul.cst-lang-switcher__list,
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0 !important;
+    background: #f1f5f9 !important;
+    border-radius: 999px !important;
+    padding: 0.25rem !important;
+    margin: 0 !important;
+    list-style: none !important;
+    width: auto !important;
+}
+
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list > li,
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list .lang-item {
+    display: inline-flex !important;
+    align-items: stretch !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    list-style: none !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+}
+
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list > li::before,
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list .lang-item::before {
+    content: none !important;
+}
+
+/* Hide Polylang flag images so we only see text */
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list img {
+    display: none !important;
+}
+
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.4rem 0.85rem !important;
+    min-width: 44px !important;
+    min-height: 32px !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    color: #475569 !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    border-radius: 999px !important;
+    line-height: 1 !important;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list .current-lang > a,
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list a[aria-current="true"] {
+    background: var(--cst-color-primary, #3E64DE) !important;
+    color: #ffffff !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.15);
+}
+
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list a:hover,
+.cst-lang-switcher--in-drawer .cst-lang-switcher__list a:focus-visible {
+    color: #0f172a !important;
+}
+
+/* ==========================================================================
+   Modern drawer menu (2026-05-14) — non-scrolling, modern visual style.
+   Replaces the old "list with separator lines" look with a tighter, card-feel.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Drawer panel — no scroll; collapse padding to fit all items */
+    .main-navigation .main-nav {
+        overflow: hidden !important; /* No scrolling — items must fit */
+        padding: 72px 1rem 1.25rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.25rem;
+    }
+
+    /* Nav list — flex column, no separator dividers */
+    .main-navigation .main-nav ul.menu,
+    .main-navigation .main-nav > ul,
+    .main-navigation .main-nav ul {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.25rem !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        background: transparent !important;
+    }
+
+    .main-navigation .main-nav ul li,
+    .main-navigation .main-nav ul .menu-item {
+        border: none !important;         /* kill separator lines */
+        border-bottom: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        width: 100%;
+    }
+
+    .main-navigation .main-nav ul li a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem;
+        padding: 0.75rem 0.875rem !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        line-height: 1.2 !important;
+        color: #1e293b !important;
+        background: transparent !important;
+        border-radius: 12px !important;
+        text-decoration: none !important;
+        transition: background-color 140ms ease, color 140ms ease;
+        min-height: 44px;
+    }
+
+    .main-navigation .main-nav ul li a:hover,
+    .main-navigation .main-nav ul li a:focus-visible {
+        background: #f1f5f9 !important;
+        color: #0f172a !important;
+    }
+
+    /* Current page — filled pill with brand accent */
+    .main-navigation .main-nav ul li.current-menu-item > a,
+    .main-navigation .main-nav ul li.current_page_item > a {
+        background: linear-gradient(135deg,
+            color-mix(in oklab, var(--cst-color-primary, #3E64DE) 14%, white),
+            color-mix(in oklab, var(--cst-color-primary, #3E64DE) 6%, white)) !important;
+        color: var(--cst-color-primary, #3E64DE) !important;
+    }
+
+    /* Arrow indicator on the right of each link — modern affordance */
+    .main-navigation .main-nav ul li a::after {
+        content: "›";
+        margin-left: auto;
+        font-size: 1.25rem;
+        color: #94a3b8;
+        font-weight: 400;
+        line-height: 1;
+        transition: transform 180ms ease, color 180ms ease;
+    }
+
+    .main-navigation .main-nav ul li a:hover::after,
+    .main-navigation .main-nav ul li.current-menu-item > a::after {
+        color: var(--cst-color-primary, #3E64DE);
+        transform: translateX(3px);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-navigation .main-nav ul li a {
+        padding: 0.625rem 0.75rem !important;
+        font-size: 0.9375rem !important;
+    }
+    .main-navigation .main-nav {
+        padding: 64px 0.875rem 1rem !important;
+    }
+}
+
+/* On very short viewports (≤640px tall), tighten further so nothing scrolls */
+@media (max-width: 768px) and (max-height: 640px) {
+    .main-navigation .main-nav ul li a {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.875rem !important;
+        min-height: 38px;
+    }
+    .cst-lang-switcher--in-drawer {
+        margin-bottom: 0.75rem !important;
+    }
+}
+
+/* ==========================================================================
+   Hamburger ↔ X state fix (2026-05-14)
+   The toggle button lives in the institutional header (moved by JS), so the
+   old `.main-navigation.toggled .cst-hamburger` selector no longer reaches it.
+   Use body.cst-drawer-open instead — that class is set by initMobileDrawer.
+   ========================================================================== */
+
+/* Default: middle bar visible (set elsewhere) */
+body.cst-drawer-open .cst-hamburger {
+    background: transparent !important; /* hide middle bar to form a clean X */
+}
+
+body.cst-drawer-open .cst-hamburger::before {
+    transform: translateY(0) rotate(45deg) !important;
+    top: 0 !important;
+    background: var(--cst-color-gray-700) !important;
+}
+
+body.cst-drawer-open .cst-hamburger::after {
+    transform: translateY(0) rotate(-45deg) !important;
+    top: 0 !important;
+    background: var(--cst-color-gray-700) !important;
+}
+
+/* The toggle button itself when drawer is open — slight visual cue (rounded white) */
+body.cst-drawer-open .menu-toggle {
+    background: #ffffff !important;
+    border-color: var(--cst-color-gray-300, #c8ced8) !important;
+}
+
+/* Dedicated close button inserted by JS — positioned at top-right of the drawer */
+.cst-drawer-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #f1f5f9;
+    color: #334155;
+    border-radius: 999px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: background-color 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.cst-drawer-close:hover,
+.cst-drawer-close:focus-visible {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: scale(1.05);
+}
+
+.cst-drawer-close::before,
+.cst-drawer-close::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+.cst-drawer-close::before { transform: rotate(45deg); }
+.cst-drawer-close::after { transform: rotate(-45deg); }
+
+/* ==========================================================================
+   Drawer fixes — patch 2 (2026-05-14)
+   1. Re-elevate lang-switcher pill above modern-menu's flex-column rule
+   2. Strip the › arrow from lang-switcher links
+   3. Hamburger → X based on aria-expanded (no body class dependency)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Restore lang switcher horizontal layout — beat the modern-menu rule */
+    .main-nav .cst-lang-switcher--in-drawer ul.cst-lang-switcher__list,
+    .main-nav .cst-lang-switcher--in-drawer .cst-lang-switcher__list {
+        flex-direction: row !important;
+        display: inline-flex !important;
+        background: #f1f5f9 !important;
+        gap: 0 !important;
+        padding: 0.25rem !important;
+        border-radius: 999px !important;
+    }
+
+    /* No arrow on lang-switcher anchors */
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list a::after,
+    .cst-lang-switcher--in-drawer a::after,
+    .main-nav .cst-lang-switcher__list a::after {
+        content: none !important;
+        display: none !important;
+    }
+
+    /* Lang switcher li shouldn't have block layout from modern-menu rule */
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list > li,
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list .lang-item {
+        display: inline-flex !important;
+        width: auto !important;
+        flex: 0 0 auto !important;
+        gap: 0 !important;
+    }
+
+    .cst-lang-switcher--in-drawer .cst-lang-switcher__list a {
+        padding: 0.4rem 0.85rem !important;
+        gap: 0 !important;
+    }
+}
+
+/* Hamburger → X using aria-expanded (set by toggle click handler).
+   Works regardless of DOM location (institutional header, drawer panel, etc.) */
+.menu-toggle[aria-expanded="true"] .cst-hamburger {
+    background: transparent !important;
+}
+
+.menu-toggle[aria-expanded="true"] .cst-hamburger::before {
+    transform: translateY(0) rotate(45deg) !important;
+    top: 0 !important;
+    background: var(--cst-color-gray-700, #495057) !important;
+}
+
+.menu-toggle[aria-expanded="true"] .cst-hamburger::after {
+    transform: translateY(0) rotate(-45deg) !important;
+    top: 0 !important;
+    background: var(--cst-color-gray-700, #495057) !important;
+}
+
+/* ==========================================================================
+   Stats page tab strip — horizontal scroll on mobile (2026-05-14)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .cst-filter-tabs {
+        margin-inline: calc(var(--cst-space-md, 1rem) * -1);
+        padding-inline: var(--cst-space-md, 1rem);
+    }
+    .cst-filter-tabs__list {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 0.375rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;          /* hide scrollbar (Firefox) */
+        padding-bottom: 0.25rem;
+    }
+    .cst-filter-tabs__list::-webkit-scrollbar {
+        display: none;                  /* hide scrollbar (Chrome/Safari) */
+    }
+    .cst-filter-tabs__btn {
+        flex: 0 0 auto !important;
+        scroll-snap-align: start;
+        white-space: nowrap;
+        width: auto !important;          /* override .cst-filter-tabs__btn { width: 100% } from <480 rule */
+        text-align: center;
+        padding: 0.5rem 0.875rem !important;
+        font-size: 0.875rem !important;
+    }
+    /* Soft fade on right edge as overflow affordance */
+    .cst-filter-tabs {
+        position: relative;
+    }
+    .cst-filter-tabs::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0.25rem;
+        width: 24px;
+        pointer-events: none;
+        background: linear-gradient(to right, transparent, var(--cst-color-white, #fff));
+    }
+}
+
+/* Override the <480px column rule from earlier mobile block */
+@media (max-width: 480px) {
+    .cst-filter-tabs__list {
+        flex-direction: row !important;
+    }
+    .cst-filter-tabs__btn {
+        width: auto !important;
+    }
+}
+
+/* Remove the floating drawer-close button — X-from-hamburger handles it */
+.cst-drawer-close {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Prevent scrollbar-driven layout shift (2026-05-14)
+   Always reserve the vertical scrollbar gutter so opening the drawer
+   (which sets overflow:hidden) doesn't shift content rightward.
+   ========================================================================== */
+html {
+    scrollbar-gutter: stable;
+}
+
+/* ==========================================================================
+   Hide hamburger "Menu" button on desktop (2026-05-14)
+   The drawer toggle is for responsive small screens only (≤768px). On desktop
+   the full horizontal nav is visible, so "☰ Menu" is redundant.
+   ========================================================================== */
+@media (min-width: 769px) {
+    .menu-toggle,
+    #mobile-menu-control-wrapper {
+        display: none !important;
+    }
 }

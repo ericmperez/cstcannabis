@@ -26,7 +26,7 @@ function cst_nav_aria_current( array $atts, $item, $args ): array {
    Government Banner (top of page)
    ========================================================================== */
 
-add_action( 'generate_before_header', 'cst_government_banner', 5 );
+// add_action( 'generate_before_header', 'cst_government_banner', 5 ); // disabled per user request 2026-05-13
 
 function cst_government_banner(): void {
     ?>

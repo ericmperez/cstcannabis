@@ -171,6 +171,32 @@ class CST_Settings {
             'default'           => 0,
         ] );
 
+        // Google Analytics.
+        register_setting( 'cst_settings', 'cst_ga_enabled', [
+            'type'              => 'boolean',
+            'sanitize_callback' => 'rest_sanitize_boolean',
+            'default'           => false,
+        ] );
+
+        register_setting( 'cst_settings', 'cst_ga_measurement_id', [
+            'type'              => 'string',
+            'sanitize_callback' => [ $this, 'sanitize_ga_measurement_id' ],
+            'default'           => '',
+        ] );
+
+        // Cookie Consent.
+        register_setting( 'cst_settings', 'cst_consent_enabled', [
+            'type'              => 'boolean',
+            'sanitize_callback' => 'rest_sanitize_boolean',
+            'default'           => true,
+        ] );
+
+        register_setting( 'cst_settings', 'cst_consent_policy_url', [
+            'type'              => 'string',
+            'sanitize_callback' => 'esc_url_raw',
+            'default'           => '',
+        ] );
+
         // Sections.
         add_settings_section( 'cst_certificate_section',
             __( 'Certificado de Aprobación', 'cst-core' ),
@@ -179,6 +205,8 @@ class CST_Settings {
         );
         add_settings_section( 'cst_whatsapp_section', __( 'WhatsApp', 'cst-core' ), null, 'cst-settings' );
         add_settings_section( 'cst_chatbot_section', __( 'Chatbot', 'cst-core' ), null, 'cst-settings' );
+        add_settings_section( 'cst_analytics_section', __( 'Google Analytics', 'cst-core' ), [ $this, 'render_analytics_section_intro' ], 'cst-settings' );
+        add_settings_section( 'cst_consent_section', __( 'Banner de Consentimiento de Cookies', 'cst-core' ), [ $this, 'render_consent_section_intro' ], 'cst-settings' );
 
         // Certificate fields.
         add_settings_field( 'cst_certificate_logo_id',
@@ -225,6 +253,14 @@ class CST_Settings {
         add_settings_field( 'cst_chatbot_greeting', __( 'Mensaje de bienvenida', 'cst-core' ), [ $this, 'render_text_field' ], 'cst-settings', 'cst_chatbot_section', [ 'id' => 'cst_chatbot_greeting', 'placeholder' => '¡Hola! ¿En qué puedo ayudarle?' ] );
         add_settings_field( 'cst_chatbot_api_endpoint', __( 'URL del API LLM', 'cst-core' ), [ $this, 'render_text_field' ], 'cst-settings', 'cst_chatbot_section', [ 'id' => 'cst_chatbot_api_endpoint', 'placeholder' => 'https://api.example.com/v1/chat' ] );
         add_settings_field( 'cst_chatbot_api_key', __( 'API Key', 'cst-core' ), [ $this, 'render_password_field' ], 'cst-settings', 'cst_chatbot_section', [ 'id' => 'cst_chatbot_api_key' ] );
+
+        // Analytics fields.
+        add_settings_field( 'cst_ga_enabled', __( 'Activar Google Analytics', 'cst-core' ), [ $this, 'render_checkbox' ], 'cst-settings', 'cst_analytics_section', [ 'id' => 'cst_ga_enabled' ] );
+        add_settings_field( 'cst_ga_measurement_id', __( 'Measurement ID', 'cst-core' ), [ $this, 'render_text_field' ], 'cst-settings', 'cst_analytics_section', [ 'id' => 'cst_ga_measurement_id', 'placeholder' => 'G-XXXXXXXXXX' ] );
+
+        // Consent fields.
+        add_settings_field( 'cst_consent_enabled', __( 'Mostrar banner de cookies', 'cst-core' ), [ $this, 'render_checkbox' ], 'cst-settings', 'cst_consent_section', [ 'id' => 'cst_consent_enabled' ] );
+        add_settings_field( 'cst_consent_policy_url', __( 'URL de Política de Privacidad', 'cst-core' ), [ $this, 'render_text_field' ], 'cst-settings', 'cst_consent_section', [ 'id' => 'cst_consent_policy_url', 'placeholder' => 'https://...' ] );
     }
 
     public function render_page(): void {
@@ -341,4 +377,24 @@ class CST_Settings {
             checked( $checked, true, false )
         );
     }
+    public function render_analytics_section_intro(): void {
+        echo '<p>' . esc_html__( 'Ingrese su Measurement ID de Google Analytics 4 (formato G-XXXXXXXXXX) y active el seguimiento. Los administradores conectados no son rastreados.', 'cst-core' ) . '</p>';
+    }
+
+    public function render_consent_section_intro(): void {
+        echo '<p>' . esc_html__( 'Muestra un banner al pie de cada página solicitando consentimiento de cookies. Google Analytics y otros sistemas de seguimiento solo se activan tras aceptar.', 'cst-core' ) . '</p>';
+    }
+
+    public function sanitize_ga_measurement_id( $value ): string {
+        $value = is_string( $value ) ? strtoupper( trim( $value ) ) : '';
+        if ( '' === $value ) {
+            return '';
+        }
+        if ( ! preg_match( '/^G-[A-Z0-9]{6,12}$/', $value ) ) {
+            add_settings_error( 'cst_ga_measurement_id', 'cst_ga_invalid', __( 'El Measurement ID debe tener el formato G-XXXXXXXXXX.', 'cst-core' ) );
+            return '';
+        }
+        return $value;
+    }
+
 }
