@@ -39,11 +39,15 @@ if ( ! $latest->have_posts() ) {
         </div>
 
         <div class="cst-section__footer cst-text-center">
-            <?php cst_cta_button(
+            <?php
+            $cst_posts_page_id = (int) get_option( 'page_for_posts' );
+            $cst_posts_url     = $cst_posts_page_id ? get_permalink( $cst_posts_page_id ) : home_url( '/blog/' );
+            cst_cta_button(
                 __( 'Ver todas las publicaciones', 'cst-cannabis' ),
-                get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/blog/' ),
+                $cst_posts_url,
                 'outline'
-            ); ?>
+            );
+            ?>
         </div>
     </div>
 </section>
