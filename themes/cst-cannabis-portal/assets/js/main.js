@@ -435,43 +435,6 @@
     }
 
     /* ------------------------------------------------------------------ */
-    /*  Back-to-Top Button                                                */
-    /* ------------------------------------------------------------------ */
-
-    function initBackToTop() {
-        var btn = document.querySelector('.cst-back-to-top');
-        if (!btn) return;
-
-        var threshold = 400;
-        var ticking = false;
-
-        function onScroll() {
-            if (!ticking) {
-                requestAnimationFrame(function () {
-                    if (window.scrollY > threshold) {
-                        btn.classList.add('is-visible');
-                    } else {
-                        btn.classList.remove('is-visible');
-                    }
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        btn.addEventListener('click', function () {
-            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            window.scrollTo({
-                top: 0,
-                behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            });
-        });
-    }
-
-    /* ------------------------------------------------------------------ */
     /*  CF7 → Tutor LMS Redirect (course registration)                   */
     /* ------------------------------------------------------------------ */
 
@@ -720,7 +683,6 @@
         initNavDropdownAria();
         initDesktopNavKeyboard();
         initHeaderScroll();
-        initBackToTop();
         initCF7CourseRedirect();
         initSearch();
         initSabiasQue();

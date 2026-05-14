@@ -1,11 +1,11 @@
 /* ==========================================================================
-   CST Chatbot Widget — Bottom-left, 400x500px max
+   CST Chatbot Widget — Bottom-right, 400x500px max
    ========================================================================== */
 
 .cst-chatbot {
     position: fixed;
     bottom: 24px;
-    left: 24px;
+    right: 24px;
     z-index: 9999;
     font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
 }
@@ -44,7 +44,7 @@
 .cst-chatbot__window {
     position: absolute;
     bottom: 72px;
-    left: 0;
+    right: 0;
     width: 380px;
     max-width: calc(100vw - 48px);
     height: 500px;
@@ -243,7 +243,7 @@
 @media (max-width: 480px) {
     .cst-chatbot {
         bottom: 16px;
-        left: 16px;
+        right: 16px;
     }
     .cst-chatbot__window {
         width: calc(100vw - 32px);

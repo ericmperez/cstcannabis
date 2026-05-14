@@ -228,12 +228,4 @@ $address = get_theme_mod( 'cst_address' );
         </div>
 
     </div>
-
-    <!-- Back to top -->
-    <button class="cst-back-to-top" aria-label="<?php esc_attr_e( 'Volver al inicio', 'cst-cannabis' ); ?>" type="button">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="18 15 12 9 6 15"/>
-        </svg>
-    </button>
 </footer>
