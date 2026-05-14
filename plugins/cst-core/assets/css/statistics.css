@@ -564,16 +564,35 @@
 @media (max-width: 768px) {
     .cst-dashboard__toolbar {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
+        text-align: center;
     }
 
     .cst-dashboard__tabs {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .cst-dashboard__tab {
+        flex: 0 1 auto;
+        padding-inline: var(--cst-space-md, 1rem);
     }
 
     .cst-dashboard__kpi-grid {
         grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .cst-kpi-card {
+        width: 100%;
+        max-width: 420px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cst-kpi-card__source {
+        width: 100%;
     }
 
     .cst-dashboard__chart-grid {
@@ -586,6 +605,7 @@
 
     .cst-kpi-card__value {
         font-size: 2.25rem;
+        justify-content: center;
     }
 
     .cst-sources-grid {
