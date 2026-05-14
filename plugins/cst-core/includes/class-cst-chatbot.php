@@ -102,10 +102,12 @@ class CST_Chatbot {
     /* ------------------------------------------------------------------ */
 
     private function query_llm( string $message, string $endpoint, string $api_key ): string {
+        $lang = function_exists( 'pll_current_language' ) ? (string) pll_current_language() : 'es';
         $body = wp_json_encode( [
-            'message' => $message,
-            'context' => 'CST Puerto Rico educational portal about medical cannabis and road safety.',
-            'lang'    => 'es',
+            'message'   => $message,
+            'context'   => 'CST Puerto Rico educational portal about medical cannabis and road safety.',
+            'knowledge' => CST_Chatbot_Context::get_knowledge_text(),
+            'lang'      => $lang ?: 'es',
         ] );
 
         $response = wp_remote_post( $endpoint, [
