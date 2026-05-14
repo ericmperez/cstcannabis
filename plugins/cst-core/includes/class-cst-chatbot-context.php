@@ -147,15 +147,40 @@ class CST_Chatbot_Context {
         // Tutor LMS attaches lessons via post_parent on the 'lesson' CPT.
         // Fall back gracefully when Tutor isn't installed.
         if ( post_type_exists( 'lesson' ) ) {
+            $lang             = function_exists( 'pll_current_language' ) ? (string) pll_current_language() : '';
+            $original_course  = get_page_by_path( self::COURSE_SLUG, OBJECT, 'courses' );
+            $lookup_parent_id = $course_id;
+
             $lessons = get_posts( [
                 'post_type'      => 'lesson',
-                'post_parent'    => $course_id,
+                'post_parent'    => $lookup_parent_id,
                 'posts_per_page' => 50,
                 'post_status'    => 'publish',
                 'orderby'        => 'menu_order',
                 'order'          => 'ASC',
             ] );
+
+            // If Polylang is active but EN lessons aren't reparented to the
+            // EN course, re-query against the original-language course and
+            // resolve each lesson via pll_get_post().
+            if ( empty( $lessons ) && $lang && $original_course && $original_course->ID !== $course_id ) {
+                $lessons = get_posts( [
+                    'post_type'      => 'lesson',
+                    'post_parent'    => $original_course->ID,
+                    'posts_per_page' => 50,
+                    'post_status'    => 'publish',
+                    'orderby'        => 'menu_order',
+                    'order'          => 'ASC',
+                ] );
+            }
+
             foreach ( $lessons as $lesson ) {
+                if ( $lang && function_exists( 'pll_get_post' ) ) {
+                    $translated_id = pll_get_post( $lesson->ID, $lang );
+                    if ( $translated_id && 'publish' === get_post_status( $translated_id ) ) {
+                        $lesson = get_post( $translated_id );
+                    }
+                }
                 $docs[] = [
                     'type'    => 'lesson',
                     'title'   => $lesson->post_title,
