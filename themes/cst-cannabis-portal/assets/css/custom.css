@@ -3289,45 +3289,6 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.6;
 }
 
-/* --- Back to Top Button --- */
-
-.cst-back-to-top {
-    position: fixed;
-    bottom: calc(var(--cst-space-xl) + 68px); /* Above WhatsApp button (56px + 12px gap) */
-    right: var(--cst-space-xl);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--cst-gradient-primary);
-    color: var(--cst-color-white);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--cst-shadow-md);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(16px);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow var(--cst-transition);
-    z-index: 999;
-}
-
-.cst-back-to-top.is-visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.cst-back-to-top:hover {
-    box-shadow: var(--cst-shadow-glow-primary);
-    transform: translateY(-2px);
-}
-
-.cst-back-to-top:active {
-    transform: translateY(0);
-}
-
 /* ==========================================================================
    Callout / Highlight Box
    ========================================================================== */
@@ -3440,8 +3401,11 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
 }
 
-/* Hide mobile toggle wrapper on desktop — only needed at 768px */
-#mobile-menu-control-wrapper {
+/* Hide mobile toggle wrapper AND the .menu-toggle button on desktop —
+   GP outputs the button directly inside .main-navigation as well, so
+   hiding the wrapper alone leaves the button visible at desktop width. */
+#mobile-menu-control-wrapper,
+.main-navigation .menu-toggle {
     display: none;
 }
 
@@ -3622,6 +3586,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     /* --- Mobile Hamburger Toggle --- */
+
+    .main-navigation .menu-toggle {
+        display: flex;
+    }
 
     .menu-toggle {
         background-color: transparent;
@@ -4717,37 +4685,6 @@ h1, h2, h3, h4, h5, h6 {
     /* Hide the inline background-image set in PHP; the animated ::before
        (which mirrors the same asset) is what the user sees. */
     background-image: none !important;
-}
-
-/* When a hero video is rendered, suppress the Ken Burns ::before since the
-   video provides its own motion. */
-.cst-hero--has-video::before {
-    content: none !important;
-}
-
-.cst-hero__video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-    pointer-events: none;
-    /* Hint to the browser this layer is composited. */
-    will-change: transform;
-}
-
-/* For users who prefer reduced motion, hide the video and let the poster
-   image (set via the <section> background or <video poster>) carry the visual. */
-@media (prefers-reduced-motion: reduce) {
-    .cst-hero__video {
-        display: none;
-    }
-    .cst-hero--has-video {
-        background-size: cover;
-        background-position: center;
-    }
 }
 
 .cst-hero--course::before {

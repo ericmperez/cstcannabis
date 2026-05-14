@@ -55,7 +55,7 @@ $features = [
             <?php foreach ( $features as $feature ) : ?>
                 <div class="cst-course-feature">
                     <div class="cst-course-feature__icon" aria-hidden="true">
-                        <?php echo $feature['icon']; ?>
+                        <?php echo cst_kses_svg( $feature['icon'] ); ?>
                     </div>
                     <h3 class="cst-course-feature__label"><?php echo esc_html( $feature['label'] ); ?></h3>
                     <p class="cst-course-feature__value"><?php echo esc_html( $feature['value'] ); ?></p>

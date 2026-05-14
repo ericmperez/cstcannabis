@@ -20,11 +20,14 @@
     --cst-color-red:         #EE0000;
     --cst-color-blue:        #3B82C4;
     --cst-color-white:       #FFFFFF;
-    --cst-color-green:       #7FA35B; /* Verde institucional */
+    --cst-color-green:       #7FA35B; /* Verde institucional — DECORATIVE ONLY: 2.88:1 on white fails WCAG AA */
+    --cst-color-green-dark:  #5E7C3A; /* Verde accesible — 4.82:1 on white, passes WCAG AA */
     --cst-color-navy:        #1C2854; /* Azul autoridad (GUIDI Brand Style Book 2025) */
 
-    /* Semantic tokens */
-    --cst-color-primary:     var(--cst-color-green);
+    /* Semantic tokens — primary is the accessible green so any
+       `color: var(--cst-color-primary)` or white-on-primary fill
+       meets WCAG AA (4.5:1) automatically. */
+    --cst-color-primary:     var(--cst-color-green-dark);
     --cst-color-secondary:   var(--cst-color-navy);
     --cst-color-accent:      var(--cst-color-blue);
     --cst-color-danger:      var(--cst-color-red);
@@ -110,7 +113,7 @@
 
     /* --- Color variants --- */
     --cst-color-green-light: #A9C58E;
-    --cst-color-green-dark:  #5E7C3A;
+    /* --cst-color-green-dark defined in the brand tokens block above. */
     --cst-color-navy-light:  #3A4D7A;
     --cst-color-navy-darker: #1A1A2E;
     --cst-color-blue-light:  #5A9BD5;

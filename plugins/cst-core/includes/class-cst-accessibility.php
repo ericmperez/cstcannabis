@@ -39,32 +39,29 @@ class CST_Accessibility {
      * Add a skip-link target anchor at the top of #content if GP doesn't provide one.
      */
     public function inject_skip_link_target(): void {
-        ?>
-        <script>
-        (function(){
-            // Ensure #main-content exists for skip link.
-            if ( ! document.getElementById('main-content') ) {
-                var main = document.querySelector('main') || document.querySelector('.site-main') || document.querySelector('#content');
-                if ( main && ! main.id ) {
-                    main.id = 'main-content';
-                }
-            }
+        $js = <<<'JS'
+(function(){
+    if ( ! document.getElementById('main-content') ) {
+        var main = document.querySelector('main') || document.querySelector('.site-main') || document.querySelector('#content');
+        if ( main && ! main.id ) {
+            main.id = 'main-content';
+        }
+    }
 
-            // Add ARIA landmarks to GP structural elements.
-            var header = document.querySelector('.site-header');
-            if ( header ) header.setAttribute('role', 'banner');
+    var header = document.querySelector('.site-header');
+    if ( header ) header.setAttribute('role', 'banner');
 
-            var nav = document.querySelector('.main-navigation');
-            if ( nav ) nav.setAttribute('role', 'navigation');
+    var nav = document.querySelector('.main-navigation');
+    if ( nav ) nav.setAttribute('role', 'navigation');
 
-            var main = document.querySelector('main') || document.querySelector('.site-main');
-            if ( main ) main.setAttribute('role', 'main');
+    var main = document.querySelector('main') || document.querySelector('.site-main');
+    if ( main ) main.setAttribute('role', 'main');
 
-            var footer = document.querySelector('.site-footer');
-            if ( footer ) footer.setAttribute('role', 'contentinfo');
-        })();
-        </script>
-        <?php
+    var footer = document.querySelector('.site-footer');
+    if ( footer ) footer.setAttribute('role', 'contentinfo');
+})();
+JS;
+        wp_print_inline_script_tag( $js );
     }
 
     /**

@@ -419,13 +419,6 @@ nav a,
         color: CanvasText;
     }
 
-    /* Back-to-top — system colors */
-    .cst-back-to-top {
-        background: ButtonFace;
-        border: 2px solid ButtonText;
-        color: ButtonText;
-    }
-
     /* CF7 form inputs — system colors */
     .cst-contact-form .wpcf7-form-control:not([type="submit"]) {
         background: Field;

@@ -5,7 +5,7 @@
 .cst-whatsapp {
     position: fixed;
     bottom: 24px;
-    right: 24px;
+    left: 24px;
     z-index: 9998;
 }
 
@@ -42,10 +42,10 @@
 /* Tooltip */
 .cst-whatsapp__tooltip {
     position: absolute;
-    right: 100%;
+    left: 100%;
     top: 50%;
     transform: translateY(-50%);
-    margin-right: 12px;
+    margin-left: 12px;
     background: #fff;
     color: #333;
     padding: 8px 16px;
@@ -62,11 +62,11 @@
 .cst-whatsapp__tooltip::after {
     content: '';
     position: absolute;
-    left: 100%;
+    right: 100%;
     top: 50%;
     transform: translateY(-50%);
     border: 6px solid transparent;
-    border-left-color: #fff;
+    border-right-color: #fff;
 }
 
 .cst-whatsapp__btn:hover .cst-whatsapp__tooltip {
@@ -83,11 +83,11 @@
     }
 }
 
-/* Don't overlap with chatbot (bottom-left) */
+/* Don't overlap with chatbot (bottom-right) */
 @media (max-width: 480px) {
     .cst-whatsapp {
         bottom: 16px;
-        right: 16px;
+        left: 16px;
     }
     .cst-whatsapp__btn {
         width: 48px;

@@ -52,7 +52,6 @@ function cst_hero( array $args = [] ): void {
         'cta2_text' => '',
         'cta2_url'  => '',
         'image_url' => get_theme_mod( 'cst_hero_image', '' ),
-        'video_url' => '', // Optional muted/looping background video.
         'class'     => '',
     ];
     $args = wp_parse_args( $args, $defaults );
@@ -173,4 +172,54 @@ function cst_section_open( string $class = '', string $id = '' ): void {
 
 function cst_section_close(): void {
     echo '</div></section>';
+}
+
+/**
+ * Emit a <picture> element with WebP source when a .webp sibling exists.
+ *
+ * Looks for `<name>.webp` next to the supplied JPG/PNG inside the theme's
+ * /assets/images/ directory. Falls back to a plain <img> when no WebP is
+ * present, so callers can opt in incrementally — drop a .webp next to the
+ * original and the modern source starts shipping automatically.
+ *
+ * @param string $relative_path Path under /assets/images, e.g. 'hero-bg.jpg'.
+ * @param array  $attrs         Extra <img> attributes: alt, width, height, loading…
+ */
+function cst_picture( string $relative_path, array $attrs = [] ): void {
+    $rel       = ltrim( $relative_path, '/' );
+    $base_dir  = get_stylesheet_directory() . '/assets/images/';
+    $base_url  = get_stylesheet_directory_uri() . '/assets/images/';
+    $webp_rel  = preg_replace( '/\.(jpe?g|png)$/i', '.webp', $rel );
+    $has_webp  = $webp_rel !== $rel && file_exists( $base_dir . $webp_rel );
+
+    $defaults = [
+        'alt'     => '',
+        'loading' => 'lazy',
+        'decoding' => 'async',
+    ];
+    $attrs = array_merge( $defaults, $attrs );
+
+    $attr_str = '';
+    foreach ( $attrs as $k => $v ) {
+        if ( '' === $v && 'alt' !== $k ) {
+            continue;
+        }
+        $attr_str .= ' ' . esc_attr( $k ) . '="' . esc_attr( (string) $v ) . '"';
+    }
+
+    if ( $has_webp ) {
+        printf(
+            '<picture><source type="image/webp" srcset="%s"><img src="%s"%s></picture>',
+            esc_url( $base_url . $webp_rel ),
+            esc_url( $base_url . $rel ),
+            $attr_str // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attrs already passed through esc_attr.
+        );
+        return;
+    }
+
+    printf(
+        '<img src="%s"%s>',
+        esc_url( $base_url . $rel ),
+        $attr_str // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- attrs already passed through esc_attr.
+    );
 }

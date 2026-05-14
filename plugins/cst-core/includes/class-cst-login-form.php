@@ -55,7 +55,7 @@ class CST_Login_Form {
         $register_id  = (int) ( $tutor_opts['student_register_page'] ?? 0 );
         $register_url = $register_id ? get_permalink( $register_id ) : '';
         $redirect_url = isset( $_GET['redirect_to'] )
-            ? esc_url_raw( wp_unslash( $_GET['redirect_to'] ) )
+            ? wp_validate_redirect( esc_url_raw( wp_unslash( $_GET['redirect_to'] ) ), home_url( '/' ) )
             : home_url( '/' );
 
         $logo_url = $this->cannabis_logo_url();

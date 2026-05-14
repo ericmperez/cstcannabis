@@ -210,7 +210,7 @@ class CST_Post_Types {
     }
 
     public function save_statistic_meta( $post_id ): void {
-        if ( ! isset( $_POST['cst_statistic_nonce'] ) || ! wp_verify_nonce( $_POST['cst_statistic_nonce'], 'cst_statistic_meta' ) ) {
+        if ( ! isset( $_POST['cst_statistic_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['cst_statistic_nonce'] ) ), 'cst_statistic_meta' ) ) {
             return;
         }
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {

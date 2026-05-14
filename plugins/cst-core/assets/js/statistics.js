@@ -83,7 +83,8 @@
     }
 
     function formatNumber(num) {
-        return Math.floor(num).toLocaleString('es-PR');
+        var locale = (document.documentElement.lang || 'es-PR').replace('_', '-');
+        return Math.floor(num).toLocaleString(locale);
     }
 
     /* ====================================================================

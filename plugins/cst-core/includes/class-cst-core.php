@@ -59,5 +59,23 @@ class CST_Core {
         if ( class_exists( 'CST_Analytics' ) ) {
             new CST_Analytics();
         }
+        if ( is_admin() && class_exists( 'CST_Admin_Cleanup' ) ) {
+            new CST_Admin_Cleanup();
+        }
+        if ( class_exists( 'CST_Seo' ) ) {
+            new CST_Seo();
+        }
+        if ( class_exists( 'CST_Login_Throttle' ) ) {
+            new CST_Login_Throttle();
+        }
+        if ( class_exists( 'CST_Consent' ) ) {
+            new CST_Consent();
+        }
+        if ( class_exists( 'CST_Content_Seeder' ) ) {
+            new CST_Content_Seeder();
+        }
+        if ( class_exists( 'CST_Forms_Hardening' ) ) {
+            new CST_Forms_Hardening();
+        }
     }
 }
