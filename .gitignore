@@ -22,3 +22,6 @@ uploads/
 # Build artifacts
 *.zip
 migration/
+deploy.sh
+watch.sh
+.bluehost.env

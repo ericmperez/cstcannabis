@@ -6079,8 +6079,11 @@ html {
    the full horizontal nav is visible, so "☰ Menu" is redundant.
    ========================================================================== */
 @media (min-width: 769px) {
-    .menu-toggle,
-    #mobile-menu-control-wrapper {
+    body .cst-institutional-header .menu-toggle,
+    body .main-navigation .menu-toggle,
+    body button.menu-toggle,
+    body .menu-toggle,
+    body #mobile-menu-control-wrapper {
         display: none !important;
     }
 }
