@@ -65,5 +65,8 @@ class CST_Core {
         if ( class_exists( 'CST_Login_Throttle' ) ) {
             new CST_Login_Throttle();
         }
+        if ( class_exists( 'CST_Consent' ) ) {
+            new CST_Consent();
+        }
     }
 }
