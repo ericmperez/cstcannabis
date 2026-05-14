@@ -68,5 +68,8 @@ class CST_Core {
         if ( class_exists( 'CST_Consent' ) ) {
             new CST_Consent();
         }
+        if ( class_exists( 'CST_Content_Seeder' ) ) {
+            new CST_Content_Seeder();
+        }
     }
 }

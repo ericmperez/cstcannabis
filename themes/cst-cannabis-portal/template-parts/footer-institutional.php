@@ -55,10 +55,13 @@ $address = get_theme_mod( 'cst_address' );
                             <?php esc_html_e( 'Oficina del Inspector General', 'cst-cannabis' ); ?>
                         </p>
                     </div>
+                    <p class="cst-institutional-footer__oig-intro">
+                        <?php esc_html_e( 'Puede informar de manera anónima por cualquiera de los siguientes canales:', 'cst-cannabis' ); ?>
+                    </p>
                     <ul class="cst-institutional-footer__oig-contact">
                         <li>
                             <a href="https://www.oig.pr.gov/informa" target="_blank" rel="noopener noreferrer">
-                                <?php esc_html_e( 'Reportar fraude, despilfarro o abuso', 'cst-cannabis' ); ?>
+                                <?php esc_html_e( 'Formulario en línea — oig.pr.gov/informa', 'cst-cannabis' ); ?>
                             </a>
                         </li>
                         <li>
@@ -67,12 +70,12 @@ $address = get_theme_mod( 'cst_address' );
                         <li>
                             <a href="tel:+17876797979">787-679-7979</a>
                             <span class="cst-institutional-footer__oig-note">
-                                (<?php esc_html_e( 'línea confidencial', 'cst-cannabis' ); ?>)
+                                (<?php esc_html_e( 'línea confidencial — 24/7', 'cst-cannabis' ); ?>)
                             </span>
                         </li>
                     </ul>
                     <p class="cst-institutional-footer__oig-whistleblower">
-                        <?php esc_html_e( 'Los denunciantes están protegidos por la Ley 30-2005 contra represalias.', 'cst-cannabis' ); ?>
+                        <?php esc_html_e( 'Los denunciantes están protegidos contra represalias por la Ley 426-2000 (Ley para la Protección al Confidente) y la Ley 30-2005. Su identidad permanecerá protegida durante toda la investigación.', 'cst-cannabis' ); ?>
                     </p>
                 </div>
                 <?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
