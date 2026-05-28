@@ -68,9 +68,9 @@ class CST_Core {
         if ( class_exists( 'CST_Login_Throttle' ) ) {
             new CST_Login_Throttle();
         }
-        if ( class_exists( 'CST_Consent' ) ) {
-            new CST_Consent();
-        }
+        // Cookie consent is handled by the CookieYes (cookie-law-info) plugin;
+        // the built-in CST_Consent banner is intentionally not instantiated to
+        // avoid showing two competing consent prompts.
         if ( class_exists( 'CST_Content_Seeder' ) ) {
             new CST_Content_Seeder();
         }
