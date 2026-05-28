@@ -43,9 +43,6 @@ get_header();
     <?php // 4. Course features. ?>
     <?php get_template_part( 'template-parts/section', 'course-features' ); ?>
 
-    <?php // 5. Statistics (dark background). ?>
-    <?php get_template_part( 'template-parts/section', 'stats-highlight' ); ?>
-
     <?php // 6. Enrollment CTA. ?>
     <?php get_template_part( 'template-parts/section', 'enrollment-cta' ); ?>
 
