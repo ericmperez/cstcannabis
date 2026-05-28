@@ -147,7 +147,9 @@ add_action( 'wp_enqueue_scripts', function () {
             'resourceFound'   => __( '%d recurso encontrado', 'cst-cannabis' ),
             'resourcesFound'  => __( '%d recursos encontrados', 'cst-cannabis' ),
         ],
-        'locale'    => function_exists( 'pll_current_language' ) ? pll_current_language( 'locale' ) : 'es-PR',
+        // Normalize WP's underscore locale (es_ES) to a valid BCP-47 tag
+        // (es-ES) so JS toLocaleString() doesn't throw RangeError.
+        'locale'    => str_replace( '_', '-', function_exists( 'pll_current_language' ) ? pll_current_language( 'locale' ) : 'es-PR' ),
     ] );
 }, 20 );
 
