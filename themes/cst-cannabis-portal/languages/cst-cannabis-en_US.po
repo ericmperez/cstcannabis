@@ -849,6 +849,10 @@ msgid "Transparencia — <a href=\"%s\" target=\"_blank\" rel=\"noopener norefer
 msgstr "Transparency — <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Law 141-2019</a>."
 
 #: template-parts/footer-institutional.php
+msgid "Portal oficial del Gobierno de Puerto Rico: <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">pr.gov</a>."
+msgstr "Official portal of the Government of Puerto Rico: <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">pr.gov</a>."
+
+#: template-parts/footer-institutional.php
 msgid "Política de cookies"
 msgstr "Cookie policy"
 

@@ -194,6 +194,16 @@ $address = get_theme_mod( 'cst_address' );
                         [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ]
                     );
                     ?>
+                    &nbsp;&middot;&nbsp;
+                    <?php
+                    echo wp_kses(
+                        sprintf(
+                            __( 'Portal oficial del Gobierno de Puerto Rico: <a href="%s" target="_blank" rel="noopener noreferrer">pr.gov</a>.', 'cst-cannabis' ),
+                            'https://pr.gov'
+                        ),
+                        [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ]
+                    );
+                    ?>
                 </p>
             </div>
 
