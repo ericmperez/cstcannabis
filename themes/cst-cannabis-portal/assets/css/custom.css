@@ -747,12 +747,20 @@ h1, h2, h3, h4, h5, h6 {
    green tint for a darker navy scrim that keeps the title legible while
    letting the image read through. */
 .cst-hero--home .cst-hero__overlay {
-    background: linear-gradient(
-        180deg,
-        rgba(15, 23, 42, 0.55) 0%,
-        rgba(15, 23, 42, 0.35) 42%,
-        rgba(28, 40, 84, 0.72) 100%
-    );
+    background:
+        /* subtle brand-green accent washing in from the lower-left */
+        linear-gradient(
+            120deg,
+            rgba(127, 163, 91, 0.32) 0%,
+            rgba(127, 163, 91, 0.08) 36%,
+            rgba(127, 163, 91, 0) 58%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(15, 23, 42, 0.52) 0%,
+            rgba(15, 23, 42, 0.33) 42%,
+            rgba(28, 40, 84, 0.70) 100%
+        );
 }
 
 /* Decorative dot-grid pattern */
