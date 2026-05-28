@@ -276,7 +276,18 @@ class CST_Chatbot {
                  aria-label="<?php esc_attr_e( 'Ventana de chat', 'cst-core' ); ?>">
 
                 <div class="cst-chatbot__header">
-                    <span class="cst-chatbot__title"><?php esc_html_e( 'Asistente Virtual', 'cst-core' ); ?></span>
+                    <span class="cst-chatbot__avatar" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2a2 2 0 012 2v1h3a3 3 0 013 3v8a3 3 0 01-3 3H7a3 3 0 01-3-3V8a3 3 0 013-3h3V4a2 2 0 012-2zm-3 9a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/>
+                        </svg>
+                    </span>
+                    <span class="cst-chatbot__heading">
+                        <span class="cst-chatbot__title"><?php esc_html_e( 'Asistente Virtual', 'cst-core' ); ?></span>
+                        <span class="cst-chatbot__status">
+                            <span class="cst-chatbot__status-dot" aria-hidden="true"></span>
+                            <?php esc_html_e( 'En línea', 'cst-core' ); ?>
+                        </span>
+                    </span>
                     <button type="button" class="cst-chatbot__close" id="cst-chatbot-close"
                             aria-label="<?php esc_attr_e( 'Cerrar chat', 'cst-core' ); ?>">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
