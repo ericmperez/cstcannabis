@@ -45,6 +45,9 @@ get_header();
     <?php // 4. FAQ accordion. ?>
     <?php get_template_part( 'template-parts/section', 'course-faq' ); ?>
 
+    <?php // 4b. Línea PAS crisis-support safety notice. ?>
+    <?php get_template_part( 'template-parts/section', 'course-safety' ); ?>
+
     <?php // 5. Footer CTA with registration form + contact. ?>
     <?php get_template_part( 'template-parts/section', 'course-footer-cta' ); ?>
 

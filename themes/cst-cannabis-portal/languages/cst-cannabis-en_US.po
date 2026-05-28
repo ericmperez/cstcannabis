@@ -1299,3 +1299,15 @@ msgstr "By submitting this form, you accept our <a href=\"%s\">Privacy Policy</a
 #: plugins/cst-core/includes/class-cst-forms-hardening.php
 msgid "Website (deje en blanco)"
 msgstr "Website (leave blank)"
+
+#: template-parts/section-course-safety.php
+msgid "Recurso de apoyo en crisis"
+msgstr "Crisis support resource"
+
+#: template-parts/section-course-safety.php
+msgid "¿Necesitas apoyo? No estás solo."
+msgstr "Need support? You are not alone."
+
+#: template-parts/section-course-safety.php
+msgid "Si tú o alguien que conoces atraviesa una crisis emocional o de salud mental, comunícate con la Línea PAS de ASSMCA: %s. Disponible 24/7, gratuita y confidencial."
+msgstr "If you or someone you know is going through an emotional or mental-health crisis, contact ASSMCA's Línea PAS: %s. Available 24/7, free and confidential."

@@ -4709,6 +4709,78 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* --- Línea PAS safety notice --- */
+
+.cst-course-safety {
+    padding: var(--cst-space-xl, 2rem) var(--cst-space-md, 1rem);
+}
+
+.cst-course-safety__card {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--cst-space-md, 1rem);
+    background: var(--cst-color-navy, #1C2854);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: var(--cst-space-lg, 1.5rem) var(--cst-space-xl, 2rem);
+    box-shadow: 0 4px 16px rgba(28, 40, 84, 0.12);
+}
+
+.cst-course-safety__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.cst-course-safety__body {
+    flex: 1;
+}
+
+.cst-course-safety__title {
+    margin: 0 0 0.25rem;
+    font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    color: #ffffff;
+}
+
+.cst-course-safety__text {
+    margin: 0;
+    font-family: var(--cst-font-body, 'Open Sans', system-ui, sans-serif);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cst-course-safety__phone {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.cst-course-safety__phone:hover,
+.cst-course-safety__phone:focus-visible {
+    color: var(--cst-color-green-light, #C5DEB0);
+}
+
+@media (max-width: 768px) {
+    .cst-course-safety__card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--cst-space-md, 1rem) var(--cst-space-lg, 1.5rem);
+    }
+}
+
 /* ==========================================================================
    Course Hero — Ken Burns motion (subtle slow zoom + drift)
    Applies only to the course landing page hero. Honors reduced-motion.
