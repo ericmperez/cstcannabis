@@ -1528,7 +1528,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Stats dark background (home page) --- */
 
-.cst-section--stats-dark {
+.cst-section.cst-section--stats-dark {
     background: var(--cst-color-secondary);
 }
 

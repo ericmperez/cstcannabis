@@ -998,12 +998,12 @@ msgid "Vista previa del certificado digital — ejemplo ilustrativo"
 msgstr "Preview of the digital certificate — illustrative example"
 
 #: template-parts/section-course-footer-cta.php
-msgid "11 Módulos"
-msgstr "11 Modules"
+msgid "9 Módulos"
+msgstr "9 Modules"
 
 #: template-parts/section-course-footer-cta.php
-msgid "11 módulos a tu propio ritmo, 24/7"
-msgstr "11 modules at your own pace, 24/7"
+msgid "9 módulos a tu propio ritmo, 24/7"
+msgstr "9 modules at your own pace, 24/7"
 
 #: template-parts/section-course-footer-cta.php
 msgid "A tu ritmo, 24/7"
@@ -1062,8 +1062,8 @@ msgid "Emitido por la Comisión para la Seguridad en el Tránsito de Puerto Rico
 msgstr "Issued by the Puerto Rico Traffic Safety Commission"
 
 #: template-parts/section-course-cards.php
-msgid "11 módulos educativos completos"
-msgstr "11 complete educational modules"
+msgid "9 módulos educativos completos"
+msgstr "9 complete educational modules"
 
 #: template-parts/section-course-footer-cta.php
 msgid "Al registrarse, usted acepta nuestra <a href=\"%s\">Política de Privacidad</a> conforme a la Ley 39-2012. Sus datos serán utilizados exclusivamente para el proceso de registro y emisión de certificado."
