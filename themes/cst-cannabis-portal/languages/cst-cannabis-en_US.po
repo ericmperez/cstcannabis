@@ -907,3 +907,395 @@ msgstr "Enroll in the course"
 #: sidebar.php
 msgid "Curso gratuito sobre cannabis medicinal y seguridad vial. Obtén tu certificado digital."
 msgstr "Free course on medical cannabis and road safety. Get your digital certificate."
+
+#: template-parts/header-institutional.php
+msgid "Portal Cannabis y Seguridad en el Tránsito"
+msgstr "Cannabis and Road Safety Portal"
+
+#: page-templates/template-home.php
+msgid "Educación, prevención y datos para proteger vidas"
+msgstr "Education, prevention, and data to protect lives"
+
+#: template-parts/section-course-pillars.php
+msgid "Propósito"
+msgstr "Purpose"
+
+#: template-parts/section-course-pillars.php
+msgid "¿En qué consiste este curso?"
+msgstr "What is this course about?"
+
+#: template-parts/section-course-pillars.php
+msgid "Consumo responsable y toma de decisiones"
+msgstr "Responsible use and decision-making"
+
+#: template-parts/section-course-pillars.php
+msgid "Seguridad vial y cumplimiento en tránsito"
+msgstr "Road safety and traffic compliance"
+
+#: template-parts/section-course-pillars.php
+msgid "Protección familiar y corresponsabilidad ciudadana"
+msgstr "Family protection and shared civic responsibility"
+
+#: template-parts/section-course-pillars.php
+msgid "Ver curso completo"
+msgstr "View full course"
+
+#: template-parts/section-course-pillars.php
+msgid "Ofrece orientación clara sobre el uso responsable del cannabis medicinal, señales de afectación y prácticas que reducen riesgos en la vida diaria, promoviendo decisiones informadas y seguras."
+msgstr "Provides clear guidance on the responsible use of medical cannabis, signs of impairment, and practices that reduce daily risks, promoting informed and safe decisions."
+
+#: template-parts/section-course-pillars.php
+msgid "Aborda el impacto del cannabis medicinal en la conducción, las responsabilidades legales vigentes en Puerto Rico y las alternativas seguras para evitar conducir bajo los efectos."
+msgstr "Addresses the impact of medical cannabis on driving, current legal responsibilities in Puerto Rico, and safe alternatives to avoid driving under its effects."
+
+#: template-parts/section-course-pillars.php
+msgid "Promueve entornos seguros en el hogar, la protección de menores y la corresponsabilidad entre ciudadanos, instituciones y comunidades para prevenir incidentes y daños evitables."
+msgstr "Promotes safe home environments, the protection of minors, and shared responsibility among citizens, institutions, and communities to prevent incidents and avoidable harm."
+
+#: template-parts/section-course-pillars.php
+msgid "Frente al auge del <strong>cannabis medicinal en Puerto Rico</strong>, esta plataforma de orientación ciudadana busca armonizar los beneficios terapéuticos con la seguridad legal y social. Ofrece información clave sobre <strong>consumo responsable, normativas de tránsito y protección familiar</strong> en tres áreas clave:"
+msgstr "Amid the rise of <strong>medical cannabis in Puerto Rico</strong>, this citizen-focused platform seeks to balance therapeutic benefits with legal and social safety. It offers key information on <strong>responsible use, traffic regulations, and family protection</strong> across three core areas:"
+
+#: template-parts/section-trust-strip.php
+msgid "Aprobado por la Comisión para la Seguridad en el Tránsito"
+msgstr "Approved by the Traffic Safety Commission"
+
+
+#: page-templates/template-course.php
+msgid "Curso de Cannabis y Seguridad Vial"
+msgstr "Cannabis and Road Safety Course"
+
+#: page-templates/template-course.php
+msgid "Recurso educativo gratuito de la Comisión para la Seguridad en el Tránsito."
+msgstr "A free educational resource from the Traffic Safety Commission."
+
+#: template-parts/section-course-footer-cta.php
+msgid "Recurso educativo gratuito de la Comisión para la Seguridad en el Tránsito"
+msgstr "A free educational resource from the Traffic Safety Commission"
+
+#: page-templates/template-course.php
+msgid "Regístrate"
+msgstr "Sign up"
+
+#: page-templates/template-course.php
+msgid "Ir al curso"
+msgstr "Go to course"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Crear cuenta y comenzar"
+msgstr "Create account and start"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Ya tengo cuenta — iniciar sesión"
+msgstr "I already have an account — sign in"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Ver mi escritorio"
+msgstr "View my dashboard"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Vista previa del certificado digital — ejemplo ilustrativo"
+msgstr "Preview of the digital certificate — illustrative example"
+
+#: template-parts/section-course-footer-cta.php
+msgid "11 Módulos"
+msgstr "11 Modules"
+
+#: template-parts/section-course-footer-cta.php
+msgid "11 módulos a tu propio ritmo, 24/7"
+msgstr "11 modules at your own pace, 24/7"
+
+#: template-parts/section-course-footer-cta.php
+msgid "A tu ritmo, 24/7"
+msgstr "At your own pace, 24/7"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Certificado digital verificable"
+msgstr "Verifiable digital certificate"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Certificado verificable"
+msgstr "Verifiable certificate"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Contenido completo"
+msgstr "Full content"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Crea una cuenta gratuita en menos de un minuto. Toma el curso a tu ritmo desde cualquier dispositivo y descarga tu certificado digital al aprobar el examen final."
+msgstr "Create a free account in under a minute. Take the course at your own pace from any device and download your digital certificate once you pass the final exam."
+
+#: template-parts/section-course-footer-cta.php
+msgid "Fecha de aprobación"
+msgstr "Date of completion"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Inscripción gratuita y sin costo"
+msgstr "Free enrollment, no cost"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Otorgado a"
+msgstr "Awarded to"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Regístrate y obtén tu certificado"
+msgstr "Register and get your certificate"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Sin costo alguno"
+msgstr "At no cost"
+
+#: template-parts/section-course-footer-cta.php
+msgid "VISTA PREVIA"
+msgstr "PREVIEW"
+
+#: template-parts/section-course-footer-cta.php
+msgid "[ Su nombre aquí ]"
+msgstr "[ Your name here ]"
+
+#: template-parts/section-course-footer-cta.php
+msgid "¿Necesitas ayuda?"
+msgstr "Need help?"
+
+#: template-parts/section-course-cards.php
+msgid "Emitido por la Comisión para la Seguridad en el Tránsito de Puerto Rico"
+msgstr "Issued by the Puerto Rico Traffic Safety Commission"
+
+#: template-parts/section-course-cards.php
+msgid "11 módulos educativos completos"
+msgstr "11 complete educational modules"
+
+#: template-parts/section-course-footer-cta.php
+msgid "Al registrarse, usted acepta nuestra <a href=\"%s\">Política de Privacidad</a> conforme a la Ley 39-2012. Sus datos serán utilizados exclusivamente para el proceso de registro y emisión de certificado."
+msgstr "By registering, you accept our <a href=\"%s\">Privacy Policy</a> under Law 39-2012. Your data will be used exclusively for the registration process and certificate issuance."
+
+#: template-parts/footer-institutional.php
+msgid "Puede informar de manera anónima por cualquiera de los siguientes canales:"
+msgstr "You may report anonymously through any of the following channels:"
+
+#: template-parts/footer-institutional.php
+msgid "Formulario en línea — oig.pr.gov/informa"
+msgstr "Online form — oig.pr.gov/informa"
+
+#: template-parts/footer-institutional.php
+msgid "línea confidencial — 24/7"
+msgstr "confidential line — 24/7"
+
+#: template-parts/footer-institutional.php
+msgid "Los denunciantes están protegidos contra represalias por la Ley 426-2000 (Ley para la Protección al Confidente) y la Ley 30-2005. Su identidad permanecerá protegida durante toda la investigación."
+msgstr "Whistleblowers are protected against retaliation under Law 426-2000 (Whistleblower Protection Act) and Law 30-2005. Your identity remains protected throughout the investigation."
+
+#: page-templates/template-about.php
+msgid "Sobre nosotros"
+msgstr "About us"
+
+#: page-templates/template-about.php
+msgid "Conoce nuestra misión, propósito y compromiso con la seguridad vial en Puerto Rico."
+msgstr "Learn about our mission, purpose, and commitment to road safety in Puerto Rico."
+
+#: page-templates/template-about.php
+msgid "La Comisión para la Seguridad en el Tránsito de Puerto Rico (CST) es la agencia gubernamental encargada de promover la seguridad vial en todo el territorio. A través de este portal educativo, nos dedicamos a informar sobre el uso responsable del cannabis medicinal y su relación con la seguridad en las carreteras."
+msgstr "The Puerto Rico Traffic Safety Commission (CST) is the government agency responsible for promoting road safety across the territory. Through this educational portal, we are dedicated to informing the public about the responsible use of medical cannabis and its relationship to road safety."
+
+#: page-templates/template-about.php
+msgid "Con la aprobación de la Ley 42-2017 que reguló el uso del cannabis medicinal en Puerto Rico, surgió la necesidad de educar a la población sobre los efectos de esta sustancia en la capacidad de conducir. Este portal es nuestra respuesta a esa necesidad."
+msgstr "With the passage of Law 42-2017 regulating the use of medical cannabis in Puerto Rico, the need arose to educate the public about the effects of this substance on driving ability. This portal is our response to that need."
+
+#: page-templates/template-statistics.php
+msgid "Estadísticas"
+msgstr "Statistics"
+
+#: plugins/cst-core stat post titles
+msgid "Pacientes registrados"
+msgstr "Registered patients"
+
+msgid "Fatalidades viales"
+msgstr "Traffic fatalities"
+
+msgid "Dispensarios activos"
+msgstr "Active dispensaries"
+
+msgid "Talleres educativos"
+msgstr "Educational workshops"
+
+msgid "Registro de pacientes por año"
+msgstr "Patient registration by year"
+
+msgid "Condiciones más comunes"
+msgstr "Most common conditions"
+
+msgid "Fatalidades viales por año"
+msgstr "Traffic fatalities by year"
+
+msgid "Desglose de accidentes por sustancia"
+msgstr "Accidents broken down by substance"
+
+msgid "Participantes en talleres por año"
+msgstr "Workshop participants by year"
+
+msgid "Alcance por tipo de actividad"
+msgstr "Outreach by activity type"
+
+msgid "Pacientes registrados (PR)"
+msgstr "Registered patients (PR)"
+
+msgid "Establecimientos licenciados (PR)"
+msgstr "Licensed establishments (PR)"
+
+msgid "Dispensarios activos (PR)"
+msgstr "Active dispensaries (PR)"
+
+msgid "% conductores fatales con THC (EE. UU.)"
+msgstr "% of fatal-crash drivers with THC (U.S.)"
+
+msgid "Pacientes registrados de cannabis medicinal en PR"
+msgstr "Registered medical cannabis patients in PR"
+
+msgid "Distribución de licencias por tipo (PR)"
+msgstr "License distribution by type (PR)"
+
+msgid "Penetración del programa (% pob. adulta de PR)"
+msgstr "Program reach (% PR adult population)"
+
+msgid "Muertes en accidentes con cannabis presente (EE. UU., %)"
+msgstr "Deaths in crashes with cannabis present (U.S., %)"
+
+msgid "Conductores nocturnos de fin de semana con marihuana (EE. UU.)"
+msgstr "Weekend nighttime drivers with marijuana (U.S.)"
+
+msgid "Conductores lesionados con sustancia detectada (EE. UU. 2025)"
+msgstr "Injured drivers with substance detected (U.S. 2025)"
+
+msgid "Concentración promedio de THC en conductores positivos"
+msgstr "Average THC concentration in positive drivers"
+
+msgid "Fatalidades viales en Puerto Rico (anual)"
+msgstr "Traffic fatalities in Puerto Rico (annual)"
+
+msgid "Inscripciones al curso en línea"
+msgstr "Online course enrollments"
+
+msgid "Certificados emitidos"
+msgstr "Certificates issued"
+
+msgid "Tasa de aprobación del examen final"
+msgstr "Final-exam pass rate"
+
+#: plugins/cst-core stat source labels
+msgid "Chen et al. 2024 — n≈14,000 conductores con accidente fatal"
+msgstr "Chen et al. 2024 — n≈14,000 drivers in fatal crashes"
+
+msgid "Comisión para la Seguridad en el Tránsito, 2024"
+msgstr "Traffic Safety Commission, 2024"
+
+msgid "CST — cst.pr.gov/estadisticas (cifra oficial actualizada)"
+msgstr "CST — cst.pr.gov/estadisticas (official updated figure)"
+
+msgid "CST Educación — registro interno de aprobación"
+msgstr "CST Education — internal approval log"
+
+msgid "CST Educación — Tutor LMS (a poblar)"
+msgstr "CST Education — Tutor LMS (to be populated)"
+
+msgid "CST Educación — Tutor LMS (datos internos)"
+msgstr "CST Education — Tutor LMS (internal data)"
+
+msgid "CST Educación, 2024"
+msgstr "CST Education, 2024"
+
+msgid "Departamento de Salud, 2024"
+msgstr "Department of Health, 2024"
+
+msgid "Estudio 2025 — conductores lesionados, prevalencia THC vs. alcohol"
+msgstr "2025 study — injured drivers, THC vs. alcohol prevalence"
+
+msgid "Estudio EE. UU. citado por NHTSA — umbral típico 2-5 ng/mL"
+msgstr "U.S. study cited by NHTSA — typical threshold 2–5 ng/mL"
+
+msgid "JRCM / Departamento de Salud, ene. 2025"
+msgstr "JRCM / Department of Health, Jan. 2025"
+
+msgid "JRCM / Departamento de Salud, PR"
+msgstr "JRCM / Department of Health, PR"
+
+msgid "JRCM 2024 — 114,818 pacientes / pob. adulta de PR"
+msgstr "JRCM 2024 — 114,818 patients / PR adult population"
+
+msgid "JRCM, mar. 2025"
+msgstr "JRCM, Mar. 2025"
+
+msgid "JRCM, mar. 2025 — informe de establecimientos"
+msgstr "JRCM, Mar. 2025 — establishments report"
+
+msgid "Junta Reglamentadora del Cannabis Medicinal, 2024"
+msgstr "Medical Cannabis Regulatory Board, 2024"
+
+msgid "NHTSA — National Roadside Surveys 2007 y 2013-14"
+msgstr "NHTSA — National Roadside Surveys 2007 and 2013–14"
+
+msgid "NHTSA / FARS — análisis citado por AAA Foundation 2024"
+msgstr "NHTSA / FARS — analysis cited by AAA Foundation 2024"
+
+#: plugins/cst-core stat chart labels
+msgid "% conductores con THC detectado"
+msgstr "% drivers with THC detected"
+
+msgid "% conductores positivos"
+msgstr "% positive drivers"
+
+msgid "% muertes con cannabis presente"
+msgstr "% deaths with cannabis present"
+
+msgid "Accidentes"
+msgstr "Accidents"
+
+msgid "Fatalidades"
+msgstr "Fatalities"
+
+msgid "Licencias activas"
+msgstr "Active licenses"
+
+msgid "Participantes"
+msgstr "Participants"
+
+msgid "Porcentaje"
+msgstr "Percent"
+
+msgid "Porcentaje de pacientes"
+msgstr "Percent of patients"
+
+#: home.php
+msgid "Anteriores"
+msgstr "Previous"
+
+#: home.php
+msgid "Siguientes"
+msgstr "Next"
+
+#: home.php
+msgid "No hay publicaciones disponibles en este momento."
+msgstr "No posts available at this time."
+
+#: home.php
+msgid "Blog"
+msgstr "Blog"
+
+#: plugins/cst-core/includes/class-cst-statistics.php
+msgid "No hay estadísticas disponibles en este momento."
+msgstr "No statistics available at this time."
+
+#: plugins/cst-core/includes/class-cst-statistics.php
+msgid "Estadísticas públicas"
+msgstr "Public statistics"
+
+#: page-templates/template-contact.php
+msgid "Escríbenos para preguntas, comentarios o asistencia. Estamos para servirle."
+msgstr "Reach out with questions, comments, or assistance requests. We're here to help."
+
+#: page-templates/template-contact.php
+msgid "Al enviar este formulario, usted acepta nuestra <a href=\"%s\">Política de Privacidad</a> conforme a la Ley 39-2012. La información provista será utilizada únicamente para atender su solicitud."
+msgstr "By submitting this form, you accept our <a href=\"%s\">Privacy Policy</a> under Law 39-2012. The information provided will be used solely to respond to your request."
+
+#: plugins/cst-core/includes/class-cst-forms-hardening.php
+msgid "Website (deje en blanco)"
+msgstr "Website (leave blank)"

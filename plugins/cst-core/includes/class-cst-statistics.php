@@ -129,20 +129,25 @@ class CST_Statistics {
         $stats = [];
         while ( $query->have_posts() ) {
             $query->the_post();
-            $id = get_the_ID();
+            $id     = get_the_ID();
+            $title  = get_the_title();
+            $source = (string) get_post_meta( $id, '_cst_stat_source', true );
+            $clabel = (string) get_post_meta( $id, '_cst_stat_chart_label', true );
             $stats[] = [
                 'id'          => $id,
-                'title'       => get_the_title(),
+                // Pass DB-stored Spanish strings through the cst-cannabis domain so
+                // the EN site sees the translations from cst-cannabis-en_US.{po,mo}.
+                'title'       => $title  !== '' ? __( $title, 'cst-cannabis' ) : $title,
                 'value'       => get_post_meta( $id, '_cst_stat_value', true ),
                 'unit'        => get_post_meta( $id, '_cst_stat_unit', true ),
                 'icon'        => get_post_meta( $id, '_cst_stat_icon', true ),
-                'source'      => get_post_meta( $id, '_cst_stat_source', true ),
+                'source'      => $source !== '' ? __( $source, 'cst-cannabis' ) : $source,
                 'source_url'  => get_post_meta( $id, '_cst_stat_source_url', true ),
                 'order'       => get_post_meta( $id, '_cst_stat_order', true ),
                 'trend'       => get_post_meta( $id, '_cst_stat_trend', true ),
                 'category'    => get_post_meta( $id, '_cst_stat_category', true ),
                 'chart_type'  => get_post_meta( $id, '_cst_stat_chart_type', true ),
-                'chart_label' => get_post_meta( $id, '_cst_stat_chart_label', true ),
+                'chart_label' => $clabel !== '' ? __( $clabel, 'cst-cannabis' ) : $clabel,
                 'chart_data'  => get_post_meta( $id, '_cst_stat_chart_data', true ),
             ];
         }

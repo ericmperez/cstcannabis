@@ -32,8 +32,9 @@ class CST_Forms_Hardening {
     public function inject_honeypot( string $elements ): string {
         $hp = sprintf(
             '<span class="cst-hp-wrap" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">'
-                . '<label>Website (deje en blanco)<input type="text" name="%s" value="" autocomplete="off" tabindex="-1"></label>'
+                . '<label>%s<input type="text" name="%s" value="" autocomplete="off" tabindex="-1"></label>'
                 . '</span>',
+            esc_html__( 'Website (deje en blanco)', 'cst-cannabis' ),
             esc_attr( self::HONEYPOT_NAME )
         );
         // Prepend so it sits before the submit button (some bots fill in

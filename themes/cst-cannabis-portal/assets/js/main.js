@@ -147,7 +147,15 @@
     /* ------------------------------------------------------------------ */
 
     function initMobileDrawer() {
-        var nav = document.querySelector('.main-navigation');
+        // GeneratePress renders TWO .main-navigation elements: a small wrapper
+        // (#mobile-menu-control-wrapper) that holds just the toggle button, and
+        // the real menu nav (#site-navigation) that holds .main-nav. We need to
+        // operate on the real menu nav for the drawer panel and toggled state —
+        // otherwise `panel` is null and this whole function bails.
+        var nav = document.getElementById('site-navigation')
+            || document.querySelector('.main-navigation:has(.main-nav)')
+            || document.querySelector('.main-navigation');
+        var wrapperNav = document.getElementById('mobile-menu-control-wrapper');
         var toggle = document.querySelector('.menu-toggle');
         var panel = nav && nav.querySelector('.main-nav');
         if (!nav || !toggle || !panel) return;
@@ -180,13 +188,9 @@
         function openDrawer() {
             if (!mql.matches) return;
             lastFocused = document.activeElement;
-            // Measure scrollbar width BEFORE adding overflow:hidden so we can
-            // reserve that space as padding — prevents the content shift that
-            // makes the hamburger/X jump rightward.
-            var sbw = window.innerWidth - document.documentElement.clientWidth;
-            if (sbw > 0) {
-                document.body.style.paddingRight = sbw + 'px';
-            }
+            // Scroll lock without width-shift: relying on
+            // `html, body { scrollbar-gutter: stable }` to keep the gutter
+            // reserved so the page doesn't shift when overflow becomes hidden.
             document.documentElement.classList.add('cst-drawer-open');
             document.body.classList.add('cst-drawer-open');
             var items = focusableElements();
@@ -198,26 +202,37 @@
         function closeDrawer() {
             document.documentElement.classList.remove('cst-drawer-open');
             document.body.classList.remove('cst-drawer-open');
-            document.body.style.paddingRight = '';
             if (lastFocused && typeof lastFocused.focus === 'function') {
                 lastFocused.focus();
             }
         }
 
-        // Explicit toggle handler — fires regardless of where the button lives in the DOM.
-        // (After moveHamburger relocates the toggle, GP's own handler stops firing.)
-        toggle.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var isOpen = nav.classList.toggle('toggled');
-            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        // GeneratePress's own click handler toggles `.toggled` on the wrapper
+        // nav (#mobile-menu-control-wrapper). We mirror that change onto the
+        // real menu nav (#site-navigation) AFTER GP's handler runs, so the
+        // drawer panel CSS keyed off `.main-navigation.toggled` lights up.
+        // Using bubble-phase + a microtask defer keeps GP as the source of
+        // truth and avoids the duplicate-toggle that previously cancelled
+        // the click.
+        toggle.addEventListener('click', function () {
+            // Defer so GP's bubble-phase handler runs first.
+            setTimeout(function () {
+                var isOpen = wrapperNav && wrapperNav.classList.contains('toggled');
+                if (wrapperNav && wrapperNav !== nav) {
+                    nav.classList.toggle('toggled', isOpen);
+                }
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }, 0);
         });
 
-        // Watch toggled class — keeps drawer/backdrop/scroll-lock in sync regardless of trigger.
+        // Watch BOTH navs for `.toggled` changes — keeps drawer state in sync
+        // regardless of which one GP/our code mutates first.
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (m) {
                 if (m.attributeName === 'class') {
-                    if (nav.classList.contains('toggled')) {
+                    var open = nav.classList.contains('toggled') ||
+                        (wrapperNav && wrapperNav.classList.contains('toggled'));
+                    if (open) {
                         openDrawer();
                     } else {
                         closeDrawer();
@@ -226,10 +241,15 @@
             });
         });
         observer.observe(nav, { attributes: true });
+        if (wrapperNav && wrapperNav !== nav) {
+            observer.observe(wrapperNav, { attributes: true });
+        }
 
         // Backdrop click closes (via simulated toggle click for GP state sync).
         backdrop.addEventListener('click', function () {
-            if (nav.classList.contains('toggled')) {
+            var open = nav.classList.contains('toggled') ||
+                (wrapperNav && wrapperNav.classList.contains('toggled'));
+            if (open) {
                 toggle.click();
             }
         });
