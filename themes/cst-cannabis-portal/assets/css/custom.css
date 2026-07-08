@@ -1857,18 +1857,19 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     padding: var(--cst-space-xl) var(--cst-space-lg);
     background: var(--cst-color-white);
-    border: 1px solid var(--cst-color-gray-200);
-    border-radius: var(--cst-border-radius-lg);
-    box-shadow: var(--cst-shadow-sm);
-    transition: box-shadow var(--cst-transition), transform var(--cst-transition);
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
+    transition: box-shadow var(--cst-transition), transform var(--cst-transition), border-color var(--cst-transition);
     display: block;
 }
 
 .cst-section--course-features .cst-course-feature:hover {
     box-shadow: var(--cst-shadow-md);
+    border-color: var(--cst-color-primary, #5E7C3A);
     transform: translateY(-2px);
 }
 
+/* Rounded-square green-wash chip, matching the Pencil card icon language. */
 .cst-section--course-features .cst-course-feature__icon {
     display: inline-flex;
     align-items: center;
@@ -1876,9 +1877,9 @@ h1, h2, h3, h4, h5, h6 {
     width: 52px;
     height: 52px;
     margin-bottom: var(--cst-space-md);
-    border-radius: 50%;
-    background: var(--cst-alpha-green-10);
-    color: var(--cst-color-green-dark);
+    border-radius: 13px;
+    background: var(--cst-color-green-wash, #EEF3E7);
+    color: var(--cst-color-green-dark, #5E7C3A);
 }
 
 .cst-course-feature__label {
@@ -3941,10 +3942,33 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .cst-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--cst-space-md);
     text-align: center;
-    padding: var(--cst-space-3xl);
+    max-width: 460px;
+    margin: var(--cst-space-2xl) auto;
+    padding: var(--cst-space-3xl) var(--cst-space-xl);
+    background: #F6F8F4;
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
     color: var(--cst-color-text-muted);
     font-size: var(--cst-font-size-lg);
+    line-height: 1.6;
+}
+
+/* Green-wash icon chip (no markup needed — works on the bare <p>). */
+.cst-empty-state::before {
+    content: "";
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 13px;
+    background:
+        var(--cst-color-green-wash, #EEF3E7)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E7C3A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E")
+        center / 24px no-repeat;
 }
 
 /* ==========================================================================
