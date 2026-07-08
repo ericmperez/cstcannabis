@@ -128,6 +128,18 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
 - [ ] Búsqueda — Section "Resultados" — `search.php`.
 - [ ] 404 — Section "404" — `404.php`.
 
+## Cuándo parar
+
+Si al leer este archivo **todos** los ítems de "Elementos pendientes" ya están
+marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
+1. Anota en "Bitácora" que el proceso terminó, con fecha/hora.
+2. Haz commit de este archivo.
+3. Llama a `CronDelete` sobre el job recurrente que disparó esta iteración (usa
+   `TaskList`/contexto de la sesión para encontrar su ID si no lo tienes a mano)
+   para que deje de dispararse cada 4 minutos.
+4. Manda un `PushNotification` breve avisando que la conversión Pencil→código
+   está completa y lista para revisión/push del usuario.
+
 ## Bloqueos abiertos
 
 (ninguno todavía)
