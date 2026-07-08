@@ -36,7 +36,9 @@ function cst_top_accent(): void {
    Government Banner (top of page)
    ========================================================================== */
 
-add_action( 'generate_before_header', 'cst_government_banner', 5 );
+// Government banner removed by request (2026). NOTE: PRITS requires this
+// banner on .pr.gov portals — re-enable this line to restore it.
+// add_action( 'generate_before_header', 'cst_government_banner', 5 );
 
 function cst_government_banner(): void {
     ?>
