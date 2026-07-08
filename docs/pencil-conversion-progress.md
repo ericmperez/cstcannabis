@@ -80,15 +80,34 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       Accesibilidad, Términos de uso, Política de privacidad, Blog, Búsqueda, 404.
 - [x] Home hero — alineado a la izquierda, segundo CTA "Ver recursos" agregado
       (`cta2_text`/`cta2_url` en `cst_hero()`), copy y foto real preservados.
+- [x] Site Header, precisión total — re-extraído con `resolveVariables:true`:
+      franja verde superior (`cst-top-accent`, hook `generate_before_header`
+      prioridad 2), borde inferior 1px, ícono búsqueda circular relleno, CTA
+      verde plano + flecha, wordmark 2 líneas, lang-switcher transparente.
+- [x] Feature Card (componente reusable Pencil `c7wQJf`) = `.cst-pillar-card` en
+      `template-parts/section-course-pillars.php` (Home, sección "Propósito").
+      Reescrito para calzar exacto con Pencil: card plana, radio 14px, chip de
+      ícono verde claro `#EEF3E7` (antes círculo verde sólido), enlace "Saber
+      más →" (antes badge de número de paso + barra degradada superior).
+      **Bug preexistente encontrado y arreglado de paso**: el bloque CSS de
+      "Sobre nosotros" (`Nuestros pilares`, 4 tarjetas de valores) reutilizaba
+      el MISMO nombre de clase `.cst-pillar-card` que Home — colisión, no
+      código muerto. Renombrado a `.cst-value-card` /
+      `.cst-section--about-values` / `.cst-values-grid` en
+      `page-templates/template-about.php` y su propio bloque CSS, sin cambiar
+      ningún valor visual (verificado idéntico antes/después). Esto también
+      significa que el siguiente ítem de "Sobre nosotros — Section Valores"
+      ya tiene su CSS aislado y listo para comparar contra Pencil sin riesgo
+      de volver a chocar con Home.
 
 ## Elementos pendientes (en orden — trabajar de arriba hacia abajo)
 
-- [ ] Feature Card (componente reusable Pencil `c7wQJf`) — identificar dónde se usa
-      en el sitio real (probablemente `template-parts/section-course-pillars.php`,
-      `section-course-cards.php`, o `card-resource.php`) y alinear estilo (radio de
-      borde, sombra, icon-chip) contra el spec exacto de Pencil.
 - [ ] Home — Section "Pilares" (Consumo responsable / Seguridad vial / Protección
-      familiar) — `template-parts/section-course-pillars.php`.
+      familiar) — `template-parts/section-course-pillars.php`. La tarjeta
+      (Feature Card) ya quedó resuelta arriba; lo que falta revisar aquí es
+      SOLO el resto de la sección: intro/eyebrow/título/lead a la izquierda,
+      grid de 3 columnas, footer CTA "Ver curso completo" — comparar contra
+      el resto del frame Home de Pencil (fuera del Feature Card ya hecho).
 - [ ] Home — Section "Lo que aprenderás" — `template-parts/section-objectives.php`.
 - [ ] Home — Section "Por qué importa" (sección navy oscura con stat + callouts) —
       verificar si ya coincide con `section-course-impact.php` (que ya es navy);
@@ -149,3 +168,8 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
 - 2026-07-07 — Archivo creado. Header + Hero interior + Home hero ya completados
   en sesión de brainstorming previa (ver "Ya hecho" arriba) antes de iniciar el
   loop automatizado.
+- 2026-07-07 — Loop iniciado (`/loop 4m`, job cron `1eaf359d`). Primera iteración
+  (ejecutada de inmediato, sin esperar el disparo del cron): Site Header llevado
+  a precisión total contra Pencil, y Feature Card resuelto. Encontrado y
+  arreglado un bug preexistente de colisión de clases CSS entre Home y Sobre
+  nosotros (ver detalle arriba). Commit `88006bb` (sin push).
