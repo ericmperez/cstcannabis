@@ -37,10 +37,7 @@ $faqs = [
 <section class="cst-section cst-section--course-faq" role="region"
          aria-label="<?php esc_attr_e( 'Preguntas frecuentes', 'cst-cannabis' ); ?>">
     <div class="cst-container">
-        <?php cst_section_heading(
-            __( 'Preguntas Frecuentes', 'cst-cannabis' ),
-            __( 'Respuestas a las dudas más comunes sobre el curso y la certificación.', 'cst-cannabis' )
-        ); ?>
+        <h2 class="cst-course-faq__title"><?php esc_html_e( 'Preguntas frecuentes', 'cst-cannabis' ); ?></h2>
 
         <div class="cst-faq">
             <?php foreach ( $faqs as $faq ) : ?>

@@ -4651,30 +4651,48 @@ h1, h2, h3, h4, h5, h6 {
     padding-block: var(--cst-space-4xl);
 }
 
+/* Course FAQ (Pencil Sadc3): centered solid title + card-style accordion
+   items (#F6F8F4 fill, #E4E8EE border, 14px radius) with a green "+" toggle. */
+.cst-section.cst-section--course-faq {
+    background: #FFFFFF;
+}
+
+.cst-course-faq__title {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.6rem, 3.2vw, 2.125rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #18202E;
+    text-align: center;
+    margin: 0 0 var(--cst-space-xl);
+}
+
 .cst-faq {
-    max-width: var(--cst-container-narrow);
-    margin: var(--cst-space-2xl) auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 820px;
+    margin: 0 auto;
 }
 
 .cst-faq__item {
-    border-bottom: 1px solid var(--cst-color-gray-200);
-}
-
-.cst-faq__item:first-child {
-    border-top: 1px solid var(--cst-color-gray-200);
+    background: #F6F8F4;
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
 .cst-faq__question {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--cst-space-md);
+    gap: 16px;
     min-height: 44px;
-    padding: var(--cst-space-lg) var(--cst-space-sm);
-    font-family: var(--cst-font-heading);
-    font-size: var(--cst-font-size-base);
-    font-weight: 600;
-    color: var(--cst-color-navy);
+    padding: 20px 22px;
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #18202E;
     cursor: pointer;
     list-style: none;
 }
@@ -4688,39 +4706,38 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
 }
 
+/* Green "+" that rotates to "×" when the item is open. */
 .cst-faq__question::after {
     content: '';
     flex-shrink: 0;
     width: 20px;
     height: 20px;
-    background: var(--cst-color-navy);
-    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
-    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
+    background: var(--cst-color-green-dark, #5E7C3A);
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z'/%3E%3C/svg%3E");
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z'/%3E%3C/svg%3E");
     mask-size: contain;
     -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
     transition: transform var(--cst-transition);
 }
 
 .cst-faq__item[open] .cst-faq__question::after {
-    transform: rotate(180deg);
+    transform: rotate(45deg);
 }
 
 .cst-faq__question:hover {
-    color: var(--cst-color-green-dark);
-}
-
-.cst-faq__question:hover::after {
-    background: var(--cst-color-green-dark);
+    color: var(--cst-color-green-dark, #5E7C3A);
 }
 
 .cst-faq__answer {
-    padding: 0 var(--cst-space-sm) var(--cst-space-lg);
+    padding: 0 22px 20px;
 }
 
 .cst-faq__answer p {
-    font-size: var(--cst-font-size-sm);
-    line-height: 1.7;
-    color: var(--cst-color-gray-700);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #3A4353;
     margin: 0;
 }
 
