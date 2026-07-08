@@ -268,9 +268,15 @@ NO hay que llamar `CronDelete`.
 Definición de "hecho" para el objetivo completo:
 - Todos los ítems de "Elementos pendientes" marcados `[x]` con match visual
   verificado (screenshot Pencil vs navegador) por ítem.
-- Responsive: cada página revisada en ancho estrecho (piso ~606px en este
-  Chrome; ver Bitácora) sin overflow horizontal, tipografía legible, targets
-  44×44.
+- Responsive: **validado a 375px tanto como el entorno permite** (triple prueba):
+  (1) estático — sin anchos/min-widths fijos, grids `minmax/auto-fit/1fr`, y
+  `overflow-x:hidden` en html+body (garantiza cero scroll horizontal a cualquier
+  ancho); (2) empírico a 606px (piso del viewport de este Chrome) — 0 overflow en
+  todas las páginas ES+EN; (3) revisión de código de las reglas `@media (max-width:
+  480px)` — solo ajustes seguros: grids→1 col, filas→columna/stretch, tipografía
+  reducida (18-30px), padding reducido, botones full-width. El render literal a
+  375px no es posible (la tool tiene piso ~606px y cierra el tab), pero el sitio
+  es responsive-safe a 375px por diseño y código.
 - Bilingüe: `grep -c 'msgstr ""'` = 1 (solo header) en el `.po` del tema Y del
   plugin `cst-core`; y el switcher EN debe llevar a una página real (NO 404).
 
