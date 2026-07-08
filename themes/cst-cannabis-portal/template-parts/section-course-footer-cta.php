@@ -113,8 +113,8 @@ $secondary_txt = $is_logged_in
                         <div class="cst-certificate-mockup__border">
                             <div class="cst-certificate-mockup__ribbon"></div>
                             <div class="cst-certificate-mockup__seal">
-                                <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/cst-logo.svg' ); ?>"
-                                     alt="" width="80" height="26" aria-hidden="true" />
+                                <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/cst-logo-emblem.jpg' ); ?>"
+                                     alt="" width="1999" height="1280" aria-hidden="true" />
                             </div>
                             <p class="cst-certificate-mockup__label"><?php esc_html_e( 'Certificado de Aprobación', 'cst-cannabis' ); ?></p>
                             <div class="cst-certificate-mockup__divider"></div>

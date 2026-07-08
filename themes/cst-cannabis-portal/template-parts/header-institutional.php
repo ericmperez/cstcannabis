@@ -16,10 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="cst-institutional-header__branding">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cst-institutional-header__logo-link"
                    aria-label="<?php esc_attr_e( 'Ir a la página principal', 'cst-cannabis' ); ?>">
-                    <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/cst-logo.svg' ); ?>"
+                    <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/cst-logo-emblem.jpg' ); ?>"
                          class="cst-institutional-header__seal"
                          alt="<?php esc_attr_e( 'Sello de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ); ?>"
-                         width="861" height="280" />
+                         width="1999" height="1280" />
                 </a>
 
                 <div class="cst-institutional-header__titles">

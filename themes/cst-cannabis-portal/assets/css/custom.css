@@ -2705,9 +2705,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-certificate-mockup__seal img {
-    height: 24px;
+    height: 52px;
     width: auto;
-    opacity: 0.85;
+    opacity: 1;
 }
 
 .cst-certificate-mockup__label {
