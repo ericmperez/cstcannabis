@@ -6202,13 +6202,19 @@ img.cst-img-square {
    Mobile header v3 — hide redundant title on mobile
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Seal + hero already identify the portal; hide verbose title to free space */
+    /* Show the portal name on mobile (user request); hide only the verbose
+       agency eyebrow to save space. Portal name is styled compact above. */
     .cst-institutional-header__titles {
+        display: flex;
+    }
+
+    .cst-institutional-header__agency {
         display: none;
     }
 
     .cst-institutional-header__branding {
-        flex: 0 0 auto;
+        flex: 1 1 auto;
+        min-width: 0;
     }
 
     .cst-institutional-header__inner {
