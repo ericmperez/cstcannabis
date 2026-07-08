@@ -319,6 +319,15 @@ Resultado verificado: `/en/` → `/en/home/` 200 con `<html lang="en-US">` y str
 en inglés SIN fuga de español; ES intacto (`/` 200, `lang="es-ES"`). Todas las
 páginas de nav principal 200 en ambos idiomas. Switcher EN enlaza a `/en/home/`.
 
+**Strings (código, commiteado):** Un audit `wp i18n make-pot` reveló que el gate
+`grep msgstr ""` era engañoso — había strings USADAS pero AUSENTES del `.po`
+(fugaban español en EN). Traducidas TODAS: **112 en el tema** (commit `372ad9e`)
+y **56 en el plugin cst-core** (commit `36080ea`). Audit POT-vs-PO ahora = 0
+faltantes en ambos; `msgfmt -c` pasa. Además, el plugin cargaba su textdomain en
+`init` (antes del switch de Polylang) → recargaba español; fix: hook `wp` que
+recarga `cst-core` con el locale resuelto (commit `5363fba`, espeja el del tema).
+Verificado: chatbot/cookie/login rinden en inglés en `/en/`, ES intacto.
+
 **Pendiente bilingüe:**
 - Estos son cambios de BD, NO de git → hay que replicarlos en prod (wp-admin o un
   seeder). Considerar añadirlos a `CST_Content_Seeder`.
