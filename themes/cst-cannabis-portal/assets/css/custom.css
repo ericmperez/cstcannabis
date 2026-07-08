@@ -7097,3 +7097,9 @@ body {
     vertical-align: -2px;
     margin-right: 6px;
 }
+
+/* "Datos actualizados" live-data dot → primary blue (blue-dominant palette).
+   Cannabis-scoped: motoras loads its own theme CSS, not this file. */
+.cst-dashboard__meta-dot {
+    background: var(--cst-color-primary);
+}
