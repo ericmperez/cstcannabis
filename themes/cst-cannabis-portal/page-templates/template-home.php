@@ -25,6 +25,8 @@ get_header();
         'subtitle'         => '',
         'cta_text'         => __( 'Ver Curso', 'cst-cannabis' ),
         'cta_url'          => cst_course_url(),
+        'cta2_text'        => __( 'Ver recursos', 'cst-cannabis' ),
+        'cta2_url'         => home_url( '/recursos/' ),
         'class'            => 'cst-hero--home',
         'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-home.jpg',
         'scroll_indicator' => true,

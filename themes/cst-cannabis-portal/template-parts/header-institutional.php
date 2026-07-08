@@ -29,8 +29,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
             </div>
 
-            <!-- Right: Language Switcher -->
+            <!-- Right: Search, Language Switcher, Course CTA -->
             <div class="cst-institutional-header__actions">
+                <?php get_search_form(); ?>
+
                 <nav class="cst-lang-switcher" aria-label="<?php esc_attr_e( 'Selector de idioma', 'cst-cannabis' ); ?>">
                     <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
                         <ul class="cst-lang-switcher__list">
@@ -46,6 +48,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </ul>
                     <?php endif; ?>
                 </nav>
+
+                <?php cst_cta_button( __( 'Ver Curso', 'cst-cannabis' ), cst_course_url() ); ?>
             </div>
         </div>
     </div>

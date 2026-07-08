@@ -317,7 +317,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .cst-institutional-header {
-    background-color: var(--cst-color-secondary);
+    background-color: var(--cst-color-white);
     border-bottom: 3px solid var(--cst-color-primary);
     padding-block: var(--cst-space-md);
     position: sticky;
@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-institutional-header__agency {
     font-size: var(--cst-font-size-sm);
-    color: var(--cst-alpha-white-80);
+    color: var(--cst-color-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -394,7 +394,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--cst-font-heading);
     font-size: var(--cst-font-size-xl);
     font-weight: 700;
-    color: var(--cst-color-white, #ffffff);
+    color: var(--cst-color-secondary);
     letter-spacing: 0.01em;
 }
 
@@ -402,6 +402,22 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: var(--cst-space-md);
+}
+
+/* Compact "Ver Curso" CTA in the light header — full .cst-btn--primary
+   padding is sized for hero/body use, not a sticky header row. */
+.cst-institutional-header__actions .cst-btn--primary {
+    padding: var(--cst-space-sm) var(--cst-space-lg);
+    font-size: var(--cst-font-size-sm);
+}
+
+/* The hero on every page already carries a prominent "Ver Curso" CTA —
+   drop the header's copy on narrow screens so search + hamburger (which
+   initMoveHamburger() relocates into this same row) don't get cramped. */
+@media (max-width: 768px) {
+    .cst-institutional-header__actions .cst-btn--primary {
+        display: none;
+    }
 }
 
 /* Search — Toggle + Live Results */
@@ -415,9 +431,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Toggle button (magnifying glass) */
 .cst-search__toggle {
     background: none;
-    border: 1px solid var(--cst-alpha-white-20);
+    border: 1px solid var(--cst-color-gray-300);
     border-radius: var(--cst-border-radius);
-    color: var(--cst-alpha-white-75);
+    color: var(--cst-color-text-muted);
     cursor: pointer;
     padding: var(--cst-space-xs);
     min-height: 44px;
@@ -429,9 +445,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-search__toggle:hover {
-    color: var(--cst-color-white);
-    border-color: var(--cst-alpha-white-50);
-    background: var(--cst-alpha-white-8);
+    color: var(--cst-color-primary);
+    border-color: var(--cst-color-primary);
+    background: var(--cst-color-gray-100);
 }
 
 .cst-search__toggle:focus-visible {
@@ -478,10 +494,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     padding: var(--cst-space-xs) var(--cst-space-sm);
     padding-right: 40px;
-    border: 1px solid var(--cst-alpha-white-30);
+    border: 1px solid var(--cst-color-gray-300);
     border-radius: var(--cst-border-radius);
-    background: var(--cst-alpha-white-10);
-    color: var(--cst-color-white);
+    background: var(--cst-color-white);
+    color: var(--cst-color-text);
     font-size: var(--cst-font-size-sm);
     font-family: var(--cst-font-body);
     min-height: 44px;
@@ -489,14 +505,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-search__input::placeholder {
-    color: var(--cst-alpha-white-60);
+    color: var(--cst-color-text-muted);
 }
 
 .cst-search__input:focus {
     outline: 3px solid var(--cst-color-focus);
     outline-offset: 2px;
     border-color: var(--cst-color-focus);
-    background: var(--cst-alpha-white-15);
+    background: var(--cst-color-white);
 }
 
 /* Submit button inside input */
@@ -507,7 +523,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: var(--cst-alpha-white-75);
+    color: var(--cst-color-text-muted);
     cursor: pointer;
     padding: var(--cst-space-xs);
     min-height: 44px;
@@ -518,7 +534,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-search__submit:hover {
-    color: var(--cst-color-white);
+    color: var(--cst-color-primary);
 }
 
 .cst-search__submit:focus-visible {
@@ -621,9 +637,9 @@ h1, h2, h3, h4, h5, h6 {
     gap: 2px;
     margin: 0;
     padding: 2px;
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--cst-color-gray-100);
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    border: 1px solid var(--cst-color-gray-300);
 }
 
 .cst-lang-switcher__list li a {
@@ -642,19 +658,19 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--cst-color-text-muted);
     letter-spacing: 0.05em;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .cst-lang-switcher__list li a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--cst-color-secondary);
+    background: var(--cst-color-white);
 }
 
 .cst-lang-switcher__list li.current-lang a {
-    background-color: #fff;
-    color: var(--cst-color-navy);
+    background-color: var(--cst-color-secondary);
+    color: var(--cst-color-white);
 }
 
 /* ==========================================================================
@@ -701,6 +717,11 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.cst-hero--home .cst-hero__content {
+    text-align: left;
+    margin-inline: 0;
+}
+
 .cst-hero--home .cst-hero__title {
     font-family: var(--cst-font-heading, 'Montserrat', system-ui, sans-serif);
     font-size: clamp(1.75rem, 4vw, 2.75rem);
@@ -712,8 +733,12 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.08em;
     word-spacing: 0.06em;
     max-width: 22ch;
-    margin-inline: auto;
+    margin-inline: 0;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.cst-hero--home .cst-hero__actions {
+    justify-content: flex-start;
 }
 
 /* Small-caps fallback removed 2026-05-14 — was rendering the conjunction "y"
@@ -721,6 +746,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-hero--page {
     padding-block: var(--cst-space-3xl);
+    background-color: var(--cst-color-navy);
+}
+
+.cst-hero--page .cst-hero__overlay {
+    background: radial-gradient(circle at 88% 15%, var(--cst-alpha-green-15) 0%, transparent 55%);
+}
+
+.cst-hero--page .cst-hero__content {
+    text-align: left;
+    margin-inline: 0;
 }
 
 .cst-hero--slim {
