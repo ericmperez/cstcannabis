@@ -360,11 +360,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 992px) {
-    /* On desktop, push the portal title further right of the seal so it
-       sits closer to the language switcher rather than crowding the logo. */
+    /* Keep the portal title tight to the seal (user request: logo closer). */
     .cst-institutional-header__titles {
         text-align: left;
-        margin-left: var(--cst-space-2xl, 3rem);
+        margin-left: 0;
     }
 }
 
@@ -1434,16 +1433,24 @@ h1, h2, h3, h4, h5, h6 {
    styles live in the shared cst-core plugin (also used by the Motoras
    portal), so these overrides stay under the cannabis KPI grid only. */
 .cst-dashboard__kpi-grid .cst-kpi-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    min-height: 150px;
+    gap: 6px;
+    height: 100%;
+    min-height: 172px;
     padding: 24px;
-    background: #F6F8F4;
+    background: var(--cst-color-white);
     border: 1px solid #E4E8EE;
     border-radius: 14px;
     box-shadow: none;
     overflow: hidden;
+    transition: box-shadow var(--cst-transition), border-color var(--cst-transition);
+}
+
+.cst-dashboard__kpi-grid .cst-kpi-card:hover {
+    box-shadow: var(--cst-shadow-md);
+    border-color: var(--cst-color-primary);
 }
 
 /* Pencil KPI cards are flat — drop the plugin's colored top-accent bar. */
@@ -1459,20 +1466,42 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 6px;
+    border-radius: 12px;
     background: var(--cst-color-green-wash, #EAF2FB);
     color: var(--cst-color-green-dark, #2D6CB0);
-    font-size: 20px;
+    font-size: 22px;
+}
+
+/* Trend chip — pinned top-right, out of the column flow so the big numbers
+   stay aligned across all cards. Functional success/danger colors. */
+.cst-dashboard__kpi-grid .cst-kpi-card__trend {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(46, 125, 50, 0.1);
+    color: #2E7D32;
+}
+.cst-dashboard__kpi-grid .cst-kpi-card__trend--down {
+    background: var(--cst-alpha-red-15, rgba(238, 0, 0, 0.12));
+    color: var(--cst-color-error, #B23A3A);
 }
 
 .cst-dashboard__kpi-grid .cst-kpi-card__value {
     order: 1;
     font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
-    font-size: 2.125rem;
+    font-size: 2.375rem;
     font-weight: 800;
-    line-height: 1;
+    line-height: 1.05;
     color: #18202E;
 }
 
@@ -1483,9 +1512,28 @@ h1, h2, h3, h4, h5, h6 {
 
 .cst-dashboard__kpi-grid .cst-kpi-card__label {
     order: 2;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     line-height: 1.4;
-    color: #6C757D;
+    color: #495057;
+    font-weight: 600;
+}
+
+/* Source citation — pinned to the card bottom so it aligns across cards,
+   styled as a subtle footnote (not a bright link). */
+.cst-dashboard__kpi-grid .cst-kpi-card__source {
+    order: 3;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #EEF1F5;
+    font-size: 0.6875rem;
+    line-height: 1.45;
+    color: var(--cst-color-text-muted, #6C757D);
+}
+.cst-dashboard__kpi-grid .cst-kpi-card__source a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #C4CCD6;
+    text-underline-offset: 2px;
 }
 
 /* Estadísticas chart cards → Pencil (eg6hk): white flat card, 22px radius,
@@ -2537,7 +2585,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0.35em;
     width: 18px;
     height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237FA35B'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235B93CE'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -3967,7 +4015,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 13px;
     background:
         var(--cst-color-green-wash, #EAF2FB)
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E7C3A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E")
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232D6CB0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M16 13H8'/%3E%3Cpath d='M16 17H8'/%3E%3Cpath d='M10 9H8'/%3E%3C/svg%3E")
         center / 24px no-repeat;
 }
 
