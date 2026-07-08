@@ -217,14 +217,26 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       propio (usa el del padre GeneratePress). Este ítem probablemente necesita
       MÁS de una iteración: primero crear `single.php` básico con el layout, luego
       afinar estilo. Está bien partirlo en sub-iteraciones.
-- [~] Búsqueda — Section "Resultados" — `search.php`. **Mejora parcial aplicada
+- [x] Búsqueda — Section "Resultados" (Pencil `y17RyK`) — `search.php`. Verificado
+      en navegador: hero + caja de búsqueda expandida + grid de tarjetas de
+      resultado (`.cst-card`) coinciden con Pencil, sin overflow. **2 detalles
+      menores pendientes (no bloqueantes):** (a) `search.php` usa `get_the_date()`
+      (formato de opción "F j, Y") en vez del formato traducible "%1$s de %2$s de
+      %3$s" que usa `card-blog.php` → orden de fecha inconsistente; (b) los nombres
+      de mes salen en INGLÉS en páginas ES porque falta el **language pack de WP
+      core es_ES** (entorno sin internet; en prod: `wp language core install es_ES`).
+      Ambos son ortogonales al diseño Pencil.
+- [~] Búsqueda (nota histórica) — **Mejora parcial aplicada
       SIN verificar contra Pencil** (Pencil MCP estaba caído): se migró el
       markup de resultados de clases `.cst-search-result` sin estilo (bug
       preexistente — no tenían CSS) al sistema de tarjetas del sitio
       (`.cst-card`/`.cst-card-grid`), verificado en navegador que renderiza
       bien. Queda pendiente el pase final de precisión contra el frame Pencil
       `y17RyK` cuando Pencil vuelva.
-- [ ] 404 — Section "404" — `404.php`.
+- [x] 404 — Section "404" (Pencil `BYDcn`/`PFXX1`) — `404.php` + CSS. El código
+      "404" grande estaba SIN estilar (16px gris); ahora Montserrat 800 clamp→128px
+      verde-claro `#A9C58E`. Hero/links/búsqueda ya coincidían. Commit `750f43a`.
+      Verificado en navegador. Strings ya traducidos (EN).
 
 ## Cuándo parar
 
