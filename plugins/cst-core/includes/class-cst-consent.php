@@ -135,7 +135,7 @@ JS;
 .cst-consent__message a{color:#fff;text-decoration:underline}
 .cst-consent__actions{display:flex;gap:10px;flex-shrink:0}
 .cst-consent__btn{font-family:inherit;font-size:.875rem;font-weight:600;padding:10px 18px;border-radius:8px;border:none;cursor:pointer;transition:opacity .2s,transform .2s}
-.cst-consent__btn--accept{background:#7FA35B;color:#fff}
+.cst-consent__btn--accept{background:var(--cst-color-primary,#2D6CB0);color:#fff}
 .cst-consent__btn--decline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
 .cst-consent__btn:hover{opacity:.9}
 .cst-consent__btn:focus-visible{outline:3px solid #3B82C4;outline-offset:2px}
