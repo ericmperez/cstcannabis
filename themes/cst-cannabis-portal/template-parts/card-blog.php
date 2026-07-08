@@ -7,6 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 ?>
+<?php
+// Primary category → green-wash pill (Pencil "Cat Pill").
+$cst_cats     = get_the_category();
+$cst_category = ! empty( $cst_cats ) ? $cst_cats[0] : null;
+
+// Reading time (Pencil meta "· X min"): ~200 words/min, min 1.
+$cst_words    = str_word_count( wp_strip_all_tags( get_the_content() ) );
+$cst_read_min = max( 1, (int) round( $cst_words / 200 ) );
+?>
 <article class="cst-card cst-card--blog" aria-label="<?php the_title_attribute(); ?>">
     <?php if ( has_post_thumbnail() ) : ?>
         <div class="cst-card__image">
@@ -17,6 +26,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php endif; ?>
 
     <div class="cst-card__body">
+        <?php if ( $cst_category ) : ?>
+            <span class="cst-card__category"><?php echo esc_html( $cst_category->name ); ?></span>
+        <?php endif; ?>
+
+        <h3 class="cst-card__title">
+            <a href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+            </a>
+        </h3>
+
         <div class="cst-card__meta">
             <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
                 <?php
@@ -29,26 +48,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                 );
                 ?>
             </time>
+            <span class="cst-card__meta-sep" aria-hidden="true">·</span>
+            <span class="cst-card__read-time">
+                <?php
+                /* translators: %s = number of minutes to read the article. */
+                printf( esc_html__( '%s min', 'cst-cannabis' ), esc_html( (string) $cst_read_min ) );
+                ?>
+            </span>
         </div>
-
-        <h3 class="cst-card__title">
-            <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
-            </a>
-        </h3>
-
-        <?php if ( has_excerpt() || get_the_content() ) : ?>
-            <p class="cst-card__excerpt">
-                <?php echo esc_html( wp_trim_words( get_the_excerpt(), 20, '…' ) ); ?>
-            </p>
-        <?php endif; ?>
-
-        <a href="<?php the_permalink(); ?>" class="cst-card__link">
-            <?php esc_html_e( 'Leer más', 'cst-cannabis' ); ?>
-            <span class="sr-only">: <?php the_title(); ?></span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path d="M8.354 1.646a.5.5 0 010 .708L3.207 7.5H14.5a.5.5 0 010 1H3.207l5.147 5.146a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" transform="scale(-1,1) translate(-16,0)"/>
-            </svg>
-        </a>
     </div>
 </article>

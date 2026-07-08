@@ -340,6 +340,15 @@ msgstr "Enroll now"
 msgid "Últimas publicaciones"
 msgstr "Latest posts"
 
+#: template-parts/section-latest-posts.php
+msgid "Ver todas"
+msgstr "See all"
+
+#: template-parts/card-blog.php
+#, php-format
+msgid "%s min"
+msgstr "%s min"
+
 #: page-templates/template-home.php
 msgid "Artículos recientes sobre cannabis medicinal y seguridad vial."
 msgstr "Recent articles on medical cannabis and road safety."
