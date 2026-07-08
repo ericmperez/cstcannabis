@@ -3551,6 +3551,22 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+/* Navigation button lists on the 404 page (.cst-404__links) and the empty
+   search-results state (.cst-search-empty__actions) were unstyled <ul>s, so
+   the browser drew disc bullets and a left indent beside each button while
+   the buttons themselves sat centered — a visibly broken layout. Render them
+   as a centered, wrapping row of buttons with no list markers. */
+.cst-404__links,
+.cst-search-empty__actions {
+    list-style: none;
+    margin: var(--cst-space-xl) 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cst-space-md);
+    justify-content: center;
+}
+
 /* ==========================================================================
    GP Overrides
    ========================================================================== */
