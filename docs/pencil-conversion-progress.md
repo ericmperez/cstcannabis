@@ -118,27 +118,87 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       `::after` que Pencil no tiene). String nuevo "Contenido del curso" →
       "Course content" en `.po` + `.mo` recompilado. Verificado en navegador
       desktop (coincide con Pencil) y a 606px (1 columna, sin overflow).
-- [ ] Home — Section "Por qué importa" (sección navy oscura con stat + callouts) —
-      verificar si ya coincide con `section-course-impact.php` (que ya es navy);
-      si coincide, marcar hecho sin cambios.
-- [ ] Home — Section "Enrollment CTA" (gradiente verde) —
-      `template-parts/section-enrollment-cta.php`.
-- [ ] Home — Section "Últimas publicaciones" —
-      `template-parts/section-latest-posts.php` + `card-blog.php`.
-- [ ] Footer institucional (componente global, todas las páginas) —
-      `template-parts/footer-institutional.php` — comparar estructura de columnas
-      exacta contra Pencil (Portal / Institución / Legal).
-- [ ] Curso — Section "Intro Curso".
-- [ ] Curso — Section "Módulos" — `template-parts/section-course-features.php`.
-- [ ] Curso — Section "FAQ" — `template-parts/section-course-faq.php`.
-- [ ] Curso — Section "Enrollment CTA" — verificar si comparte patrón con la de
-      Home (si ya se resolvió arriba, este ítem puede ser trivial).
+- [~] Home — Section "Por qué importa" — **DIFERIDO: requiere decisión de
+      estructura/contenido.** El nodo Pencil `ZYcoy` es un bloque navy con 3
+      TARJETAS DE STAT (números verde-claro `#A9C58E` 52/800 sobre cards
+      translúcidas `#FFFFFF0F` borde `#FFFFFF26`, radio 14) + nota "Cifras
+      ilustrativas para diseño — fuente final NHTSA/FARS". Problemas:
+      (1) esa sección NO se renderiza en el Home del sitio — `section-course-impact.php`
+      (navy, pero texto+1 stat+3 callouts con iconos, estructura distinta) se
+      incluye en la página **Curso** (`template-course.php:40`), no en el Home.
+      (2) los 3 stats de Pencil son mockup explícito ("cifras ilustrativas") →
+      la regla prohíbe copiarlos como contenido; y el sitio no tiene 3 stats
+      reales para esta sección. Decisión pendiente del usuario: ¿añadir una
+      sección navy de stats al Home?, ¿con qué números reales (de la página
+      Estadísticas)?, ¿o dejar el Home sin ella? Ver también la divergencia de
+      COMPOSICIÓN del Home abajo.
+- [x] Home — Section "Enrollment CTA" (Pencil `Qp2ZK`) —
+      `template-parts/section-enrollment-cta.php` + CSS. Fondo navy→degradado
+      verde `#5E7C3A→#4C6A2C` 120°; layout centrado→horizontal (copy izquierda +
+      botones derecha, space-between); título Montserrat 34/800; botón primario =
+      pill blanco con texto verde + flecha (Pencil). Se conservan el 2º CTA real
+      ("Ver temario", outline) y el subtítulo real. Subtítulo en blanco (el
+      `#EAF1E2` de Pencil falla AA ~3.96:1 sobre el verde claro). Apila <768px.
+      Verificado desktop (match). Commit `b91d2c7`.
+- [x] Home — Section "Últimas publicaciones" (Pencil `Z46l9w`) —
+      `template-parts/section-latest-posts.php` + `card-blog.php` + CSS. Head:
+      centrado→fila (eyebrow "Blog" + título izquierda, link "Ver todas →"
+      derecha). Card de blog (compartida con archivo Blog): pill de categoría
+      verde-wash + meta "fecha · N min" (tiempo de lectura), sin excerpt/"Leer
+      más", card entera clickable (link de título estirado). Base `.cst-card`
+      alineada a Pencil (radio 14, borde `#E4E8EE`, plana sin sombra). Se
+      conserva el formato de fecha traducible del loop. Strings "Ver todas"→"See
+      all", "%s min" al `.po` (gate=1). Verificado desktop. Commit `f00d4c1`.
+      Nota: el pill muestra "Uncategorized" en posts sin categoría (dato real;
+      asignar categorías reales es contenido del cliente).
+- [~] Footer institucional (componente global) — `footer-institutional.php` +
+      CSS. **Estilo alineado, estructura conservada por contenido real.** Fondo
+      degradado navy-darker→gray-900 → navy PLANO `#16203C` (Pencil `fZ390`
+      exacto). Commit `cb69e72`. NO se restructuró a las 4 columnas mínimas de
+      Pencil (Brand/Portal/Institución/Legal) porque el footer real tiene
+      contenido legalmente requerido que el mockup omite: bloque OIG de denuncias
+      anónimas + protección al confidente (Ley 426-2000/30-2005), declaración de
+      igualdad de oportunidades, statements Ley 229/141 + pr.gov, contactos,
+      redes. Pencil = guía de estilo, no spec de contenido. Pendiente opcional
+      (decisión usuario): ¿quitar el subrayado verde de los títulos de columna
+      (Pencil no lo tiene) y reordenar la fila inferior a copyright-izq/badges-der?
+- [~] Curso — Section "Intro Curso" (Pencil `JOEdH`) — **DIFERIDO estructural.**
+      El sitio no tiene una sección "Intro" separada; en su lugar `template-course.php`
+      usa `section-course-impact.php` (navy stats+callouts). Mapear Pencil Intro
+      (blanco, "Intro Inner" a 2 col) requiere decidir qué contenido real va ahí.
+- [~] Curso — Section "Módulos" (Pencil `htjFi`) — **DIFERIDO estructural.** Pencil
+      es un grid de módulos numerados estilo "Lo que aprenderás"; el sitio usa
+      `section-course-cards.php` (tarjetas Digital/Interactivo/Certificado, otro
+      contenido). No mapea 1:1 sin decisión de contenido.
+- [x] Curso — Section "FAQ" (Pencil `Sadc3`) — `section-course-faq.php` + CSS.
+      Título sólido centrado (sin subtítulo/gradiente) + items tarjeta
+      `#F6F8F4`/borde `#E4E8EE`/r14 con "+" verde→"×". 5 FAQs reales. Commit `329b2d2`.
+- [~] Curso — Section "Enrollment CTA" (Pencil `c7Usm`, = banner verde de Home) —
+      **DIFERIDO:** el sitio usa `section-course-footer-cta.php`, que es un
+      FORMULARIO de registro real (Tutor LMS), no el banner simple de Pencil.
+      Convertirlo quitaría el formulario real. Decisión: ¿añadir el banner verde
+      aparte, o dejar el formulario? El hero de Curso (`.cst-hero--course`, foto
+      real) NUNCA se toca.
 - [ ] Recursos — Section "Recursos" (grid de tarjetas + filtro) —
       `page-templates/template-resources.php` + `card-resource.php`.
 - [ ] Estadísticas — Section "KPIs" — `page-templates/template-statistics.php`.
 - [ ] Estadísticas — Section "Chart" (Chart.js).
-- [ ] Sobre nosotros — Section "Misión".
-- [ ] Sobre nosotros — Section "Valores".
+- [~] Sobre nosotros — Section "Misión" (Pencil `PFWL4`) — **DIFERIDO estructural.**
+      Pencil es 2-col (texto 600 + imagen 360 rounded). El sitio tiene DOS
+      secciones de texto (Misión + "¿Por qué este portal?") sin imagen, con copy
+      real. Añadir imagen/2-col requiere decidir imagen real (Pencil usa una
+      foto Unsplash mockup) y si fusionar las 2 secciones.
+- [x] Sobre nosotros — Section "Valores" (Pencil `kdpw4`) — `template-about.php`
+      + CSS. Sección plana `#F8F9FA`, 4 tarjetas en fila (chip verde-wash 50×50
+      r13 + ícono, título 19/700 `#18202E`, desc 14 `#3A4353`, borde `#E4E8EE`
+      r14 padding 26). Sin subtítulo. 4 valores reales conservados. Commit `746f39e`.
+- [x] **GLOBAL — títulos de sección sólidos** (`746f39e`): `.cst-section-heading__title`
+      pasó de gradiente verde→navy + barra subrayado a SÓLIDO `#18202E` Montserrat
+      800 sin barra, alineando a Pencil TODAS las secciones que usan
+      `cst_section_heading` (Misión, Purpose, Valores, Contacto, statistics
+      "Fuentes", course-features, course-cards, upcoming-events). Arregla además
+      una falla WCAG AA (extremo verde del gradiente ~2.88:1). Caja Contacto navy
+      conserva su override blanco (verificado, sin romperse).
 - [ ] Contacto — Section "Contacto" (tarjetas info + formulario CF7).
 - [ ] Accesibilidad — Section "A11y" (contenido hardcodeado, revisar solo estilo
       de contenedor/tipografía, NO el contenido legal en sí).
