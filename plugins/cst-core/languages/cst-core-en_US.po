@@ -397,3 +397,174 @@ msgstr "Type Your Question"
 #: assets/js/chatbot.js
 msgid "Enviar mensaje"
 msgstr "Send Message"
+
+msgid "CST Core"
+msgstr "CST Core"
+
+msgid "https://cst.pr.gov"
+msgstr "https://cst.pr.gov"
+
+msgid "Core functionality for CST educational portals — CPTs, security headers, accessibility, chatbot, WhatsApp, and statistics."
+msgstr "Core functionality for CST educational portals — CPTs, security headers, accessibility, chatbot, WhatsApp, and statistics."
+
+msgid "Comisión para la Seguridad en el Tránsito de Puerto Rico"
+msgstr "Puerto Rico Traffic Safety Commission"
+
+msgid "En línea"
+msgstr "Online"
+
+msgid "Preferencias de cookies"
+msgstr "Cookie preferences"
+
+#, php-format
+msgid "Usamos cookies para analizar el tráfico del portal de manera anónima. Consulte nuestra <a href=\"%s\">Política de Privacidad</a> para más información."
+msgstr "We use cookies to analyze portal traffic anonymously. See our <a href=\"%s\">Privacy Policy</a> for more information."
+
+msgid "Usamos cookies para analizar el tráfico del portal de manera anónima."
+msgstr "We use cookies to analyze portal traffic anonymously."
+
+msgid "Rechazar"
+msgstr "Decline"
+
+msgid "Aceptar"
+msgstr "Accept"
+
+msgid "No se pudo procesar la solicitud."
+msgstr "The request could not be processed."
+
+msgid "Correo electrónico o usuario"
+msgstr "Email or username"
+
+msgid "Contraseña"
+msgstr "Password"
+
+msgid "Recordarme"
+msgstr "Remember me"
+
+msgid "Iniciar sesión"
+msgstr "Sign in"
+
+msgid "Sistema oficial del Gobierno de Puerto Rico"
+msgstr "Official system of the Government of Puerto Rico"
+
+msgid "Curso de Cannabis Medicinal y Seguridad Vial"
+msgstr "Medical Cannabis and Road Safety Course"
+
+msgid "Acceso al Curso"
+msgstr "Course Access"
+
+msgid "Ingrese sus credenciales para continuar con su capacitación en cannabis medicinal y seguridad vial."
+msgstr "Enter your credentials to continue your training in medical cannabis and road safety."
+
+msgid "¿Olvidaste tu contraseña?"
+msgstr "Forgot your password?"
+
+msgid "Crear cuenta nueva"
+msgstr "Create a new account"
+
+#, php-format
+msgid "Al iniciar sesión usted acepta nuestra <a href=\"%s\">Política de Privacidad</a> conforme a la Ley 39-2012 del Gobierno de Puerto Rico."
+msgstr "By signing in you accept our <a href=\"%s\">Privacy Policy</a> in accordance with Act 39-2012 of the Government of Puerto Rico."
+
+msgid "Sesión activa"
+msgstr "Active session"
+
+msgid "Ya has iniciado sesión"
+msgstr "You are already signed in"
+
+#, php-format
+msgid "Bienvenido, %s."
+msgstr "Welcome, %s."
+
+msgid "Ir a mi escritorio"
+msgstr "Go to my dashboard"
+
+msgid "Demasiados intentos fallidos. Por favor espere unos minutos antes de volver a intentar."
+msgstr "Too many failed attempts. Please wait a few minutes before trying again."
+
+msgid "Demasiados intentos. Por favor espere unos minutos antes de volver a intentar."
+msgstr "Too many attempts. Please wait a few minutes before trying again."
+
+msgid "Solicitud bloqueada"
+msgstr "Request blocked"
+
+msgid "Fuente (texto)"
+msgstr "Source (text)"
+
+msgid "URL de la fuente"
+msgstr "Source URL"
+
+msgid "Enlace verificable a la fuente. Si está presente, la fuente se renderiza como hipervínculo."
+msgstr "Verifiable link to the source. If present, the source renders as a hyperlink."
+
+msgid "Seleccionar imagen"
+msgstr "Select image"
+
+msgid "Usar esta imagen"
+msgstr "Use this image"
+
+msgid "Quitar"
+msgstr "Remove"
+
+msgid "Ninguna imagen seleccionada"
+msgstr "No image selected"
+
+msgid "Director, Comisión para la Seguridad en el Tránsito"
+msgstr "Director, Traffic Safety Commission"
+
+msgid "Certificado de Aprobación"
+msgstr "Certificate of Completion"
+
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+msgid "Banner de Consentimiento de Cookies"
+msgstr "Cookie Consent Banner"
+
+msgid "Sello / Logo del curso"
+msgstr "Course Seal / Logo"
+
+msgid "Imagen que aparece como sello principal del certificado. PNG transparente recomendado."
+msgstr "Image that appears as the main seal of the certificate. Transparent PNG recommended."
+
+msgid "Firma del Director"
+msgstr "Director's Signature"
+
+msgid "Suba o tome una foto de la firma del Director. PNG con fondo transparente para mejor resultado. Desde el celular puede usar la cámara directamente desde el botón."
+msgstr "Upload or take a photo of the Director's signature. PNG with a transparent background for best results. On mobile you can use the camera directly from the button."
+
+msgid "Nombre del Director"
+msgstr "Director's Name"
+
+msgid "Cargo (aparece bajo la firma)"
+msgstr "Title (appears under the signature)"
+
+msgid "Activar Google Analytics"
+msgstr "Enable Google Analytics"
+
+msgid "Measurement ID"
+msgstr "Measurement ID"
+
+msgid "Mostrar banner de cookies"
+msgstr "Show cookie banner"
+
+msgid "URL de Política de Privacidad"
+msgstr "Privacy Policy URL"
+
+msgid "Configure el sello, la firma y los datos del Director que aparecerán en el certificado de aprobación. La firma se sube desde la biblioteca de medios — desde un celular puede tomar la foto directamente."
+msgstr "Configure the seal, signature, and Director's details that will appear on the certificate of completion. The signature is uploaded from the media library — on mobile you can take the photo directly."
+
+msgid "Cambiar imagen"
+msgstr "Change image"
+
+msgid "Subir / Tomar foto"
+msgstr "Upload / Take photo"
+
+msgid "Ingrese su Measurement ID de Google Analytics 4 (formato G-XXXXXXXXXX) y active el seguimiento. Los administradores conectados no son rastreados."
+msgstr "Enter your Google Analytics 4 Measurement ID (format G-XXXXXXXXXX) and enable tracking. Logged-in administrators are not tracked."
+
+msgid "Muestra un banner al pie de cada página solicitando consentimiento de cookies. Google Analytics y otros sistemas de seguimiento solo se activan tras aceptar."
+msgstr "Shows a banner at the bottom of each page requesting cookie consent. Google Analytics and other tracking systems are only activated after acceptance."
+
+msgid "El Measurement ID debe tener el formato G-XXXXXXXXXX."
+msgstr "The Measurement ID must be in the format G-XXXXXXXXXX."
