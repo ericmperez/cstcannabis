@@ -35,7 +35,13 @@ $ts       = $date_raw ? strtotime( $date_raw ) : current_time( 'timestamp' );
 if ( ! $ts ) {
     $ts = current_time( 'timestamp' );
 }
-$date_display = date_i18n( get_option( 'date_format', 'j \d\e F \d\e Y' ), $ts );
+$date_display = sprintf(
+	/* translators: date parts — 1: day, 2: month name, 3: year. Reorder for the target language (e.g. "%2$s %1$s, %3$s" for English). */
+	esc_html__( '%1$s de %2$s de %3$s', 'cst-cannabis' ),
+	date_i18n( 'j', $ts ),
+	date_i18n( 'F', $ts ),
+	date_i18n( 'Y', $ts )
+);
 
 $director_name  = get_option( 'cst_certificate_director_name', __( 'Director', 'cst-cannabis' ) );
 $director_title = get_option( 'cst_certificate_director_title', __( 'Director, Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ) );
