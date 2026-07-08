@@ -108,8 +108,16 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
 
 ## Elementos pendientes (en orden — trabajar de arriba hacia abajo)
 
-- [ ] Home — Section "Lo que aprenderás" — `template-parts/section-objectives.php`.
-      Nodo Pencil: `GycwK` (hijo de Home `XCdjO`).
+- [x] Home — Section "Lo que aprenderás" — `template-parts/section-objectives.php`.
+      Nodo Pencil: `GycwK` (hijo de Home `XCdjO`). Head reescrito con eyebrow
+      (punto + "CONTENIDO DEL CURSO") + título sólido `#18202E` (antes verde
+      degradado + barrita subrayado). Tarjetas: de centradas con ícono círculo +
+      número grande difuminado → planas izquierda con chip numérico verde-wash
+      `#EEF3E7` 44×44 (número Montserrat 17/800 `#5E7C3A`), borde `#E4E8EE` 1px,
+      radio 14, padding 26. Sección plana `#F8F9FA` (quitada la onda decorativa
+      `::after` que Pencil no tiene). String nuevo "Contenido del curso" →
+      "Course content" en `.po` + `.mo` recompilado. Verificado en navegador
+      desktop (coincide con Pencil) y a 606px (1 columna, sin overflow).
 - [ ] Home — Section "Por qué importa" (sección navy oscura con stat + callouts) —
       verificar si ya coincide con `section-course-impact.php` (que ya es navy);
       si coincide, marcar hecho sin cambios.
@@ -156,18 +164,51 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
 
 ## Cuándo parar
 
-Si al leer este archivo **todos** los ítems de "Elementos pendientes" ya están
-marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
-1. Anota en "Bitácora" que el proceso terminó, con fecha/hora.
-2. Haz commit de este archivo.
-3. Llama a `CronDelete` sobre el job recurrente que disparó esta iteración (usa
-   `TaskList`/contexto de la sesión para encontrar su ID si no lo tienes a mano)
-   para que deje de dispararse cada 4 minutos.
-4. Manda un `PushNotification` breve avisando que la conversión Pencil→código
-   está completa y lista para revisión/push del usuario.
+**DRIVER ACTUAL (2026-07-08): este proceso ya NO lo maneja un cron.** El cron
+viejo (`1eaf359d`) fue cancelado. Ahora lo maneja el Stop hook de `/goal` de la
+sesión, con condición "loop … exactamente igual al Pencil … responsive …
+bilingüe … then finish". El hook se auto-limpia cuando la condición se cumple —
+NO hay que llamar `CronDelete`.
+
+Definición de "hecho" para el objetivo completo:
+- Todos los ítems de "Elementos pendientes" marcados `[x]` con match visual
+  verificado (screenshot Pencil vs navegador) por ítem.
+- Responsive: cada página revisada en ancho estrecho (piso ~606px en este
+  Chrome; ver Bitácora) sin overflow horizontal, tipografía legible, targets
+  44×44.
+- Bilingüe: `grep -c 'msgstr ""'` = 1 (solo header) en el `.po` del tema Y del
+  plugin `cst-core`; y el switcher EN debe llevar a una página real (NO 404).
+
+Si al leer este archivo **todos** esos criterios se cumplen: no hagas cambios de
+código. Anota en "Bitácora" que el proceso terminó (fecha/hora), haz commit de
+este archivo, y manda un `PushNotification` breve avisando que la conversión
+Pencil→código está completa y lista para revisión/push del usuario.
 
 ## Bloqueos abiertos
 
+- **2026-07-08 — RESUELTO: Pencil MCP volvió.** `get_editor_state` responde y
+  `batch_get`/`get_screenshot` funcionan (archivo `/Users/ericperez/Projects/cannabis`
+  abierto en la app). El bloqueo crítico de abajo (2026-07-07) queda superado.
+  Regla que sigue vigente: leer Pencil SECUENCIALMENTE desde una sola sesión;
+  NO despachar agentes paralelos que cada uno abra su propia conexión MCP.
+- **2026-07-08 — NUEVO, bilingüe: `http://localhost:8088/en/` devuelve 404.**
+  El switcher de idioma pinta un link EN a `/en/` pero esa URL no resuelve
+  (htmlLang sigue `es`). Es infraestructura Polylang (traducción de páginas +
+  front-page EN), preexistente y ajena a los cambios de estilo Pencil. Bloquea
+  el criterio "fully bilingual".
+  **CAUSA RAÍZ (diagnóstico 2026-07-08 vía WP-CLI):** Polylang está activo y la
+  front page es `Inicio` (ID 41, ES; `show_on_front=page`, `page_on_front=41`).
+  En la BD local NO existen las páginas duplicadas en inglés — no hay Home EN ni
+  traducciones EN de Curso/Recursos/Estadísticas/etc. (solo "Privacy Policy"
+  borrador y "Sample Page"). Polylang no encuentra front page EN → `/en/` 404.
+  Es problema de CONTENIDO/SEEDING, no de código: las UI strings `.po` sí están
+  traducidas, pero faltan los posts-página EN que Polylang enlaza. Arreglo =
+  crear duplicados EN de cada página vía Polylang y enlazarlos (el `pll` WP-CLI
+  no está disponible en este contenedor → hacerlo en wp-admin o con las
+  funciones `pll_*`). Decidir con el usuario: ¿contenido EN real (traductor) o
+  páginas EN template-driven (el body es mínimo; las strings del template
+  renderizan en EN solas vía `.mo`)? ¿Existen ya en producción y solo faltan
+  en el Docker local? BLOQUEA "fully bilingual" hasta resolverlo.
 - **2026-07-07 — CRÍTICO, requiere acción del usuario: Pencil MCP no responde.**
   El workflow paralelo de 16 agentes terminó SIN completar ni un solo ítem:
   los 17 agentes (16 + 1 de control) recibieron `MCP error -32603: Failed to
@@ -240,3 +281,12 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
   responder; mientras tanto el trabajo activo es el loop de 3 min de fixes
   generales (bilingüe + responsive), que no necesita Pencil.
   resto del checklist en vez de seguir estrictamente 1 ítem/4min.
+- 2026-07-08 — Pencil MCP volvió a responder. Reanudado el trabajo real bajo el
+  Stop hook de `/goal` (secuencial, una sesión). Ítem "Home — Lo que aprenderás"
+  (`GycwK`) completado: head con eyebrow + tarjetas de chip numérico, sección
+  plana `#F8F9FA` sin onda. Verificado desktop (match Pencil) + 606px (1 col).
+  String EN añadido y `.mo` recompilado. Hallado bug preexistente: switcher EN →
+  `/en/` da 404 (ver Bloqueos abiertos). Nota: `resize_window` de esta sesión
+  tiene piso de viewport ~606px y a veces cierra el tab group; la verificación
+  a 375px exacto no es posible con esta tool — se usa 606px + inspección de la
+  media query móvil como proxy.

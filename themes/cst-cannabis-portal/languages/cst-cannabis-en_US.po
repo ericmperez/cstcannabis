@@ -216,6 +216,10 @@ msgstr "At Your Own Pace"
 msgid "Aprobado CST"
 msgstr "CST Approved"
 
+#: template-parts/section-objectives.php
+msgid "Contenido del curso"
+msgstr "Course content"
+
 #: page-templates/template-home.php
 msgid "Lo que aprenderás"
 msgstr "What you will learn"
