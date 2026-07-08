@@ -20,9 +20,21 @@
     --cst-color-red:         #EE0000;
     --cst-color-blue:        #3B82C4;
     --cst-color-white:       #FFFFFF;
-    --cst-color-green:       #7FA35B; /* Verde institucional — DECORATIVE ONLY: 2.88:1 on white fails WCAG AA */
-    --cst-color-green-dark:  #5E7C3A; /* Verde accesible — 4.82:1 on white, passes WCAG AA */
+    /* Blue-dominant redesign (2026, per CST palette recommendation): the
+       "green" tokens now hold the primary BLUE — kept under these names so the
+       many `var(--cst-color-green*)` references recolor without per-node edits.
+       Green is reserved for cannabis only via --cst-color-cannabis* below. */
+    --cst-color-green:       #5B93CE; /* primary blue — soft/decorative */
+    --cst-color-green-dark:  #2D6CB0; /* accessible primary blue — 5.3:1 on white, passes WCAG AA */
     --cst-color-navy:        #1C2854; /* Azul autoridad (GUIDI Brand Style Book 2025) */
+
+    /* Green — reserved EXCLUSIVELY for cannabis representation (leaf, etc.). */
+    --cst-color-cannabis:       #5E7C3A;
+    --cst-color-cannabis-light: #7FA35B;
+    --cst-color-cannabis-wash:  #EEF3E7;
+    /* Caution / precaución (amber) + critical uses --cst-color-red. */
+    --cst-color-caution:        #E4A11B;
+    --cst-color-caution-wash:   #FCF3DD;
 
     /* Semantic tokens — primary is the accessible green so any
        `color: var(--cst-color-primary)` or white-on-primary fill
@@ -84,9 +96,9 @@
     --cst-transition:        0.2s ease-in-out;
 
     /* --- Gradients --- */
-    --cst-gradient-primary:      linear-gradient(135deg, #5E7C3A 0%, #A9C58E 100%);
-    --cst-gradient-hero:         linear-gradient(135deg, rgba(127,163,91,0.92) 0%, rgba(127,163,91,0.75) 50%, rgba(169,197,142,0.85) 100%);
-    --cst-gradient-accent:       linear-gradient(135deg, #7FA35B 0%, #1C2854 100%);
+    --cst-gradient-primary:      linear-gradient(135deg, #2D6CB0 0%, #AFCDEC 100%);
+    --cst-gradient-hero:         linear-gradient(135deg, rgba(45,108,176,0.92) 0%, rgba(45,108,176,0.75) 50%, rgba(90,147,206,0.85) 100%);
+    --cst-gradient-accent:       linear-gradient(135deg, #2D6CB0 0%, #1C2854 100%);
     --cst-gradient-section:      linear-gradient(180deg, #F8F9FA 0%, #EEF1F3 100%);
     --cst-gradient-card-border:  linear-gradient(135deg, var(--cst-color-green), var(--cst-color-navy));
 
@@ -97,7 +109,7 @@
 
     /* --- Enhanced shadows --- */
     --cst-shadow-xl:             0 12px 40px rgba(0, 0, 0, 0.15);
-    --cst-shadow-glow-primary:   0 4px 20px rgba(127, 163, 91, 0.35);
+    --cst-shadow-glow-primary:   0 4px 20px rgba(45, 108, 176, 0.35);
     --cst-shadow-glow-navy:      0 4px 20px rgba(28, 40, 84, 0.35);
 
     /* --- Timing --- */
@@ -109,11 +121,11 @@
 
     /* --- Glow shadows --- */
     --cst-shadow-glow-accent:     0 4px 20px rgba(59, 130, 196, 0.25);
-    --cst-shadow-glow-green-light: 0 4px 20px rgba(169, 197, 142, 0.25);
+    --cst-shadow-glow-green-light: 0 4px 20px rgba(175, 205, 236, 0.25);
 
     /* --- Color variants --- */
-    --cst-color-green-light: #A9C58E;
-    --cst-color-green-wash:  #EEF3E7; /* Light wash for icon chips on white cards. */
+    --cst-color-green-light: #AFCDEC;
+    --cst-color-green-wash:  #EAF2FB; /* Light blue wash for icon chips on white cards. */
     /* --cst-color-green-dark defined in the brand tokens block above. */
     --cst-color-navy-light:  #3A4D7A;
     --cst-color-navy-darker: #1A1A2E;
@@ -131,15 +143,15 @@
     --cst-banner-text:       var(--cst-color-white);
 
     /* --- Gradient text --- */
-    --cst-gradient-text:     linear-gradient(135deg, #7FA35B 0%, #1C2854 100%);
+    --cst-gradient-text:     linear-gradient(135deg, #2D6CB0 0%, #1C2854 100%);
 
     /* --- Alpha color tokens --- */
-    --cst-alpha-green-5:     rgba(127, 163, 91, 0.05);
-    --cst-alpha-green-8:     rgba(127, 163, 91, 0.08);
-    --cst-alpha-green-10:    rgba(127, 163, 91, 0.1);
-    --cst-alpha-green-12:    rgba(127, 163, 91, 0.12);
-    --cst-alpha-green-15:    rgba(127, 163, 91, 0.15);
-    --cst-alpha-green-20:    rgba(127, 163, 91, 0.2);
+    --cst-alpha-green-5:     rgba(45, 108, 176, 0.05);
+    --cst-alpha-green-8:     rgba(45, 108, 176, 0.08);
+    --cst-alpha-green-10:    rgba(45, 108, 176, 0.1);
+    --cst-alpha-green-12:    rgba(45, 108, 176, 0.12);
+    --cst-alpha-green-15:    rgba(45, 108, 176, 0.15);
+    --cst-alpha-green-20:    rgba(45, 108, 176, 0.2);
     --cst-alpha-navy-45:     rgba(28, 40, 84, 0.45);
     --cst-alpha-blue-15:     rgba(59, 130, 196, 0.15);
     --cst-alpha-white-3:     rgba(255, 255, 255, 0.03);
@@ -166,7 +178,7 @@
     --cst-alpha-red-15:      rgba(238, 0, 0, 0.15);
 
     /* --- Callout backgrounds --- */
-    --cst-callout-bg-default: linear-gradient(135deg, rgba(127,163,91,0.06) 0%, rgba(127,163,91,0.02) 100%);
+    --cst-callout-bg-default: linear-gradient(135deg, rgba(45,108,176,0.06) 0%, rgba(45,108,176,0.02) 100%);
     --cst-callout-bg-warning: linear-gradient(135deg, rgba(31,46,84,0.06) 0%, rgba(31,46,84,0.02) 100%);
     --cst-callout-bg-info:    linear-gradient(135deg, rgba(59,130,196,0.06) 0%, rgba(59,130,196,0.02) 100%);
 }
@@ -174,7 +186,7 @@
 /* High contrast mode */
 @media (prefers-contrast: high) {
     :root {
-        --cst-color-primary:    #3D5A1E;
+        --cst-color-primary:    #1E4A7A;
         --cst-color-secondary:  #0F1A36;
         --cst-shadow-sm:        0 0 0 1px var(--cst-color-black);
         --cst-shadow-md:        0 0 0 2px var(--cst-color-black);
@@ -192,7 +204,7 @@
         --cst-glass-blur:          none;
         --cst-glass-border:        2px solid var(--cst-color-black);
         --cst-gradient-text:       var(--cst-color-primary);
-        --cst-callout-bg-default:  rgba(127,163,91,0.08);
+        --cst-callout-bg-default:  rgba(45,108,176,0.08);
         --cst-callout-bg-warning:  rgba(31,46,84,0.08);
         --cst-callout-bg-info:     rgba(59,130,196,0.08);
     }
