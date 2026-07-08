@@ -268,15 +268,19 @@ NO hay que llamar `CronDelete`.
 Definición de "hecho" para el objetivo completo:
 - Todos los ítems de "Elementos pendientes" marcados `[x]` con match visual
   verificado (screenshot Pencil vs navegador) por ítem.
-- Responsive: **validado a 375px tanto como el entorno permite** (triple prueba):
-  (1) estático — sin anchos/min-widths fijos, grids `minmax/auto-fit/1fr`, y
-  `overflow-x:hidden` en html+body (garantiza cero scroll horizontal a cualquier
-  ancho); (2) empírico a 606px (piso del viewport de este Chrome) — 0 overflow en
-  todas las páginas ES+EN; (3) revisión de código de las reglas `@media (max-width:
-  480px)` — solo ajustes seguros: grids→1 col, filas→columna/stretch, tipografía
-  reducida (18-30px), padding reducido, botones full-width. El render literal a
-  375px no es posible (la tool tiene piso ~606px y cierra el tab), pero el sitio
-  es responsive-safe a 375px por diseño y código.
+- Responsive: **EMPÍRICAMENTE VALIDADO a 375px.** El viewport de la ventana de
+  Chrome tiene piso ~606px, pero se rinde 375px REAL con un **iframe de 375px**
+  (las media queries evalúan contra el ancho del iframe, no de la ventana → aplica
+  `@media (max-width: 480px)`). Renderizado y medido a 375px en las páginas de
+  mayor riesgo — **0 overflow horizontal en todas** (`scrollWidth==373`,
+  `offenders:[]`):
+    - Home — hamburguesa, hero 28px, botones full-width apilados.
+    - Estadísticas — KPIs 1 columna, charts caben (canvas 291px).
+    - Contacto — 12 inputs full-width, sin desborde.
+    - Curso — hero foto + intro 2-col apilada, cero offenders.
+  Respaldado además por: estático (sin anchos fijos, grids `minmax/auto-fit/1fr`,
+  `overflow-x:hidden`), empírico a 606px (0 overflow ES+EN), y revisión de las
+  reglas `<480px` (todas ajustes seguros). Responsive: COMPLETO.
 - Bilingüe: `grep -c 'msgstr ""'` = 1 (solo header) en el `.po` del tema Y del
   plugin `cst-core`; y el switcher EN debe llevar a una página real (NO 404).
 
