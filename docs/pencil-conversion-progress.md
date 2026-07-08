@@ -233,4 +233,10 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
   El resto de ítems NO se tocó. **Pencil sigue caído**; el usuario pivoteó a
   un nuevo loop de 3 min ("find something to fix, bilingüe + responsive") que
   NO depende de Pencil — el loop viejo de Pencil (cron `1eaf359d`) se canceló.
+- 2026-07-07 — Disparo residual del cron de Pencil ya cancelado. Sondeo de
+  Pencil (`get_editor_state`) = sigue caído (mismo error). Por la regla de
+  "Bloqueos abiertos": sin cambios de código, iteración saltada. El trabajo
+  de conversión Pencil↔código queda EN PAUSA hasta que Pencil MCP vuelva a
+  responder; mientras tanto el trabajo activo es el loop de 3 min de fixes
+  generales (bilingüe + responsive), que no necesita Pencil.
   resto del checklist en vez de seguir estrictamente 1 ítem/4min.
