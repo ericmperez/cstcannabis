@@ -5061,7 +5061,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: var(--cst-font-body, 'Open Sans', sans-serif);
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
     font-size: 0.8125rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -5083,14 +5083,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.01em;
-    color: var(--cst-color-secondary, #1C2854);
+    color: #18202E;
     margin: 0 0 var(--cst-space-md, 1rem);
 }
 
 .cst-pillars__lead {
     font-size: 1.0625rem;
     line-height: 1.65;
-    color: var(--cst-color-gray-700, #495057);
+    color: #3A4353;
     margin: 0;
 }
 
@@ -5142,6 +5142,18 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--cst-color-primary, #5E7C3A);
     background: var(--cst-color-green-wash, #EEF3E7);
     border-radius: 14px;
+}
+
+/* Pencil gives each pillar its own accent (green / blue / navy) instead
+   of repeating the same green chip three times. */
+.cst-pillar-card__icon--blue {
+    color: var(--cst-color-blue, #3B82C4);
+    background: #E7F0F8;
+}
+
+.cst-pillar-card__icon--navy {
+    color: var(--cst-color-secondary, #1C2854);
+    background: #E9ECF4;
 }
 
 .cst-pillar-card__icon svg {
