@@ -1676,3 +1676,36 @@ msgstr "Enroll in the free course from the Traffic Safety Commission and get you
 
 msgid "abre en nueva pestaña"
 msgstr "opens in a new tab"
+
+#: single.php
+#, php-format
+msgid "%1$s · %2$s min de lectura · Por %3$s"
+msgstr "%1$s · %2$s min read · By %3$s"
+
+#: single.php
+msgid "Compartir:"
+msgstr "Share:"
+
+#: single.php
+msgid "Compartir en Facebook"
+msgstr "Share on Facebook"
+
+#: single.php
+msgid "Compartir en X"
+msgstr "Share on X"
+
+#: single.php
+msgid "Compartir en LinkedIn"
+msgstr "Share on LinkedIn"
+
+#: single.php
+msgid "Copiar enlace"
+msgstr "Copy link"
+
+#: single.php
+msgid "Sigue leyendo"
+msgstr "Keep reading"
+
+#: single.php
+msgid "Publicaciones relacionadas"
+msgstr "Related posts"

@@ -1487,6 +1487,157 @@ h1, h2, h3, h4, h5, h6 {
     color: #6C757D;
 }
 
+/* ==========================================================================
+   Single article (Pencil Artículo — BknWv body + nuMbc related)
+   ========================================================================== */
+
+.cst-article {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.cst-article__image {
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.cst-article__image img {
+    display: block;
+    width: 100%;
+    height: clamp(220px, 40vw, 400px);
+    object-fit: cover;
+}
+
+.cst-article__body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #3A4353;
+}
+
+.cst-article__body > p:first-of-type {
+    font-size: 1.125rem;
+}
+
+.cst-article__body p {
+    margin: 0 0 1.25rem;
+}
+
+.cst-article__body h2 {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.625rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #18202E;
+    margin: 2rem 0 0.75rem;
+}
+
+.cst-article__body h3 {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #18202E;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.cst-article__body ul,
+.cst-article__body ol {
+    padding-left: 1.25rem;
+    margin: 0 0 1.25rem;
+}
+
+.cst-article__body li {
+    margin-bottom: 0.5rem;
+}
+
+.cst-article__body a {
+    color: var(--cst-color-green-dark, #5E7C3A);
+}
+
+.cst-article__body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+}
+
+/* Blockquotes render as the Pencil "Recuerda" callout. */
+.cst-article__body blockquote {
+    background: var(--cst-color-green-wash, #EEF3E7);
+    border-left: 4px solid var(--cst-color-green-dark, #5E7C3A);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 1.5rem 0;
+    color: #3A4353;
+    font-style: normal;
+}
+
+.cst-article__body blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.cst-article__share-divider {
+    border: 0;
+    border-top: 1px solid #E4E8EE;
+    margin: 0.5rem 0 0;
+}
+
+.cst-article__share-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.cst-article__share-label {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #18202E;
+}
+
+.cst-article__share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid #DEE2E6;
+    color: var(--cst-color-navy, #1C2854);
+    transition: border-color var(--cst-transition), color var(--cst-transition), background var(--cst-transition);
+}
+
+.cst-article__share-btn:hover,
+.cst-article__share-btn:focus-visible {
+    border-color: var(--cst-color-green-dark, #5E7C3A);
+    color: var(--cst-color-green-dark, #5E7C3A);
+    background: var(--cst-color-green-wash, #EEF3E7);
+}
+
+/* Related posts (Pencil nuMbc): flat #F8F9FA section, eyebrow + title + 3 cards. */
+.cst-section.cst-section--related {
+    background: #F8F9FA;
+}
+
+.cst-related__head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--cst-space-xl);
+}
+
+.cst-related__title {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.6rem, 3.2vw, 2.125rem);
+    font-weight: 800;
+    color: #18202E;
+    margin: 0;
+}
+
 /* --- Tags --- */
 
 .cst-card__tags {
