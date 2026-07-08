@@ -1,10 +1,10 @@
 <?php
 /**
- * single.php — CST Cannabis single article layout.
+ * single-cst_resource.php — Single educational resource layout.
  *
- * Matches the Pencil "Artículo" frame: a Blog-eyebrow hero with the article
- * title + meta, a centered prose body led by a featured image (or none),
- * share row, then related-post cards.
+ * Mirrors the article layout (navy hero + prose + share) but labels the
+ * item as a resource type (Guía / Video / Infografía / Documento), never
+ * as "Blog", and never prints an empty "Por …" byline.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,48 +22,45 @@ while ( have_posts() ) :
 
     $cst_words = str_word_count( wp_strip_all_tags( get_the_content() ) );
     $cst_min   = max( 1, (int) round( $cst_words / 200 ) );
-    $cst_cats  = get_the_category();
-    $cst_cat   = null;
-    foreach ( $cst_cats as $cst_maybe ) {
-        // Prefer a real category over the default Uncategorized.
-        if ( ! in_array( $cst_maybe->slug, [ 'uncategorized', 'uncategorized-en' ], true ) ) {
-            $cst_cat = $cst_maybe;
-            break;
-        }
-    }
-    if ( ! $cst_cat && ! empty( $cst_cats ) ) {
-        $cst_cat = $cst_cats[0];
-    }
 
-    $cst_author = trim( (string) get_the_author() );
-    // Prefer an institutional byline when the author is missing or a generic login.
-    if ( '' === $cst_author || in_array( strtolower( $cst_author ), [ 'admin', 'administrator', 'root' ], true ) ) {
-        $cst_author = __( 'CST Puerto Rico', 'cst-cannabis' );
-    }
+    $cst_types = get_the_terms( get_the_ID(), 'cst_resource_type' );
+    $cst_type  = ( $cst_types && ! is_wp_error( $cst_types ) ) ? $cst_types[0] : null;
+    $cst_label = $cst_type ? $cst_type->name : __( 'Recurso', 'cst-cannabis' );
 
+    // Date + reading time only (resources often have no author).
     $cst_meta = sprintf(
-        /* translators: 1: publish date, 2: reading-time minutes, 3: author name. */
-        esc_html__( '%1$s · %2$s min de lectura · Por %3$s', 'cst-cannabis' ),
+        /* translators: 1: publish date, 2: reading-time minutes. */
+        esc_html__( '%1$s · %2$s min de lectura', 'cst-cannabis' ),
         esc_html( get_the_date() ),
-        esc_html( (string) $cst_min ),
-        esc_html( $cst_author )
+        esc_html( (string) $cst_min )
     );
 
     cst_hero( [
-        'eyebrow'  => $cst_cat ? $cst_cat->name : __( 'Blog', 'cst-cannabis' ),
+        'eyebrow'  => $cst_label,
         'title'    => get_the_title(),
         'subtitle' => $cst_meta,
-        'class'    => 'cst-hero--page cst-hero--article',
+        'class'    => 'cst-hero--page cst-hero--article cst-hero--resource',
     ] );
 
     $cst_permalink = get_permalink();
     $cst_share     = rawurlencode( $cst_permalink );
     $cst_share_ttl = rawurlencode( get_the_title() );
+    $cst_resources_url = get_post_type_archive_link( 'cst_resource' );
+    if ( ! $cst_resources_url ) {
+        $cst_resources_url = home_url( '/recursos/' );
+    }
     ?>
 
-    <article <?php post_class( 'cst-section cst-section--article' ); ?>>
+    <article <?php post_class( 'cst-section cst-section--article cst-section--resource' ); ?>>
         <div class="cst-container">
             <div class="cst-article">
+
+                <p class="cst-article__back">
+                    <a href="<?php echo esc_url( $cst_resources_url ); ?>">
+                        <span aria-hidden="true">&larr;</span>
+                        <?php esc_html_e( 'Todos los recursos', 'cst-cannabis' ); ?>
+                    </a>
+                </p>
 
                 <?php if ( has_post_thumbnail() ) : ?>
                     <figure class="cst-article__image">
@@ -106,41 +103,48 @@ while ( have_posts() ) :
     </article>
 
     <?php
-    // Related posts — same primary category, newest first, excluding current.
+    // Related resources — same type when possible.
     $cst_related_args = [
-        'post_type'           => 'post',
+        'post_type'           => 'cst_resource',
         'posts_per_page'      => 3,
         'post__not_in'        => [ get_the_ID() ],
         'ignore_sticky_posts' => true,
         'no_found_rows'       => true,
     ];
-    if ( $cst_cat ) {
-        $cst_related_args['cat'] = $cst_cat->term_id;
+    if ( $cst_type ) {
+        $cst_related_args['tax_query'] = [
+            [
+                'taxonomy' => 'cst_resource_type',
+                'field'    => 'term_id',
+                'terms'    => $cst_type->term_id,
+            ],
+        ];
     }
     $cst_related = new WP_Query( $cst_related_args );
 
-    // Fall back to any recent posts if the category has no siblings.
     if ( ! $cst_related->have_posts() ) {
-        unset( $cst_related_args['cat'] );
+        unset( $cst_related_args['tax_query'] );
         $cst_related = new WP_Query( $cst_related_args );
     }
 
     if ( $cst_related->have_posts() ) :
         ?>
-        <section class="cst-section cst-section--related" aria-labelledby="cst-related-title">
+        <section class="cst-section cst-section--related" aria-labelledby="cst-related-resources-title">
             <div class="cst-container">
                 <div class="cst-related__head">
                     <span class="cst-eyebrow">
                         <span class="cst-eyebrow__dot" aria-hidden="true"></span>
-                        <?php esc_html_e( 'Sigue leyendo', 'cst-cannabis' ); ?>
+                        <?php esc_html_e( 'Más recursos', 'cst-cannabis' ); ?>
                     </span>
-                    <h2 id="cst-related-title" class="cst-related__title"><?php esc_html_e( 'Publicaciones relacionadas', 'cst-cannabis' ); ?></h2>
+                    <h2 id="cst-related-resources-title" class="cst-related__title">
+                        <?php esc_html_e( 'También te puede interesar', 'cst-cannabis' ); ?>
+                    </h2>
                 </div>
                 <div class="cst-card-grid cst-card-grid--3">
                     <?php
                     while ( $cst_related->have_posts() ) :
                         $cst_related->the_post();
-                        get_template_part( 'template-parts/card', 'blog' );
+                        get_template_part( 'template-parts/card', 'resource' );
                     endwhile;
                     wp_reset_postdata();
                     ?>
