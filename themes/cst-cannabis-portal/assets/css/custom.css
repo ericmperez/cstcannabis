@@ -2378,6 +2378,21 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-1px);
 }
 
+/* Keep the CF7 ajax spinner out of the resting layout; hide honeypot input. */
+.cst-contact-form .wpcf7-spinner {
+    display: none;
+}
+
+.cst-contact-form form.submitting .wpcf7-spinner {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.cst-contact-form input[type="text"][name*="website"],
+.cst-contact-form .wpcf7-form .wpcf7cf-hidden {
+    display: none !important;
+}
+
 /* Validation messages */
 .cst-contact-form .wpcf7-not-valid-tip {
     color: var(--cst-color-danger);
