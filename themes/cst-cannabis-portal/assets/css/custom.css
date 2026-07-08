@@ -2341,30 +2341,31 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+/* Pencil filter pills (oadvO): inactive #F6F8F4 + #E4E8EE border,
+   active solid green #5E7C3A (no gradient/glow). */
 .cst-filter-tabs__btn {
-    background: var(--cst-color-gray-100);
-    border: 2px solid transparent;
-    padding: var(--cst-space-sm) var(--cst-space-lg);
+    background: #F6F8F4;
+    border: 1px solid #E4E8EE;
+    padding: 10px 18px;
+    min-height: 40px;
     border-radius: 999px;
     cursor: pointer;
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
     font-weight: 600;
     font-size: var(--cst-font-size-sm);
-    color: var(--cst-color-gray-700);
-    transition: background var(--cst-transition), color var(--cst-transition), border-color var(--cst-transition), box-shadow var(--cst-transition), transform var(--cst-transition);
+    color: #3A4353;
+    transition: background var(--cst-transition), color var(--cst-transition), border-color var(--cst-transition), transform var(--cst-transition);
 }
 
 .cst-filter-tabs__btn:hover {
-    border-color: var(--cst-color-primary);
-    color: var(--cst-color-primary);
-    background: var(--cst-alpha-green-5);
-    transform: translateY(-1px);
+    border-color: var(--cst-color-primary, #5E7C3A);
+    color: var(--cst-color-green-dark, #5E7C3A);
 }
 
 .cst-filter-tabs__btn.is-active {
-    background: var(--cst-gradient-primary);
+    background: var(--cst-color-green-dark, #5E7C3A);
     color: var(--cst-color-white);
-    border-color: var(--cst-color-primary);
-    box-shadow: var(--cst-shadow-glow-primary);
+    border-color: var(--cst-color-green-dark, #5E7C3A);
 }
 
 /* ==========================================================================
