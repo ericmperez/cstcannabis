@@ -375,6 +375,10 @@ que el tema lee (functions.php:161). Verificado: nav EN en inglés, ES intacto.
   requieren traducción humana real (ver `docs/TRANSLATION-GUIDE.md`).
 - Sin posts/recursos EN (contenido del cliente).
 - Gate UI strings sigue en 1 (solo header) — OK.
+- **Meses en español: ARREGLADO local** — instalado el pack `es_ES` de WP core
+  (`wp language core install es_ES`); las fechas ES ahora localizan ("28 de abril
+  de 2026"). Es cambio de runtime (no git) → repetir en prod. Además `search.php`
+  pasó a usar el formato de fecha traducible como la card de blog (commit `2e4ff29`).
 
 ## Bitácora
 
