@@ -179,8 +179,12 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       Convertirlo quitaría el formulario real. Decisión: ¿añadir el banner verde
       aparte, o dejar el formulario? El hero de Curso (`.cst-hero--course`, foto
       real) NUNCA se toca.
-- [ ] Recursos — Section "Recursos" (grid de tarjetas + filtro) —
-      `page-templates/template-resources.php` + `card-resource.php`.
+- [x] Recursos — Filtros (Pencil `oadvO`) — pills reestilizados: inactivos
+      `#F6F8F4`/borde `#E4E8EE`, activo verde SÓLIDO `#5E7C3A` (sin degradado/glow).
+      Commit `f4ff51b`. Cards heredan la base `.cst-card` ya alineada a Pencil.
+      **NO verificable localmente**: `cst_resource` tiene 0 posts publicados → la
+      página muestra estado vacío (sin cards ni tabs con datos). Estilo aplicado
+      es spec-exacto; falta pase visual cuando haya recursos seeded.
 - [ ] Estadísticas — Section "KPIs" — `page-templates/template-statistics.php`.
 - [ ] Estadísticas — Section "Chart" (Chart.js).
 - [~] Sobre nosotros — Section "Misión" (Pencil `PFWL4`) — **DIFERIDO estructural.**
