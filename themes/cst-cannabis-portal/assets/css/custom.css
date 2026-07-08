@@ -1429,6 +1429,64 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--cst-color-gray-400, #ADB5BD);
 }
 
+/* Estadísticas KPI cards → Pencil (SpOx1). Cannabis-scoped: the base KPI
+   styles live in the shared cst-core plugin (also used by the Motoras
+   portal), so these overrides stay under the cannabis KPI grid only. */
+.cst-dashboard__kpi-grid .cst-kpi-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 150px;
+    padding: 24px;
+    background: #F6F8F4;
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+/* Pencil KPI cards are flat — drop the plugin's colored top-accent bar. */
+.cst-dashboard__kpi-grid .cst-kpi-card::before {
+    content: none;
+    display: none;
+}
+
+/* :nth-child(n) matches all cards and lifts specificity above the plugin's
+   per-card `:nth-child(N) .cst-kpi-card__icon` gradient chips. */
+.cst-dashboard__kpi-grid .cst-kpi-card:nth-child(n) .cst-kpi-card__icon {
+    order: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--cst-color-green-wash, #EEF3E7);
+    color: var(--cst-color-green-dark, #5E7C3A);
+    font-size: 20px;
+}
+
+.cst-dashboard__kpi-grid .cst-kpi-card__value {
+    order: 1;
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 2.125rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #18202E;
+}
+
+.cst-dashboard__kpi-grid .cst-kpi-card__unit {
+    font-size: 1.25rem;
+    color: var(--cst-color-green-dark, #5E7C3A);
+}
+
+.cst-dashboard__kpi-grid .cst-kpi-card__label {
+    order: 2;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: #6C757D;
+}
+
 /* --- Tags --- */
 
 .cst-card__tags {
