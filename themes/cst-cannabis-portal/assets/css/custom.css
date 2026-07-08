@@ -7111,3 +7111,16 @@ body {
 .cst-dashboard__meta-dot {
     background: var(--cst-color-primary);
 }
+
+/* ==========================================================================
+   Centered text site-wide (user request: "centraliza todos los textos en
+   todas las páginas"). Targets headings + prose in the main content; overrides
+   the section-level left-aligns via direct element specificity.
+   ========================================================================== */
+.cst-main :is(h1, h2, h3, h4, h5, h6, p, blockquote, figcaption, .cst-hero__eyebrow, .cst-section__eyebrow, [class*="__lead"], [class*="__subtitle"]) {
+    text-align: center;
+}
+/* Center the flex columns that hold that text so blocks (not just lines) center. */
+.cst-main :is([class*="__content"], [class*="__copy"], [class*="__intro"], [class*="__header"], .cst-hero__content) {
+    align-items: center;
+}
