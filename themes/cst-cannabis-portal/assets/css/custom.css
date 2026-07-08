@@ -6001,6 +6001,14 @@ img.cst-img-square {
         box-shadow: 0 1px 6px var(--cst-alpha-black-10, rgba(0,0,0,0.08));
     }
 
+    /* When the drawer is open, lift the nav's stacking context ABOVE the
+       backdrop (z 9998). Otherwise the nav's z-index:1500 traps the fixed
+       drawer panel below the dark backdrop, hiding the white panel and
+       leaving the dark menu text unreadable on the dark overlay. */
+    .main-navigation.toggled {
+        z-index: 10000;
+    }
+
     .main-navigation .inside-navigation {
         padding-block: 0;
         min-height: 56px;
