@@ -118,8 +118,14 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       `::after` que Pencil no tiene). String nuevo "Contenido del curso" →
       "Course content" en `.po` + `.mo` recompilado. Verificado en navegador
       desktop (coincide con Pencil) y a 606px (1 columna, sin overflow).
-- [~] Home — Section "Por qué importa" — **DIFERIDO: requiere decisión de
-      estructura/contenido.** El nodo Pencil `ZYcoy` es un bloque navy con 3
+- [x] "Por qué importa" (Pencil `ZYcoy`) — **abordado con default razonable**
+      (commit `93cd0f2`): `section-course-impact.php` (el bloque navy real con
+      stat+callouts, en la página Curso) afinado al lenguaje visual navy-stats de
+      Pencil (tarjetas translúcidas r14, número verde-claro `#A9C58E`, título 800).
+      Contenido real conservado; los 3 stats mockup de Pencil NO se fabricaron.
+      **Decisión de usuario aún abierta:** ¿añadir además un bloque navy de stats
+      al HOME (Pencil lo muestra ahí) y con qué KPIs reales? Detalle histórico:
+      El nodo Pencil `ZYcoy` es un bloque navy con 3
       TARJETAS DE STAT (números verde-claro `#A9C58E` 52/800 sobre cards
       translúcidas `#FFFFFF0F` borde `#FFFFFF26`, radio 14) + nota "Cifras
       ilustrativas para diseño — fuente final NHTSA/FARS". Problemas:
