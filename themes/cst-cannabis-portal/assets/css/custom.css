@@ -459,7 +459,8 @@ h1, h2, h3, h4, h5, h6 {
     outline-offset: 2px;
 }
 
-/* Form — hidden by default, slides open */
+/* Form — hidden by default, slides open (used by the search-results and 404
+   page always-open search; the header no longer renders a search). */
 .cst-search__form {
     position: absolute;
     right: 0;

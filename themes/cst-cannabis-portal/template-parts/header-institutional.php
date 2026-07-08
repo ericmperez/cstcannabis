@@ -32,10 +32,8 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
             </div>
 
-            <!-- Right: Search, Language Switcher, Course CTA -->
+            <!-- Right: Language Switcher, Course CTA (search removed by request) -->
             <div class="cst-institutional-header__actions">
-                <?php get_search_form(); ?>
-
                 <nav class="cst-lang-switcher" aria-label="<?php esc_attr_e( 'Selector de idioma', 'cst-cannabis' ); ?>">
                     <?php if ( function_exists( 'pll_the_languages' ) ) : ?>
                         <ul class="cst-lang-switcher__list">
