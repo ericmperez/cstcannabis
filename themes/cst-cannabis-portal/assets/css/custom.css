@@ -203,35 +203,16 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--cst-space-2xl);
 }
 
+/* Solid dark heading to match Pencil (all section titles are #18202E, no
+   gradient/underline). Also fixes a WCAG AA failure: the old green→navy
+   gradient's green end was ~2.88:1 on white. */
 .cst-section-heading__title {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
     font-size: var(--cst-font-size-3xl);
-    font-weight: 700;
-    color: var(--cst-color-primary);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #18202E;
     margin-bottom: var(--cst-space-sm);
-    position: relative;
-    padding-bottom: var(--cst-space-md);
-    background: var(--cst-gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.cst-section-heading__title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 3px;
-    background: var(--cst-gradient-accent);
-    border-radius: 2px;
-    transition: width 0.6s var(--cst-transition-slow);
-}
-
-.cst-section-heading.is-visible .cst-section-heading__title::after,
-.cst-section-heading__title:only-child::after {
-    width: 60px;
 }
 
 .cst-section-heading__subtitle {
@@ -4330,72 +4311,64 @@ h1, h2, h3, h4, h5, h6 {
    pillars.php). Renamed to .cst-value-card so each can be styled
    independently — see docs/pencil-conversion-progress.md. */
 
-.cst-section--about-values {
-    padding-block: var(--cst-space-4xl);
-    background: var(--cst-gradient-section);
+/* Valores (Pencil kdpw4): flat #F8F9FA section, row of flat white cards
+   each led by a green-wash icon chip. */
+.cst-section.cst-section--about-values {
+    padding-block: clamp(3.5rem, 8vw, 5rem);
+    background: #F8F9FA;
 }
 
 .cst-section--about-values > .cst-container > .cst-section-heading {
     text-align: center;
-    margin-bottom: var(--cst-space-3xl);
+    margin-bottom: var(--cst-space-2xl);
 }
 
 .cst-values-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--cst-space-xl);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
 }
 
 .cst-value-card {
-    position: relative;
-    padding: var(--cst-space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 26px;
     background: var(--cst-color-white);
-    border: 1px solid var(--cst-color-gray-300);
-    border-radius: var(--cst-border-radius-lg);
-    box-shadow: var(--cst-shadow-sm);
-    transition: box-shadow var(--cst-transition), border-color var(--cst-transition);
-}
-
-.cst-value-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--cst-gradient-accent);
-    border-radius: var(--cst-border-radius-lg) var(--cst-border-radius-lg) 0 0;
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
+    transition: box-shadow var(--cst-transition), border-color var(--cst-transition), transform var(--cst-transition-spring);
 }
 
 .cst-value-card:hover {
     box-shadow: var(--cst-shadow-md);
-    border-color: var(--cst-color-green);
+    border-color: var(--cst-color-primary, #5E7C3A);
+    transform: translateY(-4px);
 }
 
 .cst-value-card__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
-    margin-bottom: var(--cst-space-md);
-    border-radius: var(--cst-border-radius);
-    background: var(--cst-alpha-green-10);
-    color: var(--cst-color-green-dark);
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
+    background: var(--cst-color-green-wash, #EEF3E7);
+    color: var(--cst-color-green-dark, #5E7C3A);
 }
 
 .cst-value-card__title {
-    font-family: var(--cst-font-heading);
-    font-size: var(--cst-font-size-lg);
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.1875rem;
     font-weight: 700;
-    color: var(--cst-color-navy);
-    margin: 0 0 var(--cst-space-sm) 0;
+    color: #18202E;
+    margin: 0;
 }
 
 .cst-value-card__desc {
-    font-size: var(--cst-font-size-base);
-    line-height: 1.7;
-    color: var(--cst-color-gray-700);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #3A4353;
     margin: 0;
 }
 

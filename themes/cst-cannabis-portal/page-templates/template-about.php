@@ -66,7 +66,7 @@ get_header();
         <div class="cst-container">
             <?php cst_section_heading(
                 __( 'Nuestros pilares', 'cst-cannabis' ),
-                __( 'Los principios que guían nuestro trabajo', 'cst-cannabis' ),
+                '',
                 'h2'
             ); ?>
 
