@@ -4686,8 +4686,8 @@ h1, h2, h3, h4, h5, h6 {
 .cst-course-impact__title {
     font-family: var(--cst-font-heading);
     font-size: var(--cst-font-size-2xl);
-    font-weight: 700;
-    line-height: var(--cst-line-height-tight);
+    font-weight: 800;
+    line-height: 1.15;
     color: var(--cst-color-white);
     margin: 0 0 var(--cst-space-md) 0;
 }
@@ -4704,7 +4704,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--cst-space-2xl);
     background: var(--cst-alpha-white-8);
     border: 1px solid var(--cst-alpha-white-15);
-    border-radius: var(--cst-border-radius-lg);
+    border-radius: 14px;
     backdrop-filter: blur(8px);
 }
 
@@ -4736,7 +4736,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--cst-space-lg);
     background: var(--cst-alpha-white-6);
     border: 1px solid var(--cst-alpha-white-10);
-    border-radius: var(--cst-border-radius-lg);
+    border-radius: 14px;
     transition: background var(--cst-transition), border-color var(--cst-transition);
 }
 
