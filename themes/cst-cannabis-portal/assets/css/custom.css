@@ -5964,7 +5964,7 @@ img.cst-img-square {
     .cst-drawer-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.92);
         opacity: 0;
         pointer-events: none;
         transition: opacity 220ms ease;
@@ -5983,6 +5983,36 @@ img.cst-img-square {
         overflow: hidden;
         /* preserve scrollbar gutter so right edge stays in place during slide-in */
         scrollbar-gutter: stable;
+    }
+
+    /* Open drawer: hide the top bars behind it (user: "quita la barra arriba");
+       keep the header actions so the close control stays reachable. */
+    body.cst-drawer-open .cst-gov-banner {
+        display: none;
+    }
+    body.cst-drawer-open .cst-institutional-header__branding {
+        visibility: hidden;
+    }
+
+    /* Drawer solid + full height so the page never shows through. */
+    .main-navigation .main-nav {
+        background: #ffffff;
+        top: 0;
+        height: 100dvh;
+    }
+
+    /* User preference: center text + buttons on mobile. */
+    .cst-enrollment-cta__content,
+    .cst-enrollment-cta__inner,
+    .cst-course-footer-cta__content {
+        text-align: center;
+        margin-inline: auto;
+    }
+    .cst-enrollment-cta__actions,
+    .cst-course-footer-cta__actions,
+    .cst-hero__actions,
+    .cst-hero__buttons {
+        justify-content: center;
     }
 
     /* Drawer panel — slide in from right */

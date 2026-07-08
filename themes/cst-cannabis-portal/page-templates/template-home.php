@@ -48,8 +48,8 @@ get_header();
     <?php // 6. Enrollment CTA. ?>
     <?php get_template_part( 'template-parts/section', 'enrollment-cta' ); ?>
 
-    <?php // 7. Latest blog posts. ?>
-    <?php get_template_part( 'template-parts/section', 'latest-posts' ); ?>
+    <?php // 7. Latest blog posts — blog disabled by request (see below). ?>
+    <?php // get_template_part( 'template-parts/section', 'latest-posts' ); ?>
 
     <?php // 8. Upcoming events (The Events Calendar). ?>
     <?php get_template_part( 'template-parts/section', 'upcoming-events' ); ?>
