@@ -651,21 +651,29 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Search results page: show the search box always-expanded instead of the
-   collapsed magnifying-glass toggle used in the header, so visitors landing
-   on results can refine their query without hunting for an input. Scoped to
-   .cst-search-page__form, so the header search is unaffected. Full-width up
-   to a readable max, so it stays responsive on mobile. */
-.cst-search-page__form .cst-search {
+/* Search results page and the 404 "O busque lo que necesita" box: show the
+   search box always-expanded instead of the collapsed magnifying-glass toggle
+   used in the header, so visitors can type a query without hunting for an
+   input. Scoped to these wrappers, so the header search is unaffected.
+   Full-width up to a readable max, so it stays responsive on mobile. */
+.cst-search-page__form .cst-search,
+.cst-404__search .cst-search {
     display: block;
     max-width: 560px;
 }
 
-.cst-search-page__form .cst-search__toggle {
+/* On the centered 404 page, center the expanded box too. */
+.cst-404__search .cst-search {
+    margin-inline: auto;
+}
+
+.cst-search-page__form .cst-search__toggle,
+.cst-404__search .cst-search__toggle {
     display: none;
 }
 
-.cst-search-page__form .cst-search__form {
+.cst-search-page__form .cst-search__form,
+.cst-404__search .cst-search__form {
     position: relative;
     width: 100%;
     opacity: 1;
