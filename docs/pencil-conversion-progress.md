@@ -99,16 +99,17 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       significa que el siguiente ítem de "Sobre nosotros — Section Valores"
       ya tiene su CSS aislado y listo para comparar contra Pencil sin riesgo
       de volver a chocar con Home.
+- [x] Home — Section "Pilares" (resto de la sección, fuera de la tarjeta ya
+      hecha) — `template-parts/section-course-pillars.php`. Eyebrow
+      Open Sans→Montserrat, título/lead navy/gray-700→ink-900/ink-700
+      exactos de Pencil (`#18202E`/`#3A4353`). Cada tarjeta con su propio
+      acento (verde/azul/navy) en vez de verde uniforme, íconos cambiados
+      a estilo stroke Lucide (pill/car-front/users) para calzar con Pencil.
 
 ## Elementos pendientes (en orden — trabajar de arriba hacia abajo)
 
-- [ ] Home — Section "Pilares" (Consumo responsable / Seguridad vial / Protección
-      familiar) — `template-parts/section-course-pillars.php`. La tarjeta
-      (Feature Card) ya quedó resuelta arriba; lo que falta revisar aquí es
-      SOLO el resto de la sección: intro/eyebrow/título/lead a la izquierda,
-      grid de 3 columnas, footer CTA "Ver curso completo" — comparar contra
-      el resto del frame Home de Pencil (fuera del Feature Card ya hecho).
 - [ ] Home — Section "Lo que aprenderás" — `template-parts/section-objectives.php`.
+      Nodo Pencil: `GycwK` (hijo de Home `XCdjO`).
 - [ ] Home — Section "Por qué importa" (sección navy oscura con stat + callouts) —
       verificar si ya coincide con `section-course-impact.php` (que ya es navy);
       si coincide, marcar hecho sin cambios.
@@ -173,3 +174,7 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
   a precisión total contra Pencil, y Feature Card resuelto. Encontrado y
   arreglado un bug preexistente de colisión de clases CSS entre Home y Sobre
   nosotros (ver detalle arriba). Commit `88006bb` (sin push).
+- 2026-07-07 — Disparo de cron: Home — Section Pilares (resto de la sección)
+  completado. Commit `646b0f9` (sin push). A partir de aquí el usuario pidió
+  usar un grupo de agentes en paralelo (worktrees aislados) para acelerar el
+  resto del checklist en vez de seguir estrictamente 1 ítem/4min.
