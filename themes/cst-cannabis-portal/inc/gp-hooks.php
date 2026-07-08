@@ -23,6 +23,16 @@ function cst_nav_aria_current( array $atts, $item, $args ): array {
 }
 
 /* ==========================================================================
+   Top Accent — thin brand-green strip above the government banner
+   ========================================================================== */
+
+add_action( 'generate_before_header', 'cst_top_accent', 2 );
+
+function cst_top_accent(): void {
+    echo '<div class="cst-top-accent" aria-hidden="true"></div>';
+}
+
+/* ==========================================================================
    Government Banner (top of page)
    ========================================================================== */
 

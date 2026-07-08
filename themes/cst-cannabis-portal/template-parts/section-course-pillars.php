@@ -57,11 +57,8 @@ $pillars = [
         </header>
 
         <div class="cst-pillars__grid">
-            <?php foreach ( $pillars as $i => $pillar ) : ?>
+            <?php foreach ( $pillars as $pillar ) : ?>
                 <article class="cst-pillar-card">
-                    <span class="cst-pillar-card__step" aria-hidden="true">
-                        <?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?>
-                    </span>
                     <div class="cst-pillar-card__icon" aria-hidden="true">
                         <?php echo cst_kses_svg( $pillar['icon'] ); ?>
                     </div>
@@ -71,6 +68,13 @@ $pillars = [
                     <p class="cst-pillar-card__desc">
                         <?php echo esc_html( $pillar['desc'] ); ?>
                     </p>
+                    <a class="cst-pillar-card__link" href="<?php echo esc_url( cst_course_url() ); ?>">
+                        <?php esc_html_e( 'Saber más', 'cst-cannabis' ); ?>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </article>
             <?php endforeach; ?>
         </div>

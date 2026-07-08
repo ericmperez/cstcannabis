@@ -113,6 +113,7 @@
 
     /* --- Color variants --- */
     --cst-color-green-light: #A9C58E;
+    --cst-color-green-wash:  #EEF3E7; /* Light wash for icon chips on white cards. */
     /* --cst-color-green-dark defined in the brand tokens block above. */
     --cst-color-navy-light:  #3A4D7A;
     --cst-color-navy-darker: #1A1A2E;

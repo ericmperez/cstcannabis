@@ -62,7 +62,7 @@ get_header();
     </section>
 
     <!-- Pillars -->
-    <section class="cst-section cst-section--about-pillars">
+    <section class="cst-section cst-section--about-values">
         <div class="cst-container">
             <?php cst_section_heading(
                 __( 'Nuestros pilares', 'cst-cannabis' ),
@@ -70,35 +70,35 @@ get_header();
                 'h2'
             ); ?>
 
-            <div class="cst-pillars-grid" role="list">
+            <div class="cst-values-grid" role="list">
 
-                <div class="cst-pillar-card" role="listitem">
-                    <div class="cst-pillar-card__icon" aria-hidden="true">
+                <div class="cst-value-card" role="listitem">
+                    <div class="cst-value-card__icon" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                         </svg>
                     </div>
-                    <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Educación basada en evidencia', 'cst-cannabis' ); ?></h3>
-                    <p class="cst-pillar-card__desc">
+                    <h3 class="cst-value-card__title"><?php esc_html_e( 'Educación basada en evidencia', 'cst-cannabis' ); ?></h3>
+                    <p class="cst-value-card__desc">
                         <?php esc_html_e( 'Toda nuestra información proviene de fuentes científicas verificadas y datos del Departamento de Salud.', 'cst-cannabis' ); ?>
                     </p>
                 </div>
 
-                <div class="cst-pillar-card" role="listitem">
-                    <div class="cst-pillar-card__icon" aria-hidden="true">
+                <div class="cst-value-card" role="listitem">
+                    <div class="cst-value-card__icon" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
                     </div>
-                    <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Prevención proactiva', 'cst-cannabis' ); ?></h3>
-                    <p class="cst-pillar-card__desc">
+                    <h3 class="cst-value-card__title"><?php esc_html_e( 'Prevención proactiva', 'cst-cannabis' ); ?></h3>
+                    <p class="cst-value-card__desc">
                         <?php esc_html_e( 'Trabajamos para prevenir accidentes antes de que ocurran mediante campañas de concientización.', 'cst-cannabis' ); ?>
                     </p>
                 </div>
 
-                <div class="cst-pillar-card" role="listitem">
-                    <div class="cst-pillar-card__icon" aria-hidden="true">
+                <div class="cst-value-card" role="listitem">
+                    <div class="cst-value-card__icon" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
@@ -106,21 +106,21 @@ get_header();
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Colaboración interagencial', 'cst-cannabis' ); ?></h3>
-                    <p class="cst-pillar-card__desc">
+                    <h3 class="cst-value-card__title"><?php esc_html_e( 'Colaboración interagencial', 'cst-cannabis' ); ?></h3>
+                    <p class="cst-value-card__desc">
                         <?php esc_html_e( 'Coordinamos con el Departamento de Salud, la Policía de Puerto Rico y organizaciones comunitarias.', 'cst-cannabis' ); ?>
                     </p>
                 </div>
 
-                <div class="cst-pillar-card" role="listitem">
-                    <div class="cst-pillar-card__icon" aria-hidden="true">
+                <div class="cst-value-card" role="listitem">
+                    <div class="cst-value-card__icon" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                         </svg>
                     </div>
-                    <h3 class="cst-pillar-card__title"><?php esc_html_e( 'Accesibilidad universal', 'cst-cannabis' ); ?></h3>
-                    <p class="cst-pillar-card__desc">
+                    <h3 class="cst-value-card__title"><?php esc_html_e( 'Accesibilidad universal', 'cst-cannabis' ); ?></h3>
+                    <p class="cst-value-card__desc">
                         <?php esc_html_e( 'Nuestro contenido está disponible en español e inglés, y cumple con los estándares WCAG 2.1 AA.', 'cst-cannabis' ); ?>
                     </p>
                 </div>

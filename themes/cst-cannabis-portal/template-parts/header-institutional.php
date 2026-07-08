@@ -23,6 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </a>
 
                 <div class="cst-institutional-header__titles">
+                    <span class="cst-institutional-header__agency">
+                        <?php esc_html_e( 'Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ); ?>
+                    </span>
                     <span class="cst-institutional-header__portal-name">
                         <?php esc_html_e( 'Portal Cannabis y Seguridad en el Tránsito', 'cst-cannabis' ); ?>
                     </span>
@@ -49,7 +52,13 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php endif; ?>
                 </nav>
 
-                <?php cst_cta_button( __( 'Ver Curso', 'cst-cannabis' ), cst_course_url() ); ?>
+                <a href="<?php echo esc_url( cst_course_url() ); ?>" class="cst-btn cst-btn--primary cst-header-cta">
+                    <?php esc_html_e( 'Ver Curso', 'cst-cannabis' ); ?>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </div>
