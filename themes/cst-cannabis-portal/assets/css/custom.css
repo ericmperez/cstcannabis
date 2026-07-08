@@ -2017,32 +2017,41 @@ h1, h2, h3, h4, h5, h6 {
    Contact Page
    ========================================================================== */
 
+/* Pencil YEKP9: message form (left, white rounded card) + info cards (right). */
 .cst-contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--cst-space-2xl);
+    grid-template-columns: 1.55fr 1fr;
+    gap: 56px;
     align-items: start;
+}
+
+.cst-contact-form {
+    order: -1;
+    background: #FFFFFF;
+    border: 1px solid #E4E8EE;
+    border-radius: 22px;
+    padding: clamp(1.5rem, 4vw, 2.25rem);
 }
 
 .cst-contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--cst-space-md);
+    gap: 16px;
 }
 
 .cst-contact-card {
     display: flex;
-    gap: var(--cst-space-md);
-    padding: var(--cst-space-lg);
-    background: var(--cst-color-white);
-    border-radius: var(--cst-border-radius-lg);
-    box-shadow: var(--cst-shadow-sm);
-    transition: box-shadow var(--cst-transition-slow), transform var(--cst-transition);
+    gap: 14px;
+    padding: 20px;
+    background: var(--cst-color-green-wash, #F6F8F4);
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
+    transition: border-color var(--cst-transition), transform var(--cst-transition);
 }
 
 .cst-contact-card:hover {
-    box-shadow: var(--cst-shadow-lg);
-    transform: translateY(-3px);
+    border-color: var(--cst-color-primary, #5E7C3A);
+    transform: translateY(-2px);
 }
 
 .cst-contact-card__icon {
@@ -2087,7 +2096,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-contact-form h2 {
-    margin-bottom: var(--cst-space-lg);
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #18202E;
+    margin: 0 0 var(--cst-space-lg);
 }
 
 /* --- Contact Form 7 Integration --- */
@@ -2139,11 +2152,11 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--cst-space-md) var(--cst-space-xl);
     font-family: var(--cst-font-body);
     font-size: var(--cst-font-size-base);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--cst-color-white);
-    background: var(--cst-gradient-primary);
-    border: 2px solid var(--cst-color-primary);
-    border-radius: var(--cst-border-radius);
+    background: var(--cst-color-green-dark, #5E7C3A);
+    border: 1px solid var(--cst-color-green-dark, #5E7C3A);
+    border-radius: 8px;
     cursor: pointer;
     transition: all var(--cst-transition), transform var(--cst-transition), box-shadow var(--cst-transition);
     line-height: 1;
@@ -2151,8 +2164,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cst-contact-form .wpcf7-form-control[type="submit"]:hover {
-    border-color: var(--cst-color-green-dark);
-    box-shadow: var(--cst-shadow-glow-primary);
+    background: #4C6A2C;
+    border-color: #4C6A2C;
     transform: translateY(-1px);
 }
 
