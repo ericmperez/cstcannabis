@@ -1488,6 +1488,28 @@ h1, h2, h3, h4, h5, h6 {
     color: #6C757D;
 }
 
+/* Estadísticas chart cards → Pencil (eg6hk): white flat card, 22px radius,
+   #E4E8EE border, 20/700 title. Cannabis-scoped (base in the shared plugin). */
+.cst-dashboard__chart-grid .cst-chart-card {
+    border-radius: 22px;
+    border: 1px solid #E4E8EE;
+    box-shadow: none;
+}
+
+.cst-dashboard__chart-grid .cst-chart-card:hover {
+    box-shadow: var(--cst-shadow-md);
+}
+
+.cst-dashboard__chart-grid .cst-chart-card__header {
+    padding: 28px 28px 0;
+}
+
+.cst-dashboard__chart-grid .cst-chart-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #18202E;
+}
+
 /* ==========================================================================
    Single article (Pencil Artículo — BknWv body + nuMbc related)
    ========================================================================== */
