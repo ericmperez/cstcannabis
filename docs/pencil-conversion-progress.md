@@ -200,11 +200,12 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
 - [~] Estadísticas — Section "Chart" (Chart.js) — el chart renderiza (canvas). Pencil
       `eg6hk` = card blanca r22 borde padding 32. Follow-up menor: envolver/estilar
       el contenedor del chart (el CSS vive en el plugin compartido → scopear a cannabis).
-- [~] Sobre nosotros — Section "Misión" (Pencil `PFWL4`) — **DIFERIDO estructural.**
-      Pencil es 2-col (texto 600 + imagen 360 rounded). El sitio tiene DOS
-      secciones de texto (Misión + "¿Por qué este portal?") sin imagen, con copy
-      real. Añadir imagen/2-col requiere decidir imagen real (Pencil usa una
-      foto Unsplash mockup) y si fusionar las 2 secciones.
+- [x] Sobre nosotros — Section "Misión" (Pencil `PFWL4`) — 2-col (texto izq +
+      imagen der r22), colapsa a 1 col ≤768px. Imagen = featured image de la
+      página si existe, si no `hero-home.jpg` como **placeholder documentado** que
+      el cliente reemplaza en el editor. Copy real intacto. Commit `34d21bc`.
+      (La sección "¿Por qué este portal?" queda como sección adicional real que
+      Pencil no tiene — se conserva.)
 - [x] Sobre nosotros — Section "Valores" (Pencil `kdpw4`) — `template-about.php`
       + CSS. Sección plana `#F8F9FA`, 4 tarjetas en fila (chip verde-wash 50×50
       r13 + ícono, título 19/700 `#18202E`, desc 14 `#3A4353`, borde `#E4E8EE`
@@ -363,6 +364,14 @@ ocultaba en EN (EN quedaba sin nav superior). Creado menú "Primary Menu EN"
 (#19: Home/Course/Resources/Statistics/About Us/Contact → páginas EN) y cableado
 en la opción `polylang_nav_menus[cst-cannabis-portal][primary][en]=19` (`es`=2)
 que el tema lee (functions.php:161). Verificado: nav EN en inglés, ES intacto.
+
+**Formulario Contacto (BD):** el form CF7 estaba vacío (no renderizaba). Cableado
+`[contact-form-7 id="52"]` en el contenido de las páginas Contacto ES(46)+EN(81) y
+el `_form` meta del form 52 puesto a español (Nombre completo/Correo electrónico/
+Asunto/Mensaje + "Enviar mensaje") — coincide con Pencil. Estilo del form ya
+aplicado (card blanca r22, submit verde). **Pendiente bilingüe del form:** CF7 es
+mono-idioma; para EN limpio se necesita un form CF7 por idioma vía Polylang (la
+página EN muestra los labels ES por ahora). Cambios de BD → replicar en prod.
 
 **Pendiente bilingüe:**
 - Estos son cambios de BD, NO de git → hay que replicarlos en prod (Polylang
