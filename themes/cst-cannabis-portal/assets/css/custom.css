@@ -6020,7 +6020,7 @@ img.cst-img-square {
     .cst-drawer-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.92);
+        background: rgba(0, 0, 0, 0.5);
         opacity: 0;
         pointer-events: none;
         transition: opacity 220ms ease;
