@@ -4048,9 +4048,14 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
-.site-header #site-navigation .main-nav {
-    float: none;
-    width: auto;
+/* Desktop-only: this ID-specificity reset must NOT override the mobile
+   drawer's width (min(82vw,360px)) below 769px, or the drawer collapses to
+   content width (~166px) and slides off-screen. */
+@media (min-width: 769px) {
+    .site-header #site-navigation .main-nav {
+        float: none;
+        width: auto;
+    }
 }
 
 /* --- Top-Level Links --- */
