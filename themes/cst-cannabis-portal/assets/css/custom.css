@@ -651,6 +651,30 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* Search results page: show the search box always-expanded instead of the
+   collapsed magnifying-glass toggle used in the header, so visitors landing
+   on results can refine their query without hunting for an input. Scoped to
+   .cst-search-page__form, so the header search is unaffected. Full-width up
+   to a readable max, so it stays responsive on mobile. */
+.cst-search-page__form .cst-search {
+    display: block;
+    max-width: 560px;
+}
+
+.cst-search-page__form .cst-search__toggle {
+    display: none;
+}
+
+.cst-search-page__form .cst-search__form {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    top: auto;
+    right: auto;
+    transform: none;
+}
+
 /* Language Switcher */
 
 .cst-lang-switcher__list {
