@@ -18,7 +18,7 @@
     justify-content: center;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--cst-color-primary, #7FA35B), var(--cst-color-secondary, #1C2854));
+    background: linear-gradient(135deg, var(--cst-color-primary, #2D6CB0), var(--cst-color-secondary, #1C2854));
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -81,7 +81,7 @@
     align-items: center;
     gap: 12px;
     padding: 16px 18px;
-    background: linear-gradient(135deg, var(--cst-color-primary, #7FA35B), var(--cst-color-secondary, #1C2854));
+    background: linear-gradient(135deg, var(--cst-color-primary, #2D6CB0), var(--cst-color-secondary, #1C2854));
     color: #fff;
 }
 
@@ -198,14 +198,14 @@
 
 .cst-chatbot__message--user {
     align-self: flex-end;
-    background: linear-gradient(135deg, var(--cst-color-primary, #7FA35B), #5E7C3A);
+    background: linear-gradient(135deg, var(--cst-color-primary, #2D6CB0), #22568F);
     color: #fff;
     border-bottom-right-radius: 6px;
-    box-shadow: 0 2px 8px rgba(127, 163, 91, 0.3);
+    box-shadow: 0 2px 8px rgba(45, 108, 176, 0.3);
 }
 
 .cst-chatbot__message--bot a {
-    color: var(--cst-color-primary, #5E7C3A);
+    color: var(--cst-color-primary, #22568F);
     text-decoration: underline;
 }
 
@@ -231,7 +231,7 @@
 .cst-chatbot__typing-dot {
     width: 8px;
     height: 8px;
-    background: var(--cst-color-primary, #7FA35B);
+    background: var(--cst-color-primary, #2D6CB0);
     border-radius: 50%;
     animation: cst-typing-bounce 1.2s infinite ease-in-out;
 }
@@ -274,9 +274,9 @@
 }
 
 .cst-chatbot__input:focus {
-    border-color: var(--cst-color-primary, #7FA35B);
+    border-color: var(--cst-color-primary, #2D6CB0);
     background: #fff;
-    box-shadow: 0 0 0 3px rgba(127, 163, 91, 0.18);
+    box-shadow: 0 0 0 3px rgba(45, 108, 176, 0.18);
 }
 
 .cst-chatbot__send {
@@ -285,7 +285,7 @@
     justify-content: center;
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, var(--cst-color-primary, #7FA35B), var(--cst-color-secondary, #1C2854));
+    background: linear-gradient(135deg, var(--cst-color-primary, #2D6CB0), var(--cst-color-secondary, #1C2854));
     color: #fff;
     border: none;
     border-radius: 50%;
