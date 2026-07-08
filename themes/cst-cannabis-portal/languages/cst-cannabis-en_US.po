@@ -1328,3 +1328,351 @@ msgstr "Need support? You are not alone."
 #: template-parts/section-course-safety.php
 msgid "Si tú o alguien que conoces atraviesa una crisis emocional o de salud mental, comunícate con la Línea PAS de ASSMCA: %s. Disponible 24/7, gratuita y confidencial."
 msgstr "If you or someone you know is going through an emotional or mental-health crisis, contact ASSMCA's Línea PAS: %s. Available 24/7, free and confidential."
+
+#: additions — theme metadata
+msgid "CST Cannabis Medicinal Portal"
+msgstr "CST Medical Cannabis Portal"
+
+msgid "https://cannabis.cst.pr.gov"
+msgstr "https://cannabis.cst.pr.gov"
+
+msgid "Portal educativo sobre cannabis medicinal — Comisión para la Seguridad en el Tránsito de Puerto Rico. Child theme of GeneratePress."
+msgstr "Educational portal on medical cannabis — Puerto Rico Traffic Safety Commission. Child theme of GeneratePress."
+
+msgid "CST Puerto Rico"
+msgstr "CST Puerto Rico"
+
+msgid "https://cst.pr.gov"
+msgstr "https://cst.pr.gov"
+
+msgid "Página no encontrada"
+msgstr "Page not found"
+
+msgid "La página que busca no existe o ha sido movida."
+msgstr "The page you are looking for does not exist or has been moved."
+
+msgid "¿A dónde le gustaría ir?"
+msgstr "Where would you like to go?"
+
+msgid "Pruebe alguna de las secciones del portal:"
+msgstr "Try one of the portal sections:"
+
+msgid "Inicio"
+msgstr "Home"
+
+msgid "O busque lo que necesita:"
+msgstr "Or search for what you need:"
+
+msgid "Página"
+msgstr "Page"
+
+msgid "Artículo"
+msgstr "Article"
+
+#, php-format
+msgid "%d recurso encontrado"
+msgstr "%d resource found"
+
+#, php-format
+msgid "%d recursos encontrados"
+msgstr "%d resources found"
+
+msgid "Línea"
+msgstr "Line"
+
+msgid "Dona"
+msgstr "Doughnut"
+
+msgid "Barras"
+msgstr "Bars"
+
+msgid "Circular"
+msgstr "Pie"
+
+msgid "Radar"
+msgstr "Radar"
+
+msgid "Declaración de accesibilidad"
+msgstr "Accessibility statement"
+
+msgid "Nuestro compromiso con un portal accesible para toda la ciudadanía, conforme a la Ley 229-2003 y WCAG 2.1 AA."
+msgstr "Our commitment to a portal accessible to all citizens, in compliance with Act 229-2003 and WCAG 2.1 AA."
+
+msgid "Compromiso con la accesibilidad"
+msgstr "Commitment to accessibility"
+
+msgid "La Comisión para la Seguridad en el Tránsito de Puerto Rico (CST) se compromete a garantizar que su portal web sea accesible para todas las personas, incluyendo personas con discapacidades, conforme a la Ley 229 de 2003 del Gobierno de Puerto Rico."
+msgstr "The Puerto Rico Traffic Safety Commission (CST) is committed to ensuring that its web portal is accessible to everyone, including people with disabilities, in accordance with Act 229 of 2003 of the Government of Puerto Rico."
+
+msgid "Nivel de conformidad"
+msgstr "Conformance level"
+
+msgid "Este portal ha sido diseñado y desarrollado para cumplir con las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 nivel AA, conforme a los estándares establecidos por:"
+msgstr "This portal has been designed and developed to comply with the Web Content Accessibility Guidelines (WCAG) 2.1 level AA, in accordance with the standards established by:"
+
+msgid "Ley 229 de 2003 — Accesibilidad de sitios web del Gobierno de Puerto Rico"
+msgstr "Act 229 of 2003 — Accessibility of Government of Puerto Rico websites"
+
+msgid "Sección 508 de la Ley de Rehabilitación (federal)"
+msgstr "Section 508 of the Rehabilitation Act (federal)"
+
+msgid "Título II de la Ley ADA (Americans with Disabilities Act)"
+msgstr "Title II of the ADA (Americans with Disabilities Act)"
+
+msgid "WCAG 2.1 Nivel AA — Pautas de Accesibilidad para el Contenido Web"
+msgstr "WCAG 2.1 Level AA — Web Content Accessibility Guidelines"
+
+msgid "Medidas implementadas"
+msgstr "Measures implemented"
+
+msgid "Para garantizar la accesibilidad, este portal incluye las siguientes medidas:"
+msgstr "To ensure accessibility, this portal includes the following measures:"
+
+msgid "Navegación completa por teclado en todos los componentes interactivos"
+msgstr "Full keyboard navigation across all interactive components"
+
+msgid "Indicadores de enfoque visibles (3px sólido, 2px de desplazamiento)"
+msgstr "Visible focus indicators (3px solid, 2px offset)"
+
+msgid "Áreas táctiles de mínimo 44x44 píxeles"
+msgstr "Touch targets of at least 44x44 pixels"
+
+msgid "Contraste de color mínimo de 4.5:1 para texto normal y 3:1 para texto grande"
+msgstr "Minimum color contrast of 4.5:1 for normal text and 3:1 for large text"
+
+msgid "Compatibilidad con lectores de pantalla mediante ARIA landmarks, roles y regiones activas"
+msgstr "Screen reader compatibility through ARIA landmarks, roles, and live regions"
+
+msgid "Soporte para modo de alto contraste y colores forzados (Windows)"
+msgstr "Support for high contrast mode and forced colors (Windows)"
+
+msgid "Respeto a la preferencia de movimiento reducido del usuario"
+msgstr "Respect for the user's reduced motion preference"
+
+msgid "Enlace para saltar al contenido principal"
+msgstr "Skip to main content link"
+
+msgid "Jerarquía de encabezados lógica y estructurada"
+msgstr "Logical and structured heading hierarchy"
+
+msgid "Textos alternativos en todas las imágenes"
+msgstr "Alternative text on all images"
+
+msgid "Etiquetas asociadas a todos los campos de formulario"
+msgstr "Labels associated with all form fields"
+
+msgid "Idioma de la página declarado correctamente (lang=\"es\")"
+msgstr "Page language declared correctly (lang=\"es\")"
+
+msgid "Tecnologías de asistencia compatibles"
+msgstr "Compatible assistive technologies"
+
+msgid "Este portal está diseñado para ser compatible con las siguientes tecnologías de asistencia:"
+msgstr "This portal is designed to be compatible with the following assistive technologies:"
+
+msgid "NVDA y JAWS (lectores de pantalla para Windows)"
+msgstr "NVDA and JAWS (screen readers for Windows)"
+
+msgid "VoiceOver (macOS e iOS)"
+msgstr "VoiceOver (macOS and iOS)"
+
+msgid "TalkBack (Android)"
+msgstr "TalkBack (Android)"
+
+msgid "Navegación por teclado en todos los navegadores modernos"
+msgstr "Keyboard navigation in all modern browsers"
+
+msgid "Limitaciones conocidas"
+msgstr "Known limitations"
+
+msgid "Aunque hacemos nuestro mejor esfuerzo para asegurar la accesibilidad, algunas áreas podrían presentar limitaciones:"
+msgstr "Although we make every effort to ensure accessibility, some areas may present limitations:"
+
+msgid "Contenido de terceros (formularios de Contact Form 7, Tutor LMS) puede tener limitaciones fuera de nuestro control directo."
+msgstr "Third-party content (Contact Form 7 forms, Tutor LMS) may have limitations outside our direct control."
+
+msgid "Documentos PDF enlazados podrían no cumplir completamente con WCAG 2.1 AA."
+msgstr "Linked PDF documents may not fully comply with WCAG 2.1 AA."
+
+msgid "Reportar un problema de accesibilidad"
+msgstr "Report an accessibility issue"
+
+msgid "Si encuentra alguna barrera de accesibilidad en este portal, le invitamos a comunicarse con nosotros:"
+msgstr "If you encounter any accessibility barrier on this portal, we invite you to contact us:"
+
+msgid "Correo electrónico:"
+msgstr "Email:"
+
+msgid "Teléfono:"
+msgstr "Phone:"
+
+#, php-format
+msgid "También puede reportar problemas de accesibilidad en sitios web del Gobierno de Puerto Rico a través del portal <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">accesibilidad.pr.gov</a>."
+msgstr "You can also report accessibility issues on Government of Puerto Rico websites through the <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">accesibilidad.pr.gov</a> portal."
+
+msgid "Base legal"
+msgstr "Legal basis"
+
+msgid "Esta declaración se emite en cumplimiento de la <a href=\"https://accesibilidad.pr.gov\" target=\"_blank\" rel=\"noopener noreferrer\">Ley 229 de 2003</a> del Gobierno de Puerto Rico, que requiere que todos los sitios web gubernamentales sean accesibles para personas con discapacidades."
+msgstr "This statement is issued in compliance with <a href=\"https://accesibilidad.pr.gov\" target=\"_blank\" rel=\"noopener noreferrer\">Act 229 of 2003</a> of the Government of Puerto Rico, which requires all government websites to be accessible to people with disabilities."
+
+msgid "Certificado de aprobación"
+msgstr "Certificate of completion"
+
+msgid "Participante"
+msgstr "Participant"
+
+msgid "Director"
+msgstr "Director"
+
+msgid "Director, Comisión para la Seguridad en el Tránsito"
+msgstr "Director, Traffic Safety Commission"
+
+msgid "Esta es la versión imprimible de su certificado. Use el botón \"Imprimir\" o el atajo Ctrl/Cmd + P para guardarlo como PDF."
+msgstr "This is the printable version of your certificate. Use the \"Print\" button or the Ctrl/Cmd + P shortcut to save it as a PDF."
+
+msgid "Imprimir o guardar como PDF"
+msgstr "Print or save as PDF"
+
+msgid "Comisión para la Seguridad en el Tránsito"
+msgstr "Traffic Safety Commission"
+
+msgid "Estado Libre Asociado de Puerto Rico"
+msgstr "Commonwealth of Puerto Rico"
+
+msgid "Se otorga el presente certificado a"
+msgstr "This certificate is awarded to"
+
+msgid "por haber completado satisfactoriamente el curso"
+msgstr "for having successfully completed the course"
+
+msgid "el día"
+msgstr "on"
+
+msgid "Código de verificación"
+msgstr "Verification code"
+
+msgid "Curso"
+msgstr "Course"
+
+msgid "Página de inicio"
+msgstr "Home page"
+
+msgid "Ver recursos"
+msgstr "View resources"
+
+msgid "Página legal"
+msgstr "Legal page"
+
+#, php-format
+msgid "Resultados para: %s"
+msgstr "Results for: %s"
+
+#, php-format
+msgid "%d resultado encontrado."
+msgid_plural "%d resultados encontrados."
+msgstr[0] "%d result found."
+msgstr[1] "%d results found."
+
+msgid "Paginación de resultados"
+msgstr "Results pagination"
+
+msgid "No encontramos nada."
+msgstr "We found nothing."
+
+msgid "Pruebe con otras palabras clave o explore las secciones del portal:"
+msgstr "Try other keywords or explore the portal sections:"
+
+msgid "Barra lateral"
+msgstr "Sidebar"
+
+msgid "El cannabis medicinal puede afectar los reflejos y el tiempo de reacción hasta 4 horas después del consumo."
+msgstr "Medical cannabis can affect reflexes and reaction time for up to 4 hours after consumption."
+
+msgid "Conducir bajo los efectos del cannabis aumenta el riesgo de accidentes en un 30%, según estudios recientes."
+msgstr "Driving under the influence of cannabis increases the risk of accidents by 30%, according to recent studies."
+
+msgid "En Puerto Rico, conducir bajo la influencia de cannabis medicinal puede resultar en multas y suspensión de licencia."
+msgstr "In Puerto Rico, driving under the influence of medical cannabis can result in fines and license suspension."
+
+msgid "El THC, principal componente psicoactivo del cannabis, afecta la percepción de distancia y velocidad al conducir."
+msgstr "THC, the main psychoactive component of cannabis, affects the perception of distance and speed while driving."
+
+msgid "Mezclar cannabis con alcohol multiplica el riesgo de accidentes de tránsito significativamente."
+msgstr "Mixing cannabis with alcohol significantly multiplies the risk of traffic accidents."
+
+msgid "Los pacientes de cannabis medicinal tienen la responsabilidad legal de no conducir si sus capacidades están comprometidas."
+msgstr "Medical cannabis patients have a legal responsibility not to drive if their abilities are impaired."
+
+msgid "Datos sobre cannabis y conducción"
+msgstr "Facts about cannabis and driving"
+
+msgid "¿Sabías que...?"
+msgstr "Did you know...?"
+
+#, php-format
+msgid "Dato %d de %d"
+msgstr "Fact %d of %d"
+
+#, php-format
+msgid "Dato %1$d de %2$d"
+msgstr "Fact %1$d of %2$d"
+
+msgid "Seleccionar dato"
+msgstr "Select fact"
+
+#, php-format
+msgid "Dato %d"
+msgstr "Fact %d"
+
+msgid "Siguiente dato"
+msgstr "Next fact"
+
+msgid "Otro dato"
+msgstr "Another fact"
+
+msgid "Artículos relacionados"
+msgstr "Related articles"
+
+msgid "MAY"
+msgstr "MAY"
+
+msgid "Taller de Seguridad Vial"
+msgstr "Road Safety Workshop"
+
+msgid "Centro de Convenciones, San Juan"
+msgstr "Convention Center, San Juan"
+
+msgid "JUN"
+msgstr "JUN"
+
+msgid "Foro Cannabis y Conducción"
+msgstr "Cannabis and Driving Forum"
+
+msgid "UPR Río Piedras"
+msgstr "UPR Río Piedras"
+
+msgid "Charla Educativa Comunitaria"
+msgstr "Community Educational Talk"
+
+msgid "Ponce, PR"
+msgstr "Ponce, PR"
+
+#, php-format
+msgid "%1$s de %2$s de %3$s"
+msgstr "%2$s %1$s, %3$s"
+
+msgid "Aviso legal sobre el curso"
+msgstr "Course legal notice"
+
+msgid "Este curso es un recurso educativo gratuito ofrecido por la Comisión para la Seguridad en el Tránsito. Está diseñado para educar a pacientes, profesionales y al público general sobre el uso responsable del cannabis medicinal y la seguridad vial."
+msgstr "This course is a free educational resource offered by the Traffic Safety Commission. It is designed to educate patients, professionals, and the general public about the responsible use of medical cannabis and road safety."
+
+msgid "Saber más"
+msgstr "Learn more"
+
+msgid "Inscríbete en el curso gratuito de la Comisión para la Seguridad en el Tránsito y obtén tu certificado digital."
+msgstr "Enroll in the free course from the Traffic Safety Commission and get your digital certificate."
+
+msgid "abre en nueva pestaña"
+msgstr "opens in a new tab"
