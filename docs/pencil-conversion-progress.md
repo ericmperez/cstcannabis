@@ -328,9 +328,17 @@ faltantes en ambos; `msgfmt -c` pasa. Además, el plugin cargaba su textdomain e
 recarga `cst-core` con el locale resuelto (commit `5363fba`, espeja el del tema).
 Verificado: chatbot/cookie/login rinden en inglés en `/en/`, ES intacto.
 
+**Menú EN (BD):** el menú primario apuntaba solo a páginas ES y Polylang lo
+ocultaba en EN (EN quedaba sin nav superior). Creado menú "Primary Menu EN"
+(#19: Home/Course/Resources/Statistics/About Us/Contact → páginas EN) y cableado
+en la opción `polylang_nav_menus[cst-cannabis-portal][primary][en]=19` (`es`=2)
+que el tema lee (functions.php:161). Verificado: nav EN en inglés, ES intacto.
+
 **Pendiente bilingüe:**
-- Estos son cambios de BD, NO de git → hay que replicarlos en prod (wp-admin o un
-  seeder). Considerar añadirlos a `CST_Content_Seeder`.
+- Estos son cambios de BD, NO de git → hay que replicarlos en prod (Polylang
+  langs + páginas EN #77-83 + menú EN #19 + opción `polylang_nav_menus`). El `.po`
+  del tema/plugin y el fix de textdomain SÍ son código (commiteados). Considerar
+  un seeder para la parte de BD.
 - `/en/` hace 301 a `/en/home/` en vez de servir en la raíz (menor, funcional).
 - Páginas LEGALES (privacidad/términos/cookies/accesibilidad) + Certificado NO
   tienen duplicado EN: tienen BODY legal real que "template-driven" no cubre →
