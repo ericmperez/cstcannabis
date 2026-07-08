@@ -4671,20 +4671,23 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* Navy left border accent for purpose section */
+/* Purpose section: centered content with a short centered top accent line
+   (the old left-border bar looked orphaned once the text was centered). */
 .cst-section--about-purpose .cst-about-block {
     position: relative;
-    padding-left: var(--cst-space-xl);
-    text-align: left;
+    max-width: 760px;
+    margin-inline: auto;
+    padding-top: var(--cst-space-lg);
 }
 
 .cst-section--about-purpose .cst-about-block::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
-    bottom: 0;
-    width: 4px;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 4px;
     background: var(--cst-gradient-accent);
     border-radius: 2px;
 }
