@@ -145,7 +145,13 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       propio (usa el del padre GeneratePress). Este ítem probablemente necesita
       MÁS de una iteración: primero crear `single.php` básico con el layout, luego
       afinar estilo. Está bien partirlo en sub-iteraciones.
-- [ ] Búsqueda — Section "Resultados" — `search.php`.
+- [~] Búsqueda — Section "Resultados" — `search.php`. **Mejora parcial aplicada
+      SIN verificar contra Pencil** (Pencil MCP estaba caído): se migró el
+      markup de resultados de clases `.cst-search-result` sin estilo (bug
+      preexistente — no tenían CSS) al sistema de tarjetas del sitio
+      (`.cst-card`/`.cst-card-grid`), verificado en navegador que renderiza
+      bien. Queda pendiente el pase final de precisión contra el frame Pencil
+      `y17RyK` cuando Pencil vuelva.
 - [ ] 404 — Section "404" — `404.php`.
 
 ## Cuándo parar
@@ -162,17 +168,32 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
 
 ## Bloqueos abiertos
 
-- **2026-07-07** — Hay un workflow paralelo en curso (16 agentes, sin worktree,
-  cada uno sobre archivos PHP exclusivos, reportando CSS como texto para que el
-  orquestador lo aplique) que cubre TODOS los ítems de "Elementos pendientes"
-  de una sola vez. Mientras esté corriendo: **NO tomes ningún ítem de la lista
-  ni edites los archivos PHP de las páginas** (riesgo real de condición de
-  carrera — dos procesos editando el mismo archivo al mismo tiempo). Si te
-  disparas mientras esto sigue activo, no hagas cambios de código — anota en
-  Bitácora que saltaste esta iteración por el bloqueo y para ahí. Una vez el
-  workflow termine y sus cambios se mergeen/verifiquen (lo hará el usuario o
-  el orquestador principal, no un disparo suelto del cron), esta nota se
-  borra y el proceso normal de 1-ítem-por-iteración se reanuda.
+- **2026-07-07 — CRÍTICO, requiere acción del usuario: Pencil MCP no responde.**
+  El workflow paralelo de 16 agentes terminó SIN completar ni un solo ítem:
+  los 17 agentes (16 + 1 de control) recibieron `MCP error -32603: Failed to
+  access file /Users/ericperez/Projects/cannabis. A file needs to be open in
+  the editor to perform this action.` en TODAS sus llamadas a
+  `mcp__pencil__*` (batch_get, get_variables, get_editor_state — incluso las
+  que no requieren filePath/nodeId). Se probó también desde la sesión
+  principal (no paralela) inmediatamente después: mismo error. Esto NO es un
+  problema de nodeId ni de concurrencia productiva — es que **no hay ningún
+  archivo abierto en el editor Pencil activo ahora mismo**, y no existe
+  ninguna tool MCP para abrir/reactivar un archivo remotamente.
+  **ANTES de intentar cualquier ítem que necesite leer Pencil**: haz una
+  llamada barata de sondeo primero (`mcp__pencil__get_editor_state` con
+  `include_schema:false`, sin nodeIds). Si falla con el mismo error, **NO
+  despaches agentes ni gastes tokens intentando trabajar** — anota en
+  Bitácora que Pencil sigue caído y para ahí. Cuando el usuario reabra
+  `/Users/ericperez/Projects/cannabis` en la app de escritorio de Pencil,
+  este bloqueo se resuelve solo (confírmalo con el mismo sondeo antes de
+  reanudar trabajo real).
+  **Lección para el futuro**: NO despachar múltiples agentes en paralelo que
+  cada uno intente conectarse a Pencil MCP simultáneamente — aunque sean
+  solo lecturas, parece que la app de escritorio de Pencil solo sostiene un
+  contexto de "archivo activo" a la vez y no tolera bien el acceso
+  concurrente de varias conexiones MCP distintas (una por agente). El patrón
+  que SÍ funcionó en las primeras 2 iteraciones (secuencial, un agente/sesión
+  a la vez leyendo Pencil) sigue siendo el único probado.
 
 ## Bitácora
 
@@ -199,4 +220,17 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
   único archivo compartido). Resultado pendiente de revisar, aplicar el CSS,
   verificar en vivo y commitear — lo hace el orquestador principal, no un
   disparo suelto del cron.
+- 2026-07-07 — El 2º workflow también falló: los 17 agentes reportaron Pencil
+  MCP caído ("A file needs to be open in the editor") en TODAS sus llamadas.
+  Diagnóstico: 9 procesos huérfanos del servidor MCP de Pencil de sesiones
+  viejas (killeados) + probable intolerancia de la app de escritorio de
+  Pencil al acceso concurrente de muchas conexiones MCP a la vez. Se rescató
+  lo poco salvable de esa corrida: 2 agentes (search + certificado) sí
+  alcanzaron a editar sus PHP con criterio de patrón establecido (sin Pencil):
+  `search.php` migró resultados sin estilo → `.cst-card` grid (arregla bug
+  preexistente, verificado en navegador); `template-certificate.php` cambió
+  colores hardcodeados del toolbar → tokens. Ambos commiteados (sin push).
+  El resto de ítems NO se tocó. **Pencil sigue caído**; el usuario pivoteó a
+  un nuevo loop de 3 min ("find something to fix, bilingüe + responsive") que
+  NO depende de Pencil — el loop viejo de Pencil (cron `1eaf359d`) se canceló.
   resto del checklist en vez de seguir estrictamente 1 ítem/4min.

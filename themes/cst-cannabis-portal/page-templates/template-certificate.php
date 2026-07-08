@@ -102,7 +102,7 @@ get_header();
 </main>
 
 <style>
-.cst-certificate-toolbar{max-width:900px;margin:24px auto;padding:16px 20px;background:#fff8e1;border-left:4px solid #f0ad4e;display:flex;align-items:center;gap:20px;justify-content:space-between;flex-wrap:wrap;border-radius:6px}
+.cst-certificate-toolbar{max-width:900px;margin:24px auto;padding:16px 20px;background:var(--cst-callout-bg-info,#eef5fb);border-left:4px solid var(--cst-color-accent,#3B82C4);display:flex;align-items:center;gap:20px;justify-content:space-between;flex-wrap:wrap;border-radius:var(--cst-border-radius,6px)}
 .cst-certificate-toolbar p{margin:0;flex:1 1 320px}
 .cst-certificate{max-width:1100px;margin:0 auto 64px;padding:24px;background:#fff;box-shadow:0 12px 40px rgba(0,0,0,.08)}
 .cst-certificate__border{padding:48px 56px;border:6px double var(--cst-color-primary,#5E7C3A);position:relative;text-align:center;font-family:var(--cst-font-body,'Open Sans',sans-serif)}
