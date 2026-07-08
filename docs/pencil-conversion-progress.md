@@ -162,7 +162,17 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
 
 ## Bloqueos abiertos
 
-(ninguno todavía)
+- **2026-07-07** — Hay un workflow paralelo en curso (16 agentes, sin worktree,
+  cada uno sobre archivos PHP exclusivos, reportando CSS como texto para que el
+  orquestador lo aplique) que cubre TODOS los ítems de "Elementos pendientes"
+  de una sola vez. Mientras esté corriendo: **NO tomes ningún ítem de la lista
+  ni edites los archivos PHP de las páginas** (riesgo real de condición de
+  carrera — dos procesos editando el mismo archivo al mismo tiempo). Si te
+  disparas mientras esto sigue activo, no hagas cambios de código — anota en
+  Bitácora que saltaste esta iteración por el bloqueo y para ahí. Una vez el
+  workflow termine y sus cambios se mergeen/verifiquen (lo hará el usuario o
+  el orquestador principal, no un disparo suelto del cron), esta nota se
+  borra y el proceso normal de 1-ítem-por-iteración se reanuda.
 
 ## Bitácora
 
@@ -177,4 +187,16 @@ marcados `[x]`: no hagas ningún cambio de código. En vez de eso:
 - 2026-07-07 — Disparo de cron: Home — Section Pilares (resto de la sección)
   completado. Commit `646b0f9` (sin push). A partir de aquí el usuario pidió
   usar un grupo de agentes en paralelo (worktrees aislados) para acelerar el
+  resto — ver nota abajo sobre el primer intento fallido.
+- 2026-07-07 — Disparo de cron: saltado sin hacer cambios. Hay un workflow
+  paralelo de 16 agentes en curso sobre los archivos PHP restantes (ver
+  "Bloqueos abiertos" arriba) — tomar un ítem ahora mismo hubiera competido
+  por los mismos archivos. Nota: el primer intento de este workflow usó
+  `isolation: 'worktree'` y falló de inmediato en los 16 agentes (hook
+  WorktreeCreate no configurado en esta sesión — corre "in place"). Se
+  relanzó sin worktree: cada agente edita solo sus PHP exclusivos y reporta
+  el CSS como texto en vez de tocar custom.css directo (evita colisión en el
+  único archivo compartido). Resultado pendiente de revisar, aplicar el CSS,
+  verificar en vivo y commitear — lo hace el orquestador principal, no un
+  disparo suelto del cron.
   resto del checklist en vez de seguir estrictamente 1 ítem/4min.
