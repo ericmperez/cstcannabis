@@ -61,12 +61,18 @@ class CST_Security {
         // for WordPress/GeneratePress compatibility.
         $csp_directives = [
             "default-src 'self'",
-            "script-src 'self' 'nonce-{$nonce}' https://www.googletagmanager.com https://www.google-analytics.com https://api.whatsapp.com https://cdn.jsdelivr.net",
+            // Video-player scripts (YouTube iframe API, Vimeo player.js) for
+            // Tutor LMS course/lesson videos, plus existing analytics/CDN.
+            "script-src 'self' 'nonce-{$nonce}' https://www.googletagmanager.com https://www.google-analytics.com https://api.whatsapp.com https://cdn.jsdelivr.net https://www.youtube.com https://player.vimeo.com",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com data:",
             "img-src 'self' data: https: http:",
-            "connect-src 'self' https://www.google-analytics.com https://api.whatsapp.com",
-            "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
+            // Self-hosted (blob for the HTML5 player), and external video URLs
+            // used by Tutor LMS lessons.
+            "media-src 'self' blob: https:",
+            "connect-src 'self' https://www.google-analytics.com https://api.whatsapp.com https://player.vimeo.com https://vimeo.com https://www.youtube.com",
+            // Video embeds: YouTube, Vimeo, Dailymotion (Tutor LMS video sources).
+            "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://www.dailymotion.com",
             "frame-ancestors 'self'",
             "base-uri 'self'",
             "form-action 'self'",
