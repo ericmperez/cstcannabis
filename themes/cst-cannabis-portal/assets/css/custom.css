@@ -1819,11 +1819,13 @@ h1, h2, h3, h4, h5, h6 {
    Enrollment CTA
    ========================================================================== */
 
+/* Matches Pencil frame Qp2ZK: green gradient banner, copy left + button
+   right (space-between), single white "Ver Curso" button with green text. */
 .cst-enrollment-cta {
     position: relative;
-    background: linear-gradient(135deg, var(--cst-color-secondary) 0%, var(--cst-color-navy-light) 100%);
+    background: linear-gradient(120deg, #5E7C3A 0%, #4C6A2C 100%);
     color: var(--cst-color-white);
-    padding-block: var(--cst-space-4xl);
+    padding-block: clamp(3.5rem, 8vw, 5rem);
     overflow: hidden;
 }
 
@@ -1835,33 +1837,62 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: none;
 }
 
-.cst-enrollment-cta__content {
+.cst-enrollment-cta__inner {
     position: relative;
     z-index: 1;
-    text-align: center;
-    max-width: var(--cst-container-narrow);
-    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--cst-space-2xl);
+}
+
+.cst-enrollment-cta__content {
+    text-align: left;
+    max-width: 640px;
 }
 
 .cst-enrollment-cta__title {
-    font-size: var(--cst-font-size-3xl);
-    font-weight: 700;
-    margin-bottom: var(--cst-space-md);
+    font-family: var(--cst-font-heading);
+    font-size: clamp(1.75rem, 3.4vw, 2.125rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 var(--cst-space-sm);
     color: var(--cst-color-white);
 }
 
 .cst-enrollment-cta__subtitle {
-    font-size: var(--cst-font-size-xl);
-    opacity: 0.9;
-    margin-bottom: var(--cst-space-xl);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    /* Pencil uses #EAF1E2 but that fails WCAG AA (~3.96:1) on the light end
+       of the green gradient; near-white keeps the look and passes AA. */
+    color: #FFFFFF;
+    margin: 0;
 }
 
 .cst-enrollment-cta__actions {
     display: flex;
     flex-wrap: wrap;
     gap: var(--cst-space-md);
-    justify-content: center;
     align-items: center;
+    flex-shrink: 0;
+}
+
+/* Primary → white pill with green label + arrow (Pencil CTA Button Uwxav). */
+.cst-enrollment-cta .cst-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cst-color-white);
+    color: var(--cst-color-green-dark);
+    border: 1px solid var(--cst-color-white);
+    border-radius: 8px;
+}
+
+.cst-enrollment-cta .cst-btn--primary:hover,
+.cst-enrollment-cta .cst-btn--primary:focus-visible {
+    background: var(--cst-color-green-wash);
+    color: #4C6A2C;
+    border-color: var(--cst-color-green-wash);
 }
 
 .cst-btn--lg {
@@ -1869,9 +1900,18 @@ h1, h2, h3, h4, h5, h6 {
     padding: var(--cst-space-md) var(--cst-space-2xl);
 }
 
+@media (max-width: 768px) {
+    .cst-enrollment-cta__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 @media (max-width: 480px) {
     .cst-enrollment-cta__actions {
         flex-direction: column;
+        align-items: stretch;
+        width: 100%;
     }
 
     .cst-enrollment-cta__title {
