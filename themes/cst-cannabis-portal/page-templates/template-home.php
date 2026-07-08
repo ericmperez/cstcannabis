@@ -17,19 +17,33 @@ get_header();
 <main id="main-content" class="cst-main">
 
     <?php
-    // 1. Hero — single short slogan, rendered in small-caps via theme CSS
-    //    (.cst-hero--home .cst-hero__title). No subtitle.
+    // 1. Hero — institutional authority treatment (left-aligned sentence-case
+    //    title, navy scrim, no marketing decor). Copy/photo are real; badges
+    //    reuse facts already published in trust strip / enrollment CTA.
     cst_hero( [
-        'eyebrow'          => __( 'Cannabis Medicinal y Seguridad Vial', 'cst-cannabis' ),
-        'title'            => __( 'Educación, prevención y datos para proteger vidas', 'cst-cannabis' ),
-        'subtitle'         => '',
-        'cta_text'         => __( 'Ver Curso', 'cst-cannabis' ),
-        'cta_url'          => cst_course_url(),
-        'cta2_text'        => __( 'Ver recursos', 'cst-cannabis' ),
-        'cta2_url'         => home_url( '/recursos/' ),
-        'class'            => 'cst-hero--home',
-        'image_url'        => get_stylesheet_directory_uri() . '/assets/images/hero-home.jpg',
-        'scroll_indicator' => true,
+        'eyebrow'   => __( 'Cannabis Medicinal y Seguridad Vial', 'cst-cannabis' ),
+        'title'     => __( 'Educación, prevención y datos para proteger vidas', 'cst-cannabis' ),
+        'subtitle'  => __( 'Recurso educativo gratuito de la Comisión para la Seguridad en el Tránsito.', 'cst-cannabis' ),
+        'cta_text'  => __( 'Ver Curso', 'cst-cannabis' ),
+        'cta_url'   => cst_course_url(),
+        'cta2_text' => __( 'Ver recursos', 'cst-cannabis' ),
+        'cta2_url'  => home_url( '/recursos/' ),
+        'class'     => 'cst-hero--home',
+        'image_url' => get_stylesheet_directory_uri() . '/assets/images/hero-home.jpg',
+        'trust_badges' => [
+            [
+                'icon'  => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>',
+                'label' => __( 'Certificado digital', 'cst-cannabis' ),
+            ],
+            [
+                'icon'  => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>',
+                'label' => __( '100% en línea', 'cst-cannabis' ),
+            ],
+            [
+                'icon'  => '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>',
+                'label' => __( 'Gratuito', 'cst-cannabis' ),
+            ],
+        ],
     ] );
     ?>
 

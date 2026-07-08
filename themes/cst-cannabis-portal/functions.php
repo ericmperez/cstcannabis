@@ -61,10 +61,9 @@ add_action( 'wp', function () {
    ========================================================================== */
 
 add_filter( 'generate_sidebar_layout', function () {
-    // Allow right sidebar on single posts for newspaper layout.
-    if ( is_single() ) {
-        return 'right-sidebar';
-    }
+    // single.php / home.php use custom full-width CST layouts (hero + prose +
+    // related grid). A GP "right-sidebar" body class without a matching
+    // get_sidebar() call leaves .site-content in a broken flex/width state.
     return 'no-sidebar';
 } );
 

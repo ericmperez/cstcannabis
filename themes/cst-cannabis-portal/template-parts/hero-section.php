@@ -30,6 +30,13 @@ $cta2_url  = $args['cta2_url'] ?? '';
 $image_url = $args['image_url'] ?? '';
 $class     = $args['class'] ?? '';
 
+// No floating blobs / network illustration on photo or interior heroes.
+// Course hero keeps its dedicated photo treatment and never gets marketing decor.
+$is_home_hero   = ( false !== strpos( $class, 'cst-hero--home' ) );
+$is_course_hero = ( false !== strpos( $class, 'cst-hero--course' ) );
+$is_page_hero   = ( false !== strpos( $class, 'cst-hero--page' ) );
+$show_decor     = ! $is_home_hero && ! $is_course_hero && ! $is_page_hero;
+
 $style = $image_url
     ? ' style="background-image:url(' . esc_url( $image_url ) . ')"'
     : '';
@@ -38,15 +45,17 @@ $style = $image_url
          role="region" aria-label="<?php esc_attr_e( 'Sección principal', 'cst-cannabis' ); ?>">
     <div class="cst-hero__overlay" aria-hidden="true"></div>
 
-    <!-- Floating decorative shapes -->
-    <svg class="cst-hero__float cst-hero__float--1" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="rgba(45,108,176,0.12)"/></svg>
-    <svg class="cst-hero__float cst-hero__float--2" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="rgba(28,40,84,0.10)"/></svg>
-    <svg class="cst-hero__float cst-hero__float--3" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.08)"/></svg>
+    <?php if ( $show_decor ) : ?>
+        <!-- Floating decorative shapes -->
+        <svg class="cst-hero__float cst-hero__float--1" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="60" fill="rgba(45,108,176,0.12)"/></svg>
+        <svg class="cst-hero__float cst-hero__float--2" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="40" fill="rgba(28,40,84,0.10)"/></svg>
+        <svg class="cst-hero__float cst-hero__float--3" width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.08)"/></svg>
 
-    <!-- Hero illustration (decorative) -->
-    <img class="cst-hero__illustration"
-         src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/hero-illustration.svg' ); ?>"
-         alt="" aria-hidden="true" loading="lazy" />
+        <!-- Hero illustration (decorative) -->
+        <img class="cst-hero__illustration"
+             src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/hero-illustration.svg' ); ?>"
+             alt="" aria-hidden="true" loading="lazy" />
+    <?php endif; ?>
 
     <!-- Wave bottom divider -->
     <div class="cst-hero__wave" aria-hidden="true"></div>
