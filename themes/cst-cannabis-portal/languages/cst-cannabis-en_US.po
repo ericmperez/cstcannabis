@@ -1709,3 +1709,7 @@ msgstr "Keep reading"
 #: single.php
 msgid "Publicaciones relacionadas"
 msgstr "Related posts"
+
+#: page-templates/template-about.php
+msgid "Seguridad vial en Puerto Rico"
+msgstr "Road safety in Puerto Rico"

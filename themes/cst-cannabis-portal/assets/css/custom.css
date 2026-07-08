@@ -4494,6 +4494,41 @@ h1, h2, h3, h4, h5, h6 {
     padding-block: var(--cst-space-3xl);
 }
 
+/* Misión — Pencil PFWL4: two columns (copy + rounded image). */
+.cst-about-mission__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+}
+
+.cst-about-mission__grid .cst-about-block,
+.cst-about-mission__grid .cst-about-block .cst-section-heading {
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
+}
+
+.cst-about-mission__image {
+    margin: 0;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.cst-about-mission__image img {
+    display: block;
+    width: 100%;
+    height: clamp(240px, 32vw, 360px);
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .cst-about-mission__grid {
+        grid-template-columns: 1fr;
+        gap: var(--cst-space-xl);
+    }
+}
+
 .cst-section--about-purpose {
     background: var(--cst-gradient-section);
 }

@@ -23,21 +23,34 @@ get_header();
     ] );
     ?>
 
-    <!-- Mission -->
+    <!-- Mission — Pencil PFWL4: copy on the left, image on the right. -->
     <section class="cst-section cst-section--about-mission">
         <div class="cst-container">
-            <div class="cst-about-block">
-                <?php cst_section_heading(
-                    __( 'Nuestra misión', 'cst-cannabis' ),
-                    '',
-                    'h2'
-                ); ?>
-                <p class="cst-about-block__text">
-                    <?php echo esc_html__(
-                        'La Comisión para la Seguridad en el Tránsito de Puerto Rico (CST) es la agencia gubernamental encargada de promover la seguridad vial en todo el territorio. A través de este portal educativo, nos dedicamos a informar sobre el uso responsable del cannabis medicinal y su relación con la seguridad en las carreteras.',
-                        'cst-cannabis'
+            <div class="cst-about-mission__grid">
+                <div class="cst-about-block">
+                    <?php cst_section_heading(
+                        __( 'Nuestra misión', 'cst-cannabis' ),
+                        '',
+                        'h2'
                     ); ?>
-                </p>
+                    <p class="cst-about-block__text">
+                        <?php echo esc_html__(
+                            'La Comisión para la Seguridad en el Tránsito de Puerto Rico (CST) es la agencia gubernamental encargada de promover la seguridad vial en todo el territorio. A través de este portal educativo, nos dedicamos a informar sobre el uso responsable del cannabis medicinal y su relación con la seguridad en las carreteras.',
+                            'cst-cannabis'
+                        ); ?>
+                    </p>
+                </div>
+                <?php
+                // Featured image if set on the page; otherwise a bundled theme
+                // asset as a placeholder the client can replace in the editor.
+                $cst_mission_img = has_post_thumbnail()
+                    ? get_the_post_thumbnail_url( get_the_ID(), 'cst-hero' )
+                    : get_stylesheet_directory_uri() . '/assets/images/hero-home.jpg';
+                ?>
+                <figure class="cst-about-mission__image">
+                    <img src="<?php echo esc_url( $cst_mission_img ); ?>" loading="lazy"
+                         alt="<?php esc_attr_e( 'Seguridad vial en Puerto Rico', 'cst-cannabis' ); ?>">
+                </figure>
             </div>
         </div>
     </section>
