@@ -317,7 +317,9 @@ WP_CLI::add_command( 'cst seed-statistics', function () {
             update_post_meta( $post_id, '_cst_stat_category',    $data['category']    ?? '' );
             update_post_meta( $post_id, '_cst_stat_chart_type',  $data['chart_type']  ?? 'none' );
             update_post_meta( $post_id, '_cst_stat_chart_label', $data['chart_label'] ?? '' );
-            update_post_meta( $post_id, '_cst_stat_chart_data',  $data['chart_data']  ?? '' );
+            // wp_slash so update_post_meta's internal wp_unslash preserves the
+            // JSON's \uXXXX escapes (otherwise "Investigación" -> "Investigaciu00f3n").
+            update_post_meta( $post_id, '_cst_stat_chart_data',  wp_slash( $data['chart_data'] ?? '' ) );
         } else {
             update_post_meta( $post_id, '_cst_stat_category',    '' );
             update_post_meta( $post_id, '_cst_stat_chart_type',  'none' );
