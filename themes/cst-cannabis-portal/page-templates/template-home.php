@@ -33,6 +33,19 @@ get_header();
     ] );
     ?>
 
+    <?php // 1b. Critical safety strip — red = critical (CST palette recommendation). ?>
+    <aside class="cst-critical-strip" aria-label="<?php esc_attr_e( 'Mensaje de seguridad', 'cst-cannabis' ); ?>">
+        <div class="cst-container cst-critical-strip__inner">
+            <svg class="cst-critical-strip__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+            </svg>
+            <p class="cst-critical-strip__msg">
+                <strong><?php esc_html_e( 'Si consumiste, no manejes.', 'cst-cannabis' ); ?></strong>
+                <span><?php esc_html_e( 'El cannabis reduce tus reflejos y tu tiempo de reacción.', 'cst-cannabis' ); ?></span>
+            </p>
+        </div>
+    </aside>
+
     <?php // 2. Course pillars (Consumo / Seguridad vial / Protección familiar). ?>
     <?php get_template_part( 'template-parts/section', 'course-pillars' ); ?>
 

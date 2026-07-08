@@ -6983,3 +6983,69 @@ body {
     display: none !important;
     visibility: hidden !important;
 }
+
+/* ==========================================================================
+   Strategic palette elements (2026 blue redesign) — matches the Pencil file.
+   Red = critical, amber = caution, green (--cst-color-cannabis) = cannabis only.
+   ========================================================================== */
+
+/* Critical safety strip — red = critical. Bg darkened to #C81E1E for WCAG AA
+   (white on brand #EE0000 is only ~4:1). */
+.cst-critical-strip {
+    background: #C81E1E;
+    color: var(--cst-color-white);
+}
+.cst-critical-strip__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--cst-space-md);
+    padding-block: 0.85rem;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.cst-critical-strip__icon { flex-shrink: 0; }
+.cst-critical-strip__msg {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+.cst-critical-strip__msg strong {
+    font-family: var(--cst-font-heading);
+    font-weight: 700;
+}
+.cst-critical-strip__msg span { opacity: 0.95; }
+
+@media (max-width: 600px) {
+    .cst-critical-strip__msg span { display: block; }
+}
+
+/* Caution callout — amber = precaución. */
+.cst-caution-callout {
+    display: flex;
+    gap: var(--cst-space-sm);
+    align-items: flex-start;
+    padding: var(--cst-space-md);
+    border-radius: var(--cst-border-radius-lg);
+    background: var(--cst-color-caution-wash);
+    border-left: 4px solid var(--cst-color-caution);
+}
+.cst-caution-callout__icon {
+    flex-shrink: 0;
+    color: #9A6B00; /* darkened amber for icon contrast on the wash */
+    margin-top: 2px;
+}
+.cst-caution-callout__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--cst-color-gray-700);
+    font-weight: 600;
+}
+
+/* Cannabis leaf marker in the hero eyebrow — green = cannabis only. */
+.cst-hero__eyebrow-leaf {
+    color: #8FBF6B;
+    vertical-align: -2px;
+    margin-right: 6px;
+}
