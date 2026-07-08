@@ -135,6 +135,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'i18n'      => [
             'menuOpen'        => __( 'Abrir menú', 'cst-cannabis' ),
             'menuClose'       => __( 'Cerrar menú', 'cst-cannabis' ),
+            'menuLabel'       => __( 'Menú principal', 'cst-cannabis' ),
             'bannerClose'     => __( 'Cerrar banner', 'cst-cannabis' ),
             'filterAll'       => __( 'Todos', 'cst-cannabis' ),
             'searchOpen'      => __( 'Abrir búsqueda', 'cst-cannabis' ),
