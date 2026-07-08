@@ -21,7 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             <time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
                 <?php
                 printf(
-                    '%s de %s de %s',
+                    /* translators: date parts — 1: day, 2: month name, 3: year. Reorder for the target language (e.g. "%2$s %1$s, %3$s" for English). */
+                    esc_html__( '%1$s de %2$s de %3$s', 'cst-cannabis' ),
                     esc_html( get_the_date( 'j' ) ),
                     esc_html( get_the_date( 'F' ) ),
                     esc_html( get_the_date( 'Y' ) )
