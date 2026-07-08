@@ -1185,6 +1185,13 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
+/* Search results: two columns on desktop so excerpts keep a readable line
+   length instead of stretching the full container width. Collapses to a
+   single column at the 768px breakpoint (see the media query below). */
+.cst-card-grid--search {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 /* --- Card Base --- */
 
 .cst-card {
@@ -3861,6 +3868,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .cst-card-grid--3 {
+        grid-template-columns: 1fr;
+    }
+
+    .cst-card-grid--search {
         grid-template-columns: 1fr;
     }
 
