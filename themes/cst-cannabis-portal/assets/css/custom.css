@@ -171,13 +171,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Section wave dividers */
-.cst-section--objectives,
 .cst-section--events,
 .cst-section--stats {
     position: relative;
 }
 
-.cst-section--objectives::after,
 .cst-section--events::after,
 .cst-section--stats::after {
     content: '';
@@ -193,7 +191,6 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
 }
 
-.cst-section--objectives:nth-child(even)::after,
 .cst-section--events:nth-child(even)::after,
 .cst-section--stats:nth-child(even)::after {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 48' preserveAspectRatio='none'%3E%3Cpath d='M0 24C200 44 400 4 600 24C800 44 1000 4 1200 24V48H0Z' fill='%23F8F9FA'/%3E%3C/svg%3E");
@@ -1400,77 +1397,112 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Objectives Grid
+   Objectives ("Lo que aprenderás") — matches Pencil frame GycwK
    ========================================================================== */
+
+/* Flat section fill (Pencil #F8F9FA) — override the even-child gradient. */
+.cst-section.cst-section--objectives {
+    background: #F8F9FA;
+    padding-block: clamp(3.5rem, 8vw, 5.625rem);
+}
+
+/* Centered section head with eyebrow (mirrors the Pilares head language). */
+.cst-objectives__intro {
+    max-width: 820px;
+    margin: 0 auto var(--cst-space-2xl, 3rem);
+    text-align: center;
+}
+
+.cst-objectives__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--cst-color-primary, #5E7C3A);
+    margin-bottom: var(--cst-space-md, 1rem);
+}
+
+.cst-objectives__eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.cst-objectives__title {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(1.75rem, 3.6vw, 2.25rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: #18202E;
+    margin: 0 0 var(--cst-space-md, 1rem);
+}
+
+.cst-objectives__lead {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: #3A4353;
+    margin: 0;
+}
 
 .cst-objectives-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--cst-space-xl);
+    gap: 20px;
 }
 
+/* Flat white bordered card, left-aligned, led by a number chip. */
 .cst-objective-card {
-    text-align: center;
-    padding: var(--cst-space-2xl) var(--cst-space-xl);
-    background: var(--cst-color-white);
-    border-radius: var(--cst-border-radius-lg);
-    box-shadow: var(--cst-shadow-sm);
-    transition: box-shadow var(--cst-transition-slow), transform var(--cst-transition-spring);
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--cst-color-gray-200);
-}
-
-/* Large faded step number */
-.cst-objective-card[data-step]::before {
-    content: "0" attr(data-step);
-    position: absolute;
-    top: -10px;
-    right: 10px;
-    font-family: var(--cst-font-heading);
-    font-size: 7.5rem;
-    font-weight: 800;
-    line-height: 1;
-    color: var(--cst-color-navy);
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 26px;
+    background: #FFFFFF;
+    border: 1px solid #E4E8EE;
+    border-radius: 14px;
+    transition: border-color var(--cst-transition), box-shadow var(--cst-transition), transform var(--cst-transition-spring);
 }
 
 .cst-objective-card:hover {
-    box-shadow: var(--cst-shadow-lg);
-    transform: translateY(-6px);
+    border-color: var(--cst-color-primary, #5E7C3A);
+    box-shadow: var(--cst-shadow-md);
+    transform: translateY(-4px);
 }
 
-.cst-objective-card__icon {
-    color: var(--cst-color-primary);
-    margin-bottom: var(--cst-space-md);
-    display: flex;
+.cst-objective-card__num {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 72px;
-    height: 72px;
-    margin-inline: auto;
-    background: var(--cst-alpha-green-8);
-    border-radius: 50%;
-    transition: background var(--cst-transition), transform var(--cst-transition-spring), box-shadow var(--cst-transition), color var(--cst-transition);
-}
-
-.cst-objective-card:hover .cst-objective-card__icon {
-    background: var(--cst-gradient-primary);
-    color: var(--cst-color-white);
-    transform: translateY(-4px) scale(1.1);
-    box-shadow: var(--cst-shadow-glow-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--cst-color-green-wash, #EEF3E7);
+    color: var(--cst-color-green-dark, #5E7C3A);
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.0625rem;
+    font-weight: 800;
+    line-height: 1;
 }
 
 .cst-objective-card__title {
-    font-size: var(--cst-font-size-xl);
-    color: var(--cst-color-primary);
-    margin-bottom: var(--cst-space-sm);
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #18202E;
+    margin: 0;
 }
 
 .cst-objective-card__desc {
-    color: var(--cst-color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #3A4353;
+    margin: 0;
 }
 
 /* ==========================================================================
@@ -3495,11 +3527,6 @@ h1, h2, h3, h4, h5, h6 {
    Icon Hover Animations
    ========================================================================== */
 
-/* Objective card icon — subtle rotate on hover */
-.cst-objective-card:hover .cst-objective-card__icon {
-    transform: translateY(-4px) scale(1.1) rotate(-8deg);
-}
-
 /* Stat card icon hover is handled in the Statistics Grid block above */
 
 /* ==========================================================================
@@ -3923,6 +3950,14 @@ h1, h2, h3, h4, h5, h6 {
 
     .cst-institutional-footer__grid {
         grid-template-columns: 1fr;
+    }
+
+    /* The fixed chatbot FAB (bottom-right, ~60px + offset) overlapped the
+       centered copyright line on narrow viewports, hiding the end of "Todos
+       los derechos reservados". Reserve clearance so the last footer line
+       clears the button. */
+    .cst-institutional-footer__bottom {
+        padding-bottom: 6rem;
     }
 
     .cst-legal-layout {
