@@ -300,6 +300,35 @@ Pencil→código está completa y lista para revisión/push del usuario.
   que SÍ funcionó en las primeras 2 iteraciones (secuencial, un agente/sesión
   a la vez leyendo Pencil) sigue siendo el único probado.
 
+## Bilingüe — RESUELTO (2026-07-08, cambios de BD, NO de código)
+
+El bloqueo `/en/` 404 está resuelto. Polylang fue inicializado desde cero vía
+`wp eval` (corre como admin; el `pll` CLI está inerte). Pasos aplicados a la BD
+LOCAL (backup previo en `~/Projects/cstcannabis-predb-backup.sql`):
+1. `new PLL_Admin_Model(get_option("polylang"))->add_language(...)` para
+   **Español** (slug es, locale es_ES, default) y **English** (slug en, en_US).
+2. Asignado idioma `es` a los 27 posts/páginas existentes (`pll_set_post_language`);
+   solo `post`+`page` son traducibles (los CPTs no lo necesitan).
+3. Creados **duplicados EN template-driven** (body vacío; las strings del template
+   rinden en inglés vía `.mo`) y enlazados con `pll_save_post_translations`:
+   Home→#77 (/en/home/), Course→#78, Resources→#79, Statistics→#80, Contact→#81,
+   About Us→#82, Blog→#83. Copiado `_wp_page_template` de cada original.
+4. `wp rewrite flush --hard`.
+
+Resultado verificado: `/en/` → `/en/home/` 200 con `<html lang="en-US">` y strings
+en inglés SIN fuga de español; ES intacto (`/` 200, `lang="es-ES"`). Todas las
+páginas de nav principal 200 en ambos idiomas. Switcher EN enlaza a `/en/home/`.
+
+**Pendiente bilingüe:**
+- Estos son cambios de BD, NO de git → hay que replicarlos en prod (wp-admin o un
+  seeder). Considerar añadirlos a `CST_Content_Seeder`.
+- `/en/` hace 301 a `/en/home/` en vez de servir en la raíz (menor, funcional).
+- Páginas LEGALES (privacidad/términos/cookies/accesibilidad) + Certificado NO
+  tienen duplicado EN: tienen BODY legal real que "template-driven" no cubre →
+  requieren traducción humana real (ver `docs/TRANSLATION-GUIDE.md`).
+- Sin posts/recursos EN (contenido del cliente).
+- Gate UI strings sigue en 1 (solo header) — OK.
+
 ## Bitácora
 
 - 2026-07-07 — Archivo creado. Header + Hero interior + Home hero ya completados
