@@ -3212,7 +3212,8 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .cst-institutional-footer {
-    background: linear-gradient(180deg, var(--cst-color-navy-darker) 0%, var(--cst-color-gray-900) 100%);
+    /* Flat navy to match Pencil footer (fZ390, #16203C). */
+    background: #16203C;
     color: var(--cst-color-gray-300);
     padding-top: var(--cst-space-3xl);
     position: relative;
