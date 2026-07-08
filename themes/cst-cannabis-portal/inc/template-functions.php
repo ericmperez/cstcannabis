@@ -141,6 +141,35 @@ function cst_get_portal_type(): string {
 }
 
 /**
+ * Human-readable, translatable label for a Chart.js chart type.
+ *
+ * The statistics dashboard stores the raw Chart.js type ('line', 'doughnut',
+ * 'bar'…) and previously printed it straight into the chart badge, which showed
+ * English technical terms ("LINE", "DOUGHNUT") to visitors of a Spanish portal.
+ * This maps the raw type to a translatable label; the raw value is still used
+ * for the badge's CSS modifier class.
+ *
+ * @param string $type Raw Chart.js chart type.
+ * @return string Translated label (falls back to the capitalized raw type).
+ */
+function cst_chart_type_label( string $type ): string {
+    switch ( $type ) {
+        case 'line':
+            return __( 'Línea', 'cst-cannabis' );
+        case 'doughnut':
+            return __( 'Dona', 'cst-cannabis' );
+        case 'bar':
+            return __( 'Barras', 'cst-cannabis' );
+        case 'pie':
+            return __( 'Circular', 'cst-cannabis' );
+        case 'radar':
+            return __( 'Radar', 'cst-cannabis' );
+        default:
+            return ucfirst( $type );
+    }
+}
+
+/**
  * Render a callout/highlight box.
  *
  * @param string $content  Callout body text.

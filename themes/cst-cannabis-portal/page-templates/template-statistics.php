@@ -172,7 +172,7 @@ get_header();
                             <div class="cst-chart-card cst-chart-card--no-js">
                                 <div class="cst-chart-card__header">
                                     <h3 class="cst-chart-card__title"><?php echo esc_html( $chart['title'] ); ?></h3>
-                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( $chart['type'] ); ?></span>
+                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( cst_chart_type_label( $chart['type'] ) ); ?></span>
                                 </div>
                                 <div class="cst-chart-card__canvas-wrap">
                                     <canvas
@@ -201,7 +201,7 @@ get_header();
                             <div class="cst-chart-card cst-chart-card--no-js">
                                 <div class="cst-chart-card__header">
                                     <h3 class="cst-chart-card__title"><?php echo esc_html( $chart['title'] ); ?></h3>
-                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( $chart['type'] ); ?></span>
+                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( cst_chart_type_label( $chart['type'] ) ); ?></span>
                                 </div>
                                 <div class="cst-chart-card__canvas-wrap">
                                     <canvas
@@ -230,7 +230,7 @@ get_header();
                             <div class="cst-chart-card cst-chart-card--no-js">
                                 <div class="cst-chart-card__header">
                                     <h3 class="cst-chart-card__title"><?php echo esc_html( $chart['title'] ); ?></h3>
-                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( $chart['type'] ); ?></span>
+                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( cst_chart_type_label( $chart['type'] ) ); ?></span>
                                 </div>
                                 <div class="cst-chart-card__canvas-wrap">
                                     <canvas
@@ -263,7 +263,7 @@ get_header();
                             <div class="cst-chart-card cst-chart-card--no-js">
                                 <div class="cst-chart-card__header">
                                     <h3 class="cst-chart-card__title"><?php echo esc_html( $chart['title'] ); ?></h3>
-                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( $chart['type'] ); ?></span>
+                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( cst_chart_type_label( $chart['type'] ) ); ?></span>
                                 </div>
                                 <div class="cst-chart-card__canvas-wrap">
                                     <canvas
@@ -296,7 +296,7 @@ get_header();
                             <div class="cst-chart-card cst-chart-card--no-js">
                                 <div class="cst-chart-card__header">
                                     <h3 class="cst-chart-card__title"><?php echo esc_html( $chart['title'] ); ?></h3>
-                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( $chart['type'] ); ?></span>
+                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( cst_chart_type_label( $chart['type'] ) ); ?></span>
                                 </div>
                                 <div class="cst-chart-card__canvas-wrap">
                                     <canvas
@@ -329,7 +329,7 @@ get_header();
                             <div class="cst-chart-card cst-chart-card--no-js">
                                 <div class="cst-chart-card__header">
                                     <h3 class="cst-chart-card__title"><?php echo esc_html( $chart['title'] ); ?></h3>
-                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( $chart['type'] ); ?></span>
+                                    <span class="cst-chart-card__badge cst-chart-card__badge--<?php echo esc_attr( $chart['type'] ); ?>"><?php echo esc_html( cst_chart_type_label( $chart['type'] ) ); ?></span>
                                 </div>
                                 <div class="cst-chart-card__canvas-wrap">
                                     <canvas
