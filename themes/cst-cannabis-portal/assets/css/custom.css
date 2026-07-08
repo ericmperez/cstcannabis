@@ -637,6 +637,17 @@ h1, h2, h3, h4, h5, h6 {
    used in the header, so visitors can type a query without hunting for an
    input. Scoped to these wrappers, so the header search is unaffected.
    Full-width up to a readable max, so it stays responsive on mobile. */
+/* Big "404" code (Pencil PFXX1): oversized green-light Montserrat. */
+.cst-404__code {
+    font-family: var(--cst-font-heading, 'Montserrat', sans-serif);
+    font-size: clamp(5rem, 18vw, 8rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 4px;
+    color: var(--cst-color-green-light, #A9C58E);
+    margin: 0 0 var(--cst-space-md);
+}
+
 .cst-search-page__form .cst-search,
 .cst-404__search .cst-search {
     display: block;
