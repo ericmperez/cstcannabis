@@ -219,11 +219,16 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
 - [ ] Certificado — Section "Cert" — comparar contra `template-certificate.php`
       (ya construido y verificado en sesión previa; probablemente solo necesita
       ajustes menores de token, si acaso).
-- [ ] Blog — Section "Posts" — `home.php` (archivo de posts) + `card-blog.php`.
-- [ ] Artículo — Section "Artículo" + "Relacionadas" — el tema NO tiene `single.php`
-      propio (usa el del padre GeneratePress). Este ítem probablemente necesita
-      MÁS de una iteración: primero crear `single.php` básico con el layout, luego
-      afinar estilo. Está bien partirlo en sub-iteraciones.
+- [x] Blog — Section "Posts" (Pencil `BfmJo`) — `home.php` + `card-blog.php`.
+      Verificado: 6 cards de blog con pill de categoría + grid, usa la card ya
+      alineada a Pencil (commit `f00d4c1`) y el hero genérico. Sin cambios extra.
+- [x] Artículo — Section "Artículo" + "Relacionadas" (Pencil `tlUDj`) — **`single.php`
+      CREADO** (el tema no tenía). Hero con eyebrow de categoría + título + meta
+      "fecha · N min · Por autor"; cuerpo prose 800px con imagen destacada r14,
+      H2 26/700, blockquote→callout verde-wash, fila de 4 botones de compartir
+      circulares; sección "Publicaciones relacionadas" `#F8F9FA` (eyebrow "Sigue
+      leyendo" + 3 cards de la misma categoría). 8 strings nuevos traducidos
+      (gate=1). Commit `14b1569`. Verificado con post real.
 - [x] Búsqueda — Section "Resultados" (Pencil `y17RyK`) — `search.php`. Verificado
       en navegador: hero + caja de búsqueda expandida + grid de tarjetas de
       resultado (`.cst-card`) coinciden con Pencil, sin overflow. **2 detalles
