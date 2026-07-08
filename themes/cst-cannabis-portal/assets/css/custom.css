@@ -433,9 +433,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* The hero on every page already carries a prominent "Ver Curso" CTA —
    drop the header's copy on narrow screens so search + hamburger (which
-   initMoveHamburger() relocates into this same row) don't get cramped. */
+   initMoveHamburger() relocates into this same row) don't get cramped.
+   Scoped as a descendant selector (0,2,0) so it beats the base
+   .cst-btn { display: inline-flex } (0,1,0) that's defined later in the
+   file — otherwise source order wins and the button stays visible. */
 @media (max-width: 768px) {
-    .cst-header-cta {
+    .cst-institutional-header__actions .cst-header-cta {
         display: none;
     }
 }
@@ -5645,18 +5648,23 @@ img.cst-img-square {
         color: var(--cst-color-white);
     }
 
-    /* Style the hamburger so it sits in the navy bar */
+    /* Style the hamburger for the light (white) header. Previously white
+       bars + a translucent-white border, left over from when the header was
+       navy — that rendered the toggle invisible (white-on-white) once the
+       header background switched to white, so the mobile menu button could
+       not be seen or found. Navy bars + a gray border make it clearly
+       visible against the white header. */
     .cst-institutional-header .menu-toggle,
     body .main-navigation .menu-toggle {
         background: transparent;
-        border: 1.5px solid var(--cst-alpha-white-40, rgba(255,255,255,0.4));
-        color: var(--cst-color-white);
+        border: 1.5px solid var(--cst-color-gray-300);
+        color: var(--cst-color-secondary);
     }
 
     .cst-institutional-header .menu-toggle .cst-hamburger,
     .cst-institutional-header .menu-toggle .cst-hamburger::before,
     .cst-institutional-header .menu-toggle .cst-hamburger::after {
-        background: var(--cst-color-white);
+        background: var(--cst-color-secondary);
     }
 
     /* When drawer is open, the floating hamburger goes white-bg / dark-icon */
@@ -6404,11 +6412,12 @@ body {
         height: 48px !important;
         margin: 0 !important;
         padding: 0 !important;
-        /* Match closed-state look: transparent over navy, white outline, no shadow */
+        /* Closed-state look on the white header: gray outline (was a white
+           outline from the navy-header era, invisible on white), no shadow. */
         background: transparent !important;
         background-color: transparent !important;
-        border: 1.5px solid var(--cst-alpha-white-40, rgba(255,255,255,0.4)) !important;
-        border-color: var(--cst-alpha-white-40, rgba(255,255,255,0.4)) !important;
+        border: 1.5px solid var(--cst-color-gray-300) !important;
+        border-color: var(--cst-color-gray-300) !important;
         box-shadow: none !important;
         z-index: auto !important;
     }
