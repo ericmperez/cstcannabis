@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'CST_CORE_VERSION', '1.0.0' );
+define( 'CST_CORE_VERSION', '1.0.1' );
 define( 'CST_CORE_FILE', __FILE__ );
 define( 'CST_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CST_CORE_URL', plugin_dir_url( __FILE__ ) );

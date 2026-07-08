@@ -19,14 +19,19 @@
         purple:     '#6B4C9A'
     };
 
-    var COLOR_ARRAY = [
-        COLORS.green,
-        COLORS.navy,
-        COLORS.blue,
-        COLORS.greenLight,
-        COLORS.gold,
-        COLORS.purple
-    ];
+    // A theme may override the chart palette via window.cstChartColors (set
+    // before this script). Falls back to the default palette, so themes that
+    // don't provide an override are unaffected.
+    var COLOR_ARRAY = (typeof window !== 'undefined' && Array.isArray(window.cstChartColors) && window.cstChartColors.length)
+        ? window.cstChartColors
+        : [
+            COLORS.green,
+            COLORS.navy,
+            COLORS.blue,
+            COLORS.greenLight,
+            COLORS.gold,
+            COLORS.purple
+        ];
 
     /* ====================================================================
        Counter Animations

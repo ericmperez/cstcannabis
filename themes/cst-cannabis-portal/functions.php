@@ -217,3 +217,18 @@ foreach ( $includes as $file ) {
         require_once $path;
     }
 }
+
+/**
+ * Blue-dominant chart palette for the statistics dashboard (2026 redesign).
+ * Overrides the shared cst-core plugin's default green-first palette on the
+ * cannabis portal only. Motoras provides no override, so it is unaffected.
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( wp_script_is( 'cst-statistics-dashboard', 'enqueued' ) || wp_script_is( 'cst-statistics-dashboard', 'registered' ) ) {
+		wp_add_inline_script(
+			'cst-statistics-dashboard',
+			'window.cstChartColors=["#2D6CB0","#1C2854","#5B93CE","#C49A1A","#6B4C9A","#4AA3A3"];',
+			'before'
+		);
+	}
+}, 20 );
