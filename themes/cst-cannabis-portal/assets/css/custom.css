@@ -6020,7 +6020,7 @@ img.cst-img-square {
     .cst-drawer-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.35);
         opacity: 0;
         pointer-events: none;
         transition: opacity 220ms ease;
@@ -7123,4 +7123,12 @@ body {
 /* Center the flex columns that hold that text so blocks (not just lines) center. */
 .cst-main :is([class*="__content"], [class*="__copy"], [class*="__intro"], [class*="__header"], .cst-hero__content) {
     align-items: center;
+}
+
+/* Single post: the related-posts section was rendering beside the article
+   because GeneratePress makes .site-content a flex row. Stack it so the
+   related grid spans the full content width (fixes cramped cards / broken
+   word-wrapping in "Publicaciones relacionadas"). */
+.single .site-content {
+    display: block;
 }
