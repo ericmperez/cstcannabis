@@ -22,10 +22,33 @@ class CST_Core {
     private function __construct() {
         $this->load_modules();
         add_action( 'init', [ $this, 'load_textdomain' ] );
+        // Reload once Polylang has resolved the request language (see below).
+        add_action( 'wp', [ $this, 'reload_textdomain_for_language' ], 1 );
     }
 
     public function load_textdomain(): void {
         load_plugin_textdomain( 'cst-core', false, dirname( CST_CORE_BASENAME ) . '/languages' );
+    }
+
+    /**
+     * Reload the text domain after Polylang resolves the frontend language.
+     *
+     * The initial load at 'init' runs before Polylang sets the request locale,
+     * so on non-Spanish pages the strings would otherwise fall back to the
+     * Spanish source. Mirrors the theme's reload in functions.php.
+     */
+    public function reload_textdomain_for_language(): void {
+        if ( ! function_exists( 'pll_current_language' ) ) {
+            return;
+        }
+        $locale = pll_current_language( 'locale' );
+        if ( $locale && 'es' !== substr( (string) $locale, 0, 2 ) ) {
+            unload_textdomain( 'cst-core' );
+            load_textdomain(
+                'cst-core',
+                WP_PLUGIN_DIR . '/' . dirname( CST_CORE_BASENAME ) . '/languages/cst-core-' . $locale . '.mo'
+            );
+        }
     }
 
     private function load_modules(): void {
