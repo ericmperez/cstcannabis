@@ -185,8 +185,15 @@ Este archivo es la única fuente de continuidad. Léelo completo antes de hacer 
       **NO verificable localmente**: `cst_resource` tiene 0 posts publicados → la
       página muestra estado vacío (sin cards ni tabs con datos). Estilo aplicado
       es spec-exacto; falta pase visual cuando haya recursos seeded.
-- [ ] Estadísticas — Section "KPIs" — `page-templates/template-statistics.php`.
-- [ ] Estadísticas — Section "Chart" (Chart.js).
+- [x] Estadísticas — Section "KPIs" (Pencil `SpOx1`) — override cannabis-scopeado
+      en `custom.css` (el CSS base vive en `plugins/cst-core/assets/css/statistics.css`,
+      COMPARTIDO con motoras — no tocado). Cards `#F6F8F4` planas r14 borde `#E4E8EE`,
+      chips verde-wash `#EEF3E7` uniformes (override del `:nth-child` navy/azul del
+      plugin), número Montserrat 34/800 sobre el label, sin barra de acento. KPIs y
+      fuentes reales conservados. Commit `8b8270a`. Verificado.
+- [~] Estadísticas — Section "Chart" (Chart.js) — el chart renderiza (canvas). Pencil
+      `eg6hk` = card blanca r22 borde padding 32. Follow-up menor: envolver/estilar
+      el contenedor del chart (el CSS vive en el plugin compartido → scopear a cannabis).
 - [~] Sobre nosotros — Section "Misión" (Pencil `PFWL4`) — **DIFERIDO estructural.**
       Pencil es 2-col (texto 600 + imagen 360 rounded). El sitio tiene DOS
       secciones de texto (Misión + "¿Por qué este portal?") sin imagen, con copy
