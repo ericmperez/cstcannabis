@@ -1,5 +1,15 @@
 # Conversión de Pencil a código — CST Cannabis Portal
 
+> **✅ CERRADO — ACEPTADO COMO COMPLETO POR EL USUARIO (2026-07-08).**
+> Decisión explícita ("Darlo por completo"): el trabajo de ingeniería está hecho y
+> verificado en navegador — Pencil en todo el contenido real, responsive validado
+> empíricamente a 375px (0 overflow, técnica iframe), bilingüe 9/9 páginas EN sin
+> fugas. Los dos residuales quedan **fuera del ámbito de código** por regla del
+> proyecto (`CLAUDE.md`): el **contenido real** (stats/recursos/módulos) lo provee
+> el **cliente** — no se generan placeholders; el **despliegue a prod** lo hace
+> **PRITS** (file transfer) + correr `docs/bilingual-setup.php` y `wp language core
+> install es_ES`. Todo commiteado localmente, sin push (flujo del usuario).
+
 Este archivo es el estado persistente de un proceso iterativo (vía `/loop` cada 4
 minutos) que convierte, elemento por elemento, el diseño en Pencil del portal
 CST Cannabis a código real en `themes/cst-cannabis-portal/`.
