@@ -1,0 +1,19 @@
+WPvivid LATEST backup verification
+==================================
+File: cst-cannabis-wpvivid-LATEST.zip
+Also: cst-cannabis-wpvivid-LATEST-2026-07-08-2155.zip
+MD5:  8dcaa7eb87be22b7f260489ab8ecb0f5
+Size: 70403018 bytes (~67 MB)
+Source: http://localhost:8088 (post-commit 502ef99 / 6e46ef0)
+
+Checks passed:
+- unzip -t: no errors
+- All parts present: db, themes, plugins, uploads, content, core
+- Themes include cst-cannabis-portal + generatepress
+- Plugins include cst-core, polylang, tutor, cf7, elementor
+- Theme/plugin files match host git byte-for-byte (functions.php, custom.css, enrollment, seo)
+- Enrollment module present and loaded from class-cst-core.php
+- DB: 122 posts; ES+EN page slugs; Primary Menu EN; Polylang languages
+- Live site smoke: / and /en/ and /en/course/ return 200 with correct lang
+
+Restore note: home_url is localhost:8088 — search-replace domain after restore to prod.
