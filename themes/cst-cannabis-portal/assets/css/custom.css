@@ -5803,20 +5803,76 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         padding: var(--cst-space-md, 1rem) var(--cst-space-lg, 1.5rem);
     }
+
+    /* Allow the PAS number to wrap on narrow phones instead of forcing
+       horizontal overflow inside the card. */
+    .cst-course-safety__phone {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Global mobile safety: media and tables never force page width. */
+img, video, iframe, svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.cst-article__body table,
+.cst-legal-content table,
+.cst-content-area table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 480px) {
+    .cst-institutional-header__agency {
+        font-size: 0.65rem;
+        letter-spacing: 0.04em;
+    }
+
+    .cst-institutional-header__portal-name {
+        font-size: 0.95rem;
+        line-height: 1.2;
+    }
+
+    .cst-critical-strip__msg {
+        font-size: 0.9rem;
+    }
 }
 
 /* ==========================================================================
-   Course Hero — Ken Burns motion (subtle slow zoom + drift)
-   Applies only to the course landing page hero. Honors reduced-motion.
+   Course Hero — road-safety photo (hero-course.jpg), no cannabis leaf.
+   Photo + navy scrim for legible title/CTA.
    ========================================================================== */
 .cst-hero--course {
-    /* Hide the inline background-image set in PHP; the animated ::before
-       (which mirrors the same asset) is what the user sees. */
+    background-color: var(--cst-color-navy, #1C2854);
     background-image: none !important;
+    min-height: clamp(20rem, 48vh, 30rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
 }
 
-/* When a hero video is rendered, suppress the Ken Burns ::before since the
-   video provides its own motion. */
+/* Full-bleed photo layer */
+.cst-hero--course::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url('../images/hero-course.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: none;
+    transform: none;
+}
+
+/* When a hero video is present (other pages), hide decorative ::before. */
 .cst-hero--has-video::before {
     content: none !important;
 }
@@ -5830,12 +5886,8 @@ h1, h2, h3, h4, h5, h6 {
     object-position: center;
     z-index: 0;
     pointer-events: none;
-    /* Hint to the browser this layer is composited. */
-    will-change: transform;
 }
 
-/* For users who prefer reduced motion, hide the video and let the poster
-   image (set via the <section> background or <video poster>) carry the visual. */
 @media (prefers-reduced-motion: reduce) {
     .cst-hero__video {
         display: none;
@@ -5846,53 +5898,73 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.cst-hero--course::before {
-    content: '';
-    position: absolute;
-    inset: -4%; /* slight overscan so scaling never reveals edges */
-    background-image: url('../images/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    transform-origin: center center;
-    z-index: 0;
-    animation: cst-hero-kenburns 28s ease-in-out infinite alternate;
-    will-change: transform;
+/* Navy scrim so white type stays WCAG-legible over the photo. */
+.cst-hero--course .cst-hero__overlay {
+    z-index: 1;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15, 23, 42, 0.55) 0%,
+            rgba(15, 23, 42, 0.42) 45%,
+            rgba(28, 40, 84, 0.78) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(15, 23, 42, 0.35) 0%,
+            rgba(15, 23, 42, 0.15) 50%,
+            rgba(15, 23, 42, 0.35) 100%
+        );
 }
 
-/* Keep overlay, decorative shapes, illustration, and wave above the animated
-   ::before background layer. These elements already have their own positioning
-   (absolute), so only the z-index is set here so we don't disrupt their layout. */
-.cst-hero--course .cst-hero__overlay,
 .cst-hero--course .cst-hero__float,
 .cst-hero--course .cst-hero__illustration,
 .cst-hero--course .cst-hero__wave {
-    z-index: 1;
+    display: none;
 }
 
 .cst-hero--course .cst-container,
 .cst-hero--course .cst-hero__content {
     position: relative;
     z-index: 2;
+    text-align: center;
+    margin-inline: auto;
+    align-items: center;
+}
+
+.cst-hero--course .cst-hero__title {
+    max-width: 18ch;
+    margin-inline: auto;
+    text-transform: none;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.cst-hero--course .cst-hero__subtitle {
+    color: #E8EDF5;
+    max-width: 36rem;
+    margin-inline: auto;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cst-hero--course .cst-hero__actions {
+    justify-content: center;
+}
+
+/* Primary CTA on photo: solid navy for contrast. */
+.cst-hero--course .cst-btn--hero {
+    background-color: var(--cst-color-navy, #1C2854);
+    border-color: var(--cst-color-navy, #1C2854);
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.cst-hero--course .cst-btn--hero:hover {
+    background-color: var(--cst-color-primary, #2D6CB0);
+    border-color: var(--cst-color-primary, #2D6CB0);
 }
 
 @keyframes cst-hero-kenburns {
-    0% {
-        transform: scale(1.0) translate3d(0, 0, 0);
-    }
-    50% {
-        transform: scale(1.06) translate3d(-1.5%, -1%, 0);
-    }
-    100% {
-        transform: scale(1.04) translate3d(1.5%, 1%, 0);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .cst-hero--course::before {
-        animation: none;
-        transform: none;
-        inset: 0;
-    }
+    0%, 100% { transform: none; }
 }
 
 /* ==========================================================================

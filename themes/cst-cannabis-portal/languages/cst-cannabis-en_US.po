@@ -1713,3 +1713,59 @@ msgstr "Related posts"
 #: page-templates/template-about.php
 msgid "Seguridad vial en Puerto Rico"
 msgstr "Road safety in Puerto Rico"
+
+#: page-templates/template-home.php
+msgid "Si consumiste, no manejes."
+msgstr "If you used, don't drive."
+
+#: page-templates/template-home.php
+msgid "El cannabis reduce tus reflejos y tu tiempo de reacción."
+msgstr "Cannabis reduces your reflexes and reaction time."
+
+#: page-templates/template-home.php
+msgid "Mensaje de seguridad"
+msgstr "Safety message"
+
+#: page-templates/template-home.php
+msgid "Certificado digital"
+msgstr "Digital certificate"
+
+#: page-templates/template-home.php
+msgid "100% en línea"
+msgstr "100% online"
+
+#: page-templates/template-home.php
+msgid "Artículos sobre cannabis medicinal y seguridad vial."
+msgstr "Articles on medical cannabis and road safety."
+
+#: page-templates/template-home.php
+msgid "Listado de artículos"
+msgstr "Article listing"
+
+#: page-templates/template-home.php
+msgid "Paginación del blog"
+msgstr "Blog pagination"
+
+#: page-templates/template-home.php
+msgid "Inscríbete y obtén tu certificado"
+msgstr "Sign up and get your certificate"
+
+#: page-templates/template-home.php
+msgid "Curso gratuito de la Comisión para la Seguridad en el Tránsito sobre cannabis medicinal y seguridad vial."
+msgstr "Free course from the Traffic Safety Commission on medical cannabis and road safety."
+
+#: single-cst_resource.php
+msgid "Todos los recursos"
+msgstr "All resources"
+
+#: single-cst_resource.php
+msgid "Más recursos"
+msgstr "More resources"
+
+#: single-cst_resource.php
+msgid "También te puede interesar"
+msgstr "You may also like"
+
+#: single-cst_resource.php
+msgid "%1$s · %2$s min de lectura"
+msgstr "%1$s · %2$s min read"

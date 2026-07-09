@@ -41,10 +41,10 @@ $secondary_txt = $is_logged_in
 
         <div class="cst-course-footer-cta__header">
             <h2 class="cst-course-footer-cta__title">
-                <?php esc_html_e( 'Curso de Cannabis Medicinal y Seguridad Vial', 'cst-cannabis' ); ?>
+                <?php esc_html_e( 'Inscríbete y obtén tu certificado', 'cst-cannabis' ); ?>
             </h2>
             <p class="cst-course-footer-cta__subtitle">
-                <?php esc_html_e( 'Recurso educativo gratuito de la Comisión para la Seguridad en el Tránsito', 'cst-cannabis' ); ?>
+                <?php esc_html_e( 'Curso gratuito de la Comisión para la Seguridad en el Tránsito sobre cannabis medicinal y seguridad vial.', 'cst-cannabis' ); ?>
             </p>
         </div>
 
@@ -113,8 +113,8 @@ $secondary_txt = $is_logged_in
                         <div class="cst-certificate-mockup__border">
                             <div class="cst-certificate-mockup__ribbon"></div>
                             <div class="cst-certificate-mockup__seal">
-                                <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/cst-logo-emblem.jpg' ); ?>"
-                                     alt="" width="1999" height="1280" aria-hidden="true" />
+                                <img src="<?php echo esc_url( CST_CANNABIS_URI . '/assets/images/cst-logo-emblem-sm.jpg' ); ?>"
+                                     alt="" width="80" height="51" aria-hidden="true" decoding="async" />
                             </div>
                             <p class="cst-certificate-mockup__label"><?php esc_html_e( 'Certificado de Aprobación', 'cst-cannabis' ); ?></p>
                             <div class="cst-certificate-mockup__divider"></div>

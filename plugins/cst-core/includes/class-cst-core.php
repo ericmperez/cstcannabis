@@ -79,6 +79,9 @@ class CST_Core {
         if ( class_exists( 'CST_Auto_Enrollment' ) ) {
             new CST_Auto_Enrollment();
         }
+        if ( class_exists( 'CST_Enrollment_Options' ) ) {
+            new CST_Enrollment_Options();
+        }
         if ( class_exists( 'CST_Analytics' ) ) {
             new CST_Analytics();
         }

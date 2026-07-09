@@ -80,13 +80,26 @@ class CST_Seo {
                     ? $post->post_excerpt
                     : wp_strip_all_tags( strip_shortcodes( $post->post_content ) );
             }
+            // Static front page often has empty body (content lives in a
+            // page template). Fall back to the site tagline so home always
+            // emits a description for SEO / OG previews.
+            if ( '' === trim( (string) $description ) && is_front_page() ) {
+                $description = get_bloginfo( 'description' );
+            }
         } elseif ( is_home() || is_front_page() ) {
             $description = get_bloginfo( 'description' );
+        } elseif ( is_post_type_archive( 'cst_resource' ) ) {
+            $description = __( 'Guías, infografías, videos y documentos sobre cannabis medicinal y seguridad vial.', 'cst-core' );
+        } elseif ( is_home() || is_category() || is_tag() ) {
+            $description = __( 'Artículos y noticias sobre cannabis medicinal y seguridad vial de la CST.', 'cst-core' );
         }
 
         $description = trim( preg_replace( '/\s+/', ' ', (string) $description ) );
         if ( '' === $description ) {
-            return;
+            $description = get_bloginfo( 'description' );
+        }
+        if ( '' === $description ) {
+            $description = __( 'Portal educativo de la Comisión para la Seguridad en el Tránsito de Puerto Rico.', 'cst-core' );
         }
         if ( mb_strlen( $description ) > 160 ) {
             $description = mb_substr( $description, 0, 157 ) . '…';

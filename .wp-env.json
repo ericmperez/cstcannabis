@@ -28,5 +28,6 @@
     "wp-content/plugins/cst-core": "./plugins/cst-core"
   },
   "lifecycleScripts": {
-  }
+  },
+  "testsEnvironment": false
 }

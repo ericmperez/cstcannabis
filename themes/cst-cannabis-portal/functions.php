@@ -187,17 +187,87 @@ add_action( 'wp_head', function (): void {
     if ( has_site_icon() ) {
         return;
     }
-    $svg_path = CST_CANNABIS_DIR . '/assets/images/cst-cannabis-logo.png';
-    if ( ! file_exists( $svg_path ) ) {
+    // Prefer the compressed emblem (≈10 KB). Fall back to PNG if present.
+    $candidates = [
+        '/assets/images/cst-logo-emblem-sm.jpg',
+        '/assets/images/cst-cannabis-logo.png',
+    ];
+    $rel = '';
+    foreach ( $candidates as $candidate ) {
+        if ( file_exists( CST_CANNABIS_DIR . $candidate ) ) {
+            $rel = $candidate;
+            break;
+        }
+    }
+    if ( '' === $rel ) {
         return;
     }
-    $url = CST_CANNABIS_URI . '/assets/images/cst-cannabis-logo.png';
+    $url  = CST_CANNABIS_URI . $rel;
+    $type = str_ends_with( $rel, '.png' ) ? 'image/png' : 'image/jpeg';
     printf(
-        '<link rel="icon" type="image/png" href="%1$s" />' . "\n" .
-        '<link rel="apple-touch-icon" href="%1$s" />' . "\n",
+        '<link rel="icon" type="%1$s" href="%2$s" />' . "\n" .
+        '<link rel="apple-touch-icon" href="%2$s" />' . "\n",
+        esc_attr( $type ),
         esc_url( $url )
     );
 }, 5 );
+
+/**
+ * Translate the site tagline on English requests (Polylang does not always
+ * store a separate blogdescription per language on this install).
+ */
+add_filter( 'option_blogdescription', function ( $value ) {
+    if ( is_admin() ) {
+        return $value;
+    }
+    $is_en = false;
+    if ( function_exists( 'pll_current_language' ) ) {
+        $is_en = ( 'en' === pll_current_language( 'slug' ) );
+    } elseif ( function_exists( 'determine_locale' ) ) {
+        $is_en = ( 0 === strpos( (string) determine_locale(), 'en' ) );
+    }
+    if ( $is_en ) {
+        return 'Educational portal of the Traffic Safety Commission on medical cannabis and road safety.';
+    }
+    return $value;
+} );
+
+/**
+ * Don't load Elementor frontend CSS/JS on pages that never used the builder.
+ * Saves significant weight on home/curso/recursos template pages.
+ */
+add_action( 'wp_enqueue_scripts', function (): void {
+    if ( is_admin() || ! did_action( 'elementor/loaded' ) ) {
+        return;
+    }
+    if ( ! class_exists( '\Elementor\Plugin' ) || ! isset( \Elementor\Plugin::$instance->documents ) ) {
+        return;
+    }
+    $post_id = get_queried_object_id();
+    if ( $post_id ) {
+        $document = \Elementor\Plugin::$instance->documents->get( $post_id );
+        if ( $document && method_exists( $document, 'is_built_with_elementor' ) && $document->is_built_with_elementor() ) {
+            return;
+        }
+    }
+    // Dequeue common Elementor front assets when unused.
+    $handles = [
+        'elementor-frontend',
+        'elementor-icons',
+        'elementor-animations',
+        'elementor-sticky',
+        'swiper',
+        'e-animations',
+        'e-swiper',
+    ];
+    if ( $post_id ) {
+        $handles[] = 'elementor-post-' . $post_id;
+    }
+    foreach ( $handles as $handle ) {
+        wp_dequeue_style( $handle );
+        wp_dequeue_script( $handle );
+    }
+}, 100 );
 
 /* ==========================================================================
    Include modules

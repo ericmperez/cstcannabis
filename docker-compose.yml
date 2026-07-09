@@ -1,0 +1,56 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: cst-cannabis-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+  wordpress:
+    image: wordpress:6.6-php8.2-apache
+    container_name: cst-cannabis-wp
+    depends_on:
+      - db
+    restart: unless-stopped
+    ports:
+      - "8088:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+    volumes:
+      - wp_data:/var/www/html
+      - ./themes/cst-cannabis-portal:/var/www/html/wp-content/themes/cst-cannabis-portal
+      - ./themes/cst-motoras-portal:/var/www/html/wp-content/themes/cst-motoras-portal
+      - ./plugins/cst-core:/var/www/html/wp-content/plugins/cst-core
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    container_name: cst-cannabis-wpcli
+    depends_on:
+      - db
+      - wordpress
+    user: "33:33"
+    volumes:
+      - wp_data:/var/www/html
+      - ./themes/cst-cannabis-portal:/var/www/html/wp-content/themes/cst-cannabis-portal
+      - ./themes/cst-motoras-portal:/var/www/html/wp-content/themes/cst-motoras-portal
+      - ./plugins/cst-core:/var/www/html/wp-content/plugins/cst-core
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    entrypoint: ["sh", "-c", "sleep infinity"]
+
+volumes:
+  db_data:
+  wp_data:

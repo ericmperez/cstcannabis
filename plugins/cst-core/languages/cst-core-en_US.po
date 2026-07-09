@@ -568,3 +568,15 @@ msgstr "Shows a banner at the bottom of each page requesting cookie consent. Goo
 
 msgid "El Measurement ID debe tener el formato G-XXXXXXXXXX."
 msgstr "The Measurement ID must be in the format G-XXXXXXXXXX."
+
+#: includes/class-cst-seo.php
+msgid "Guías, infografías, videos y documentos sobre cannabis medicinal y seguridad vial."
+msgstr "Guides, infographics, videos, and documents on medical cannabis and road safety."
+
+#: includes/class-cst-seo.php
+msgid "Artículos y noticias sobre cannabis medicinal y seguridad vial de la CST."
+msgstr "Articles and news on medical cannabis and road safety from the CST."
+
+#: includes/class-cst-seo.php
+msgid "Portal educativo de la Comisión para la Seguridad en el Tránsito de Puerto Rico."
+msgstr "Educational portal of the Puerto Rico Traffic Safety Commission."
